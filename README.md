@@ -102,6 +102,6 @@ Build files will be generated under the `dist/` directory.
 
 ---
 
-## 👤 Author
-- **Rohit Buddhe** ([@buddherohit](https://github.com/buddherohit))
-- Email: rohitbudddhe564@gmail.com
+## 👤 Authors
+- **Rohit Buddhe** ([@buddherohit](https://github.com/buddherohit)) - Email: rohitbudddhe564@gmail.com
+- **Nema Kore** ([@nemakore](https://github.com/nemakore))
