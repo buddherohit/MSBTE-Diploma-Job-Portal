@@ -5,6 +5,7 @@ import StudentHeader from '../../components/StudentHeader';
 
 export default function Dashboard() {
   const [user, setUser] = useState(null);
+  const [appliedDetails, setAppliedDetails] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,6 +15,9 @@ export default function Dashboard() {
     } else {
       setUser(session);
     }
+
+    const details = JSON.parse(localStorage.getItem('applied_job_details') || '[]');
+    setAppliedDetails(details);
   }, [navigate]);
 
   if (!user) {
@@ -69,7 +73,7 @@ export default function Dashboard() {
               <span className="material-symbols-outlined text-2xl font-bold">work</span>
             </div>
             <div className="text-left leading-tight">
-              <p className="text-headline-md font-extrabold text-on-surface">12</p>
+              <p className="text-headline-md font-extrabold text-on-surface">{12 + appliedDetails.length}</p>
               <p className="text-on-surface-variant font-label-md text-[11px] font-bold uppercase tracking-wider mt-1">Applied</p>
             </div>
           </div>
@@ -146,6 +150,23 @@ export default function Dashboard() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-outline-variant">
+                    {appliedDetails.map((job) => (
+                      <tr key={job.id} className="hover:bg-slate-50 transition-colors bg-green-50/10">
+                        <td className="px-6 py-4 font-bold text-primary text-sm">{job.title}</td>
+                        <td className="px-6 py-4 text-sm text-on-surface">{job.company}</td>
+                        <td className="px-6 py-4 text-sm text-on-surface-variant">{job.date}</td>
+                        <td className="px-6 py-4">
+                          <span className="inline-block px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary-fixed text-primary">
+                            Under Review
+                          </span>
+                        </td>
+                        <td className="px-6 py-4">
+                          <Link to={`/public/jobdetails?id=${job.id}`} className="text-primary hover:text-primary-dim transition-colors">
+                            <span className="material-symbols-outlined text-xl">visibility</span>
+                          </Link>
+                        </td>
+                      </tr>
+                    ))}
                     <tr className="hover:bg-slate-50 transition-colors">
                       <td className="px-6 py-4 font-bold text-primary text-sm">Junior Design Engineer</td>
                       <td className="px-6 py-4 text-sm text-on-surface">Mahindra & Mahindra</td>

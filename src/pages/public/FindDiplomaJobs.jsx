@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, Link } from 'react-router-dom';
 import Header from '../../components/Header';
 
 export default function FindDiplomaJobs() {
@@ -64,7 +64,9 @@ export default function FindDiplomaJobs() {
 </div>
 <div className="flex-grow">
 <div className="flex justify-between items-start mb-1">
-<h3 className="font-headline-md text-[20px] text-on-surface group-hover:text-primary transition-colors">Junior Production Engineer</h3>
+<h3 className="font-headline-md text-[20px] text-on-surface group-hover:text-primary transition-colors">
+  <Link to="/public/jobdetails?id=tata-trainee">Junior Production Engineer</Link>
+</h3>
 <span className="bg-error-container text-on-error-container text-label-sm font-label-sm px-2 py-0.5 rounded uppercase">Urgent</span>
 </div>
 <p className="text-primary font-label-md mb-2">Tata Motors Ltd.</p>
@@ -81,7 +83,7 @@ export default function FindDiplomaJobs() {
 </div>
 </div>
 <div className="flex gap-2 mt-4 md:mt-0 md:flex-col lg:flex-row">
-<button className="bg-primary text-on-primary px-6 py-3 rounded-lg font-label-md flex-grow md:flex-none hover:opacity-90 transition-opacity">Quick Apply</button>
+<Link to="/public/jobdetails?id=tata-trainee" className="bg-primary text-on-primary px-6 py-3 rounded-lg font-label-md flex-grow md:flex-none hover:opacity-90 transition-opacity text-center flex items-center justify-center">Apply Now</Link>
 <button className="border border-primary text-primary px-4 py-3 rounded-lg flex items-center justify-center hover:bg-primary-fixed transition-colors">
 <span className="material-symbols-outlined">bookmark</span>
 </button>
@@ -97,7 +99,9 @@ export default function FindDiplomaJobs() {
 </div>
 <div className="flex-grow">
 <div className="flex justify-between items-start mb-1">
-<h3 className="font-headline-md text-[20px] text-on-surface group-hover:text-primary transition-colors">Diploma Trainee - Civil</h3>
+<h3 className="font-headline-md text-[20px] text-on-surface group-hover:text-primary transition-colors">
+  <Link to="/public/jobdetails?id=lt-civil">Diploma Trainee - Civil</Link>
+</h3>
 <span className="bg-secondary-fixed text-on-secondary-fixed-variant text-label-sm font-label-sm px-2 py-0.5 rounded uppercase">New Listing</span>
 </div>
 <p className="text-primary font-label-md mb-2">L&T Construction</p>
@@ -114,7 +118,7 @@ export default function FindDiplomaJobs() {
 </div>
 </div>
 <div className="flex gap-2 mt-4 md:mt-0 md:flex-col lg:flex-row">
-<button className="bg-primary text-on-primary px-6 py-3 rounded-lg font-label-md flex-grow md:flex-none hover:opacity-90 transition-opacity">Quick Apply</button>
+<Link to="/public/jobdetails?id=lt-civil" className="bg-primary text-on-primary px-6 py-3 rounded-lg font-label-md flex-grow md:flex-none hover:opacity-90 transition-opacity text-center flex items-center justify-center">Apply Now</Link>
 <button className="border border-primary text-primary px-4 py-3 rounded-lg flex items-center justify-center hover:bg-primary-fixed transition-colors">
 <span className="material-symbols-outlined">bookmark</span>
 </button>
@@ -130,7 +134,9 @@ export default function FindDiplomaJobs() {
 </div>
 <div className="flex-grow">
 <div className="flex justify-between items-start mb-1">
-<h3 className="font-headline-md text-[20px] text-on-surface group-hover:text-primary transition-colors">Technical Support Associate</h3>
+<h3 className="font-headline-md text-[20px] text-on-surface group-hover:text-primary transition-colors">
+  <Link to="/public/jobdetails?id=infosys-support">Technical Support Associate</Link>
+</h3>
 <div className="flex gap-1">
 <span className="bg-blue-100 text-blue-800 text-label-sm font-label-sm px-2 py-0.5 rounded uppercase">Internship</span>
 </div>
@@ -149,7 +155,7 @@ export default function FindDiplomaJobs() {
 </div>
 </div>
 <div className="flex gap-2 mt-4 md:mt-0 md:flex-col lg:flex-row">
-<button className="bg-primary text-on-primary px-6 py-3 rounded-lg font-label-md flex-grow md:flex-none hover:opacity-90 transition-opacity">Quick Apply</button>
+<Link to="/public/jobdetails?id=infosys-support" className="bg-primary text-on-primary px-6 py-3 rounded-lg font-label-md flex-grow md:flex-none hover:opacity-90 transition-opacity text-center flex items-center justify-center">Apply Now</Link>
 <button className="border border-primary text-primary px-4 py-3 rounded-lg flex items-center justify-center hover:bg-primary-fixed transition-colors">
 <span className="material-symbols-outlined">bookmark</span>
 </button>

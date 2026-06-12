@@ -160,7 +160,7 @@ View All Jobs
 </div>
 <div className="flex justify-between items-center border-t border-outline-variant/60 pt-4 mt-2">
 <span className="font-extrabold text-lg text-primary">₹3.5 - 5 LPA</span>
-<a href="/public/jobdetails" className="bg-primary text-white hover:bg-primary/95 px-5 py-2.5 rounded-xl font-bold text-sm transition-all hover:scale-105 active:scale-95 shadow-sm">Apply Now</a>
+<Link to="/public/jobdetails?id=lt-production" className="bg-primary text-white hover:bg-primary/95 px-5 py-2.5 rounded-xl font-bold text-sm transition-all hover:scale-105 active:scale-95 shadow-sm text-center">Apply Now</Link>
 </div>
 </div>
 
@@ -181,7 +181,7 @@ View All Jobs
 </div>
 <div className="flex justify-between items-center border-t border-outline-variant/60 pt-4 mt-2">
 <span className="font-extrabold text-lg text-primary">₹3 - 4.5 LPA</span>
-<a href="/public/jobdetails" className="bg-primary text-white hover:bg-primary/95 px-5 py-2.5 rounded-xl font-bold text-sm transition-all hover:scale-105 active:scale-95 shadow-sm">Apply Now</a>
+<Link to="/public/jobdetails?id=tata-design" className="bg-primary text-white hover:bg-primary/95 px-5 py-2.5 rounded-xl font-bold text-sm transition-all hover:scale-105 active:scale-95 shadow-sm text-center">Apply Now</Link>
 </div>
 </div>
 
@@ -202,7 +202,7 @@ View All Jobs
 </div>
 <div className="flex justify-between items-center border-t border-outline-variant/60 pt-4 mt-2">
 <span className="font-extrabold text-lg text-primary">₹2.8 - 4 LPA</span>
-<a href="/public/jobdetails" className="bg-primary text-white hover:bg-primary/95 px-5 py-2.5 rounded-xl font-bold text-sm transition-all hover:scale-105 active:scale-95 shadow-sm">Apply Now</a>
+<Link to="/public/jobdetails?id=shapoorji-civil" className="bg-primary text-white hover:bg-primary/95 px-5 py-2.5 rounded-xl font-bold text-sm transition-all hover:scale-105 active:scale-95 shadow-sm text-center">Apply Now</Link>
 </div>
 </div>
 
@@ -223,7 +223,7 @@ View All Jobs
 </div>
 <div className="flex justify-between items-center border-t border-outline-variant/60 pt-4 mt-2">
 <span className="font-extrabold text-lg text-primary">₹2.5 - 3.5 LPA</span>
-<a href="/public/jobdetails" className="bg-primary text-white hover:bg-primary/95 px-5 py-2.5 rounded-xl font-bold text-sm transition-all hover:scale-105 active:scale-95 shadow-sm">Apply Now</a>
+<Link to="/public/jobdetails?id=siemens-electrical" className="bg-primary text-white hover:bg-primary/95 px-5 py-2.5 rounded-xl font-bold text-sm transition-all hover:scale-105 active:scale-95 shadow-sm text-center">Apply Now</Link>
 </div>
 </div>
 </div>

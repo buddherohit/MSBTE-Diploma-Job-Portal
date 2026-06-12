@@ -130,9 +130,9 @@
 </div>
 <div class="flex items-center gap-6">
 <nav class="hidden md:flex gap-8">
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-colors px-2 py-1" href="#">Dashboard</a>
-<a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary px-2 py-1" href="#">Status</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-colors px-2 py-1" href="#">Applications</a>
+<<a class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-colors px-2 py-1" href="dashboard.html">Dashboard</a>
+<a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary px-2 py-1" href="Job Application Status.html">Status</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-colors px-2 py-1" href="Find Diploma Applied Jobs.html">Applications</a>
 </nav>
 <img alt="User profile photo" class="w-10 h-10 rounded-full border-2 border-primary object-cover" data-alt="A professional headshot of a young male student wearing a neat white shirt, set against a soft, out-of-focus academic library background. The lighting is bright and natural, reflecting a clean and modern corporate aesthetic. The overall mood is confident, approachable, and focused, aligning with a high-energy professional job seeker profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1CfKWTMcsCsqoSoUSIMF4wkT7fcu8i09zqCZ_3Pg2DcXTeftd2_pM8hrVFclQxuhDO6ky7wunTIwNkD22B5dkIlwD_-ZHOG4XHarv1XXnD7pWXTZs5BYkiKPUFT1Kpvw6hLbrwJIdTLjDF7EwjpGtn5QpjoFN3vfHEGvL7ux-nxHcMKsoiZV8De-p0WsMwLYf7vt5Td03iUkOLEVQqWSCeIGRst66QU0eynyTvrv7ToNdHo0zieiHJ-M7kUbST5_Lanc7dAM69jk"/>
 </div>
@@ -143,7 +143,7 @@
 <div class="glass-card p-6 rounded-lg flex flex-col justify-between hover:shadow-sm transition-all duration-300">
 <div>
 <span class="text-on-surface-variant font-label-md uppercase tracking-wider">Active Applications</span>
-<h2 class="font-headline-lg text-headline-lg mt-2 text-primary">12</h2>
+<h2 id="appliedCountStat" class="font-headline-lg text-headline-lg mt-2 text-primary">12</h2>
 </div>
 <div class="mt-4 flex items-center text-tertiary-fixed-dim text-sm font-semibold">
 <span class="material-symbols-outlined mr-1">trending_up</span>
@@ -181,6 +181,9 @@
                     </button>
 </div>
 </div>
+<!-- Dynamic Tracking Container for LocalStorage Jobs -->
+<div class="space-y-stack-md" id="dynamicTrackingContainer"></div>
+
 <!-- Application Card 1 -->
 <div class="bg-surface border border-outline-variant rounded-lg p-6 hover:shadow-md transition-all">
 <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
@@ -327,32 +330,117 @@
 </main>
 <!-- BottomNavBar (Mobile Only) -->
 <nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-20 px-2 pb-safe bg-surface dark:bg-on-background border-t border-outline-variant dark:border-outline shadow-sm z-50">
-<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-all duration-200">
+<a href="dashboard.html" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-all duration-200">
 <span class="material-symbols-outlined">home</span>
 <span class="font-label-sm text-label-sm">Home</span>
-</button>
-<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-all duration-200">
+</a>
+<a href="../public/Find Diploma Jobs.html" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-all duration-200">
 <span class="material-symbols-outlined">work</span>
 <span class="font-label-sm text-label-sm">Jobs</span>
-</button>
-<button class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim bg-secondary-fixed dark:bg-on-secondary-fixed-variant rounded-xl px-3 py-1 transition-all duration-200">
+</a>
+<a href="Job Application Status.html" class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim bg-secondary-fixed dark:bg-on-secondary-fixed-variant rounded-xl px-3 py-1 transition-all duration-200">
 <span class="material-symbols-outlined">assignment_turned_in</span>
 <span class="font-label-sm text-label-sm">Status</span>
-</button>
-<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-all duration-200">
+</a>
+<a href="profile.html" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-all duration-200">
 <span class="material-symbols-outlined">person</span>
 <span class="font-label-sm text-label-sm">Profile</span>
-</button>
+</a>
 </nav>
 <script>
         // Micro-interaction for application cards
-        document.querySelectorAll('.bg-surface.border').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.classList.add('scale-[1.005]');
+        function attachCardListeners() {
+            document.querySelectorAll('.bg-surface.border').forEach(card => {
+                card.removeEventListener('mouseenter', onMouseEnter);
+                card.removeEventListener('mouseleave', onMouseLeave);
+                card.addEventListener('mouseenter', onMouseEnter);
+                card.addEventListener('mouseleave', onMouseLeave);
             });
-            card.addEventListener('mouseleave', () => {
-                card.classList.remove('scale-[1.005]');
-            });
+        }
+        function onMouseEnter(e) {
+            e.currentTarget.classList.add('scale-[1.005]');
+        }
+        function onMouseLeave(e) {
+            e.currentTarget.classList.remove('scale-[1.005]');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            attachCardListeners();
+
+            // Load applied job details from local storage
+            const appliedDetails = JSON.parse(localStorage.getItem('applied_job_details') || '[]');
+            
+            // 1. Update count
+            const statSpan = document.getElementById('appliedCountStat');
+            if (statSpan) {
+                statSpan.textContent = 12 + appliedDetails.length;
+            }
+
+            // 2. Prepend cards to dynamic container
+            const container = document.getElementById('dynamicTrackingContainer');
+            if (container && appliedDetails.length > 0) {
+                appliedDetails.forEach(job => {
+                    const card = document.createElement('div');
+                    card.className = 'bg-surface border border-outline-variant rounded-lg p-6 hover:shadow-md transition-all bg-tertiary-container/5 mb-4';
+                    card.innerHTML = `
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                            <!-- Company Info -->
+                            <div class="flex items-center gap-4">
+                                <div class="w-16 h-16 bg-white rounded-lg border border-outline-variant p-2 flex items-center justify-center shrink-0">
+                                    <img alt="${job.company} Logo" class="max-w-full max-h-full object-contain" src="${job.logo}"/>
+                                </div>
+                                <div>
+                                    <h4 class="font-headline-md text-headline-md text-primary leading-tight">${job.title}</h4>
+                                    <p class="text-on-surface-variant font-medium">${job.company} • ${job.location}</p>
+                                    <p class="text-label-sm text-outline mt-1 italic">Applied on ${job.date}</p>
+                                </div>
+                            </div>
+                            <!-- Progress Stepper -->
+                            <div class="flex-1 max-w-xl">
+                                <div class="relative flex items-center justify-between w-full">
+                                    <!-- Progress Line -->
+                                    <div class="absolute top-1/2 left-0 w-full h-[2px] bg-outline-variant -translate-y-1/2 z-0"></div>
+                                    <div class="absolute top-1/2 left-0 w-1/4 h-[2px] bg-primary -translate-y-1/2 z-0"></div>
+                                    <!-- Steps -->
+                                    <div class="relative z-10 flex flex-col items-center gap-2">
+                                        <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center border-4 border-primary-fixed">
+                                            <span class="material-symbols-outlined text-sm">check</span>
+                                        </div>
+                                        <span class="text-[10px] font-bold uppercase text-primary">Applied</span>
+                                    </div>
+                                    <div class="relative z-10 flex flex-col items-center gap-2 opacity-40">
+                                        <div class="w-8 h-8 rounded-full bg-surface border-2 border-outline-variant flex items-center justify-center">
+                                            <span class="material-symbols-outlined text-sm">history_edu</span>
+                                        </div>
+                                        <span class="text-[10px] font-bold uppercase">Technical</span>
+                                    </div>
+                                    <div class="relative z-10 flex flex-col items-center gap-2 opacity-40">
+                                        <div class="w-8 h-8 rounded-full bg-surface border-2 border-outline-variant flex items-center justify-center">
+                                            <span class="material-symbols-outlined text-sm">forum</span>
+                                        </div>
+                                        <span class="text-[10px] font-bold uppercase">Interview</span>
+                                    </div>
+                                    <div class="relative z-10 flex flex-col items-center gap-2 opacity-40">
+                                        <div class="w-8 h-8 rounded-full bg-surface border-2 border-outline-variant flex items-center justify-center">
+                                            <span class="material-symbols-outlined text-sm">emoji_events</span>
+                                        </div>
+                                        <span class="text-[10px] font-bold uppercase">Selection</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Actions & Badge -->
+                            <div class="flex flex-col items-end gap-3 min-w-[140px]">
+                                <span class="px-3 py-1 bg-surface-container-high text-on-surface-variant rounded-full text-xs font-bold uppercase">Under Review</span>
+                                <div class="flex gap-2 w-full md:w-auto">
+                                    <button onclick="window.location.href='../public/jobdetails.html?id=${job.id}'" class="flex-1 md:flex-none px-4 py-2 bg-primary text-on-primary rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">Details</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    container.insertBefore(card, container.firstChild);
+                });
+                attachCardListeners();
+            }
         });
     </script>
 </body></html>

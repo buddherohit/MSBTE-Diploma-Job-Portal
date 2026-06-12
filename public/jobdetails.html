@@ -1,304 +1,760 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "surface-bright": "#f7f9fb",
-                    "on-tertiary-container": "#3fd298",
-                    "on-surface-variant": "#444653",
-                    "surface-container-highest": "#e0e3e5",
-                    "on-tertiary-fixed": "#002113",
-                    "surface-container": "#eceef0",
-                    "on-background": "#191c1e",
-                    "tertiary-fixed-dim": "#4edea3",
-                    "tertiary-fixed": "#6ffbbe",
-                    "surface-container-high": "#e6e8ea",
-                    "on-primary-fixed-variant": "#173bab",
-                    "on-primary-container": "#a8b8ff",
-                    "on-secondary-fixed-variant": "#783200",
-                    "on-secondary": "#ffffff",
-                    "tertiary": "#003d27",
-                    "surface-container-low": "#f2f4f6",
-                    "primary-fixed-dim": "#b8c4ff",
-                    "primary": "#00288e",
-                    "on-tertiary": "#ffffff",
-                    "background": "#f7f9fb",
-                    "surface-tint": "#3755c3",
-                    "primary-container": "#1e40af",
-                    "on-error-container": "#93000a",
-                    "outline": "#757684",
-                    "inverse-on-surface": "#eff1f3",
-                    "secondary-fixed": "#ffdbca",
-                    "tertiary-container": "#00563a",
-                    "on-primary-fixed": "#001453",
-                    "on-tertiary-fixed-variant": "#005236",
-                    "on-primary": "#ffffff",
-                    "inverse-primary": "#b8c4ff",
-                    "on-secondary-container": "#5c2400",
-                    "on-error": "#ffffff",
-                    "on-surface": "#191c1e",
-                    "surface": "#f7f9fb",
-                    "error-container": "#ffdad6",
-                    "secondary-fixed-dim": "#ffb690",
-                    "outline-variant": "#c4c5d5",
-                    "surface-dim": "#d8dadc",
-                    "on-secondary-fixed": "#341100",
-                    "surface-container-lowest": "#ffffff",
-                    "secondary-container": "#fd761a",
-                    "surface-variant": "#e0e3e5",
-                    "inverse-surface": "#2d3133",
-                    "error": "#ba1a1a",
-                    "secondary": "#9d4300",
-                    "primary-fixed": "#dde1ff"
-            },
-            "borderRadius": {
-                    "DEFAULT": "0.25rem",
-                    "lg": "0.5rem",
-                    "xl": "0.75rem",
-                    "full": "9999px"
-            },
-            "spacing": {
-                    "stack-md": "1rem",
-                    "stack-lg": "2rem",
-                    "container-max": "1280px",
-                    "stack-sm": "0.5rem",
-                    "margin-mobile": "1rem",
-                    "gutter": "1.5rem"
-            },
-            "fontFamily": {
-                    "label-md": ["Inter"],
-                    "display-lg": ["Inter"],
-                    "headline-md": ["Inter"],
-                    "body-md": ["Inter"],
-                    "body-lg": ["Inter"],
-                    "label-sm": ["Inter"],
-                    "headline-lg-mobile": ["Inter"],
-                    "headline-lg": ["Inter"]
-            },
-            "fontSize": {
-                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
-                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
-                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
-                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
-                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
-                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
-            }
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>MSBTE Jobs - Job Details</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-bright": "#f7f9fb",
+            "on-tertiary-container": "#3fd298",
+            "on-surface-variant": "#444653",
+            "surface-container-highest": "#e0e3e5",
+            "on-tertiary-fixed": "#002113",
+            "surface-container": "#eceef0",
+            "on-background": "#191c1e",
+            "tertiary-fixed-dim": "#4edea3",
+            "tertiary-fixed": "#6ffbbe",
+            "surface-container-high": "#e6e8ea",
+            "on-primary-fixed-variant": "#173bab",
+            "on-primary-container": "#a8b8ff",
+            "on-secondary-fixed-variant": "#783200",
+            "on-secondary": "#ffffff",
+            "tertiary": "#003d27",
+            "surface-container-low": "#f2f4f6",
+            "primary-fixed-dim": "#b8c4ff",
+            "primary": "#00288e",
+            "on-tertiary": "#ffffff",
+            "background": "#f7f9fb",
+            "surface-tint": "#3755c3",
+            "primary-container": "#1e40af",
+            "on-error-container": "#93000a",
+            "outline": "#757684",
+            "inverse-on-surface": "#eff1f3",
+            "secondary-fixed": "#ffdbca",
+            "tertiary-container": "#00563a",
+            "on-primary-fixed": "#001453",
+            "on-tertiary-fixed-variant": "#005236",
+            "on-primary": "#ffffff",
+            "inverse-primary": "#b8c4ff",
+            "on-secondary-container": "#5c2400",
+            "on-error": "#ffffff",
+            "on-surface": "#191c1e",
+            "surface": "#f7f9fb",
+            "error-container": "#ffdad6",
+            "secondary-fixed-dim": "#ffb690",
+            "outline-variant": "#c4c5d5",
+            "surface-dim": "#d8dadc",
+            "on-secondary-fixed": "#341100",
+            "surface-container-lowest": "#ffffff",
+            "secondary-container": "#fd761a",
+            "surface-variant": "#e0e3e5",
+            "inverse-surface": "#2d3133",
+            "error": "#ba1a1a",
+            "secondary": "#9d4300",
+            "primary-fixed": "#dde1ff"
           },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "stack-md": "1rem",
+            "stack-lg": "2rem",
+            "container-max": "1280px",
+            "stack-sm": "0.5rem",
+            "margin-mobile": "1rem",
+            "gutter": "1.5rem"
+          },
+          "fontFamily": {
+            "label-md": ["Inter"],
+            "display-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "body-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "headline-lg": ["Inter"]
+          },
+          "fontSize": {
+            "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+            "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+            "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+            "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+          }
         },
-      }
-    </script>
-<style>
-        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
-        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
-        .glass-header { backdrop-filter: blur(8px); background: rgba(247, 249, 251, 0.8); }
-        .custom-scrollbar::-webkit-scrollbar { display: none; }
-        .custom-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-    </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
+      },
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .glass-header { backdrop-filter: blur(8px); background: rgba(247, 249, 251, 0.8); }
+    .custom-scrollbar::-webkit-scrollbar { display: none; }
+    .custom-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    body { min-height: max(884px, 100dvh); }
+    
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+    .animate-slide-up {
+      animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
   </style>
-  </head>
+</head>
 <body class="bg-surface text-on-surface">
-<!-- Top Navigation Bar -->
-<header class="fixed top-0 left-0 right-0 z-50 glass-header border-b border-outline-variant">
-<div class="flex justify-between items-center px-margin-mobile h-16 w-full max-w-container-max mx-auto">
-<button class="p-2 hover:bg-surface-container rounded-full transition-colors">
-<span class="material-symbols-outlined text-on-surface">arrow_back</span>
-</button>
-<h1 class="font-headline-md text-headline-md font-bold text-primary">MSBTE Jobs</h1>
-<div class="w-10 h-10 rounded-full border border-outline-variant bg-surface-container overflow-hidden">
-<img alt="Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a young male engineer wearing a crisp white shirt, captured in a brightly lit modern office environment with soft bokeh background. The lighting is high-key and professional, matching the clean and authoritative corporate modern UI aesthetic of the platform. The subject has a confident and approachable expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrWh8SDj52cM4qTR3DUFshfmGBaKKVRMIhB4B7lzZGwq0ad_BrrWi0BohvE9FH697BCWocbu-9cBf2SzNlOqrSyDSREp1zHtPQ70IdbiGtNo-0lXi5Ciw_tYzmVFgak7bEZIYq_Z_fFc3E5eeUiJp2X0q9MLF3JH1TX7_veduB_aCngK-eLfUYOtW_SNi0EJQ6OoSnOYiZI-wrOKpAcvZx8Tbwz1RDWlyKKGmi42PXt1Woh3bqWmrs66nCQp8A5mJdlcC6QuRPOzE"/>
-</div>
-</div>
-</header>
-<main class="pt-20 pb-24 px-margin-mobile max-w-md mx-auto">
-<!-- Job Header Section -->
-<section class="mb-stack-lg">
-<div class="flex justify-between items-start mb-4">
-<div class="w-16 h-16 rounded-xl border border-outline-variant p-2 bg-surface-container-lowest flex items-center justify-center">
-<img alt="Thermax Logo" class="max-w-full max-h-full object-contain" data-alt="A minimalist and sharp corporate logo for a heavy engineering firm, featuring bold industrial typography. The logo is displayed on a clean white background, reflecting the stable and institutional trust of the brand. The visual style is high-contrast and professional, emphasizing industrial excellence and engineering precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfyOOXVmy_C3y_bhrY1Q4DfO2k1qFjn386j0m2_5JGqn_jpQ6oo6du9mKh387gwhrvHE2294_EwXJKe_alVXHIAuw62m7zN6hhgyDS9en_n689BkHk4RhcFK_pNYW9t-HweMUbF17rrueFJg_XS9Va9QpxXcolJjRPKL7jPdh2a8RNiemYkYv7WoaXQw2t9WNUlLsxcAbFNqPhkY4T1oh8jgC-1QbLPT_q-qaBdGo5gIGPAWQNhTFLP9HJi-Vc4qHhauMeTYySq8Y"/>
-</div>
-<span class="px-3 py-1 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm rounded-full">Urgent</span>
-</div>
-<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-1">Maintenance Engineer</h2>
-<div class="flex items-center gap-2 text-on-surface-variant font-body-md text-body-md">
-<span class="font-bold text-primary">Thermax Limited</span>
-<span class="text-outline">•</span>
-<div class="flex items-center gap-1">
-<span class="material-symbols-outlined text-sm">location_on</span>
-<span>Pune, MH</span>
-</div>
-</div>
-</section>
-<!-- Quick Overview Chips -->
-<section class="grid grid-cols-2 gap-3 mb-stack-lg">
-<div class="bg-surface-container-low p-3 rounded-xl border border-outline-variant">
-<span class="text-on-surface-variant font-label-sm text-label-sm block mb-1">Salary Range</span>
-<span class="text-on-surface font-label-md text-label-md">₹3.5 - 4.2 LPA</span>
-</div>
-<div class="bg-surface-container-low p-3 rounded-xl border border-outline-variant">
-<span class="text-on-surface-variant font-label-sm text-label-sm block mb-1">Type</span>
-<span class="text-on-surface font-label-md text-label-md">Full-time</span>
-</div>
-<div class="bg-surface-container-low p-3 rounded-xl border border-outline-variant col-span-2">
-<span class="text-on-surface-variant font-label-sm text-label-sm block mb-1">Branch Requirement</span>
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-primary text-body-md">engineering</span>
-<span class="text-on-surface font-label-md text-label-md">Mechanical Engineering</span>
-</div>
-</div>
-</section>
-<!-- Job Description -->
-<section class="mb-stack-lg">
-<h3 class="font-headline-md text-headline-md text-on-surface mb-3">Job Description</h3>
-<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">
-                We are looking for a dedicated Diploma Mechanical Engineer to join our maintenance wing in Pune. You will be responsible for ensuring the operational efficiency of critical heavy machinery and thermal systems.
-            </p>
-<ul class="space-y-3">
-<li class="flex gap-3 items-start">
-<span class="material-symbols-outlined text-on-tertiary-container mt-0.5">check_circle</span>
-<span class="font-body-md text-body-md text-on-surface-variant">Execute preventive and breakdown maintenance of industrial boilers and heat exchangers.</span>
-</li>
-<li class="flex gap-3 items-start">
-<span class="material-symbols-outlined text-on-tertiary-container mt-0.5">check_circle</span>
-<span class="font-body-md text-body-md text-on-surface-variant">Perform troubleshooting on hydraulic and pneumatic control systems for automated production lines.</span>
-</li>
-<li class="flex gap-3 items-start">
-<span class="material-symbols-outlined text-on-tertiary-container mt-0.5">check_circle</span>
-<span class="font-body-md text-body-md text-on-surface-variant">Ensure 100% compliance with plant safety protocols and ISO standards.</span>
-</li>
-</ul>
-</section>
-<!-- Eligibility & Skills -->
-<section class="mb-stack-lg">
-<h3 class="font-headline-md text-headline-md text-on-surface mb-3">Eligibility &amp; Skills</h3>
-<div class="space-y-4">
-<div>
-<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider mb-2 block">Education &amp; Exp</span>
-<div class="flex flex-wrap gap-2">
-<span class="px-3 py-1 bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm rounded-lg border border-primary-fixed-dim">MSBTE Diploma</span>
-<span class="px-3 py-1 bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm rounded-lg border border-primary-fixed-dim">0-2 Years Experience</span>
-</div>
-</div>
-<div>
-<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider mb-2 block">Technical Proficiencies</span>
-<div class="flex flex-wrap gap-2">
-<span class="px-3 py-1.5 bg-[#DBEAFE] text-[#1E40AF] font-label-md text-label-md rounded-full">PLC</span>
-<span class="px-3 py-1.5 bg-[#DBEAFE] text-[#1E40AF] font-label-md text-label-md rounded-full">Hydraulics</span>
-<span class="px-3 py-1.5 bg-[#DBEAFE] text-[#1E40AF] font-label-md text-label-md rounded-full">Pneumatics</span>
-<span class="px-3 py-1.5 bg-[#DBEAFE] text-[#1E40AF] font-label-md text-label-md rounded-full">AutoCAD</span>
-</div>
-</div>
-</div>
-</section>
-<!-- Company Info Card -->
-<section class="mb-stack-lg bg-surface-container-high p-4 rounded-xl">
-<h3 class="font-label-md text-label-md text-on-surface-variant mb-4 flex items-center gap-2">
-<span class="material-symbols-outlined text-sm">info</span>
-                About Thermax
-            </h3>
-<div class="flex gap-4 items-start">
-<p class="font-body-md text-body-md text-on-surface-variant flex-1">
-                    Thermax Limited is a leading conglomerate providing sustainable solutions in energy and environment. Headquartered in Pune, we operate in 88 countries across the globe.
-                </p>
-</div>
-<div class="mt-4 pt-4 border-t border-outline-variant flex justify-between items-center">
-<span class="text-on-surface-variant font-label-sm text-label-sm">Industrial Manufacturing</span>
-<button class="text-primary font-label-md text-label-md flex items-center gap-1">
-                    Visit Site <span class="material-symbols-outlined text-sm">open_in_new</span>
-</button>
-</div>
-</section>
-<!-- Related Jobs Carousel -->
-<section class="mb-stack-lg">
-<h3 class="font-headline-md text-headline-md text-on-surface mb-4">Similar Opportunities</h3>
-<div class="flex overflow-x-auto gap-4 pb-4 custom-scrollbar">
-<!-- Related Job 1 -->
-<div class="min-w-[280px] bg-surface-container-lowest border border-outline-variant p-4 rounded-xl shadow-sm">
-<div class="flex items-center gap-3 mb-2">
-<div class="w-10 h-10 rounded-lg bg-surface-container border border-outline-variant p-1">
-<img alt="Tata Logo" class="w-full h-full object-contain" data-alt="A stylized logo for a prominent automotive manufacturing company, rendered in professional dark tones. The setting is clean and high-contrast, fitting the corporate modern aesthetic. The logo conveys strength, durability, and industrial heritage, reflecting institutional stability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAL2nEAnVDPBuaVO_W6FP6m0kLjWVQ3_b40YxthXAtG440kNxRfcTK9C0TZNes8jnkfrq87X0SMxrE3y2amMlXkh7RnyL8WkL42Zu7T58DJfCqQB2yd188KP2P_QjKsFQowbaDkN98vdqvedrr_TnKgg2YixenUX9X10AgNz_B2g1gg1nDHfzd9JN4SMCOu85Z36LOZ68XF64JRpiSmhKiS4znMgpKvUUF6Hf8YdB6UEOHbaDUGVrH4aE804gD0zPg2fjG8Pq1bUH4"/>
-</div>
-<div>
-<h4 class="font-label-md text-label-md text-on-surface">Production Trainee</h4>
-<span class="text-on-surface-variant font-label-sm text-label-sm">Tata Motors • Chakan</span>
-</div>
-</div>
-<div class="flex justify-between items-center mt-3">
-<span class="text-primary font-label-sm text-label-sm">₹3.2 - 3.8 LPA</span>
-<span class="material-symbols-outlined text-primary">chevron_right</span>
-</div>
-</div>
-<!-- Related Job 2 -->
-<div class="min-w-[280px] bg-surface-container-lowest border border-outline-variant p-4 rounded-xl shadow-sm">
-<div class="flex items-center gap-3 mb-2">
-<div class="w-10 h-10 rounded-lg bg-surface-container border border-outline-variant p-1">
-<img alt="L&amp;T Logo" class="w-full h-full object-contain" data-alt="A modern industrial brand mark for a multinational construction and engineering firm. The logo design is robust and corporate, emphasizing architectural precision and large-scale infrastructure capabilities. Set against a clean light-mode background with professional high-contrast utility." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUssuEmg1BjBZuERyN0MLhVkWR-uui1z4nLnwNoI0TSJwIpaZFNCUHxbVqgXit-idic_kklHqy11BwWPCp00EiCtJmkYTRkBUo6YzKqyovaQkwNry_uJwTYwPlDwRxhWjRfx9-2hXy0lRzdscP7vqRlrKDB7tS0ZOHkyYuhGhHUdeln0yUECcxZ3_PDSdbze1odty0CS_9KQWN6bkxaa5rN7uzJQsJlrLw06Zq9kPatoFYuq074kACBxFgvsyL9nZ02ZP5mETGzwE"/>
-</div>
-<div>
-<h4 class="font-label-md text-label-md text-on-surface">Quality Engineer</h4>
-<span class="text-on-surface-variant font-label-sm text-label-sm">L&amp;T • Talegaon</span>
-</div>
-</div>
-<div class="flex justify-between items-center mt-3">
-<span class="text-primary font-label-sm text-label-sm">₹3.8 - 4.5 LPA</span>
-<span class="material-symbols-outlined text-primary">chevron_right</span>
-</div>
-</div>
-</div>
-</section>
-</main>
-<!-- Sticky Action Bar -->
-<footer class="fixed bottom-0 left-0 right-0 bg-surface border-t border-outline-variant px-margin-mobile py-4 z-50">
-<div class="max-w-md mx-auto flex items-center gap-4">
-<button class="w-12 h-12 flex items-center justify-center border border-primary text-primary rounded-xl transition-all active:scale-95" id="saveJobBtn" onclick="toggleSave()">
-<span class="material-symbols-outlined" id="saveIcon">bookmark</span>
-</button>
-<button class="flex-1 h-12 bg-secondary-container text-on-secondary-container font-headline-md text-headline-md rounded-xl shadow-md active:scale-95 transition-all flex items-center justify-center gap-2">
-                Apply Now
-                <span class="material-symbols-outlined">bolt</span>
-</button>
-</div>
-</footer>
-<script>
-        function toggleSave() {
-            const icon = document.getElementById('saveIcon');
-            const btn = document.getElementById('saveJobBtn');
-            const isFilled = icon.style.fontVariationSettings.includes("'FILL' 1");
-            
-            if (isFilled) {
-                icon.style.fontVariationSettings = "'FILL' 0";
-                btn.classList.remove('bg-primary', 'text-white');
-                btn.classList.add('text-primary');
-            } else {
-                icon.style.fontVariationSettings = "'FILL' 1";
-                btn.classList.add('bg-primary', 'text-on-primary');
-                btn.classList.remove('text-primary');
-            }
-        }
 
-        // Add small scroll effect to header
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 20) {
-                header.classList.add('shadow-md');
-            } else {
-                header.classList.remove('shadow-md');
-            }
+  <!-- Top Navigation Bar -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass-header border-b border-outline-variant">
+    <div class="flex justify-between items-center px-margin-mobile h-16 w-full max-w-container-max mx-auto">
+      <button onclick="window.history.back()" class="p-2 hover:bg-surface-container rounded-full transition-colors" aria-label="Back">
+        <span class="material-symbols-outlined text-on-surface">arrow_back</span>
+      </button>
+      <h1 class="font-headline-md text-headline-md font-bold text-primary">MSBTE Jobs</h1>
+      <a href="student portal/profile.html" class="w-10 h-10 rounded-full border border-outline-variant bg-surface-container overflow-hidden block">
+        <img alt="Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrWh8SDj52cM4qTR3DUFshfmGBaKKVRMIhB4B7lzZGwq0ad_BrrWi0BohvE9FH697BCWocbu-9cBf2SzNlOqrSyDSREp1zHtPQ70IdbiGtNo-0lXi5Ciw_tYzmVFgak7bEZIYq_Z_fFc3E5eeUiJp2X0q9MLF3JH1TX7_veduB_aCngK-eLfUYOtW_SNi0EJQ6OoSnOYiZI-wrOKpAcvZx8Tbwz1RDWlyKKGmi42PXt1Woh3bqWmrs66nCQp8A5mJdlcC6QuRPOzE"/>
+      </a>
+    </div>
+  </header>
+
+  <main class="pt-20 pb-24 px-margin-mobile max-w-md mx-auto">
+    <!-- Job Header Section -->
+    <section class="mb-stack-lg">
+      <div class="flex justify-between items-start mb-4">
+        <div class="w-16 h-16 rounded-xl border border-outline-variant p-2 bg-surface-container-lowest flex items-center justify-center shadow-sm">
+          <img id="companyLogo" alt="Company Logo" class="max-w-full max-h-full object-contain" src=""/>
+        </div>
+        <span id="urgentTag" class="px-3 py-1 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm rounded-full">Urgent</span>
+      </div>
+      <h2 id="jobTitle" class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-1"></h2>
+      <div class="flex items-center gap-2 text-on-surface-variant font-body-md text-body-md">
+        <span id="companyName" class="font-bold text-primary"></span>
+        <span class="text-outline">•</span>
+        <div class="flex items-center gap-1">
+          <span class="material-symbols-outlined text-sm">location_on</span>
+          <span id="jobLocation"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Overview Chips -->
+    <section class="grid grid-cols-2 gap-3 mb-stack-lg">
+      <div class="bg-surface-container-low p-3 rounded-xl border border-outline-variant">
+        <span class="text-on-surface-variant font-label-sm text-label-sm block mb-1">Salary Range</span>
+        <span id="salaryRange" class="text-on-surface font-label-md text-label-md"></span>
+      </div>
+      <div class="bg-surface-container-low p-3 rounded-xl border border-outline-variant">
+        <span class="text-on-surface-variant font-label-sm text-label-sm block mb-1">Type</span>
+        <span id="jobType" class="text-on-surface font-label-md text-label-md"></span>
+      </div>
+      <div class="bg-surface-container-low p-3 rounded-xl border border-outline-variant col-span-2">
+        <span class="text-on-surface-variant font-label-sm text-label-sm block mb-1">Branch Requirement</span>
+        <div class="flex items-center gap-2">
+          <span id="branchIcon" class="material-symbols-outlined text-primary text-body-md">engineering</span>
+          <span id="branchRequirement" class="text-on-surface font-label-md text-label-md"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Job Description -->
+    <section class="mb-stack-lg">
+      <h3 class="font-headline-md text-headline-md text-on-surface mb-3">Job Description</h3>
+      <p id="jobDescription" class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4"></p>
+      <ul id="responsibilitiesList" class="space-y-3">
+        <!-- Injected dynamic list -->
+      </ul>
+    </section>
+
+    <!-- Eligibility & Skills -->
+    <section class="mb-stack-lg">
+      <h3 class="font-headline-md text-headline-md text-on-surface mb-3">Eligibility &amp; Skills</h3>
+      <div class="space-y-4">
+        <div>
+          <span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider mb-2 block">Education &amp; Exp</span>
+          <div id="educationContainer" class="flex flex-wrap gap-2">
+            <!-- Injected tags -->
+          </div>
+        </div>
+        <div>
+          <span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider mb-2 block">Technical Proficiencies</span>
+          <div id="skillsContainer" class="flex flex-wrap gap-2">
+            <!-- Injected tags -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Company Info Card -->
+    <section class="mb-stack-lg bg-surface-container-high p-4 rounded-xl">
+      <h3 class="font-label-md text-label-md text-on-surface-variant mb-4 flex items-center gap-2">
+        <span class="material-symbols-outlined text-sm">info</span>
+        <span id="aboutCompanyTitle"></span>
+      </h3>
+      <div class="flex gap-4 items-start">
+        <p id="aboutCompanyDescription" class="font-body-md text-body-md text-on-surface-variant flex-1"></p>
+      </div>
+      <div class="mt-4 pt-4 border-t border-outline-variant flex justify-between items-center">
+        <span id="companySector" class="text-on-surface-variant font-label-sm text-label-sm"></span>
+        <a id="companyWebsite" target="_blank" href="#" class="text-primary font-label-md text-label-md flex items-center gap-1 hover:underline">
+          Visit Site <span class="material-symbols-outlined text-sm">open_in_new</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Related Jobs Carousel -->
+    <section class="mb-stack-lg">
+      <h3 class="font-headline-md text-headline-md text-on-surface mb-4">Similar Opportunities</h3>
+      <div id="similarOpportunitiesContainer" class="flex overflow-x-auto gap-4 pb-4 custom-scrollbar">
+        <!-- Dynamic carousel cards -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Sticky Action Bar -->
+  <footer class="fixed bottom-0 left-0 right-0 bg-surface border-t border-outline-variant px-margin-mobile py-4 z-50">
+    <div class="max-w-md mx-auto flex items-center gap-4">
+      <button class="w-12 h-12 flex items-center justify-center border border-primary text-primary rounded-xl transition-all active:scale-95 hover:bg-surface-container-low" id="saveJobBtn" onclick="toggleSave()">
+        <span class="material-symbols-outlined" id="saveIcon">bookmark</span>
+      </button>
+      <button id="applyBtn" onclick="openApplyModal()" class="flex-1 h-12 bg-secondary-container text-on-secondary-container font-headline-md text-headline-md rounded-xl shadow-md active:scale-95 transition-all flex items-center justify-center gap-2 hover:opacity-95">
+        <span>Apply Now</span>
+        <span class="material-symbols-outlined">bolt</span>
+      </button>
+    </div>
+  </footer>
+
+  <!-- Apply Job Modal Overlay -->
+  <div id="applyModal" class="fixed inset-0 z-[100] hidden flex items-end justify-center px-4 pb-4 sm:items-center sm:p-0 transition-opacity duration-300">
+    <!-- Backdrop -->
+    <div class="fixed inset-0 bg-on-background/40 backdrop-blur-sm transition-opacity" onclick="closeApplyModal()"></div>
+    
+    <!-- Content -->
+    <div class="bg-surface-container-lowest rounded-t-2xl sm:rounded-2xl border border-outline-variant w-full max-w-md shadow-2xl relative z-10 overflow-hidden transform transition-all translate-y-full duration-300 ease-out" id="applyModalContent">
+      
+      <!-- Initial Form State -->
+      <div id="formState" class="p-6">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="font-headline-md text-lg font-bold text-on-surface" id="modalTitle">Apply for Job</h3>
+          <button class="p-2 hover:bg-surface-container rounded-full transition-colors text-on-surface-variant animate-none" onclick="closeApplyModal()">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+        
+        <form id="jobApplicationForm" onsubmit="submitApplication(event)" class="space-y-4">
+          <div>
+            <label class="block text-on-surface-variant font-label-sm text-xs uppercase tracking-wider mb-1">Full Name</label>
+            <input type="text" id="applicantName" required class="w-full px-4 py-2.5 rounded-xl border border-outline-variant bg-surface text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-body-md" value="Rohit Budde" />
+          </div>
+          
+          <div>
+            <label class="block text-on-surface-variant font-label-sm text-xs uppercase tracking-wider mb-1">Email Address</label>
+            <input type="email" id="applicantEmail" required class="w-full px-4 py-2.5 rounded-xl border border-outline-variant bg-surface text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-body-md" value="rohit.budde45@gmail.com" />
+          </div>
+          
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-on-surface-variant font-label-sm text-xs uppercase tracking-wider mb-1">Enrollment No.</label>
+              <input type="text" id="applicantEnrollment" required class="w-full px-4 py-2.5 rounded-xl border border-outline-variant bg-surface text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-body-md" value="2201230045" />
+            </div>
+            <div>
+              <label class="block text-on-surface-variant font-label-sm text-xs uppercase tracking-wider mb-1">CGPA / %</label>
+              <input type="text" id="applicantGPA" required class="w-full px-4 py-2.5 rounded-xl border border-outline-variant bg-surface text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-body-md" value="8.92" />
+            </div>
+          </div>
+          
+          <div>
+            <label class="block text-on-surface-variant font-label-sm text-xs uppercase tracking-wider mb-2">Resume</label>
+            <div class="border border-dashed border-outline-variant rounded-xl p-4 bg-surface flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-primary text-2xl">description</span>
+                <div class="flex flex-col">
+                  <span class="text-on-surface font-label-md text-sm">Rohit_Resume.pdf</span>
+                  <span class="text-on-surface-variant text-[11px]">MSBTE Verified Profile Resume</span>
+                </div>
+              </div>
+              <span class="px-2.5 py-1 bg-tertiary-container text-on-tertiary-container text-[10px] font-bold rounded uppercase">Verified</span>
+            </div>
+          </div>
+          
+          <button type="submit" class="w-full h-12 mt-2 bg-primary text-white font-headline-md text-base rounded-xl shadow-md active:scale-95 transition-all flex items-center justify-center gap-2 hover:bg-primary/95">
+            Confirm & Submit Application
+            <span class="material-symbols-outlined text-sm">send</span>
+          </button>
+        </form>
+      </div>
+      
+      <!-- Success State -->
+      <div id="successState" class="p-8 hidden flex flex-col items-center text-center">
+        <div class="w-16 h-16 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded-full flex items-center justify-center mb-4">
+          <span class="material-symbols-outlined text-3xl font-bold">check</span>
+        </div>
+        
+        <h3 class="font-headline-lg text-headline-lg-mobile text-on-surface mb-2">Application Submitted!</h3>
+        <p class="text-on-surface-variant font-body-md mb-6 leading-relaxed">
+          Your application for <span class="font-bold text-primary" id="successJobTitle"></span> at <span class="font-bold text-primary" id="successCompanyName"></span> has been successfully sent to the hiring manager.
+        </p>
+        
+        <div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant w-full text-left mb-6 text-sm space-y-1 text-on-surface-variant">
+          <div><strong>Application Ref ID:</strong> <span class="font-mono text-on-surface" id="refId"></span></div>
+          <div><strong>Status:</strong> <span class="text-tertiary font-bold uppercase text-xs">Applied (Under Review)</span></div>
+        </div>
+        
+        <div class="flex gap-4 w-full">
+          <a href="student portal/dashboard.html" class="flex-1 h-12 border border-primary text-primary font-label-md text-sm rounded-xl flex items-center justify-center hover:bg-surface-container-low transition-colors">
+            Go to Dashboard
+          </a>
+          <button onclick="closeApplyModal()" class="flex-1 h-12 bg-primary text-white font-label-md text-sm rounded-xl hover:bg-primary/95 transition-colors">
+            Close Details
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <script>
+    // Standard jobs database
+    const jobsDatabase = {
+      "thermax-maintenance": {
+        id: "thermax-maintenance",
+        title: "Maintenance Engineer",
+        company: "Thermax Limited",
+        logo: "https://lh3.googleusercontent.com/aida-public/AB6AXuBfyOOXVmy_C3y_bhrY1Q4DfO2k1qFjn386j0m2_5JGqn_jpQ6oo6du9mKh387gwhrvHE2294_EwXJKe_alVXHIAuw62m7zN6hhgyDS9en_n689BkHk4RhcFK_pNYW9t-HweMUbF17rrueFJg_XS9Va9QpxXcolJjRPKL7jPdh2a8RNiemYkYv7WoaXQw2t9WNUlLsxcAbFNqPhkY4T1oh8jgC-1QbLPT_q-qaBdGo5gIGPAWQNhTFLP9HJi-Vc4qHhauMeTYySq8Y",
+        location: "Pune, MH",
+        salary: "₹3.5 - 4.2 LPA",
+        type: "Full-time",
+        branch: "Mechanical Engineering",
+        branchIcon: "engineering",
+        urgent: true,
+        description: "We are looking for a dedicated Diploma Mechanical Engineer to join our maintenance wing in Pune. You will be responsible for ensuring the operational efficiency of critical heavy machinery and thermal systems.",
+        responsibilities: [
+          "Execute preventive and breakdown maintenance of industrial boilers and heat exchangers.",
+          "Perform troubleshooting on hydraulic and pneumatic control systems for automated production lines.",
+          "Ensure 100% compliance with plant safety protocols and ISO standards."
+        ],
+        education: ["MSBTE Diploma (Mechanical)", "0-2 Years Experience"],
+        skills: ["PLC", "Hydraulics", "Pneumatics", "AutoCAD"],
+        aboutCompany: "Thermax Limited is a leading conglomerate providing sustainable solutions in energy and environment. Headquartered in Pune, we operate in 88 countries across the globe.",
+        sector: "Industrial Manufacturing",
+        website: "https://www.thermaxglobal.com"
+      },
+      "lt-production": {
+        id: "lt-production",
+        title: "Production Engineer",
+        company: "L&T Construction",
+        logo: "https://lh3.googleusercontent.com/aida-public/AB6AXuAUssuEmg1BjBZuERyN0MLhVkWR-uui1z4nLnwNoI0TSJwIpaZFNCUHxbVqgXit-idic_kklHqy11BwWPCp00EiCtJmkYTRkBUo6YzKqyovaQkwNry_uJwTYwPlDwRxhWjRfx9-2hXy0lRzdscP7vqRlrKDB7tS0ZOHkyYuhGhHUdeln0yUECcxZ3_PDSdbze1odty0CS_9KQWN6bkxaa5rN7uzJQsJlrLw06Zq9kPatoFYuq074kACBxFgvsyL9nZ02ZP5mETGzwE",
+        location: "Mumbai, MH",
+        salary: "₹3.5 - 5 LPA",
+        type: "Full-time",
+        branch: "Mechanical Engineering",
+        branchIcon: "architecture",
+        urgent: false,
+        description: "L&T Construction is seeking a proactive Production Engineer to oversee and coordinate manufacturing processes at our heavy fabrication facility in Mumbai. The role involves managing production schedules and ensuring high-quality standards.",
+        responsibilities: [
+          "Supervise day-to-day shop floor operations and fabrication processes.",
+          "Implement lean manufacturing techniques to reduce waste and cycle time.",
+          "Coordinate with quality assurance teams to verify dimensional and material specifications."
+        ],
+        education: ["MSBTE Diploma (Mechanical)", "Fresher / 0-1 Year Experience"],
+        skills: ["Production Planning", "Fabrication", "Lean Manufacturing", "Quality Control"],
+        aboutCompany: "Larsen & Toubro is a major technology, engineering, construction, manufacturing and financial services conglomerate, with global operations.",
+        sector: "Infrastructure & Construction",
+        website: "https://www.larsentoubro.com"
+      },
+      "tata-design": {
+        id: "tata-design",
+        title: "Junior Design Engineer",
+        company: "TATA Motors",
+        logo: "https://lh3.googleusercontent.com/aida-public/AB6AXuAL2nEAnVDPBuaVO_W6FP6m0kLjWVQ3_b40YxthXAtG440kNxRfcTK9C0TZNes8jnkfrq87X0SMxrE3y2amMlXkh7RnyL8WkL42Zu7T58DJfCqQB2yd188KP2P_QjKsFQowbaDkN98vdqvedrr_TnKgg2YixenUX9X10AgNz_B2g1gg1nDHfzd9JN4SMCOu85Z36LOZ68XF64JRpiSmhKiS4znMgpKvUUF6Hf8YdB6UEOHbaDUGVrH4aE804gD0zPg2fjG8Pq1bUH4",
+        location: "Pune, MH",
+        salary: "₹3 - 4.5 LPA",
+        type: "Full-time",
+        branch: "Mechanical Engineering",
+        branchIcon: "engineering",
+        urgent: false,
+        description: "Join TATA Motors' Passenger Vehicles Design Division as a Junior Design Engineer. You will assist the senior design team in developing components for our next-generation electric and internal combustion vehicles.",
+        responsibilities: [
+          "Create and modify 3D CAD models and 2D engineering drafts using CATIA or SolidWorks.",
+          "Perform basic finite element analysis (FEA) and structural simulations for component optimization.",
+          "Prepare and release engineering change notes (ECNs) under standard guidelines."
+        ],
+        education: ["MSBTE Diploma (Mechanical/Auto)", "0-2 Years Experience"],
+        skills: ["CATIA v5", "SolidWorks", "GD&T", "AutoCAD"],
+        aboutCompany: "Tata Motors Limited is a leading global automobile manufacturer with a portfolio that includes a wide range of cars, utility vehicles, trucks and buses.",
+        sector: "Automotive",
+        website: "https://www.tatamotors.com"
+      },
+      "shapoorji-civil": {
+        id: "shapoorji-civil",
+        title: "Site Supervisor",
+        company: "Shapoorji Pallonji",
+        logo: "https://lh3.googleusercontent.com/aida-public/AB6AXuDLwXPfFn650ZbsE5QvOtHamVhFqaKHYnq2mtJioTwzaZXrLiY7vNll5Dgb17R2dJBbaI7WnQ4WpB6LbLrxu1E-IXjIoo453hRhzaR65VH46cSto3EH6Biw2b0NSBTQv_jrhtK9QTe5P_MWZQoJktRK19x-PDfIALRh9TVt3BUNyOG16SLJCsWPdo5Ae9vKB89ntKBDjckrKJLlcaIM0N-ogbl2MS8UDBLWu-5EowxvXQgXbwkM_gj966iqZeFMu2t7UtScI0mupjc",
+        location: "Nagpur, MH",
+        salary: "₹2.8 - 4 LPA",
+        type: "Full-time",
+        branch: "Civil Engineering",
+        branchIcon: "home_work",
+        urgent: false,
+        description: "Shapoorji Pallonji is looking for a Civil Site Supervisor for our residential construction project in Nagpur. The candidate will supervise subcontractor labor, ensure alignment with architectural drawings, and track daily progress.",
+        responsibilities: [
+          "Supervise concrete pouring, reinforcement layout, and brickwork on-site.",
+          "Verify site measurements against layout drawings and report discrepancies.",
+          "Ensure high safety standards and proper PPE compliance on the active job site."
+        ],
+        education: ["MSBTE Diploma (Civil Engineering)", "Fresher / 0-2 Years Experience"],
+        skills: ["Site Supervision", "Quantity Surveying", "Concrete Technology", "Safety Compliance"],
+        aboutCompany: "Shapoorji Pallonji & Company Private Limited is a leading Indian business conglomerate with interests in construction, real estate, textiles, and shipping.",
+        sector: "Infrastructure & Construction",
+        website: "https://www.shapoorjipallonji.com"
+      },
+      "siemens-electrical": {
+        id: "siemens-electrical",
+        title: "Electrical Technician",
+        company: "Siemens India",
+        logo: "https://lh3.googleusercontent.com/aida-public/AB6AXuBrWh8SDj52cM4qTR3DUFshfmGBaKKVRMIhB4B7lzZGwq0ad_BrrWi0BohvE9FH697BCWocbu-9cBf2SzNlOqrSyDSREp1zHtPQ70IdbiGtNo-0lXi5Ciw_tYzmVFgak7bEZIYq_Z_fFc3E5eeUiJp2X0q9MLF3JH1TX7_veduB_aCngK-eLfUYOtW_SNi0EJQ6OoSnOYiZI-wrOKpAcvZx8Tbwz1RDWlyKKGmi42PXt1Woh3bqWmrs66nCQp8A5mJdlcC6QuRPOzE",
+        location: "Aurangabad, MH",
+        salary: "₹2.5 - 3.5 LPA",
+        type: "Full-time",
+        branch: "Electrical Engineering",
+        branchIcon: "bolt",
+        urgent: false,
+        description: "Siemens India is hiring an Electrical Technician to work in our industrial automation factory in Aurangabad. You will assemble, wire, and test medium and high-voltage electrical panels and switchgear.",
+        responsibilities: [
+          "Assemble electrical components onto panels according to wiring schematic diagrams.",
+          "Perform continuity and insulation resistance tests on completed switchgears.",
+          "Troubleshoot electrical wiring faults and replace defective control components."
+        ],
+        education: ["MSBTE Diploma (Electrical Engineering)", "Fresher Welcome"],
+        skills: ["Wiring Diagrams", "Switchgear Assembly", "Electrical Testing", "Panel Wiring"],
+        aboutCompany: "Siemens India is a technology company focused on industry, infrastructure, transport, and transmission, leading the digital transformation.",
+        sector: "Industrial Automation",
+        website: "https://www.siemens.co.in"
+      },
+      "tata-trainee": {
+        id: "tata-trainee",
+        title: "Junior Production Engineer",
+        company: "Tata Motors Ltd.",
+        logo: "https://lh3.googleusercontent.com/aida-public/AB6AXuBHZbskzHAfSKrl6u9OSn1ObIOn-DXLGTKnaRZvolIzK4N7vq1GeIeTKU5igHOyO18LS5P3CCdm6I0Ojj6BMvGHGfG0sUN8phGR2CVayQ7U3gbY50HUnqLfHRqjBlw-lhnS3vGqlj1qm-_Q0cQ4PBpvmuVQ1YimDx9miCg9BRYhyY3eP4mHaU9SwHnkz04xy5BCTzrWa6PbqvkwErkuzqimXyr8vathBn2OpgEYQ0cvaE6KLEaaFrozTkHEpOWhfZAMjMiKjmccCAM",
+        location: "Pune, Chakan",
+        salary: "₹18,000 - ₹25,000 /mo",
+        type: "Full-time",
+        branch: "Mechanical Engineering",
+        branchIcon: "engineering",
+        urgent: true,
+        description: "Tata Motors is hiring Junior Production Engineers for our Chakan automotive plant near Pune. This role involves maintaining assembly line efficiency, supervising operators, and monitoring quality metrics.",
+        responsibilities: [
+          "Supervise assembly line operators and manage component assembly flow.",
+          "Identify defects and report deviation from QA benchmarks in real-time.",
+          "Ensure clean and organized workspace conforming to 5S safety principles."
+        ],
+        education: ["MSBTE Diploma (Mechanical)", "Fresher / 0-1 Year Experience"],
+        skills: ["Assembly Line", "5S", "Quality Control", "Kaizen"],
+        aboutCompany: "Tata Motors Limited is a leading global automobile manufacturer with a portfolio that includes a wide range of cars, utility vehicles, trucks and buses.",
+        sector: "Automotive",
+        website: "https://www.tatamotors.com"
+      },
+      "lt-civil": {
+        id: "lt-civil",
+        title: "Diploma Trainee - Civil",
+        company: "L&T Construction",
+        logo: "https://lh3.googleusercontent.com/aida-public/AB6AXuDLwXPfFn650ZbsE5QvOtHamVhFqaKHYnq2mtJioTwzaZXrLiY7vNll5Dgb17R2dJBbaI7WnQ4WpB6LbLrxu1E-IXjIoo453hRhzaR65VH46cSto3EH6Biw2b0NSBTQv_jrhtK9QTe5P_MWZQoJktRK19x-PDfIALRh9TVt3BUNyOG16SLJCsWPdo5Ae9vKB89ntKBDjckrKJLlcaIM0N-ogbl2MS8UDBLWu-5EowxvXQgXbwkM_gj966iqZeFMu2t7UtScI0mupjc",
+        location: "Mumbai, BKC",
+        salary: "₹22,000 - ₹28,000 /mo",
+        type: "Full-time",
+        branch: "Civil Engineering",
+        branchIcon: "apartment",
+        urgent: false,
+        description: "Join L&T Construction as a Civil Diploma Trainee at our premium BKC site in Mumbai. Work closely with senior planning and project engineers to monitor structural progress and assist in quantity estimations.",
+        responsibilities: [
+          "Assist in recording daily work progress and updating construction logs.",
+          "Conduct concrete slump tests and cube casting check-lists.",
+          "Perform site level check using AutoLevel or Total Station instrument."
+        ],
+        education: ["MSBTE Diploma (Civil Engineering)", "Fresher (Batch of 2024 / 2025 / 2026)"],
+        skills: ["AutoLevel", "Concrete Testing", "Excel Reporting", "Drawing Reading"],
+        aboutCompany: "Larsen & Toubro is a major technology, engineering, construction, manufacturing and financial services conglomerate, with global operations.",
+        sector: "Infrastructure & Construction",
+        website: "https://www.larsentoubro.com"
+      },
+      "infosys-support": {
+        id: "infosys-support",
+        title: "Technical Support Associate",
+        company: "Infosys BPM",
+        logo: "https://lh3.googleusercontent.com/aida-public/AB6AXuD3CbBD6Kt5yN3o40-c0NWMJu60bjp8I1X1mcDZnNr1s5HloNQKHsBKGLOl9I7LOsbGxMWSPVBXWcVttB7kAArXqeRz0tD_DJ_Cm0i715jgqMyfRxe-lf4zZcoPXwuW2cPJngwAQNPokeFiEE5YIyLbfUoEt5Rlv1ZxQYWshP-P6yfnlB8p2pB3vJFMVdK2Xs9wlIor6LUbNa8ymqhvHZf9bWxRtiZjDfl7d0jbXkKNl25dyPC28XGUtiLphe8NxA7fPC6goxSWWWg",
+        location: "Pune, Hinjewadi",
+        salary: "₹15,000 /mo (Stipend)",
+        type: "Internship",
+        branch: "IT / Computer Eng.",
+        branchIcon: "computer",
+        urgent: false,
+        description: "Infosys BPM is looking for young IT / Computer Diploma graduates for a Technical Support Internship in Pune. Undergo comprehensive training while assisting global clients with network and system operations troubleshooting.",
+        responsibilities: [
+          "Respond to internal and external technical tickets and troubleshoot basic software issues.",
+          "Assist in IT infrastructure monitoring, network connectivity checks, and user access management.",
+          "Document resolution procedures and maintain service level agreement standards."
+        ],
+        education: ["MSBTE Diploma (IT / Computer / E&TC)", "Fresher (Internship)"],
+        skills: ["Basic Networking", "Linux/Windows OS", "Troubleshooting", "Active Directory"],
+        aboutCompany: "Infosys BPM, the business process management subsidiary of Infosys, provides integrated services to worldwide companies.",
+        sector: "Information Technology",
+        website: "https://www.infosysbpm.com"
+      }
+    };
+
+    let currentJob = null;
+
+    // Load Job Details
+    function loadJobDetails() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const jobId = urlParams.get('id') || "thermax-maintenance";
+      currentJob = jobsDatabase[jobId] || jobsDatabase["thermax-maintenance"];
+
+      // Update elements
+      document.getElementById('companyLogo').src = currentJob.logo;
+      document.getElementById('companyLogo').alt = `${currentJob.company} Logo`;
+      
+      const urgentTag = document.getElementById('urgentTag');
+      if (currentJob.urgent) {
+        urgentTag.style.display = 'inline-block';
+      } else {
+        urgentTag.style.display = 'none';
+      }
+
+      document.getElementById('jobTitle').textContent = currentJob.title;
+      document.getElementById('companyName').textContent = currentJob.company;
+      document.getElementById('jobLocation').textContent = currentJob.location;
+      document.getElementById('salaryRange').textContent = currentJob.salary;
+      document.getElementById('jobType').textContent = currentJob.type;
+      
+      document.getElementById('branchIcon').textContent = currentJob.branchIcon;
+      document.getElementById('branchRequirement').textContent = currentJob.branch;
+      document.getElementById('jobDescription').textContent = currentJob.description;
+
+      // Responsibilities list
+      const respList = document.getElementById('responsibilitiesList');
+      respList.innerHTML = '';
+      currentJob.responsibilities.forEach(resp => {
+        const li = document.createElement('li');
+        li.className = 'flex gap-3 items-start';
+        li.innerHTML = `
+          <span class="material-symbols-outlined text-on-tertiary-container mt-0.5">check_circle</span>
+          <span class="font-body-md text-body-md text-on-surface-variant">${resp}</span>
+        `;
+        respList.appendChild(li);
+      });
+
+      // Education & Exp
+      const eduContainer = document.getElementById('educationContainer');
+      eduContainer.innerHTML = '';
+      currentJob.education.forEach(edu => {
+        const span = document.createElement('span');
+        span.className = 'px-3 py-1 bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm rounded-lg border border-primary-fixed-dim';
+        span.textContent = edu;
+        eduContainer.appendChild(span);
+      });
+
+      // Skills
+      const skillsContainer = document.getElementById('skillsContainer');
+      skillsContainer.innerHTML = '';
+      currentJob.skills.forEach(skill => {
+        const span = document.createElement('span');
+        span.className = 'px-3 py-1.5 bg-[#DBEAFE] text-[#1E40AF] font-label-md text-label-md rounded-full';
+        span.textContent = skill;
+        skillsContainer.appendChild(span);
+      });
+
+      // Company info card
+      document.getElementById('aboutCompanyTitle').textContent = `About ${currentJob.company.replace(' Ltd.', '').replace(' Limited', '')}`;
+      document.getElementById('aboutCompanyDescription').textContent = currentJob.aboutCompany;
+      document.getElementById('companySector').textContent = currentJob.sector;
+      document.getElementById('companyWebsite').href = currentJob.website;
+
+      // Modal Title
+      document.getElementById('modalTitle').textContent = `Apply for ${currentJob.title}`;
+      document.getElementById('successJobTitle').textContent = currentJob.title;
+      document.getElementById('successCompanyName').textContent = currentJob.company;
+
+      // Update Applied State from LocalStorage
+      checkAppliedStatus();
+
+      // Load Similar Opportunities
+      loadSimilarOpportunities();
+    }
+
+    // Check Applied Status
+    function checkAppliedStatus() {
+      const appliedJobs = JSON.parse(localStorage.getItem('applied_jobs') || '[]');
+      const applyBtn = document.getElementById('applyBtn');
+      if (appliedJobs.includes(currentJob.id)) {
+        applyBtn.disabled = true;
+        applyBtn.classList.remove('bg-secondary-container', 'text-on-secondary-container', 'hover:opacity-95');
+        applyBtn.classList.add('bg-tertiary-container', 'text-on-tertiary-container', 'opacity-80', 'cursor-not-allowed');
+        applyBtn.innerHTML = `
+          <span>Applied</span>
+          <span class="material-symbols-outlined">check</span>
+        `;
+      } else {
+        applyBtn.disabled = false;
+        applyBtn.classList.add('bg-secondary-container', 'text-on-secondary-container');
+        applyBtn.classList.remove('bg-tertiary-container', 'text-on-tertiary-container', 'opacity-80', 'cursor-not-allowed');
+        applyBtn.innerHTML = `
+          <span>Apply Now</span>
+          <span class="material-symbols-outlined">bolt</span>
+        `;
+      }
+    }
+
+    // Modal Control functions
+    function openApplyModal() {
+      const appliedJobs = JSON.parse(localStorage.getItem('applied_jobs') || '[]');
+      if (appliedJobs.includes(currentJob.id)) return; // Prevent double apply
+
+      const modal = document.getElementById('applyModal');
+      const content = document.getElementById('applyModalContent');
+      
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden'; // Stop background scrolling
+      
+      // Delay triggers animation
+      setTimeout(() => {
+        content.classList.remove('translate-y-full');
+      }, 10);
+    }
+
+    function closeApplyModal() {
+      const modal = document.getElementById('applyModal');
+      const content = document.getElementById('applyModalContent');
+      
+      content.classList.add('translate-y-full');
+      document.body.style.overflow = '';
+      
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        // Reset form & success views
+        document.getElementById('formState').classList.remove('hidden');
+        document.getElementById('successState').classList.add('hidden');
+      }, 300);
+    }
+
+    // Handle Form Submit
+    function submitApplication(event) {
+      event.preventDefault();
+
+      // Save application
+      const appliedJobs = JSON.parse(localStorage.getItem('applied_jobs') || '[]');
+      if (!appliedJobs.includes(currentJob.id)) {
+        appliedJobs.push(currentJob.id);
+        localStorage.setItem('applied_jobs', JSON.stringify(appliedJobs));
+      }
+
+      // Save application details for status tracking
+      const appliedDetails = JSON.parse(localStorage.getItem('applied_job_details') || '[]');
+      if (!appliedDetails.some(j => j.id === currentJob.id)) {
+        appliedDetails.push({
+          id: currentJob.id,
+          title: currentJob.title,
+          company: currentJob.company,
+          logo: currentJob.logo,
+          location: currentJob.location,
+          date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+          status: 'Under Review'
         });
-    </script>
-</body></html>
+        localStorage.setItem('applied_job_details', JSON.stringify(appliedDetails));
+      }
+
+      // Generate mock reference number
+      const refNum = `APP-${Math.floor(10000 + Math.random() * 90000)}`;
+      document.getElementById('refId').textContent = refNum;
+
+      // Show success state with micro animations
+      document.getElementById('formState').classList.add('hidden');
+      document.getElementById('successState').classList.remove('hidden');
+
+      // Update the main page's button applied status
+      checkAppliedStatus();
+    }
+
+    // Bookmark/Save toggle
+    function toggleSave() {
+      const icon = document.getElementById('saveIcon');
+      const btn = document.getElementById('saveJobBtn');
+      const isFilled = icon.style.fontVariationSettings.includes("'FILL' 1");
+      
+      if (isFilled) {
+        icon.style.fontVariationSettings = "'FILL' 0";
+        btn.classList.remove('bg-primary', 'text-white');
+        btn.classList.add('text-primary');
+      } else {
+        icon.style.fontVariationSettings = "'FILL' 1";
+        btn.classList.add('bg-primary', 'text-on-primary');
+        btn.classList.remove('text-primary');
+      }
+    }
+
+    // Load Similar Opportunities Matching Branch
+    function loadSimilarOpportunities() {
+      const container = document.getElementById('similarOpportunitiesContainer');
+      container.innerHTML = '';
+
+      // Find jobs of same branch excluding current
+      const similar = Object.values(jobsDatabase).filter(j => j.branch === currentJob.branch && j.id !== currentJob.id);
+
+      // If nothing matches, fallback to other jobs
+      const displayJobs = similar.length > 0 ? similar : Object.values(jobsDatabase).filter(j => j.id !== currentJob.id);
+
+      displayJobs.slice(0, 3).forEach(job => {
+        const card = document.createElement('div');
+        card.className = 'min-w-[280px] bg-surface-container-lowest border border-outline-variant p-4 rounded-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow cursor-pointer';
+        card.onclick = () => {
+          window.location.href = `jobdetails.html?id=${job.id}`;
+        };
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-10 h-10 rounded-lg bg-surface-container border border-outline-variant p-1 flex items-center justify-center">
+                <img alt="${job.company} Logo" class="w-full h-full object-contain" src="${job.logo}"/>
+              </div>
+              <div class="overflow-hidden">
+                <h4 class="font-label-md text-label-md text-on-surface truncate">${job.title}</h4>
+                <span class="text-on-surface-variant font-label-sm text-label-sm block truncate">${job.company} • ${job.location.split(',')[0]}</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-between items-center mt-3 border-t border-outline-variant/30 pt-2">
+            <span class="text-primary font-label-sm text-label-sm font-bold">${job.salary}</span>
+            <span class="material-symbols-outlined text-primary text-lg">chevron_right</span>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // Add small scroll effect to header
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 20) {
+        header.classList.add('shadow-md');
+      } else {
+        header.classList.remove('shadow-md');
+      }
+    });
+
+    // Run on Load
+    document.addEventListener('DOMContentLoaded', loadJobDetails);
+  </script>
+</body>
+</html>

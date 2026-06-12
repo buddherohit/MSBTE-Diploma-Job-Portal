@@ -131,9 +131,9 @@
 <button class="hidden md:flex items-center gap-2 px-4 py-2 text-primary font-bold border-b-2 border-primary">
                 Dashboard
             </button>
-<button class="hidden md:flex items-center gap-2 px-4 py-2 text-on-surface-variant hover:bg-surface-container transition-colors duration-200">
+<a href="../public/Find Diploma Jobs.html" class="hidden md:flex items-center gap-2 px-4 py-2 text-on-surface-variant hover:bg-surface-container transition-colors duration-200 rounded-lg">
                 Jobs
-            </button>
+            </a>
 <div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant">
 <img alt="User profile photo" class="w-full h-full object-cover" data-alt="A professional headshot of a young Indian male student with a confident smile, wearing a clean white shirt. The background is a soft, blurred corporate office setting with natural daylight filtering through large windows, creating a bright and optimistic atmosphere. The image has a modern, high-contrast look consistent with a professional career platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0_AhN0uta3x9Kdq5a91H41rF72dT_IRYfyTnLtDXrJ9tID6UIKMjyQU1hIUx1ekOPbv_7rT6B7GViPWoK3Q-8kRUkRKIj_nxVoKH_nqnU1WfRdlR-mLrlnFnnnNU7y-Xk8oYLq92PR5YVeJkQSxR-osSCRQ6UMxjv89DJED1cXrluqwa9DMw7Tx7BJiHpxKle6WOMyjcfIqcQj_VPZWdT4DEuz14cItIH2ccYgqlBCAhCs7XVZp_dSnjBGiXz-jxGIfRRiVnZMJE"/>
 </div>
@@ -178,7 +178,7 @@
 <!-- Quick Stats Grid -->
 <div class="md:col-span-8 grid grid-cols-2 lg:grid-cols-4 gap-4">
 <div class="bg-white border border-outline-variant rounded-xl p-5 flex flex-col justify-center items-center text-center hover:shadow-md transition-shadow">
-<span class="text-display-lg font-display-lg text-primary">12</span>
+<span id="appliedCountStat" class="text-display-lg font-display-lg text-primary">12</span>
 <span class="text-on-surface-variant font-label-md mt-1">Applied</span>
 </div>
 <div class="bg-secondary-fixed text-on-secondary-fixed border border-outline-variant rounded-xl p-5 flex flex-col justify-center items-center text-center hover:shadow-md transition-shadow">
@@ -224,7 +224,7 @@
 <th class="px-6 py-4 font-label-md text-on-surface-variant">Action</th>
 </tr>
 </thead>
-<tbody class="divide-y divide-outline-variant">
+<tbody class="divide-y divide-outline-variant" id="applicationsTableBody">
 <tr class="hover:bg-surface-container-lowest transition-colors">
 <td class="px-6 py-4 font-bold text-primary">Junior Design Engineer</td>
 <td class="px-6 py-4">Mahindra &amp; Mahindra</td>
@@ -325,11 +325,11 @@
 </div>
 </section>
 </main>
-<!-- BottomNavBar (Mobile Only) -->
-<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface dark:bg-on-background shadow-md rounded-t-xl">
-<!-- Dashboard (Active) -->
-<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-4 py-1 scale-95 transition-transform duration-150" href="#">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<!-- Mobile Bottom Navigation Bar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-20 px-2 pb-safe bg-surface dark:bg-on-background border-t border-outline-variant dark:border-outline shadow-sm z-50">
+<!-- Home/Dashboard -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed bg-primary-fixed dark:bg-on-primary-fixed-variant rounded-xl px-3 py-1 transition-all duration-200" href="dashboard.html">
+<span class="material-symbols-outlined">dashboard</span>
 <span class="font-label-sm text-label-sm">Dashboard</span>
 </a>
 <!-- Jobs -->
@@ -349,7 +349,7 @@
 </a>
 </nav>
 <!-- Floating Action Button (FAB) - For Home/Dashboard -->
-<button class="fixed bottom-20 right-4 md:bottom-8 md:right-8 w-14 h-14 bg-secondary-container text-on-secondary-container rounded-full shadow-lg flex items-center justify-center hover:scale-105 transition-transform z-40">
+<button onclick="window.location.href='../public/Find Diploma Jobs.html'" class="fixed bottom-20 right-4 md:bottom-8 md:right-8 w-14 h-14 bg-secondary-container text-on-secondary-container rounded-full shadow-lg flex items-center justify-center hover:scale-105 transition-transform z-40">
 <span class="material-symbols-outlined text-[32px]">search</span>
 </button>
 <script>
@@ -370,6 +370,38 @@
         document.querySelectorAll('section, .grid > div').forEach(el => {
             el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
             observer.observe(el);
+        });
+
+        // Dynamic Applied Job tracking logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const appliedDetails = JSON.parse(localStorage.getItem('applied_job_details') || '[]');
+            
+            // 1. Update stats card
+            const statSpan = document.getElementById('appliedCountStat');
+            if (statSpan) {
+                statSpan.textContent = 12 + appliedDetails.length;
+            }
+
+            // 2. Prepend applied jobs to table
+            const tableBody = document.getElementById('applicationsTableBody');
+            if (tableBody && appliedDetails.length > 0) {
+                appliedDetails.forEach(job => {
+                    const tr = document.createElement('tr');
+                    tr.className = 'hover:bg-surface-container-lowest transition-colors border-b border-outline-variant bg-tertiary-container/5';
+                    tr.innerHTML = `
+                        <td class="px-6 py-4 font-bold text-primary">${job.title}</td>
+                        <td class="px-6 py-4">${job.company}</td>
+                        <td class="px-6 py-4 text-on-surface-variant">${job.date}</td>
+                        <td class="px-6 py-4">
+                            <span class="px-3 py-1 rounded-full text-label-sm font-bold bg-primary-fixed text-on-primary-fixed-variant">Under Review</span>
+                        </td>
+                        <td class="px-6 py-4">
+                            <button onclick="window.location.href='../public/jobdetails.html?id=${job.id}'" class="text-primary hover:text-primary-container"><span class="material-symbols-outlined">visibility</span></button>
+                        </td>
+                    `;
+                    tableBody.insertBefore(tr, tableBody.firstChild);
+                });
+            }
         });
     </script>
 </body></html>
