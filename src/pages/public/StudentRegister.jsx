@@ -1,0 +1,152 @@
+import React from 'react';
+
+export default function StudentRegister() {
+  return (
+    <div className="w-full min-h-screen">
+      
+{/* Top Navigation Anchor (Shared Component Mapping) */}
+<header className="fixed top-0 w-full bg-surface dark:bg-inverse-surface shadow-sm z-50 flex items-center justify-between px-margin-mobile h-16">
+<div className="flex items-center gap-3">
+<span className="material-symbols-outlined text-primary dark:text-primary-fixed-dim text-3xl" data-icon="school">school</span>
+<h1 className="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">MahaResume</h1>
+</div>
+<a className="font-label-md text-label-md text-primary hover:bg-surface-container-high transition-colors duration-200 px-4 py-2 rounded-lg" href="#login">
+            Back to Login
+        </a>
+</header>
+{/* Main Registration Canvas */}
+<main className="flex-grow pt-24 pb-12 px-margin-mobile flex items-center justify-center bg-pattern">
+<div className="w-full max-w-[1000px] grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+{/* Left Side: Visual/Context */}
+<div className="hidden lg:flex lg:col-span-5 flex-col justify-between p-stack-lg bg-primary-container rounded-xl shadow-lg relative overflow-hidden">
+<div className="relative z-10">
+<h2 className="font-headline-lg text-headline-lg text-on-primary mb-4">Empowering Maharashtra's Future Engineers.</h2>
+<p className="font-body-lg text-body-lg text-on-primary-container/90">Join over 50,000 diploma students connecting directly with the state's leading industrial powerhouses.</p>
+</div>
+<div className="mt-8 space-y-6 relative z-10">
+<div className="flex items-center gap-4 text-on-primary">
+<span className="material-symbols-outlined p-2 bg-primary/20 rounded-lg" data-icon="verified">verified</span>
+<span className="font-label-md text-label-md">MSBTE Verified Profiles</span>
+</div>
+<div className="flex items-center gap-4 text-on-primary">
+<span className="material-symbols-outlined p-2 bg-primary/20 rounded-lg" data-icon="precision_manufacturing">precision_manufacturing</span>
+<span className="font-label-md text-label-md">Direct Industry Placement</span>
+</div>
+<div className="flex items-center gap-4 text-on-primary">
+<span className="material-symbols-outlined p-2 bg-primary/20 rounded-lg" data-icon="auto_awesome">auto_awesome</span>
+<span className="font-label-md text-label-md">AI-Driven Resume Builder</span>
+</div>
+</div>
+<div className="relative h-48 w-full rounded-lg overflow-hidden mt-8">
+<img className="absolute inset-0 w-full h-full object-cover" data-alt="A professional group of diverse engineering students in Maharashtra collaborating over blueprints in a bright, modern university setting. The image uses a clean, high-contrast light-mode aesthetic with deep blue architectural accents. The atmosphere is ambitious and academic, reflecting the industrial stability and future-focused mission of MahaResume." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx_ZNyI49EZIcjMcbOtqpocayee9CT3RdYkYNJR3KrJi5v4kWp4xxj1hVl6Qm5XZxoLwMUombkRLqecxdoqKuZI4XCE0AuunbTapFPK5pBduUK3U1AvydAlGRb4Ym1yZf5ZGh50KOqEhQS1lznM6Q4W5ej_a9mo-dE2Kcq8IaGgpIqDSuz-V5Cdqfz3fCpcHHlemsYEwZtj2DW3r9ZS0yyLpLfLvmjjlGRsYNWaiZoeNLyiBNLvP-lm2kxtAOpaLIPnpaS7VRcScA" />
+<div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"></div>
+</div>
+</div>
+{/* Right Side: The Form */}
+<div className="lg:col-span-7 bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant"><div className="mb-8 space-y-2">
+  <h2 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">Student Registration</h2>
+  <p className="font-body-md text-body-md text-on-surface-variant">Create your official industrial profile to get started.</p>
+</div>
+<form className="space-y-stack-md" onsubmit="event.preventDefault();">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+    {/* Full Name */}
+    <div className="space-y-2">
+      <label className="font-label-md text-label-md text-on-surface-variant block">Full Name</label>
+      <div className="relative">
+        <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="person">person</span>
+        <input className="w-full pl-10 pr-4 py-3 bg-surface-container-low border-outline-variant rounded-lg form-input-focus text-body-md font-body-md" placeholder="Jayesh Patil" type="text" />
+      </div>
+    </div>
+    {/* Enrollment Number */}
+    <div className="space-y-2">
+      <label className="font-label-md text-label-md text-on-surface-variant block">Enrollment Number</label>
+      <div className="relative">
+        <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="badge">badge</span>
+        <input className="w-full pl-10 pr-4 py-3 bg-surface-container-low border-outline-variant rounded-lg form-input-focus text-body-md font-body-md" placeholder="2100000000" type="text" />
+      </div>
+    </div>
+  </div>
+  {/* Institute Name */}
+  <div className="space-y-2">
+    <label className="font-label-md text-label-md text-on-surface-variant block">Institute Name</label>
+    <div className="relative">
+      <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="account_balance">account_balance</span>
+      <input className="w-full pl-10 pr-4 py-3 bg-surface-container-low border-outline-variant rounded-lg form-input-focus text-body-md font-body-md" placeholder="Government Polytechnic, Mumbai" type="text" />
+    </div>
+  </div>
+  {/* Diploma Branch */}
+  <div className="space-y-2">
+    <label className="font-label-md text-label-md text-on-surface-variant block">Diploma Branch</label>
+    <div className="relative">
+      <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="engineering">engineering</span>
+      <select className="w-full pl-10 pr-10 py-3 bg-surface-container-low border-outline-variant rounded-lg form-input-focus text-body-md font-body-md appearance-none">
+        <option disabled="" selected="" value="">Select your branch</option>
+        <option>Computer Engineering</option>
+        <option>Mechanical Engineering</option>
+        <option>Civil Engineering</option>
+        <option>Electrical Engineering</option>
+        <option>Electronics & Telecommunication</option>
+        <option>Information Technology</option>
+        <option>Chemical Engineering</option>
+      </select>
+      <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none" data-icon="expand_more">expand_more</span>
+    </div>
+  </div>
+  {/* Email */}
+  <div className="space-y-2">
+    <label className="font-label-md text-label-md text-on-surface-variant block">Email Address</label>
+    <div className="relative">
+      <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="mail">mail</span>
+      <input className="w-full pl-10 pr-4 py-3 bg-surface-container-low border-outline-variant rounded-lg form-input-focus text-body-md font-body-md" placeholder="jayesh.patil@example.com" type="email" />
+    </div>
+  </div>
+  {/* Password */}
+  <div className="space-y-2">
+    <label className="font-label-md text-label-md text-on-surface-variant block">Password</label>
+    <div className="relative">
+      <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="lock">lock</span>
+      <input className="w-full pl-10 pr-4 py-3 bg-surface-container-low border-outline-variant rounded-lg form-input-focus text-body-md font-body-md" placeholder="••••••••" type="password" />
+    </div>
+  </div>
+  {/* Policy Checkbox */}
+  <div className="flex items-start gap-3 pt-2">
+    <input className="mt-1 w-5 h-5 text-primary border-outline rounded focus:ring-primary" id="policy" type="checkbox" />
+    <label className="font-body-md text-body-md text-on-surface-variant" htmlFor="policy">
+      I Agree to the <a href="#" className="text-primary font-bold hover:underline">MSBTE Industrial Policy</a> and authorize MahaResume to share my academic credentials with verified employers.
+    </label>
+  </div>
+  {/* Action Button */}
+  <button className="w-full py-4 bg-secondary-container hover:bg-secondary transition-all duration-300 rounded-lg text-on-primary font-bold text-headline-md shadow-md active:scale-[0.98] mt-4 flex items-center justify-center gap-2">
+    <span className="">Register</span>
+    <span className="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+  </button>
+  <div className="text-center pt-4">
+    <p className="font-body-md text-body-md text-on-surface-variant">
+      Already have an account? 
+      <a className="text-primary font-bold hover:underline" href="#">Log in now</a>
+    </p>
+  </div>
+</form></div>
+</div>
+</main>
+{/* Contextual Footer */}
+<footer className="mt-auto py-8 px-margin-mobile border-t border-outline-variant bg-surface-container-low">
+<div className="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<div className="flex items-center gap-2">
+<span className="material-symbols-outlined text-outline" data-icon="gavel">gavel</span>
+<span className="font-label-sm text-label-sm text-on-surface-variant">Official Platform of Maharashtra State Board of Technical Education</span>
+</div>
+<div className="flex gap-6">
+<a className="font-label-sm text-label-sm text-outline hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a className="font-label-sm text-label-sm text-outline hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a className="font-label-sm text-label-sm text-outline hover:text-primary transition-colors" href="#">Help Center</a>
+</div>
+</div>
+</footer>
+
+
+
+
+    </div>
+  );
+}

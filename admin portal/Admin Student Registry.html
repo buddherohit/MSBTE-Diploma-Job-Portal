@@ -1,0 +1,445 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Student Directory | MSBTE Admin Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .blueprint-pattern {
+            background-color: #f7f9fb;
+            background-image: radial-gradient(#cbd5e1 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+        }
+        .technical-border {
+            position: relative;
+            border: 1px solid #c4c5d5;
+        }
+        .technical-border::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            width: 8px;
+            height: 8px;
+            border-top: 2px solid #00288e;
+            border-left: 2px solid #00288e;
+        }
+        .technical-border::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            right: -2px;
+            width: 8px;
+            height: 8px;
+            border-bottom: 2px solid #00288e;
+            border-right: 2px solid #00288e;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed-variant": "#783200",
+                      "inverse-primary": "#b8c4ff",
+                      "secondary-container": "#fd761a",
+                      "inverse-surface": "#2d3133",
+                      "secondary-fixed": "#ffdbca",
+                      "on-surface-variant": "#444653",
+                      "surface-tint": "#3755c3",
+                      "outline": "#757684",
+                      "surface-container-high": "#e6e8ea",
+                      "on-secondary-fixed": "#341100",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed-dim": "#4edea3",
+                      "on-secondary-container": "#5c2400",
+                      "surface-variant": "#e0e3e5",
+                      "primary-fixed": "#dde1ff",
+                      "on-tertiary-fixed": "#002113",
+                      "on-tertiary": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "on-surface": "#191c1e",
+                      "on-secondary": "#ffffff",
+                      "surface-container-highest": "#e0e3e5",
+                      "inverse-on-surface": "#eff1f3",
+                      "on-primary-container": "#a8b8ff",
+                      "secondary": "#9d4300",
+                      "surface-bright": "#f7f9fb",
+                      "primary-container": "#1e40af",
+                      "outline-variant": "#c4c5d5",
+                      "on-primary-fixed": "#001453",
+                      "secondary-fixed-dim": "#ffb690",
+                      "surface": "#f7f9fb",
+                      "background": "#f7f9fb",
+                      "on-tertiary-container": "#3fd298",
+                      "on-error-container": "#93000a",
+                      "on-error": "#ffffff",
+                      "on-primary-fixed-variant": "#173bab",
+                      "tertiary-fixed": "#6ffbbe",
+                      "surface-container": "#eceef0",
+                      "primary": "#00288e",
+                      "surface-dim": "#d8dadc",
+                      "primary-fixed-dim": "#b8c4ff",
+                      "on-background": "#191c1e",
+                      "tertiary-container": "#00563a",
+                      "tertiary": "#003d27",
+                      "on-tertiary-fixed-variant": "#005236",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-low": "#f2f4f6",
+                      "error-container": "#ffdad6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-sm": "0.5rem",
+                      "container-max": "1280px",
+                      "stack-md": "1rem",
+                      "stack-lg": "2rem",
+                      "margin-mobile": "1rem",
+                      "gutter": "1.5rem"
+              },
+              "fontFamily": {
+                      "label-sm": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-surface text-on-surface blueprint-pattern min-h-screen font-body-md selection:bg-primary-fixed-dim selection:text-on-primary-fixed">
+<!-- TopAppBar (JSON Mapping) -->
+<header class="sticky top-0 z-50 flex justify-between items-center w-full px-gutter max-w-container-max mx-auto bg-surface border-b border-outline-variant py-4">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-container-high transition-colors rounded-full" data-icon="menu">menu</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Student Registry</h1>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<nav class="flex items-center gap-6">
+<a class="text-on-surface-variant hover:bg-surface-container-high px-3 py-1 rounded transition-colors font-label-md text-label-md" href="#">Dashboard</a>
+<a class="text-primary font-bold border-b-2 border-primary px-3 py-1 font-label-md text-label-md" href="#">Student Directory</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high px-3 py-1 rounded transition-colors font-label-md text-label-md" href="#">Verification Queue</a>
+</nav>
+<div class="flex items-center gap-3 pl-6 border-l border-outline-variant">
+<div class="text-right">
+<p class="font-label-md text-label-md text-on-surface">MSBTE Admin</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Registry Control</p>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container-high transition-colors rounded-full" title="Registry Settings">settings</button><div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold overflow-hidden">
+<img alt="Admin" class="w-full h-full object-cover" data-alt="A professional headshot of a middle-aged male administrator in a clean office setting. He is wearing a crisp white shirt and navy blue vest, reflecting authority and institutional stability. The lighting is bright and corporate, matching a modern light-mode UI aesthetic. The background is a slightly blurred office with shelves of academic records." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCM1-laMibRk982HYPAqXPctFPikxI86vL8lUUIv-ibnIsxBpGlfA4YXO3GKnv8lzjDybZ8dhjSjZ5NVN_oUKjog1qt18rngkAvXSrQdd-k5RQorSeiICuxIz2_JIXcUItbZWIVPb_KBRVGAfvGAy-ylx5msMrtXT6mMc5iJRulySsOROEq-glQt3kQZOdrlbypQfdpoN3e9YT5N9CjZV1uxFLM-uk8-dad9dYBFf-ntcAPdE0l4GtiKBM6gzd0Ykl5NYD2nN0p1IE">
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-gutter py-stack-lg pb-32 md:pb-stack-lg">
+<!-- Header & Search -->
+<div class="flex flex-col gap-stack-md mb-stack-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Candidate Records</h2>
+<p class="text-on-surface-variant font-body-md">Managing 14,208 verified diploma profiles across Maharashtra.</p>
+</div>
+<div class="flex gap-2">
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-lg font-label-md text-label-md flex items-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]" data-icon="person_add">person_add</span>
+                        Manual Entry
+                    </button>
+<button class="bg-surface-container border border-outline-variant text-on-surface px-4 py-2.5 rounded-lg font-label-md text-label-md flex items-center gap-2 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="file_download">file_download</span>
+                        Export
+                    </button>
+</div>
+</div>
+<!-- Search & Filters Container -->
+<div class="technical-border bg-surface-container-lowest p-stack-md flex flex-col gap-4">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full bg-surface border border-outline-variant pl-12 pr-4 py-3 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all font-body-md" placeholder="Search by Student Name, Enrollment ID, or Institute Code..." type="text">
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="flex flex-col gap-1.5">
+<label class="text-[11px] font-bold text-outline uppercase tracking-wider pl-1">Diploma Branch</label>
+<select class="bg-surface border border-outline-variant px-3 py-2 rounded-lg font-label-md text-label-md focus:ring-primary">
+<option>All Branches</option>
+<option>Mechanical Engineering</option>
+<option>Civil Engineering</option>
+<option>Computer Technology</option>
+<option>Electrical Engineering</option>
+</select>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-[11px] font-bold text-outline uppercase tracking-wider pl-1">Passing Year</label>
+<select class="bg-surface border border-outline-variant px-3 py-2 rounded-lg font-label-md text-label-md focus:ring-primary">
+<option>Any Year</option>
+<option>2024 (Current)</option>
+<option>2023</option>
+<option>2022</option>
+</select>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-[11px] font-bold text-outline uppercase tracking-wider pl-1">Verification Status</label>
+<select class="bg-surface border border-outline-variant px-3 py-2 rounded-lg font-label-md text-label-md focus:ring-primary">
+<option>All Statuses</option>
+<option>Verified</option>
+<option>Pending</option>
+<option>Flagged</option>
+</select>
+</div>
+<div class="flex items-end">
+<button class="w-full bg-surface-container-high text-on-surface-variant border border-outline-variant py-2 rounded-lg font-label-md text-label-md flex items-center justify-center gap-2 hover:bg-outline-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="filter_list">filter_list</span>
+                            Advanced Filters
+                        </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Student Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-stack-md">
+<!-- Student Card 1 -->
+<div class="technical-border bg-surface-container-lowest p-gutter group hover:shadow-md transition-shadow">
+<div class="flex gap-gutter">
+<div class="relative flex-shrink-0">
+<div class="w-24 h-24 rounded-lg bg-surface-container overflow-hidden border border-outline-variant">
+<img alt="Student" class="w-full h-full object-cover" data-alt="A professional studio portrait of a young male engineering student with a focused and determined expression. He is wearing a formal blue shirt. The background is a neutral, light-grey gradient, maintaining a high-trust, institutional atmosphere. The image is sharp and high-resolution, suitable for a government registry profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXVmsTZ51DcJw5MqUnqJpyq0PYIGkMnM4aw7yGf7AjTbQFTsGfCQf3FGjj6Pmf0C3ADONx4Id3Ahxs5eYY04Q597wFxzTgQNSm3lyULR0Q4HqRoI8TK_2-stBBsLC2M49T2leW5Wvw08AJACgFBQrwHhzop-PJiN0xHCmx7Cvvncju_TcX-zV6AbF5AVrP3JS0b50IN1tGceRedWHkMFgdKK6mXnL8kKHIC2qg0Qje_Vmyhi5nhc3zF9gX0Pf7KleB9dgt1njHC7Q">
+</div>
+<div class="absolute -bottom-2 -right-2 bg-on-tertiary-container text-tertiary-container px-2 py-0.5 rounded-full text-[10px] font-extrabold flex items-center gap-1 border border-on-tertiary-container">
+<span class="material-symbols-outlined text-[12px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+                            VERIFIED
+                        </div>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-[20px] text-on-surface">Rajesh Deshmukh</h3>
+<span class="bg-surface-container-high text-on-surface px-2 py-1 rounded font-label-sm text-label-sm border border-outline-variant">EN: 21004509</span>
+</div>
+<div class="flex flex-wrap gap-2 mt-2">
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-2 py-0.5 rounded-full text-[12px] font-semibold tracking-tight">Mechanical Engineering</span>
+<span class="bg-surface-container text-on-surface-variant px-2 py-0.5 rounded-full text-[12px] font-semibold tracking-tight">Class of 2023</span>
+</div>
+</div>
+<div class="flex items-center gap-6 mt-4">
+<div>
+<p class="text-[10px] text-outline uppercase font-bold tracking-widest">Aggregate CGPA</p>
+<p class="text-headline-md text-primary font-bold">9.42 <span class="text-label-sm font-normal text-outline">/ 10</span></p>
+</div>
+<div class="h-8 w-px bg-outline-variant"></div>
+<div>
+<p class="text-[10px] text-outline uppercase font-bold tracking-widest">Institute</p>
+<p class="text-label-md text-on-surface font-semibold">G.P. Pune (0002)</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-stack-md pt-stack-md border-t border-outline-variant flex gap-3">
+<button class="flex-grow bg-primary text-on-primary py-2.5 rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity">View Full Profile</button>
+<button class="px-4 py-2.5 border border-primary text-primary rounded-lg font-label-md text-label-md hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined align-middle" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Student Card 2 (Pending) -->
+<div class="technical-border bg-surface-container-lowest p-gutter group hover:shadow-md transition-shadow">
+<div class="flex gap-gutter">
+<div class="relative flex-shrink-0">
+<div class="w-24 h-24 rounded-lg bg-surface-container overflow-hidden border border-outline-variant">
+<img alt="Student" class="w-full h-full object-cover" data-alt="A portrait of a young female student with a professional and friendly demeanor, wearing a smart casual blazer. Her expression is confident. The setting is bright with soft natural light, fitting the modern corporate style of the portal. The image quality conveys reliability and academic excellence for an official database." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCp1314x_eoWTgiN1bLGFvpERUX-PtBtVJHZ0KWYBHZS6ICxfamwfM5Shzdy1rMUJKV2dzCi4TO9ovTHyiTPAGAQjlcA26SqOhtZ_-MgIl0AEz13VMO3yz0SqBiOQYI30pSrcntBFaikXqB0GEJUAI_doB4PlMq8SMLWvDqtirz1ec14h0Rfri-0dibUN0BQHuFjTIrLZLbPPeXNoaAZYZKf2rjrvCGJWuev3CguZsOOSLp1W5HStEhrSqZLRAnmQ2wZzbtZKivk30">
+</div>
+<div class="absolute -bottom-2 -right-2 bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-full text-[10px] font-extrabold flex items-center gap-1 border border-secondary">
+<span class="material-symbols-outlined text-[12px]" data-icon="pending">pending</span>
+                            PENDING
+                        </div>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-[20px] text-on-surface">Amruta Kulkarni</h3>
+<span class="bg-surface-container-high text-on-surface px-2 py-1 rounded font-label-sm text-label-sm border border-outline-variant">EN: 21008821</span>
+</div>
+<div class="flex flex-wrap gap-2 mt-2">
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-2 py-0.5 rounded-full text-[12px] font-semibold tracking-tight">Computer Technology</span>
+<span class="bg-surface-container text-on-surface-variant px-2 py-0.5 rounded-full text-[12px] font-semibold tracking-tight">Class of 2024</span>
+</div>
+</div>
+<div class="flex items-center gap-6 mt-4">
+<div>
+<p class="text-[10px] text-outline uppercase font-bold tracking-widest">Aggregate CGPA</p>
+<p class="text-headline-md text-primary font-bold">8.85 <span class="text-label-sm font-normal text-outline">/ 10</span></p>
+</div>
+<div class="h-8 w-px bg-outline-variant"></div>
+<div>
+<p class="text-[10px] text-outline uppercase font-bold tracking-widest">Institute</p>
+<p class="text-label-md text-on-surface font-semibold">V.P. Polytechnic (0024)</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-stack-md pt-stack-md border-t border-outline-variant flex gap-3">
+<button class="flex-grow bg-secondary-container text-on-secondary-container py-2.5 rounded-lg font-label-md text-label-md hover:bg-secondary transition-colors font-bold">Verify Now</button>
+<button class="px-6 py-2.5 bg-surface border border-outline-variant text-on-surface rounded-lg font-label-md text-label-md hover:bg-surface-container transition-colors">Details</button>
+</div>
+</div>
+<!-- Student Card 3 (Flagged) -->
+<div class="technical-border bg-surface-container-lowest p-gutter group hover:shadow-md transition-shadow">
+<div class="flex gap-gutter">
+<div class="relative flex-shrink-0">
+<div class="w-24 h-24 rounded-lg bg-surface-container overflow-hidden border border-outline-variant">
+<img alt="Student" class="w-full h-full object-cover" data-alt="A clear, professional identification photo of a young man with a serious expression. He is wearing a dark polo shirt. The lighting is direct and even, highlighting facial features clearly for security and identity verification purposes. The background is a solid light blue wall." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWiEwYsARf1eWDvHWJ9l6C5X1pYYo6NfQWNJonXQO0tMQufvMnhRvmYQbGkauBAx0Ot7nfg8bX4D1AgdJwQpb687tI3j97Ww0zsEndKK8UgQ1krNz12wL7xkX0d_RXM9AXCS8kZPlRgbUh57HZoFvjmZUDeavTmgG1xnldwr2zRIDe2s7rSIUhMY0Dvn060p14m8hX3JcqiBswSrMawgqKKDR_OiwSpCOTScJoH9yoeVQZB1WyDZYFb_IVKHFeXNDf1Y5RX12Te0g">
+</div>
+<div class="absolute -bottom-2 -right-2 bg-error-container text-on-error-container px-2 py-0.5 rounded-full text-[10px] font-extrabold flex items-center gap-1 border border-error">
+<span class="material-symbols-outlined text-[12px]" data-icon="flag">flag</span>
+                            FLAGGED
+                        </div>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-[20px] text-on-surface">Sameer Khan</h3>
+<span class="bg-surface-container-high text-on-surface px-2 py-1 rounded font-label-sm text-label-sm border border-outline-variant">EN: 21001277</span>
+</div>
+<div class="flex flex-wrap gap-2 mt-2">
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-2 py-0.5 rounded-full text-[12px] font-semibold tracking-tight">Electrical Engineering</span>
+<span class="bg-surface-container text-on-surface-variant px-2 py-0.5 rounded-full text-[12px] font-semibold tracking-tight">Class of 2022</span>
+</div>
+</div>
+<div class="flex items-center gap-6 mt-4">
+<div>
+<p class="text-[10px] text-outline uppercase font-bold tracking-widest">Aggregate CGPA</p>
+<p class="text-headline-md text-error font-bold">7.20 <span class="text-label-sm font-normal text-outline">/ 10</span></p>
+</div>
+<div class="h-8 w-px bg-outline-variant"></div>
+<div>
+<p class="text-[10px] text-outline uppercase font-bold tracking-widest">Institute</p>
+<p class="text-label-md text-on-surface font-semibold">B.V. Polytechnic (0015)</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-stack-md pt-stack-md border-t border-outline-variant flex gap-3">
+<button class="flex-grow bg-error text-on-error py-2.5 rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity">Review Conflict</button>
+<button class="px-6 py-2.5 bg-surface border border-outline-variant text-on-surface rounded-lg font-label-md text-label-md hover:bg-surface-container transition-colors">Details</button>
+</div>
+</div>
+<!-- Student Card 4 -->
+<div class="technical-border bg-surface-container-lowest p-gutter group hover:shadow-md transition-shadow">
+<div class="flex gap-gutter">
+<div class="relative flex-shrink-0">
+<div class="w-24 h-24 rounded-lg bg-surface-container overflow-hidden border border-outline-variant">
+<img alt="Student" class="w-full h-full object-cover" data-alt="A portrait of a young female student smiling warmly, wearing a simple cotton kurta, representing a diverse student body. The background features the blurred architecture of a college campus with stone pillars and greenery under bright, natural daylight. The overall mood is optimistic and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsSoKhAh11y32-ES1tYsO_3IED4AiTX-4fpZuXVyjFBCVAhQY7SzEyYD-thoj3gIS7jwUCFk9ZTa3XMD1lBZ5nmYV-d78QzIw3s2ul8pCNkjSwpZOCWN0Ps7UdA-3lYxUUUmWgP_rgi9AAWvwYRuUsFfQeCLG1x2LCJhj6fURtXkCRblws5ebyMyeHsHSRYwjNpAqjycmzKmOHecwPP5qkOQY1gEp3e3t0MVM2Q-WWzHvBHfUm-bS6T3FoO95od3In2ROaXVqyi0g">
+</div>
+<div class="absolute -bottom-2 -right-2 bg-on-tertiary-container text-tertiary-container px-2 py-0.5 rounded-full text-[10px] font-extrabold flex items-center gap-1 border border-on-tertiary-container">
+<span class="material-symbols-outlined text-[12px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+                            VERIFIED
+                        </div>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-[20px] text-on-surface">Priya Sharma</h3>
+<span class="bg-surface-container-high text-on-surface px-2 py-1 rounded font-label-sm text-label-sm border border-outline-variant">EN: 21005542</span>
+</div>
+<div class="flex flex-wrap gap-2 mt-2">
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-2 py-0.5 rounded-full text-[12px] font-semibold tracking-tight">Civil Engineering</span>
+<span class="bg-surface-container text-on-surface-variant px-2 py-0.5 rounded-full text-[12px] font-semibold tracking-tight">Class of 2023</span>
+</div>
+</div>
+<div class="flex items-center gap-6 mt-4">
+<div>
+<p class="text-[10px] text-outline uppercase font-bold tracking-widest">Aggregate CGPA</p>
+<p class="text-headline-md text-primary font-bold">9.10 <span class="text-label-sm font-normal text-outline">/ 10</span></p>
+</div>
+<div class="h-8 w-px bg-outline-variant"></div>
+<div>
+<p class="text-[10px] text-outline uppercase font-bold tracking-widest">Institute</p>
+<p class="text-label-md text-on-surface font-semibold">S.S.V.P.S. Dhule (0018)</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-stack-md pt-stack-md border-t border-outline-variant flex gap-3">
+<button class="flex-grow bg-primary text-on-primary py-2.5 rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity">View Full Profile</button>
+<button class="px-4 py-2.5 border border-primary text-primary rounded-lg font-label-md text-label-md hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined align-middle" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-stack-lg flex items-center justify-between">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Showing <span class="font-bold text-on-surface">1 - 20</span> of 14,208 candidates</p>
+<div class="flex gap-1">
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center bg-primary text-on-primary rounded font-bold">1</button>
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant rounded hover:bg-surface-container transition-colors font-bold">2</button>
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant rounded hover:bg-surface-container transition-colors font-bold">3</button>
+<span class="px-2 self-end pb-2">...</span>
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant rounded hover:bg-surface-container transition-colors font-bold">711</button>
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (JSON Mapping - Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-2 pt-2 md:hidden bg-surface border-t border-outline-variant shadow-lg rounded-t-xl">
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-highest transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-highest transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="verified">verified</span>
+<span class="font-label-sm text-label-sm">Verify</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="folder_shared" style="font-variation-settings: 'FILL' 1;">folder_shared</span>
+<span class="font-label-sm text-label-sm">Directory</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-highest transition-all active:scale-95">
+    <span class="material-symbols-outlined" data-icon="settings">settings</span>
+    <span class="font-label-sm text-label-sm">Settings</span>
+</div>
+</nav>
+<script>
+        // Micro-interactions for the blueprint effect
+        document.querySelectorAll('.technical-border').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-2px)';
+                card.style.transition = 'all 0.2s ease-out';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+
+
+</body></html>

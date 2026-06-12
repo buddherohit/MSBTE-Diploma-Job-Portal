@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Interview Feedback - Industrial Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed-dim": "#4edea3",
+                      "outline": "#757684",
+                      "surface-container": "#eceef0",
+                      "on-error": "#ffffff",
+                      "on-surface-variant": "#444653",
+                      "on-surface": "#191c1e",
+                      "on-background": "#191c1e",
+                      "secondary-fixed-dim": "#ffb690",
+                      "secondary-fixed": "#ffdbca",
+                      "secondary": "#9d4300",
+                      "on-secondary-container": "#5c2400",
+                      "inverse-primary": "#b8c4ff",
+                      "error": "#ba1a1a",
+                      "primary-container": "#1e40af",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-fixed": "#341100",
+                      "outline-variant": "#c4c5d5",
+                      "on-secondary": "#ffffff",
+                      "surface-bright": "#f7f9fb",
+                      "surface-container-highest": "#e0e3e5",
+                      "on-primary": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "surface-tint": "#3755c3",
+                      "secondary-container": "#fd761a",
+                      "on-tertiary-fixed": "#002113",
+                      "surface": "#f7f9fb",
+                      "surface-container-high": "#e6e8ea",
+                      "inverse-surface": "#2d3133",
+                      "inverse-on-surface": "#eff1f3",
+                      "tertiary": "#003d27",
+                      "surface-variant": "#e0e3e5",
+                      "primary": "#00288e",
+                      "on-tertiary-fixed-variant": "#005236",
+                      "on-primary-fixed-variant": "#173bab",
+                      "background": "#f7f9fb",
+                      "on-primary-container": "#a8b8ff",
+                      "on-tertiary-container": "#3fd298",
+                      "tertiary-container": "#00563a",
+                      "surface-container-low": "#f2f4f6",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-fixed-variant": "#783200",
+                      "on-error-container": "#93000a",
+                      "on-primary-fixed": "#001453",
+                      "primary-fixed-dim": "#b8c4ff",
+                      "primary-fixed": "#dde1ff",
+                      "tertiary-fixed": "#6ffbbe",
+                      "surface-dim": "#d8dadc"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "1rem",
+                      "stack-lg": "2rem",
+                      "gutter": "1.5rem",
+                      "container-max": "1280px",
+                      "stack-md": "1rem",
+                      "stack-sm": "0.5rem"
+              },
+              "fontFamily": {
+                      "label-sm": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "label-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "display-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .star-active {
+            font-variation-settings: 'FILL' 1;
+            color: #fd761a; /* Action Orange / Secondary Container */
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-md text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed antialiased">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-40 w-full flex justify-between items-center px-gutter py-4 bg-surface-bright/80 backdrop-blur-md border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<button class="hover:bg-surface-container dark:hover:bg-surface-container-high rounded-full p-2 transition-opacity active:opacity-80">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="text-headline-md font-headline-md font-extrabold text-primary">Interview Feedback</h1>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-fixed">
+<img alt="Admin Avatar" class="w-full h-full object-cover" data-alt="A professional headshot of a senior corporate executive in a crisp white shirt and navy blazer. The lighting is clean and bright, characteristic of a high-end office environment. The background is softly blurred with tones of blue and grey, maintaining a corporate and authoritative aesthetic consistent with the Maharashtra industrial sector's elite professional standards." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCWW5BobC2eF5o76BZbV_7HkMp8jQVSW3JDQHpWcLIODjwY8wlcSdVlcDsHN7UFBnYbLAWGaXoEXuSbYmMWXQZDNsZPvL3j2J-OMBAnWC5lOJgMa2K3dFSfuyITbPeq01Mp_J7L_vmmA3y2ENomXIvDxBlxUOqTsIhrkHv54mjGRvoD4Ooc8gQRRC85WpM_FQrIELkf_lmiPZzaerGkUPCmAi3dxQNP8fG57bOgTY8lKGEytBz1el90LSrmsyg3glXioHa0ZZw0kc"/>
+</div>
+</header>
+<main class="max-w-md mx-auto px-margin-mobile py-stack-md pb-32">
+<!-- Candidate Summary Card -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 mb-stack-md shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-lg overflow-hidden border border-outline-variant">
+<img alt="Aditya Ahire" class="w-full h-full object-cover" data-alt="A close-up professional portrait of a young Indian male mechanical engineer, Aditya Ahire, wearing a light blue formal shirt. He has a confident and friendly expression, set against a modern, bright office background with subtle industrial textures. The image uses soft, natural lighting to emphasize reliability and technical competence, fitting the high-energy job seeker aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHyAwnbVtI7lxk43UmUggR9n-dUR1ddLS6om5jMpy35lxhEHQOjHi3j6q7-o-TfPHhNXvAKQturDl2d0lAVJumbbHMaHzcHXcPZWc324C9dmtd-zo9o1q4eGtKq_ediVolC7xAwy4G6SGbMz_oXHDBP4cBrRTb9tSG-bUTZ1G-HPhopdrSFCQo_tceSe79mGj0Ec0x7YHIA2Uc5lZBeJYepiITzs4ksfRC_9gVrmvts9A7XdONoHvuGHbfwvBSo5GFASQISLECIIg"/>
+</div>
+<div>
+<h2 class="text-headline-md font-headline-md text-on-surface">Aditya Ahire</h2>
+<p class="text-body-md text-on-surface-variant font-medium">Mechanical Engineer</p>
+<div class="flex items-center gap-1 text-label-md text-primary mt-1">
+<span class="material-symbols-outlined text-[16px]">business</span>
+<span>Thermax Limited</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Skills Rating -->
+<section class="mb-stack-lg">
+<h3 class="text-label-md font-label-md text-outline uppercase tracking-wider mb-4">Technical Skills</h3>
+<div class="space-y-6">
+<!-- Skill 1 -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<label class="text-body-md font-semibold text-on-surface">Technical Knowledge</label>
+<span class="text-label-md font-bold text-secondary" id="tech-rating-val">4.0</span>
+</div>
+<div class="flex gap-2">
+<button class="rating-btn-tech group" onclick="setRating('tech', 1)"><span class="material-symbols-outlined star-active text-3xl">star</span></button>
+<button class="rating-btn-tech group" onclick="setRating('tech', 2)"><span class="material-symbols-outlined star-active text-3xl">star</span></button>
+<button class="rating-btn-tech group" onclick="setRating('tech', 3)"><span class="material-symbols-outlined star-active text-3xl">star</span></button>
+<button class="rating-btn-tech group" onclick="setRating('tech', 4)"><span class="material-symbols-outlined star-active text-3xl">star</span></button>
+<button class="rating-btn-tech group" onclick="setRating('tech', 5)"><span class="material-symbols-outlined text-outline-variant text-3xl">star</span></button>
+</div>
+</div>
+<!-- Skill 2 -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<label class="text-body-md font-semibold text-on-surface">Problem Solving</label>
+<span class="text-label-md font-bold text-secondary" id="problem-rating-val">0.0</span>
+</div>
+<div class="flex gap-2">
+<button class="rating-btn-problem group" onclick="setRating('problem', 1)"><span class="material-symbols-outlined text-outline-variant text-3xl">star</span></button>
+<button class="rating-btn-problem group" onclick="setRating('problem', 2)"><span class="material-symbols-outlined text-outline-variant text-3xl">star</span></button>
+<button class="rating-btn-problem group" onclick="setRating('problem', 3)"><span class="material-symbols-outlined text-outline-variant text-3xl">star</span></button>
+<button class="rating-btn-problem group" onclick="setRating('problem', 4)"><span class="material-symbols-outlined text-outline-variant text-3xl">star</span></button>
+<button class="rating-btn-problem group" onclick="setRating('problem', 5)"><span class="material-symbols-outlined text-outline-variant text-3xl">star</span></button>
+</div>
+</div>
+</div>
+</section>
+<!-- Soft Skills Rating -->
+<section class="mb-stack-lg">
+<h3 class="text-label-md font-label-md text-outline uppercase tracking-wider mb-4">Soft Skills</h3>
+<div class="space-y-6">
+<!-- Skill 3 -->
+<div class="flex flex-col gap-2">
+<label class="text-body-md font-semibold text-on-surface">Communication</label>
+<div class="flex gap-2">
+<button class="rating-btn-comm group" onclick="setRating('comm', 1)"><span class="material-symbols-outlined text-outline-variant text-3xl">star</span></button>
+<button class="rating-btn-comm group" onclick="setRating('comm', 2)"><span class="material-symbols-outlined text-outline-variant text-3xl">star</span></button>
+<button class="rating-btn-comm group" onclick="setRating('comm', 3)"><span class="material-symbols-outlined text-outline-variant text-3xl">star</span></button>
+<button class="rating-btn-comm group" onclick="setRating('comm', 4)"><span class="material-symbols-outlined text-outline-variant text-3xl">star</span></button>
+<button class="rating-btn-comm group" onclick="setRating('comm', 5)"><span class="material-symbols-outlined text-outline-variant text-3xl">star</span></button>
+</div>
+</div>
+<!-- Skill 4 -->
+<div class="flex flex-col gap-2">
+<label class="text-body-md font-semibold text-on-surface">Teamwork</label>
+<div class="flex gap-2">
+<button class="rating-btn-team group" onclick="setRating('team', 1)"><span class="material-symbols-outlined text-outline-variant text-3xl">star</span></button>
+<button class="rating-btn-team group" onclick="setRating('team', 2)"><span class="material-symbols-outlined text-outline-variant text-3xl">star</span></button>
+<button class="rating-btn-team group" onclick="setRating('team', 3)"><span class="material-symbols-outlined text-outline-variant text-3xl">star</span></button>
+<button class="rating-btn-team group" onclick="setRating('team', 4)"><span class="material-symbols-outlined text-outline-variant text-3xl">star</span></button>
+<button class="rating-btn-team group" onclick="setRating('team', 5)"><span class="material-symbols-outlined text-outline-variant text-3xl">star</span></button>
+</div>
+</div>
+</div>
+</section>
+<!-- Detailed Comments -->
+<section class="mb-stack-lg">
+<label class="block text-body-md font-semibold text-on-surface mb-2" for="notes">Interview Notes</label>
+<textarea class="w-full bg-surface-container-low border border-outline-variant rounded-xl p-4 focus:ring-2 focus:ring-primary focus:border-primary transition-all text-body-md placeholder:text-outline" id="notes" placeholder="Enter detailed observations about the candidate's performance..." rows="5"></textarea>
+</section>
+<!-- Final Recommendation -->
+<section class="mb-stack-lg">
+<h3 class="text-body-md font-semibold text-on-surface mb-3">Final Recommendation</h3>
+<div class="grid grid-cols-2 gap-2">
+<button class="rec-btn flex flex-col items-center justify-center p-3 border border-outline-variant rounded-xl bg-surface-container-lowest transition-all hover:bg-surface-container-high group" onclick="selectRec(this)">
+<span class="material-symbols-outlined text-tertiary-container mb-1 group-[.active]:font-fill">check_circle</span>
+<span class="text-label-sm font-bold">Strong Hire</span>
+</button>
+<button class="rec-btn flex flex-col items-center justify-center p-3 border border-outline-variant rounded-xl bg-surface-container-lowest transition-all hover:bg-surface-container-high group active" onclick="selectRec(this)">
+<span class="material-symbols-outlined text-primary mb-1 group-[.active]:font-fill" style="font-variation-settings: 'FILL' 1;">thumb_up</span>
+<span class="text-label-sm font-bold">Hire</span>
+</button>
+<button class="rec-btn flex flex-col items-center justify-center p-3 border border-outline-variant rounded-xl bg-surface-container-lowest transition-all hover:bg-surface-container-high group" onclick="selectRec(this)">
+<span class="material-symbols-outlined text-secondary-container mb-1">help</span>
+<span class="text-label-sm font-bold">Maybe</span>
+</button>
+<button class="rec-btn flex flex-col items-center justify-center p-3 border border-outline-variant rounded-xl bg-surface-container-lowest transition-all hover:bg-surface-container-high group" onclick="selectRec(this)">
+<span class="material-symbols-outlined text-error mb-1">cancel</span>
+<span class="text-label-sm font-bold">Reject</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Action Buttons (Bottom Docked) -->
+<div class="fixed bottom-0 left-0 right-0 p-4 bg-surface-container-lowest shadow-[0_-4px_12px_rgba(15,23,42,0.08)] flex gap-3 z-50">
+<button class="flex-1 border-2 border-primary text-primary font-bold py-3 rounded-xl hover:bg-primary-fixed/20 transition-all active:scale-95">
+            Save Draft
+        </button>
+<button class="flex-[2] bg-secondary-container text-on-secondary-fixed font-bold py-3 rounded-xl shadow-md hover:opacity-90 transition-all active:scale-95">
+            Submit Feedback
+        </button>
+</div>
+<script>
+        function setRating(category, rating) {
+            const buttons = document.querySelectorAll(`.rating-btn-${category}`);
+            const valDisplay = document.getElementById(`${category}-rating-val`);
+            
+            buttons.forEach((btn, index) => {
+                const icon = btn.querySelector('.material-symbols-outlined');
+                if (index < rating) {
+                    icon.classList.add('star-active');
+                    icon.classList.remove('text-outline-variant');
+                } else {
+                    icon.classList.remove('star-active');
+                    icon.classList.add('text-outline-variant');
+                }
+            });
+
+            if(valDisplay) {
+                valDisplay.textContent = rating.toFixed(1);
+            }
+        }
+
+        function selectRec(element) {
+            document.querySelectorAll('.rec-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-primary-fixed/30', 'border-primary');
+                const icon = btn.querySelector('.material-symbols-outlined');
+                icon.style.fontVariationSettings = "'FILL' 0";
+            });
+            
+            element.classList.add('active', 'bg-primary-fixed/30', 'border-primary');
+            const activeIcon = element.querySelector('.material-symbols-outlined');
+            activeIcon.style.fontVariationSettings = "'FILL' 1";
+        }
+
+        // Initialize Recommendation state
+        window.onload = () => {
+            const defaultActive = document.querySelector('.rec-btn.active');
+            if (defaultActive) {
+                defaultActive.classList.add('bg-primary-fixed/30', 'border-primary');
+            }
+        }
+    </script>
+</body></html>

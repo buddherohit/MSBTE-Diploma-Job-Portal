@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Industrial Partners Directory | MahaDiploma Jobs</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "background": "#f7f9fb",
+                        "primary-fixed-dim": "#b8c4ff",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#003d27",
+                        "primary-container": "#1e40af",
+                        "surface-container-low": "#f2f4f6",
+                        "surface": "#f7f9fb",
+                        "on-secondary-container": "#5c2400",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "surface-dim": "#d8dadc",
+                        "tertiary-container": "#00563a",
+                        "primary": "#00288e",
+                        "on-primary-fixed": "#001453",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "outline-variant": "#c4c5d5",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#eceef0",
+                        "on-surface-variant": "#444653",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#ffdbca",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#002113",
+                        "surface-container-high": "#e6e8ea",
+                        "on-background": "#191c1e",
+                        "on-primary-container": "#a8b8ff",
+                        "inverse-primary": "#b8c4ff",
+                        "surface-tint": "#3755c3",
+                        "secondary": "#9d4300",
+                        "on-tertiary-container": "#3fd298",
+                        "on-surface": "#191c1e",
+                        "surface-bright": "#f7f9fb",
+                        "on-secondary-fixed": "#341100",
+                        "surface-variant": "#e0e3e5",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#2d3133",
+                        "tertiary-fixed": "#6ffbbe",
+                        "secondary-container": "#fd761a",
+                        "secondary-fixed-dim": "#ffb690",
+                        "on-primary-fixed-variant": "#173bab",
+                        "on-secondary-fixed-variant": "#783200",
+                        "inverse-on-surface": "#eff1f3",
+                        "primary-fixed": "#dde1ff",
+                        "outline": "#757684"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "0.5rem",
+                        "stack-lg": "2rem",
+                        "margin-mobile": "1rem",
+                        "stack-md": "1rem",
+                        "gutter": "1.5rem",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-effect {
+            backdrop-filter: blur(4px);
+            background: rgba(255, 255, 255, 0.8);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface-container-lowest dark:bg-surface-container-highest w-full top-0 sticky z-40 border-b border-outline-variant dark:border-outline shadow-sm h-16">
+<div class="flex justify-between items-center px-margin-mobile md:px-gutter max-w-container-max mx-auto h-full">
+<div class="flex items-center gap-2 cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" style="font-variation-settings: 'FILL' 1;">architecture</span>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">MahaDiploma Jobs</span>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#">Jobs</a>
+<a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary font-label-md text-label-md" href="#">Talent</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#">Pricing</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#">Account</a>
+</nav>
+<button class="bg-primary-container text-on-primary text-label-md font-label-md px-6 py-2 rounded-lg hover:opacity-90 transition-all active:scale-95 shadow-sm">
+                Post Job
+            </button>
+</div>
+</header>
+<div class="flex flex-1 max-w-container-max mx-auto w-full relative">
+<!-- NavigationDrawer (Sidebar) -->
+<aside class="h-full w-64 hidden md:flex flex-col border-r border-outline-variant bg-surface-container dark:bg-surface-dim fixed left-0 top-16 py-stack-lg">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary font-bold">IP</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Industrial Partner</p>
+<p class="text-xs text-on-surface-variant opacity-70">Enterprise Plan</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1 pr-4">
+<div class="flex items-center gap-3 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest transition-colors cursor-pointer duration-200">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</div>
+<div class="flex items-center gap-3 py-3 px-6 bg-secondary-container text-on-secondary-container font-semibold rounded-r-full cursor-pointer">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">engineering</span>
+<span class="font-body-md text-body-md">Talent Pool</span>
+</div>
+<div class="flex items-center gap-3 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest transition-colors cursor-pointer duration-200">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-body-md text-body-md">Subscription</span>
+</div>
+<div class="flex items-center gap-3 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest transition-colors cursor-pointer duration-200">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body-md text-body-md">Analytics</span>
+</div>
+<div class="flex items-center gap-3 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest transition-colors cursor-pointer duration-200">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</div>
+</nav>
+<div class="mt-auto px-6 py-4">
+<div class="bg-surface-container-high p-4 rounded-xl border border-outline-variant">
+<p class="text-xs font-bold text-primary mb-1 uppercase tracking-wider">MSBTE Accredited</p>
+<p class="text-[10px] text-on-surface-variant">Verified Industrial Recruitment Partner status active.</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-64 p-margin-mobile md:p-gutter pb-24 md:pb-gutter">
+<!-- Header Section -->
+<section class="mb-stack-lg">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">Industrial Directory</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">Connect with Maharashtra's leading engineering firms, manufacturing hubs, and tech innovators providing specialized roles for diploma graduates.</p>
+</section>
+<!-- Search and Filter Bar -->
+<section class="mb-stack-lg">
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant shadow-sm flex flex-col lg:flex-row gap-4">
+<div class="flex-1 relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-10 pr-4 py-3 rounded-lg border-outline-variant bg-surface-container-low focus:ring-2 focus:ring-primary focus:border-primary border transition-all text-body-md" placeholder="Search by company name or industry..." type="text"/>
+</div>
+<div class="flex gap-3 overflow-x-auto pb-2 lg:pb-0 scrollbar-hide">
+<button class="flex items-center gap-2 px-4 py-2 bg-primary-fixed text-on-primary-fixed rounded-lg font-label-md text-label-md whitespace-nowrap active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+                            Filters
+                        </button>
+<select class="px-4 py-2 bg-surface-container-low border border-outline-variant rounded-lg font-label-md text-label-md text-on-surface-variant min-w-[140px]">
+<option>All Districts</option>
+<option>Mumbai</option>
+<option>Pune</option>
+<option>Nagpur</option>
+<option>Nashik</option>
+</select>
+<select class="px-4 py-2 bg-surface-container-low border border-outline-variant rounded-lg font-label-md text-label-md text-on-surface-variant min-w-[140px]">
+<option>Industry Type</option>
+<option>Mechanical</option>
+<option>Electrical</option>
+<option>IT/CS</option>
+<option>Civil</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Featured Categories (Bento-style chips) -->
+<section class="mb-stack-lg overflow-hidden">
+<h2 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-4">Top Specializations</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
+<div class="bg-tertiary-fixed text-on-tertiary-fixed p-4 rounded-xl flex flex-col items-center justify-center text-center cursor-pointer hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined mb-2 text-3xl">precision_manufacturing</span>
+<span class="font-label-md text-label-md">Manufacturing</span>
+</div>
+<div class="bg-primary-fixed text-on-primary-fixed p-4 rounded-xl flex flex-col items-center justify-center text-center cursor-pointer hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined mb-2 text-3xl">bolt</span>
+<span class="font-label-md text-label-md">Electrical</span>
+</div>
+<div class="bg-secondary-fixed text-on-secondary-fixed p-4 rounded-xl flex flex-col items-center justify-center text-center cursor-pointer hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined mb-2 text-3xl">terminal</span>
+<span class="font-label-md text-label-md">Software</span>
+</div>
+<div class="bg-surface-container-highest text-on-surface p-4 rounded-xl flex flex-col items-center justify-center text-center cursor-pointer hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined mb-2 text-3xl">foundation</span>
+<span class="font-label-md text-label-md">Construction</span>
+</div>
+<div class="bg-primary-fixed-dim text-on-primary-fixed-variant p-4 rounded-xl flex flex-col items-center justify-center text-center cursor-pointer hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined mb-2 text-3xl">settings_input_component</span>
+<span class="font-label-md text-label-md">Electronics</span>
+</div>
+<div class="bg-tertiary-fixed-dim text-on-tertiary-fixed-variant p-4 rounded-xl flex flex-col items-center justify-center text-center cursor-pointer hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined mb-2 text-3xl">directions_car</span>
+<span class="font-label-md text-label-md">Automotive</span>
+</div>
+</div>
+</section>
+<!-- Company Directory Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-stack-md">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 flex flex-col md:flex-row gap-6 hover:shadow-lg transition-all group relative overflow-hidden">
+<div class="absolute top-4 right-4 bg-[#DBEAFE] text-[#1E40AF] px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+                        Verified Partner
+                    </div>
+<div class="w-20 h-20 rounded-lg bg-surface-container flex-shrink-0 flex items-center justify-center overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional corporate logo for a heavy machinery engineering firm, featuring a stylized gear and minimalist industrial blue lines on a clean white background. The aesthetic is high-contrast, modern, and conveys institutional stability and precision engineering expertise within the Maharashtra industrial sector." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUVIs-inLUeqwTJfp7ALa-6T_sR0GKAnYeYP0CbJZ5BxlHSbD6cdBHGOm6WBohKO_ryq6NXSOMcBouUQB74QPIF6VT6NHpTe-ONxSEBXbVdJ_b9gDnDXXJsrKNQFkWZhorvFzHbA2z88TYZJC38GYcDxc9ytifUa8f83Z1TooztMTJDGuyzku9WwVnPPo7S8MtbpDsQc1PLtuF1JcqMsFJpNonePuLSgUx7J-7vI_JVOkC1UFFrj3h_uYS9bXlcvW5X0A7Nem7bzk"/>
+</div>
+<div class="flex-1">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1 group-hover:text-primary transition-colors">Tata Motors Engineering</h3>
+<p class="text-secondary font-label-md text-label-md mb-3">Automotive &amp; Manufacturing</p>
+<div class="flex flex-wrap gap-4 mb-4">
+<div class="flex items-center gap-1 text-on-surface-variant text-label-sm">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+                                Pune, Maharashtra
+                            </div>
+<div class="flex items-center gap-1 text-on-surface-variant text-label-sm">
+<span class="material-symbols-outlined text-[18px]">group</span>
+                                10,000+ Employees
+                            </div>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 bg-primary text-on-primary py-2 rounded-lg font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all">View Jobs</button>
+<button class="flex-1 border border-primary text-primary py-2 rounded-lg font-label-md text-label-md hover:bg-primary-fixed transition-all">Company Profile</button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 flex flex-col md:flex-row gap-6 hover:shadow-lg transition-all group relative overflow-hidden">
+<div class="w-20 h-20 rounded-lg bg-surface-container flex-shrink-0 flex items-center justify-center overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A clean, minimalist logo for a renewable energy and electrical systems company, featuring abstract energy bolts and a sun motif. The color palette uses deep navy blue and vibrant orange to suggest professional authority and high-energy innovation, set against a modern white gallery-style background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBb6Rt3VTn2-Ay8btgNnQl1j6Ekh4L95D_HdjHyjXFieGe2DqV-Y5oIC9PJ9YBb0-w0J30oy05ltMX2Yx6-LpJPB0tVKO_vAhdz86Y559nL7tcja5qPV86Cx-bu61UJB0Gj0-Z4x0k-Camm6lJtib4OE57TElgSuczSVIcqPiocrR-SX0MPhmn3CnPNzWpUOKWE_cvLaA1ROSsk-QFCVeLhqR3l_OR9ZbMJ4VJUqnS1W9OC712Gq-QUHAvdWtLd3Z9uo0qf4DD0bAE"/>
+</div>
+<div class="flex-1">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1 group-hover:text-primary transition-colors">Larsen &amp; Toubro (L&amp;T)</h3>
+<p class="text-secondary font-label-md text-label-md mb-3">Construction &amp; Heavy Engineering</p>
+<div class="flex flex-wrap gap-4 mb-4">
+<div class="flex items-center gap-1 text-on-surface-variant text-label-sm">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+                                Mumbai, Maharashtra
+                            </div>
+<div class="flex items-center gap-1 text-on-surface-variant text-label-sm">
+<span class="material-symbols-outlined text-[18px]">work</span>
+                                42 Active Openings
+                            </div>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 bg-primary text-on-primary py-2 rounded-lg font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all">View Jobs</button>
+<button class="flex-1 border border-primary text-primary py-2 rounded-lg font-label-md text-label-md hover:bg-primary-fixed transition-all">Company Profile</button>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 flex flex-col md:flex-row gap-6 hover:shadow-lg transition-all group relative overflow-hidden">
+<div class="w-20 h-20 rounded-lg bg-surface-container flex-shrink-0 flex items-center justify-center overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A sleek corporate logo for a software development firm focused on industrial automation, displaying binary patterns and a stylized circuit board design. High-contrast white and cobalt blue tones create a sophisticated, data-driven look that reflects institutional trust and technological excellence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKaIJCJg87DwJWuVTFDje03CvwvKf7bYhnAb1k10ft19ptI41Xcf778sw8pPsri86rWVM1v_QZ72V3sTpj9NOm39sBO6dljTTUf7sKL5siq_W4xY0Ggk3Scy-QJB6UIMunBUrmqhMQk1TQozZAtkT3f134BgorMfcouPtHhWOpCwXPi-0mQF0RF_E_O3cwQ0fHJgCIC1iD3OeJARcyUD8UT0P8snzsS8TIexK4bod6mPer9Vo3ldGGKLbxZIV-dhGga0GQc1i2SMU"/>
+</div>
+<div class="flex-1">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1 group-hover:text-primary transition-colors">Persistent Systems</h3>
+<p class="text-secondary font-label-md text-label-md mb-3">IT &amp; Digital Engineering</p>
+<div class="flex flex-wrap gap-4 mb-4">
+<div class="flex items-center gap-1 text-on-surface-variant text-label-sm">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+                                Nagpur, Maharashtra
+                            </div>
+<div class="flex items-center gap-1 text-on-surface-variant text-label-sm">
+<span class="material-symbols-outlined text-[18px]">stars</span>
+                                Top MSBTE Recruiter
+                            </div>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 bg-primary text-on-primary py-2 rounded-lg font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all">View Jobs</button>
+<button class="flex-1 border border-primary text-primary py-2 rounded-lg font-label-md text-label-md hover:bg-primary-fixed transition-all">Company Profile</button>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 flex flex-col md:flex-row gap-6 hover:shadow-lg transition-all group relative overflow-hidden">
+<div class="absolute top-4 right-4 bg-[#DBEAFE] text-[#1E40AF] px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+                        Verified Partner
+                    </div>
+<div class="w-20 h-20 rounded-lg bg-surface-container flex-shrink-0 flex items-center justify-center overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional logo for an electrical infrastructure giant, using bold geometric shapes and a lightning bolt icon integrated into a bridge shape. The color scheme is deep charcoal and industrial orange, symbolizing stable infrastructure and robust power distribution capabilities in an authoritative corporate style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTA4O7Z4QEHjnjVPr8VFDI1ZbjvjPt_Ae_ktw8Fq5h7rkxkJ0c7OEZlnfoLEZTlB609PuvB2sCc3DUwWWilEWd7euTkVobCJRGulgHgL-l_6jsflu92kGR7bmCnlr14WG4f7d2rgwnqrDLAarCPuZWHkZn7fhLDSgpbM39vXRKsGzTTaVmz4HTwTO3D2-eCIGtSGpiz9OHRnexdA7kOoxQNtRDiiO8w8UooXqfesXvYhIvcrOWaEqFwKMS-WXJdvOu1puQ6tdInZ0"/>
+</div>
+<div class="flex-1">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1 group-hover:text-primary transition-colors">Bajaj Electricals Ltd</h3>
+<p class="text-secondary font-label-md text-label-md mb-3">Consumer Durables &amp; EPC</p>
+<div class="flex flex-wrap gap-4 mb-4">
+<div class="flex items-center gap-1 text-on-surface-variant text-label-sm">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+                                Chakan, Pune
+                            </div>
+<div class="flex items-center gap-1 text-on-surface-variant text-label-sm">
+<span class="material-symbols-outlined text-[18px]">school</span>
+                                120+ Diploma Trainees
+                            </div>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 bg-primary text-on-primary py-2 rounded-lg font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all">View Jobs</button>
+<button class="flex-1 border border-primary text-primary py-2 rounded-lg font-label-md text-label-md hover:bg-primary-fixed transition-all">Company Profile</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-stack-lg flex justify-center items-center gap-2">
+<button class="w-10 h-10 rounded-lg border border-outline-variant flex items-center justify-center hover:bg-surface-container active:scale-95 transition-all text-on-surface-variant">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 rounded-lg bg-primary text-on-primary font-bold flex items-center justify-center shadow-md">1</button>
+<button class="w-10 h-10 rounded-lg border border-outline-variant flex items-center justify-center hover:bg-surface-container transition-all">2</button>
+<button class="w-10 h-10 rounded-lg border border-outline-variant flex items-center justify-center hover:bg-surface-container transition-all">3</button>
+<span class="px-2">...</span>
+<button class="w-10 h-10 rounded-lg border border-outline-variant flex items-center justify-center hover:bg-surface-container transition-all">12</button>
+<button class="w-10 h-10 rounded-lg border border-outline-variant flex items-center justify-center hover:bg-surface-container active:scale-95 transition-all text-on-surface-variant">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 w-full z-50 md:hidden bg-surface-container-lowest dark:bg-surface-dim border-t border-outline-variant dark:border-outline shadow-lg flex justify-around items-center py-2 px-4">
+<div class="flex flex-col items-center justify-center text-on-surface-variant active:scale-95 transition-transform">
+<span class="material-symbols-outlined">work</span>
+<span class="font-label-sm text-label-sm">Jobs</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-3 py-1 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-label-sm text-label-sm">Talent</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant active:scale-95 transition-transform">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-sm text-label-sm">Pricing</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant active:scale-95 transition-transform">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Account</span>
+</div>
+</nav>
+<!-- Footer -->
+<footer class="w-full mt-auto border-t border-outline bg-inverse-surface dark:bg-surface-container-lowest">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md px-gutter py-stack-lg max-w-container-max mx-auto">
+<div class="flex flex-col gap-4">
+<span class="font-headline-md text-headline-md text-surface-container-lowest font-bold">MahaDiploma Jobs</span>
+<p class="text-surface-variant opacity-80 font-label-md text-label-md">Connecting 300,000+ MSBTE diploma students with Maharashtra's industrial powerhouses.</p>
+<p class="font-label-md text-label-md text-on-primary-fixed dark:text-on-primary-fixed-variant opacity-80">© 2024 MSBTE Diploma Recruitment Portal. Industrial Blueprint Edition.</p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-2">
+<h4 class="text-on-primary-fixed font-bold mb-1">Company</h4>
+<a class="text-surface-variant opacity-80 font-label-md text-label-md hover:opacity-100 underline transition-opacity" href="#">Privacy Policy</a>
+<a class="text-surface-variant opacity-80 font-label-md text-label-md hover:opacity-100 underline transition-opacity" href="#">Terms of Service</a>
+</div>
+<div class="flex flex-col gap-2">
+<h4 class="text-on-primary-fixed font-bold mb-1">Support</h4>
+<a class="text-surface-variant opacity-80 font-label-md text-label-md hover:opacity-100 underline transition-opacity" href="#">Employer FAQ</a>
+<a class="text-surface-variant opacity-80 font-label-md text-label-md hover:opacity-100 underline transition-opacity" href="#">Student Support</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Simple search interaction
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.parentElement.classList.add('ring-2', 'ring-primary-container');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.parentElement.classList.remove('ring-2', 'ring-primary-container');
+        });
+
+        // Toggle hover states for cards via JS if needed for micro-interactions
+        const cards = document.querySelectorAll('.group');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Employer Registration | MahaResume</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#191c1e",
+                        "on-primary-fixed-variant": "#173bab",
+                        "outline": "#757684",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "inverse-on-surface": "#eff1f3",
+                        "secondary-container": "#fd761a",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#ffb690",
+                        "on-primary-container": "#a8b8ff",
+                        "tertiary-fixed": "#6ffbbe",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-bright": "#f7f9fb",
+                        "on-background": "#191c1e",
+                        "primary": "#00288e",
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#9d4300",
+                        "surface-dim": "#d8dadc",
+                        "surface-container": "#eceef0",
+                        "background": "#f7f9fb",
+                        "surface-variant": "#e0e3e5",
+                        "tertiary-container": "#00563a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#3fd298",
+                        "surface": "#f7f9fb",
+                        "surface-container-high": "#e6e8ea",
+                        "primary-fixed": "#dde1ff",
+                        "primary-container": "#1e40af",
+                        "on-secondary-container": "#5c2400",
+                        "secondary-fixed": "#ffdbca",
+                        "inverse-primary": "#b8c4ff",
+                        "tertiary": "#003d27",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#783200",
+                        "outline-variant": "#c4c5d5",
+                        "on-tertiary-fixed": "#002113",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-secondary-fixed": "#341100",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#444653",
+                        "inverse-surface": "#2d3133",
+                        "on-primary-fixed": "#001453",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#3755c3",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "primary-fixed-dim": "#b8c4ff",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "1rem",
+                        "container-max": "1280px",
+                        "margin-mobile": "1rem",
+                        "stack-sm": "0.5rem",
+                        "gutter": "1.5rem",
+                        "stack-lg": "2rem"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .blueprint-pattern {
+            background-color: #f7f9fb;
+            background-image: radial-gradient(#cbd5e1 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md blueprint-pattern min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex items-center justify-between px-margin-mobile h-16 bg-surface shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="school">school</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">MahaResume</span>
+</div>
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-on-surface-variant font-label-md hover:text-primary transition-colors" href="#">Portal Home</a>
+<a class="text-on-surface-variant font-label-md hover:text-primary transition-colors" href="#">Verification Guide</a>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-md transition-transform active:scale-95">Student Login</button>
+</div>
+</header>
+<main class="pt-24 pb-12 px-margin-mobile flex flex-col items-center">
+<div class="w-full max-w-container-max grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Context & Trust Panel -->
+<div class="lg:col-span-5 space-y-8">
+<div class="space-y-stack-md">
+<h1 class="font-headline-lg text-headline-lg text-primary">Empower Maharashtra's Workforce</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Connect with the finest diploma talent from the state's leading polytechnic and industrial institutes. Join 5,000+ verified employers today.</p>
+</div>
+<div class="p-6 rounded-xl border border-outline-variant space-y-4 bg-surface-container-lowest">
+<div class="flex gap-4">
+<div class="bg-secondary-container/20 p-2 rounded-lg h-fit">
+<span class="material-symbols-outlined text-secondary" data-icon="verified_user">verified_user</span>
+</div>
+<div>
+<h3 class="font-label-md text-on-surface">MIDC Verification Required</h3>
+<p class="font-label-sm text-on-surface-variant mt-1 leading-relaxed">To maintain industrial standards, all industrial partners must undergo MIDC (Maharashtra Industrial Development Corporation) verification after registration.</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="glass-panel p-4 rounded-xl border-l-4 border-primary">
+<span class="font-headline-md text-headline-md block text-primary">120k+</span>
+<span class="font-label-sm text-on-surface-variant uppercase tracking-wider">Candidates</span>
+</div>
+<div class="glass-panel p-4 rounded-xl border-l-4 border-secondary">
+<span class="font-headline-md text-headline-md block text-secondary">15+</span>
+<span class="font-label-sm text-on-surface-variant uppercase tracking-wider">Industries</span>
+</div>
+</div>
+<div class="hidden lg:block relative h-64 w-full rounded-2xl overflow-hidden shadow-xl">
+<img class="w-full h-full object-cover" data-alt="A professional high-angle view of a modern manufacturing facility in Maharashtra, with clean industrial machinery and bright, natural sunlight filtering through large windows. The scene conveys industrial excellence and state-of-the-art technology, using a color palette of Maharashtra Blue and steel greys. The atmosphere is productive, high-trust, and reflects corporate stability and modern innovation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxl4mH1-xYPcwjOq1d0_By0Abg3IgN7UH8FvhUJHJdDgYungz1pWKJO69L6_YyriqB_cLgyLMBBif3wtNuZuy_lPrPvxfG2xrSx2qPeirewQ115HhJAqaF5cBNm5zX0T_YehCnQwp6x4L0t78P2OyLSd7y5LtsbZXTto-HeBd8Fd-KCLzsV7bdLawKV159MEFRcLf0Vjl11XVAg7Dy2HyIxtsh7p3B3I6YDUvrQhmNEscOAKwYVcIY1gW02nWrmiL9BsBieNPZVvc">
+</div>
+</div>
+<!-- Registration Form Panel -->
+<div class="lg:col-span-7">
+<div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant shadow-sm">
+<div class="mb-8">
+<h2 class="font-headline-md text-headline-md text-on-surface">Employer Registration</h2>
+<p class="text-on-surface-variant font-label-md">Create your corporate profile to start hiring</p>
+</div>
+<form class="grid grid-cols-1 md:grid-cols-2 gap-6" onsubmit="event.preventDefault()">
+<!-- Company Name -->
+<div class="md:col-span-2 space-y-2">
+<label class="font-label-md text-on-surface block">Company Name</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-xl" data-icon="corporate_fare">corporate_fare</span>
+<input class="w-full pl-10 pr-4 py-3 bg-surface-container-low border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none" placeholder="Enter official company name" type="text">
+</div>
+</div>
+<!-- Industry Sector -->
+<div class="space-y-2">
+<label class="font-label-md text-on-surface block">Industry Sector</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-xl" data-icon="factory">factory</span>
+<select class="w-full pl-10 pr-4 py-3 bg-surface-container-low border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none appearance-none">
+<option value="">Select Sector</option>
+<option value="manufacturing">Manufacturing</option>
+<option value="it">Information Technology</option>
+<option value="civil">Civil Engineering</option>
+<option value="electrical">Electrical &amp; Energy</option>
+<option value="auto">Automobile</option>
+</select>
+</div>
+</div>
+<!-- Contact Person -->
+<div class="space-y-2">
+<label class="font-label-md text-on-surface block">Contact Person</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-xl" data-icon="badge">badge</span>
+<input class="w-full pl-10 pr-4 py-3 bg-surface-container-low border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none" placeholder="Full Name" type="text">
+</div>
+</div>
+<!-- Official Email -->
+<div class="space-y-2">
+<label class="font-label-md text-on-surface block">Official Email</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-xl" data-icon="mail">mail</span>
+<input class="w-full pl-10 pr-4 py-3 bg-surface-container-low border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none" placeholder="hr@company.com" type="email">
+</div>
+</div>
+<!-- Phone Number -->
+<div class="space-y-2">
+<label class="font-label-md text-on-surface block">Phone Number</label>
+<div class="relative flex">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-xl" data-icon="call">call</span>
+<span class="absolute left-10 top-1/2 -translate-y-1/2 text-on-surface-variant font-label-md">+91</span>
+<input class="w-full pl-20 pr-4 py-3 bg-surface-container-low border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none" placeholder="98765 43210" type="tel">
+</div>
+</div>
+<!-- Password -->
+<div class="md:col-span-2 space-y-2">
+<label class="font-label-md text-on-surface block">Password</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-xl" data-icon="lock">lock</span>
+<input class="w-full pl-10 pr-12 py-3 bg-surface-container-low border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none" placeholder="Create a strong password" type="password">
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-primary" type="button">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<!-- Terms -->
+<div class="md:col-span-2 flex items-start gap-3 py-2">
+<input class="mt-1 w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary cursor-pointer" id="terms" type="checkbox">
+<label class="font-label-sm text-on-surface-variant" for="terms">
+                                I agree to the <a class="text-primary hover:underline" href="#">Terms of Service</a> and <a class="text-primary hover:underline" href="#">Privacy Policy</a>. I understand that MIDC verification is mandatory for industrial access.
+                            </label>
+</div>
+<!-- Register Button -->
+<div class="md:col-span-2 pt-4">
+<button class="w-full text-on-secondary font-label-md py-4 rounded-xl hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2 group bg-primary shadow-md">
+                                Register Organization
+                                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</form>
+<div class="mt-8 pt-8 border-t border-outline-variant text-center">
+<p class="font-label-md text-on-surface-variant">
+                            Already have an account? <a class="text-primary font-bold hover:underline" href="#">Employer Login</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Mobile Only -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center py-2 px-4 bg-surface-container dark:bg-surface-container-highest rounded-t-xl shadow-lg">
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+<span class="font-label-sm text-label-sm">Builder</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-sm text-label-sm">Templates</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="model_training">model_training</span>
+<span class="font-label-sm text-label-sm">Training</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</div>
+</nav>
+<script>
+        // Simple password visibility toggle logic
+        document.querySelector('[data-icon="visibility"]').parentElement.addEventListener('click', function() {
+            const input = this.parentElement.querySelector('input');
+            const icon = this.querySelector('span');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.innerText = 'visibility_off';
+            } else {
+                input.type = 'password';
+                icon.innerText = 'visibility';
+            }
+        });
+
+        // Atmospheric parallax or hover effect for industrial card
+        const glassPanels = document.querySelectorAll('.glass-panel');
+        glassPanels.forEach(panel => {
+            panel.addEventListener('mousemove', (e) => {
+                const rect = panel.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                panel.style.setProperty('--mouse-x', `${x}px`);
+                panel.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+
+
+</body></html>

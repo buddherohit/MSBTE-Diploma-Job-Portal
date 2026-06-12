@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Employer Job Management | MSBTE Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .blueprint-pattern {
+            background-color: #f7f9fb;
+            background-image: radial-gradient(#cbd5e1 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed": "#6ffbbe",
+                      "surface-container": "#eceef0",
+                      "secondary-fixed-dim": "#ffb690",
+                      "secondary-container": "#fd761a",
+                      "primary-fixed": "#dde1ff",
+                      "secondary": "#9d4300",
+                      "on-secondary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "on-background": "#191c1e",
+                      "surface-tint": "#3755c3",
+                      "on-tertiary-fixed": "#002113",
+                      "background": "#f7f9fb",
+                      "on-surface-variant": "#444653",
+                      "on-primary-container": "#a8b8ff",
+                      "on-error-container": "#93000a",
+                      "primary-container": "#1e40af",
+                      "on-secondary-fixed": "#341100",
+                      "surface-variant": "#e0e3e5",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "inverse-surface": "#2d3133",
+                      "outline-variant": "#c4c5d5",
+                      "tertiary": "#003d27",
+                      "outline": "#757684",
+                      "on-primary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "on-primary-fixed-variant": "#173bab",
+                      "primary-fixed-dim": "#b8c4ff",
+                      "tertiary-container": "#00563a",
+                      "surface-container-low": "#f2f4f6",
+                      "error-container": "#ffdad6",
+                      "primary": "#00288e",
+                      "surface-dim": "#d8dadc",
+                      "secondary-fixed": "#ffdbca",
+                      "surface-container-high": "#e6e8ea",
+                      "on-secondary-fixed-variant": "#783200",
+                      "on-surface": "#191c1e",
+                      "on-primary-fixed": "#001453",
+                      "on-tertiary-container": "#3fd298",
+                      "on-secondary-container": "#5c2400",
+                      "surface-container-highest": "#e0e3e5",
+                      "inverse-on-surface": "#eff1f3",
+                      "surface": "#f7f9fb",
+                      "inverse-primary": "#b8c4ff",
+                      "surface-bright": "#f7f9fb",
+                      "on-tertiary-fixed-variant": "#005236",
+                      "tertiary-fixed-dim": "#4edea3"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-sm": "0.5rem",
+                      "stack-md": "1rem",
+                      "margin-mobile": "1rem",
+                      "stack-lg": "2rem",
+                      "container-max": "1280px",
+                      "gutter": "1.5rem"
+              },
+              "fontFamily": {
+                      "label-sm": ["Inter"],
+                      "label-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- Top Navigation -->
+<header class="bg-surface-container-highest dark:bg-inverse-surface border-b border-outline-variant dark:border-outline docked full-width top-0 z-50">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-gutter max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">verified_user</span>
+<h1 class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed-dim">Partner Verification Hub</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex gap-6">
+<button class="font-label-md text-label-md text-primary dark:text-primary-fixed-dim border-b-2 border-primary hover:bg-surface-container-low transition-colors px-2 py-5">Verified Partners</button>
+<button class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low transition-colors px-2 py-5">Audit Logs</button>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold overflow-hidden border border-outline">
+<img alt="Admin Profile" class="w-full h-full object-cover" data-alt="A professional portrait of a senior male executive in a well-tailored navy suit, standing in a brightly lit modern office with architectural details. The lighting is high-key and professional, reinforcing an atmosphere of institutional stability and authoritative trust. The visual style is clean and corporate, matching a modern management dashboard aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBizkUgwCi7MhuArccwnbG5rB28LnVEkqHOTFqde_fbOHX8SIgPpdQ0WEIg--1CPe_TZEPb7r0HeLwHl20TLwboIs43zzhovI4CIWkZpzaDgNrUGVxlp1ForzvdFkTAb6_AWfdY6jHFBzASvRLMOsZ_Y_U7Qy-hzCs5rAtVgPP_5RSWRvY72sDgZJa6tz1guS0Sz5rQUiSxPFYtEJmYs1JMuIUkxf4WsLrtukclSb2qMLIvgEkv1C82j7kZxzGZK9j6loAQJc59a8g"/>
+</div>
+</div>
+</div>
+</header>
+<div class="flex min-h-screen">
+<!-- Sidebar -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 pt-20 bg-surface dark:bg-inverse-surface border-r border-outline-variant dark:border-outline z-40">
+<div class="px-6 mb-8">
+<div class="font-label-md text-label-md font-black text-primary mb-1">MSBTE PORTAL</div>
+<div class="text-[10px] text-on-surface-variant tracking-widest uppercase">Directorate of Technical Education</div>
+</div>
+<nav class="flex-1">
+<a class="flex items-center gap-3 py-3 px-4 mx-2 my-1 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-4 mx-2 my-1 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">pending_actions</span>
+<span class="font-body-md">Pending Requests</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-4 mx-2 my-1 bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-xl scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">verified</span>
+<span class="font-body-md">Verified Partners</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-4 mx-2 my-1 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 md:ml-64 pt-24 pb-20 px-margin-mobile md:px-gutter blueprint-pattern">
+<div class="max-w-container-max mx-auto">
+<!-- Employer Summary Card -->
+<div class="glass-card rounded-xl p-6 mb-8 flex flex-col md:flex-row gap-6 items-start md:items-center shadow-sm">
+<div class="w-20 h-20 bg-white border border-outline-variant rounded-lg p-2 flex items-center justify-center shrink-0">
+<img alt="Thermax Logo" class="max-w-full h-auto grayscale" data-alt="A clean, minimalist architectural logo for an industrial powerhouse, displayed on a high-quality glass-textured background. The lighting is crisp and cool, suggesting precision engineering and corporate stability. The color scheme focuses on professional blues and grays, representing a trustworthy manufacturing and power generation leader in an industrial context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0G_-0gBZHBgUTsiPcWt1ERFvFaFqCMLCtcnUTfqp2l2Bj670GEHX8SdDKdYJRV6Pv7sdcyrksIrAexjKqNINaupBFDPUc0DHqJ92NKjmabCJFyNfBlrkYZx5w3M_Dsuscbjy8f1YAzg2Rk0brt2X-DEt5UN7BqrfaC_kX-tCePbfLj-qUytNEgtckc371ZdByPJeQulWvdc6_vZewwc3zbeiJX88xfEeJDEHfKtf2xXzXFYPgHeNtcD5HZieDB0F4nMDP4ZdeSwA"/>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-1">
+<h2 class="font-headline-lg text-headline-lg text-on-background">Thermax Limited</h2>
+<span class="bg-primary-container text-white text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-tighter">Gold Partner</span>
+</div>
+<p class="text-on-surface-variant font-body-md flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">location_on</span> Pune, Maharashtra 
+                            <span class="mx-2 text-outline">|</span>
+<span class="material-symbols-outlined text-sm">factory</span> Energy &amp; Environment
+                        </p>
+</div>
+<div class="flex flex-wrap gap-3">
+<div class="bg-white/50 border border-outline-variant px-4 py-2 rounded-lg text-center">
+<div class="text-[10px] text-on-surface-variant uppercase font-bold tracking-widest">Active Postings</div>
+<div class="text-headline-md font-bold text-primary">12</div>
+</div>
+<div class="bg-white/50 border border-outline-variant px-4 py-2 rounded-lg text-center">
+<div class="text-[10px] text-on-surface-variant uppercase font-bold tracking-widest">Trust Score</div>
+<div class="text-headline-md font-bold text-tertiary-container">98%</div>
+</div>
+</div>
+</div>
+<!-- Section Header -->
+<div class="flex justify-between items-end mb-6">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-background">Active Job Listings</h3>
+<p class="text-on-surface-variant font-body-md">Overseeing 12 live recruitment drives for diploma students.</p>
+</div>
+<div class="flex gap-2">
+<button class="bg-white border border-outline text-on-surface px-4 py-2 rounded-lg font-label-md flex items-center gap-2 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-sm">filter_list</span> Filter
+                        </button>
+<button class="bg-primary text-white px-4 py-2 rounded-lg font-label-md flex items-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-sm">add</span> New Request
+                        </button>
+</div>
+</div>
+<!-- Job Listings Grid (Asymmetric Layout) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Job Card 1 -->
+<div class="lg:col-span-8 glass-card rounded-xl border-l-4 border-l-secondary shadow-sm hover:shadow-md transition-all overflow-hidden group">
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="bg-secondary/10 text-secondary text-[10px] px-2 py-0.5 rounded font-bold uppercase mb-2 inline-block">Urgent Hiring</span>
+<h4 class="font-headline-md text-headline-md text-on-background mb-1">Junior Mechanical Engineer - Thermal Systems</h4>
+<p class="text-on-surface-variant text-label-md">Posted 2 days ago • Ref: TX-ME-2024-001</p>
+</div>
+<div class="flex gap-2">
+<span class="flex items-center gap-1 bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Live
+                                    </span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 border-y border-outline-variant py-4 bg-surface-container-low/30 px-2 rounded">
+<div class="text-center">
+<div class="text-2xl font-black text-on-background">412</div>
+<div class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Applications</div>
+</div>
+<div class="text-center border-x border-outline-variant">
+<div class="text-2xl font-black text-primary">84</div>
+<div class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Shortlisted</div>
+</div>
+<div class="text-center">
+<div class="text-2xl font-black text-secondary">12</div>
+<div class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Interviews</div>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="bg-blue-50 text-blue-800 px-3 py-1 rounded text-xs font-medium border border-blue-100">AutoCAD Expert</span>
+<span class="bg-blue-50 text-blue-800 px-3 py-1 rounded text-xs font-medium border border-blue-100">Thermodynamics</span>
+<span class="bg-blue-50 text-blue-800 px-3 py-1 rounded text-xs font-medium border border-blue-100">Site Inspection</span>
+</div>
+<div class="flex justify-between items-center bg-surface-container-lowest p-3 -mx-6 -mb-6 mt-4 border-t border-outline-variant">
+<div class="flex gap-4 px-3">
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1 font-label-md">
+<span class="material-symbols-outlined text-base">edit</span> Edit
+                                    </button>
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1 font-label-md">
+<span class="material-symbols-outlined text-base">grade</span> Feature
+                                    </button>
+</div>
+<button class="bg-error text-white px-4 py-1.5 rounded-lg font-label-md hover:bg-red-700 transition-colors">
+                                    Suspend Listing
+                                </button>
+</div>
+</div>
+</div>
+<!-- Side Stats / Actions for Job 1 -->
+<div class="lg:col-span-4 flex flex-col gap-4">
+<div class="bg-primary text-white p-6 rounded-xl relative overflow-hidden">
+<div class="relative z-10">
+<h5 class="font-headline-sm text-lg font-bold mb-2">Performance Tracking</h5>
+<p class="text-white/80 text-sm mb-4">This listing is performing 25% better than average industrial roles.</p>
+<button class="w-full bg-white text-primary py-2 rounded-lg font-label-md font-bold">Download Analysis</button>
+</div>
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-9xl opacity-10 rotate-12">trending_up</span>
+</div>
+<div class="glass-card p-6 rounded-xl">
+<h5 class="font-label-md uppercase tracking-widest text-on-surface-variant mb-4">Admin Overrides</h5>
+<ul class="space-y-3">
+<li>
+<button class="w-full flex items-center justify-between p-2 rounded hover:bg-surface-container-low transition-all">
+<span class="flex items-center gap-2 font-body-md text-on-surface"><span class="material-symbols-outlined text-blue-600">verified</span> Validate Requirements</span>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</button>
+</li>
+<li>
+<button class="w-full flex items-center justify-between p-2 rounded hover:bg-surface-container-low transition-all">
+<span class="flex items-center gap-2 font-body-md text-on-surface"><span class="material-symbols-outlined text-amber-600">report_problem</span> Audit Listing</span>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</button>
+</li>
+</ul>
+</div>
+</div>
+<!-- Job Card 2 -->
+<div class="lg:col-span-12 glass-card rounded-xl border-l-4 border-l-primary-container shadow-sm hover:shadow-md transition-all overflow-hidden">
+<div class="p-6 flex flex-col md:flex-row gap-6">
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-primary-container/10 text-primary-container text-[10px] px-2 py-0.5 rounded font-bold uppercase">Standard</span>
+<span class="bg-amber-100 text-amber-800 text-[10px] px-2 py-0.5 rounded font-bold uppercase tracking-wider">
+                                        Expiring in 3 Days
+                                    </span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-background mb-1">Associate Electrical Draftsman</h4>
+<p class="text-on-surface-variant text-label-md mb-4">Location: Chakan Plant • Contract-to-Hire</p>
+<div class="flex gap-8 mb-4">
+<div>
+<div class="text-xl font-bold text-on-background">156</div>
+<div class="text-[10px] text-on-surface-variant uppercase">Applicants</div>
+</div>
+<div class="border-l border-outline-variant pl-8">
+<div class="text-xl font-bold text-on-background">32</div>
+<div class="text-[10px] text-on-surface-variant uppercase">Shortlisted</div>
+</div>
+<div class="border-l border-outline-variant pl-8">
+<div class="text-xl font-bold text-on-background">0</div>
+<div class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Interviews</div>
+</div>
+</div>
+</div>
+<div class="md:w-64 flex flex-col justify-center gap-2">
+<button class="bg-secondary text-white w-full py-2.5 rounded-lg font-label-md font-bold shadow-sm hover:opacity-90 active:scale-95 transition-all">
+                                    Promote to Featured
+                                </button>
+<button class="bg-white border border-outline-variant text-on-surface w-full py-2.5 rounded-lg font-label-md hover:bg-surface-container transition-all">
+                                    Edit Requirements
+                                </button>
+</div>
+</div>
+</div>
+<!-- Job Card 3 (Flagged) -->
+<div class="lg:col-span-12 glass-card rounded-xl border-l-4 border-l-error shadow-sm bg-red-50/20">
+<div class="p-6 flex flex-col md:flex-row gap-6">
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-error/10 text-error text-[10px] px-2 py-0.5 rounded font-bold uppercase flex items-center gap-1">
+<span class="material-symbols-outlined text-[10px]" style="font-variation-settings: 'FILL' 1;">flag</span> Flagged for Review
+                                    </span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-background mb-1">Safety Officer - Pune Regional Office</h4>
+<p class="text-on-surface-variant text-label-md mb-2 italic">Reported: Vague qualification requirements noted by internal audit.</p>
+<div class="text-error font-bold text-xs uppercase tracking-widest mt-2">Action Required</div>
+</div>
+<div class="md:w-64 flex flex-col justify-center gap-2">
+<button class="bg-surface-container-highest text-on-surface w-full py-2.5 rounded-lg font-label-md border border-outline-variant hover:bg-surface-variant transition-all">
+                                    Dismiss Report
+                                </button>
+<button class="bg-error text-white w-full py-2.5 rounded-lg font-label-md hover:opacity-90 transition-opacity">
+                                    Suspend Listing
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation for Mobile -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-3 bg-surface-container dark:bg-inverse-surface border-t border-outline-variant dark:border-outline shadow-lg z-50 rounded-t-xl">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-variant transition-all px-4 py-1">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-[10px]">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-variant transition-all px-4 py-1">
+<span class="material-symbols-outlined">upload_file</span>
+<span class="font-label-sm text-[10px]">Upload</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-full px-4 py-1 scale-90 duration-150">
+<span class="material-symbols-outlined">fact_check</span>
+<span class="font-label-sm text-[10px]">Requests</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-variant transition-all px-4 py-1">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-label-sm text-[10px]">Profile</span>
+</button>
+</nav>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+        // Tab switching logic (Simulated)
+        document.querySelectorAll('nav a, header button').forEach(el => {
+            el.addEventListener('click', (e) => {
+                if (el.tagName === 'A') {
+                    document.querySelectorAll('nav a').forEach(a => {
+                        a.classList.remove('bg-secondary-container', 'dark:bg-secondary', 'text-on-secondary-container', 'dark:text-on-secondary');
+                        a.classList.add('text-on-surface-variant', 'dark:text-surface-variant');
+                        a.classList.remove('scale-95');
+                    });
+                    el.classList.add('bg-secondary-container', 'dark:bg-secondary', 'text-on-secondary-container', 'dark:text-on-secondary', 'scale-95');
+                    el.classList.remove('text-on-surface-variant', 'dark:text-surface-variant');
+                }
+            });
+        });
+
+        // Hover tilt effect on cards
+        const cards = document.querySelectorAll('.glass-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 50;
+                const rotateY = (centerX - x) / 50;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+            });
+        });
+    </script>
+</body></html>

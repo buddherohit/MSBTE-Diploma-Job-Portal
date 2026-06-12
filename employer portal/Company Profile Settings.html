@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Company Profile Settings | MahaRecruit</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid #E2E8F0;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed-variant": "#005236",
+                      "background": "#f7f9fb",
+                      "tertiary-container": "#00563a",
+                      "tertiary": "#003d27",
+                      "surface-variant": "#e0e3e5",
+                      "primary-fixed-dim": "#b8c4ff",
+                      "on-primary": "#ffffff",
+                      "outline": "#757684",
+                      "inverse-surface": "#2d3133",
+                      "secondary-container": "#fd761a",
+                      "surface-tint": "#3755c3",
+                      "surface-dim": "#d8dadc",
+                      "surface-bright": "#f7f9fb",
+                      "surface-container": "#eceef0",
+                      "tertiary-fixed-dim": "#4edea3",
+                      "surface-container-lowest": "#ffffff",
+                      "surface": "#f7f9fb",
+                      "tertiary-fixed": "#6ffbbe",
+                      "on-primary-container": "#a8b8ff",
+                      "primary-container": "#1e40af",
+                      "secondary": "#9d4300",
+                      "on-secondary-container": "#5c2400",
+                      "on-tertiary-fixed": "#002113",
+                      "on-error-container": "#93000a",
+                      "on-secondary-fixed": "#341100",
+                      "surface-container-low": "#f2f4f6",
+                      "on-background": "#191c1e",
+                      "primary-fixed": "#dde1ff",
+                      "outline-variant": "#c4c5d5",
+                      "error": "#ba1a1a",
+                      "on-tertiary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "on-primary-fixed": "#001453",
+                      "secondary-fixed-dim": "#ffb690",
+                      "error-container": "#ffdad6",
+                      "inverse-on-surface": "#eff1f3",
+                      "on-secondary-fixed-variant": "#783200",
+                      "surface-container-highest": "#e0e3e5",
+                      "secondary-fixed": "#ffdbca",
+                      "inverse-primary": "#b8c4ff",
+                      "on-tertiary-container": "#3fd298",
+                      "on-secondary": "#ffffff",
+                      "on-primary-fixed-variant": "#173bab",
+                      "primary": "#00288e",
+                      "on-surface": "#191c1e",
+                      "surface-container-high": "#e6e8ea",
+                      "on-surface-variant": "#444653"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-lg": "2rem",
+                      "stack-md": "1rem",
+                      "margin-mobile": "1rem",
+                      "gutter": "1.5rem",
+                      "stack-sm": "0.5rem",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Inter"],
+                      "label-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "label-sm": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen">
+<!-- Top Navigation -->
+<header class="w-full top-0 sticky z-40 bg-surface-container-lowest border-b border-outline-variant">
+<div class="flex justify-between items-center px-4 h-16 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-headline-md" data-icon="business_center">business_center</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">MahaRecruit</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container-low rounded-full transition-colors" data-icon="notifications">notifications</button>
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold overflow-hidden border-2 border-primary">
+<img alt="Employer Profile Avatar" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a corporate executive in a modern office environment. The lighting is soft and professional, using high-key tones to match a clean light-mode UI. The background shows a blurred high-end architectural space with hints of glass and steel, reinforcing a Corporate Modern aesthetic. The subject wears a sharp navy suit, suggesting institutional stability and authority." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkcGQKF_FXkM4mcCpyuwR0lVzSkizJN_gzFgFZ9cDHlNoCkN-FMEDiHn9HiggnqvuS-6UotQn0GaEn7qUhlTWl_qKJiXBspbytrBNS5wI1Y9mUl4OC2uSE7JTpq8pQNwugXzv61jIptQBmOzPBXPzUUSapcSNABBcFoHJCv8jDdWN12vT5TqAdNNgzRAzl70ZPCW-LJeQt9R-SouJusGXOS0nUkh6NZQ2DNk8nScC3IIEZjpWQkPaCh8NB2mPyDNzqrvvFdJIV1lI"/>
+</div>
+</div>
+</div>
+</header>
+<div class="max-w-container-max mx-auto flex">
+<!-- Navigation Drawer (Desktop) -->
+<aside class="hidden md:flex flex-col h-[calc(100vh-64px)] w-80 py-6 sticky top-16 bg-surface border-r border-outline-variant">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 rounded-xl bg-primary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="admin_panel_settings">admin_panel_settings</span>
+</div>
+<div>
+<p class="font-label-md text-on-surface">Admin Settings</p>
+<p class="text-label-sm text-on-surface-variant">Manage your organization</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="font-label-md text-label-md">Account Details</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-primary font-bold border-r-4 border-primary bg-primary-container/10 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="domain">domain</span>
+<span class="font-label-md text-label-md">Company Profile</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label-md text-label-md">Billing &amp; Subscription</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Team Management</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 p-4 md:p-8 pb-24 md:pb-8 max-w-4xl mx-auto">
+<div class="flex flex-col gap-stack-md">
+<!-- Header & Progress -->
+<div class="space-y-4">
+<h1 class="font-headline-lg text-headline-lg text-on-background">Company Profile</h1>
+<p class="text-body-md text-on-surface-variant">Complete your organization's identity to build trust with high-potential diploma candidates.</p>
+<div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-md text-label-md text-on-surface">Profile Completeness</span>
+<span class="font-label-md text-label-md text-primary">85%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[85%] transition-all duration-1000 ease-out"></div>
+</div>
+</div>
+</div>
+<!-- Form Section -->
+<form class="flex flex-col gap-stack-lg mt-4">
+<!-- Logo Upload Section -->
+<section class="glass-card p-6 rounded-xl shadow-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="image">image</span>
+                            Brand Identity
+                        </h2>
+<div class="flex flex-col md:flex-row items-center gap-6">
+<div class="relative group">
+<div class="w-32 h-32 rounded-xl bg-surface-container-high border-2 border-dashed border-outline-variant flex items-center justify-center overflow-hidden">
+<img alt="Company Logo" class="w-full h-full object-contain p-4" data-alt="A minimalist and geometric corporate logo featuring bold, structural lines that evoke a sense of infrastructure and industrial strength. The logo uses Maharashtra Blue and Action Orange accents against a crisp white background. The visual style is clean and professional, representing a modern industrial powerhouse with institutional stability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOWXFHSowe2VKamJi5AdMMDQeyGWA1Lwz0cxJq81mkgI2Xjnw3xC_7x7fYW2FUr0ZI6qgqo-m3goNDKKYJENzESsWk73Uy_912zbVYZykDxxocbqiBFmCB_NT0HXUJFrokC7ElCQYYau1RKbTLUZzRqZgrolSSk816dv7oTMAjtXLde50bfhA4m28vXwRATpm15UQJug1DCxTpz8uvLQGYz013vgHuKKgltmJgI46FGOFzfD6OoTei4Q7zk5FvRoLcMgztD0geB0s"/>
+</div>
+<button class="absolute -bottom-2 -right-2 bg-secondary-container text-on-secondary-container p-2 rounded-full shadow-lg hover:scale-105 transition-transform" type="button">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</button>
+</div>
+<div class="flex-1 space-y-2">
+<p class="font-label-md text-label-md">Company Logo</p>
+<p class="text-label-sm text-on-surface-variant">SVG, PNG, or JPG (max. 800x800px). Your logo will be visible to all job seekers.</p>
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-primary text-white rounded-lg font-label-md hover:bg-primary/90 transition-colors" type="button">Upload New</button>
+<button class="px-4 py-2 border border-outline-variant text-on-surface rounded-lg font-label-md hover:bg-surface-container-low transition-colors" type="button">Remove</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Industrial Details Grid -->
+<section class="glass-card p-6 rounded-xl shadow-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+                            Organization Details
+                        </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<!-- Company Name -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Company Name</label>
+<input class="w-full px-4 py-3 bg-surface-container-low border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all" type="text" value="Maharashtra Industrial Corp"/>
+</div>
+<!-- Registration Number -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Registration Number</label>
+<div class="relative">
+<input class="w-full px-4 py-3 bg-surface-container-low border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all pr-24" type="text" value="U67120MH2023PLC001"/>
+<span class="absolute right-3 top-1/2 -translate-y-1/2 bg-tertiary-container text-on-tertiary-container px-2 py-1 rounded text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
+                                        Verified
+                                    </span>
+</div>
+</div>
+<!-- Industry Sector -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Industry Sector</label>
+<select class="w-full px-4 py-3 bg-surface-container-low border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all">
+<option>Infrastructure &amp; Civil</option>
+<option selected="">Manufacturing</option>
+<option>Automotive</option>
+<option>Chemical Engineering</option>
+</select>
+</div>
+<!-- Company Size -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Company Size</label>
+<select class="w-full px-4 py-3 bg-surface-container-low border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all">
+<option>1-50 Employees</option>
+<option>51-200 Employees</option>
+<option selected="">201-500 Employees</option>
+<option>500+ Employees</option>
+</select>
+</div>
+<!-- Headquarters -->
+<div class="space-y-2 md:col-span-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Headquarters Location</label>
+<div class="flex gap-2">
+<input class="flex-1 px-4 py-3 bg-surface-container-low border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all" type="text" value="Pimpri-Chinchwad, Pune, Maharashtra"/>
+<button class="px-4 bg-surface-container-high border border-outline-variant rounded-lg hover:bg-surface-container-highest transition-colors" type="button">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="glass-card p-6 rounded-xl shadow-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+                            About the Company
+                        </h2>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Executive Summary</label>
+<textarea class="w-full px-4 py-3 bg-surface-container-low border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all text-body-md" placeholder="Describe your company's mission, industrial expertise, and why students should join your team..." rows="6">Established in 1998, we are a leading automotive component manufacturer specializing in precision engineering and sustainable manufacturing practices for global OEM partners.</textarea>
+<div class="flex justify-between items-center mt-2">
+<span class="text-label-sm text-on-surface-variant">Character count: 184 / 2000</span>
+<span class="text-label-sm text-primary">Rich text editor available</span>
+</div>
+</div>
+</section>
+<!-- Form Actions -->
+<div class="flex flex-col md:flex-row justify-end gap-4 pt-4 mb-10">
+<button class="px-8 py-3 border border-primary text-primary rounded-lg font-bold hover:bg-primary-container/10 transition-all" type="button">Discard Changes</button>
+<button class="px-8 py-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold shadow-md hover:shadow-lg active:scale-95 transition-all" type="submit">Save Profile Changes</button>
+</div>
+</form>
+</div>
+</main>
+</div>
+<!-- Bottom Navigation (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-20 px-2 pb-safe bg-surface-container border-t border-outline-variant z-50 rounded-t-xl shadow-md">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="person_search">person_search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="work_history">work_history</span>
+<span class="font-label-sm text-label-sm">Jobs</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="settings" data-weight="fill" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for form feedback
+        const form = document.querySelector('form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin" data-icon="sync">sync</span> Saving...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerHTML = '<span class="material-symbols-outlined" data-icon="check">check</span> Profile Saved';
+                btn.classList.replace('bg-secondary-container', 'bg-tertiary-container');
+                btn.classList.replace('text-on-secondary-container', 'text-on-tertiary-container');
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.replace('bg-tertiary-container', 'bg-secondary-container');
+                    btn.classList.replace('text-on-tertiary-container', 'text-on-secondary-container');
+                    btn.disabled = false;
+                }, 2000);
+            }, 1200);
+        });
+
+        // Background Atmosphere Effect
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            document.body.style.background = `radial-gradient(circle at ${x * 100}% ${y * 100}%, #ffffff 0%, #f7f9fb 100%)`;
+        });
+    </script>
+</body></html>

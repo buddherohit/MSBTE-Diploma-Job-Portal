@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom Scrollbar for Industrial Feel */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#3fd298",
+                        "outline-variant": "#c4c5d5",
+                        "on-surface": "#191c1e",
+                        "on-secondary-container": "#5c2400",
+                        "on-primary-fixed": "#001453",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#444653",
+                        "secondary-fixed": "#ffdbca",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#d8dadc",
+                        "on-secondary-fixed": "#341100",
+                        "surface-container-low": "#f2f4f6",
+                        "inverse-primary": "#b8c4ff",
+                        "on-primary-fixed-variant": "#173bab",
+                        "on-primary-container": "#a8b8ff",
+                        "on-background": "#191c1e",
+                        "surface-variant": "#e0e3e5",
+                        "primary-container": "#1e40af",
+                        "on-secondary-fixed-variant": "#783200",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "surface-container": "#eceef0",
+                        "surface-bright": "#f7f9fb",
+                        "surface": "#f7f9fb",
+                        "primary-fixed-dim": "#b8c4ff",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#003d27",
+                        "surface-tint": "#3755c3",
+                        "outline": "#757684",
+                        "on-tertiary-fixed": "#002113",
+                        "surface-container-high": "#e6e8ea",
+                        "secondary": "#9d4300",
+                        "inverse-on-surface": "#eff1f3",
+                        "primary-fixed": "#dde1ff",
+                        "inverse-surface": "#2d3133",
+                        "tertiary-fixed": "#6ffbbe",
+                        "secondary-container": "#fd761a",
+                        "background": "#f7f9fb",
+                        "secondary-fixed-dim": "#ffb690",
+                        "primary": "#00288e",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "tertiary-container": "#00563a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "1rem",
+                        "stack-sm": "0.5rem",
+                        "margin-mobile": "1rem",
+                        "gutter": "1.5rem",
+                        "stack-lg": "2rem",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-24 md:pb-0 md:pl-80">
+<!-- Desktop Navigation Drawer -->
+<aside class="hidden md:flex flex-col h-screen fixed left-0 top-0 border-r border-outline-variant bg-surface w-80 z-40">
+<div class="p-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">school</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">MahaResume</span>
+</div>
+<div class="px-4 py-6 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">MSBTE Student</p>
+<p class="text-xs text-on-surface-variant">Mechanical Engineering</p>
+<span class="text-[10px] uppercase tracking-wider font-bold text-secondary">Final Year</span>
+</div>
+</div>
+<nav class="flex-1 mt-4">
+<div class="space-y-1">
+<a class="text-on-surface-variant px-4 py-3 mx-2 flex items-center gap-3 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="bg-primary-container text-on-primary-container font-semibold rounded-full mx-2 px-4 py-3 flex items-center gap-3 shadow-sm" href="#">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="font-body-md text-body-md">Academic Info</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 mx-2 flex items-center gap-3 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">business_center</span>
+<span class="font-body-md text-body-md">Work Experience</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 mx-2 flex items-center gap-3 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">construction</span>
+<span class="font-body-md text-body-md">Technical Skills</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 mx-2 flex items-center gap-3 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">verified</span>
+<span class="font-body-md text-body-md">Certifications</span>
+</a>
+</div>
+</nav>
+</aside>
+<!-- Top App Bar (Mobile Only) -->
+<header class="md:hidden sticky top-0 z-50 bg-surface shadow-sm px-margin-mobile py-4 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">school</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">MahaResume</span>
+</div>
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">menu</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="max-w-4xl mx-auto px-margin-mobile md:px-gutter py-8 md:py-12">
+<!-- Header Section -->
+<header class="mb-10">
+<div class="flex items-center gap-2 text-secondary mb-2">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest">Educational Blueprint</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">Academic Profile</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">Complete your technical background details according to MSBTE standards. This information will be used to generate your industry-ready resume.</p>
+</header>
+<!-- Form Section -->
+<form class="space-y-8">
+<!-- Academic Background Card -->
+<section class="bg-surface-container-lowest border border-outline-variant p-6 md:p-8 rounded-xl shadow-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">account_balance</span>
+                    Diploma Details
+                </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Branch Selection -->
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Diploma Branch</label>
+<select class="w-full bg-[#F1F5F9] border-[#CBD5E1] rounded-lg py-3 px-4 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all appearance-none cursor-pointer">
+<option value="">Select your branch</option>
+<option value="me">Mechanical Engineering</option>
+<option value="ce">Civil Engineering</option>
+<option value="ee">Electrical Engineering</option>
+<option value="co">Computer Technology</option>
+<option value="if">Information Technology</option>
+<option value="ej">Electronics &amp; Telecommunication</option>
+</select>
+</div>
+<!-- Year of Study -->
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Current Year of Study</label>
+<div class="flex gap-2">
+<label class="flex-1 relative cursor-pointer group">
+<input checked="" class="sr-only peer" name="year" type="radio"/>
+<div class="p-3 text-center border border-outline-variant rounded-lg peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary group-hover:bg-surface-container transition-all">
+                                    1st Year
+                                </div>
+</label>
+<label class="flex-1 relative cursor-pointer group">
+<input class="sr-only peer" name="year" type="radio"/>
+<div class="p-3 text-center border border-outline-variant rounded-lg peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary group-hover:bg-surface-container transition-all">
+                                    2nd Year
+                                </div>
+</label>
+<label class="flex-1 relative cursor-pointer group">
+<input class="sr-only peer" name="year" type="radio"/>
+<div class="p-3 text-center border border-outline-variant rounded-lg peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary group-hover:bg-surface-container transition-all">
+                                    3rd Year
+                                </div>
+</label>
+</div>
+</div>
+</div>
+</section>
+<!-- Performance Grid -->
+<section class="bg-surface-container-lowest border border-outline-variant p-6 md:p-8 rounded-xl shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">analytics</span>
+                        Semester Performance
+                    </h2>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">MSBTE Pattern</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+<!-- Semester Card Generator -->
+<div class="p-4 border border-outline-variant bg-surface-container-low rounded-lg space-y-3">
+<span class="font-label-sm text-label-sm text-primary uppercase">Semester 1</span>
+<div class="relative">
+<input class="w-full bg-white border-[#CBD5E1] rounded-md py-2 px-3 focus:ring-primary focus:border-primary outline-none" placeholder="Percentage / CGPA" step="0.01" type="number"/>
+<span class="absolute right-3 top-2 text-xs text-outline font-bold">%</span>
+</div>
+</div>
+<div class="p-4 border border-outline-variant bg-surface-container-low rounded-lg space-y-3">
+<span class="font-label-sm text-label-sm text-primary uppercase">Semester 2</span>
+<div class="relative">
+<input class="w-full bg-white border-[#CBD5E1] rounded-md py-2 px-3 focus:ring-primary focus:border-primary outline-none" placeholder="Percentage / CGPA" step="0.01" type="number"/>
+<span class="absolute right-3 top-2 text-xs text-outline font-bold">%</span>
+</div>
+</div>
+<div class="p-4 border border-outline-variant bg-surface-container-low rounded-lg space-y-3">
+<span class="font-label-sm text-label-sm text-primary uppercase">Semester 3</span>
+<div class="relative">
+<input class="w-full bg-white border-[#CBD5E1] rounded-md py-2 px-3 focus:ring-primary focus:border-primary outline-none" placeholder="Percentage / CGPA" step="0.01" type="number"/>
+<span class="absolute right-3 top-2 text-xs text-outline font-bold">%</span>
+</div>
+</div>
+<div class="p-4 border border-outline-variant bg-surface-container-low rounded-lg space-y-3">
+<span class="font-label-sm text-label-sm text-primary uppercase">Semester 4</span>
+<div class="relative">
+<input class="w-full bg-white border-[#CBD5E1] rounded-md py-2 px-3 focus:ring-primary focus:border-primary outline-none" placeholder="Percentage / CGPA" step="0.01" type="number"/>
+<span class="absolute right-3 top-2 text-xs text-outline font-bold">%</span>
+</div>
+</div>
+<div class="p-4 border border-outline-variant bg-surface-container-low rounded-lg space-y-3">
+<span class="font-label-sm text-label-sm text-primary uppercase">Semester 5</span>
+<div class="relative">
+<input class="w-full bg-white border-[#CBD5E1] rounded-md py-2 px-3 focus:ring-primary focus:border-primary outline-none" placeholder="Percentage / CGPA" step="0.01" type="number"/>
+<span class="absolute right-3 top-2 text-xs text-outline font-bold">%</span>
+</div>
+</div>
+<div class="p-4 border border-outline-variant bg-surface-container-low rounded-lg space-y-3 opacity-60">
+<span class="font-label-sm text-label-sm text-primary uppercase">Semester 6</span>
+<div class="relative">
+<input class="w-full bg-surface-container border-[#CBD5E1] rounded-md py-2 px-3 outline-none cursor-not-allowed" disabled="" placeholder="In Progress" type="number"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Final Year Project (Critical Section) -->
+<section class="bg-surface-container-lowest border-2 border-secondary-container p-6 md:p-8 rounded-xl shadow-lg relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4">
+<span class="material-symbols-outlined text-secondary-container text-6xl opacity-10">rocket_launch</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-secondary mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined">lightbulb</span>
+                    Final Year Project (Capstone)
+                </h2>
+<div class="space-y-6 relative z-10">
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Project Title</label>
+<input class="w-full bg-[#F1F5F9] border-[#CBD5E1] rounded-lg py-3 px-4 focus:ring-2 focus:ring-secondary focus:border-secondary outline-none" placeholder="e.g., Automated Smart Irrigation System using IOT" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Project Description &amp; Industry Impact</label>
+<textarea class="w-full bg-[#F1F5F9] border-[#CBD5E1] rounded-lg py-3 px-4 focus:ring-2 focus:ring-secondary focus:border-secondary outline-none resize-none" placeholder="Briefly describe the problem solved, technologies used, and your role in the team..." rows="4"></textarea>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Key Technologies</label>
+<div class="flex flex-wrap gap-2 mb-2" id="tech-chip-container">
+<span class="bg-on-primary-fixed-variant/10 text-on-primary-fixed-variant px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+                                    AutoCAD
+                                    <span class="material-symbols-outlined text-[14px] cursor-pointer">close</span>
+</span>
+<span class="bg-on-primary-fixed-variant/10 text-on-primary-fixed-variant px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+                                    PLC Scada
+                                    <span class="material-symbols-outlined text-[14px] cursor-pointer">close</span>
+</span>
+</div>
+<input class="w-full bg-white border-[#CBD5E1] border-dashed border-2 rounded-lg py-2 px-4 text-sm focus:border-primary outline-none" placeholder="Add tech and press enter" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Project Link / Repo (Optional)</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-3 text-outline-variant">link</span>
+<input class="w-full bg-[#F1F5F9] border-[#CBD5E1] rounded-lg py-3 pl-10 pr-4 focus:ring-2 focus:ring-secondary focus:border-secondary outline-none" placeholder="https://github.com/..." type="url"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Action Buttons -->
+<footer class="flex flex-col md:flex-row justify-end gap-4 pt-6">
+<button class="px-8 py-3 rounded-lg border border-primary text-primary font-label-md text-label-md hover:bg-surface-container transition-all active:scale-95" type="button">
+                    Save Draft
+                </button>
+<button class="px-10 py-3 rounded-lg bg-secondary text-white font-label-md text-label-md shadow-md hover:opacity-90 transition-all active:scale-95 flex items-center justify-center gap-2" type="submit">
+<span class="material-symbols-outlined text-sm">verified_user</span>
+                    Commit to Resume
+                </button>
+</footer>
+</form>
+<!-- Decorative Info Card (Asymmetric Layout element) -->
+<div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+<div class="md:col-span-1">
+<div class="bg-primary p-8 rounded-2xl text-on-primary relative overflow-hidden group">
+<div class="absolute -top-12 -right-12 w-32 h-32 bg-white/10 rounded-full group-hover:scale-150 transition-transform duration-700"></div>
+<span class="material-symbols-outlined text-4xl mb-4">info</span>
+<h3 class="font-headline-md text-headline-md mb-2">Why Final Year Project?</h3>
+<p class="text-sm opacity-90 leading-relaxed">MSBTE curriculum places 100 marks on your capstone project. Employers in Maharashtra look at this as your primary hands-on experience during diploma studies.</p>
+</div>
+</div>
+<div class="md:col-span-2">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="flex gap-4 p-4 items-start">
+<div class="w-10 h-10 rounded bg-tertiary-fixed flex-shrink-0 flex items-center justify-center text-on-tertiary-fixed">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">Verified Results</h4>
+<p class="text-xs text-on-surface-variant">Data synced with MSBTE portal for authenticity.</p>
+</div>
+</div>
+<div class="flex gap-4 p-4 items-start">
+<div class="w-10 h-10 rounded bg-primary-fixed flex-shrink-0 flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined">work_history</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">Career Pathing</h4>
+<p class="text-xs text-on-surface-variant">Recommended jobs based on your branch and marks.</p>
+</div>
+</div>
+<div class="flex gap-4 p-4 items-start">
+<div class="w-10 h-10 rounded bg-secondary-fixed flex-shrink-0 flex items-center justify-center text-on-secondary-fixed">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">Auto-Formatting</h4>
+<p class="text-xs text-on-surface-variant">Results automatically formatted into tables on export.</p>
+</div>
+</div>
+<div class="flex gap-4 p-4 items-start">
+<div class="w-10 h-10 rounded bg-on-tertiary-container/20 flex-shrink-0 flex items-center justify-center text-on-tertiary-container">
+<span class="material-symbols-outlined">lock</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">Encrypted Storage</h4>
+<p class="text-xs text-on-surface-variant">Your marks are secure and accessible only to you.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 bg-surface-container flex justify-around items-center px-4 py-2 pb-safe shadow-[0_-2px_10px_rgba(0,0,0,0.05)]">
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">edit_note</span>
+<span class="text-[10px] font-medium mt-1">Builder</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">style</span>
+<span class="text-[10px] font-medium mt-1">Templates</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl px-4 py-1 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">factory</span>
+<span class="text-[10px] font-medium mt-1">Training</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium mt-1">Profile</span>
+</button>
+</nav>
+<script>
+        // Simple micro-interaction for semester input highlighting
+        const inputs = document.querySelectorAll('input[type="number"]');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.parentElement.classList.add('border-primary');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.parentElement.classList.remove('border-primary');
+            });
+        });
+
+        // Form submission prevention for demo
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">refresh</span> Saving...';
+            btn.classList.add('opacity-80');
+            
+            setTimeout(() => {
+                btn.innerHTML = '<span class="material-symbols-outlined">done_all</span> Saved!';
+                btn.classList.replace('bg-secondary', 'bg-tertiary-container');
+                btn.classList.add('text-on-tertiary-container');
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.replace('bg-tertiary-container', 'bg-secondary');
+                    btn.classList.remove('text-on-tertiary-container', 'opacity-80');
+                }, 2000);
+            }, 1000);
+        });
+    </script>
+</body></html>

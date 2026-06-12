@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Student Dashboard | MSBTE Jobs</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-container": "#fd761a",
+                    "primary-fixed": "#dde1ff",
+                    "secondary": "#9d4300",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed": "#6ffbbe",
+                    "secondary-fixed": "#ffdbca",
+                    "outline": "#757684",
+                    "primary": "#00288e",
+                    "on-surface-variant": "#444653",
+                    "on-tertiary": "#ffffff",
+                    "on-background": "#191c1e",
+                    "secondary-fixed-dim": "#ffb690",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#2d3133",
+                    "surface-tint": "#3755c3",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed-variant": "#173bab",
+                    "on-primary-fixed": "#001453",
+                    "surface-container": "#eceef0",
+                    "inverse-on-surface": "#eff1f3",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "tertiary-container": "#00563a",
+                    "background": "#f7f9fb",
+                    "on-secondary-fixed": "#341100",
+                    "surface-container-highest": "#e0e3e5",
+                    "surface-container-high": "#e6e8ea",
+                    "primary-container": "#1e40af",
+                    "on-secondary-fixed-variant": "#783200",
+                    "on-tertiary-container": "#3fd298",
+                    "on-tertiary-fixed": "#002113",
+                    "on-primary-container": "#a8b8ff",
+                    "outline-variant": "#c4c5d5",
+                    "on-surface": "#191c1e",
+                    "surface-bright": "#f7f9fb",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#b8c4ff",
+                    "on-secondary-container": "#5c2400",
+                    "inverse-primary": "#b8c4ff",
+                    "on-error-container": "#93000a",
+                    "tertiary": "#003d27",
+                    "error-container": "#ffdad6",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#e0e3e5",
+                    "surface-dim": "#d8dadc",
+                    "surface": "#f7f9fb",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "surface-container-low": "#f2f4f6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "1rem",
+                    "stack-sm": "0.5rem",
+                    "stack-lg": "2rem",
+                    "gutter": "1.5rem",
+                    "stack-md": "1rem",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-on-background border-b border-outline-variant dark:border-outline z-50 sticky top-0 flex justify-between items-center px-margin-mobile w-full max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer">menu</span>
+<span class="font-headline-md text-headline-md font-extrabold text-primary dark:text-primary-fixed tracking-tight">MSBTE Jobs</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:flex items-center gap-2 px-4 py-2 text-primary font-bold border-b-2 border-primary">
+                Dashboard
+            </button>
+<button class="hidden md:flex items-center gap-2 px-4 py-2 text-on-surface-variant hover:bg-surface-container transition-colors duration-200">
+                Jobs
+            </button>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="A professional headshot of a young Indian male student with a confident smile, wearing a clean white shirt. The background is a soft, blurred corporate office setting with natural daylight filtering through large windows, creating a bright and optimistic atmosphere. The image has a modern, high-contrast look consistent with a professional career platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0_AhN0uta3x9Kdq5a91H41rF72dT_IRYfyTnLtDXrJ9tID6UIKMjyQU1hIUx1ekOPbv_7rT6B7GViPWoK3Q-8kRUkRKIj_nxVoKH_nqnU1WfRdlR-mLrlnFnnnNU7y-Xk8oYLq92PR5YVeJkQSxR-osSCRQ6UMxjv89DJED1cXrluqwa9DMw7Tx7BJiHpxKle6WOMyjcfIqcQj_VPZWdT4DEuz14cItIH2ccYgqlBCAhCs7XVZp_dSnjBGiXz-jxGIfRRiVnZMJE"/>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile py-stack-lg space-y-stack-lg">
+<!-- Welcome Section -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-gutter">
+<div>
+<p class="text-on-surface-variant font-label-md uppercase tracking-wider">Student Overview</p>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mt-2 font-extrabold">Welcome back, Rahul Sharma!</h1>
+<p class="text-on-surface-variant mt-1">Check out your application status and recommended jobs for Diploma in Mechanical Engineering.</p>
+</div>
+<button class="bg-primary text-on-primary px-6 py-3 rounded-lg font-bold shadow-md hover:bg-primary-container transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">upload_file</span>
+                Update Resume
+            </button>
+</section>
+<!-- Profile & Stats Grid (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Profile Completion Card -->
+<div class="md:col-span-4 bg-white border border-outline-variant rounded-xl p-6 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-primary-fixed text-primary rounded-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</div>
+<span class="text-label-md font-bold text-primary">85% Complete</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-2">Profile Strength</h3>
+<p class="text-on-surface-variant text-body-md mb-6">Complete your technical certifications to reach 100% and get noticed by top recruiters.</p>
+</div>
+<div class="space-y-3">
+<div class="w-full bg-surface-container-highest h-3 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[85%] rounded-full transition-all duration-1000"></div>
+</div>
+<a class="text-primary font-bold text-label-md flex items-center gap-1 hover:underline" href="#">
+                        Complete Profile <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Quick Stats Grid -->
+<div class="md:col-span-8 grid grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-white border border-outline-variant rounded-xl p-5 flex flex-col justify-center items-center text-center hover:shadow-md transition-shadow">
+<span class="text-display-lg font-display-lg text-primary">12</span>
+<span class="text-on-surface-variant font-label-md mt-1">Applied</span>
+</div>
+<div class="bg-secondary-fixed text-on-secondary-fixed border border-outline-variant rounded-xl p-5 flex flex-col justify-center items-center text-center hover:shadow-md transition-shadow">
+<span class="text-display-lg font-display-lg text-secondary">2</span>
+<span class="text-on-surface-variant font-label-md mt-1">Shortlisted</span>
+</div>
+<div class="bg-white border border-outline-variant rounded-xl p-5 flex flex-col justify-center items-center text-center hover:shadow-md transition-shadow">
+<span class="text-display-lg font-display-lg text-primary">5</span>
+<span class="text-on-surface-variant font-label-md mt-1">Saved</span>
+</div>
+<div class="bg-white border border-outline-variant rounded-xl p-5 flex flex-col justify-center items-center text-center hover:shadow-md transition-shadow">
+<span class="text-display-lg font-display-lg text-primary">45</span>
+<span class="text-on-surface-variant font-label-md mt-1">Profile Views</span>
+</div>
+<!-- CTA / Promo Card in the Stats Grid -->
+<div class="col-span-2 lg:col-span-4 bg-tertiary-container text-white rounded-xl p-6 flex items-center justify-between overflow-hidden relative group">
+<div class="z-10">
+<h4 class="font-headline-md text-headline-md mb-2">Campus Drive 2024</h4>
+<p class="text-on-tertiary-container opacity-90 max-w-md">L&amp;T and Tata Motors are visiting MSBTE affiliated colleges next week. Register now for the pre-placement talk.</p>
+<button class="mt-4 bg-on-tertiary-container text-tertiary px-5 py-2 rounded-lg font-bold hover:bg-tertiary-fixed transition-colors">Register Interest</button>
+</div>
+<div class="hidden lg:block absolute right-[-20px] top-[-20px] opacity-20 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-[180px]">school</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Active Applications -->
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-md text-headline-md">Active Applications</h2>
+<a class="text-primary font-bold hover:underline" href="#">View All</a>
+</div>
+<div class="bg-white border border-outline-variant rounded-xl overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="px-6 py-4 font-label-md text-on-surface-variant">Job Title</th>
+<th class="px-6 py-4 font-label-md text-on-surface-variant">Company</th>
+<th class="px-6 py-4 font-label-md text-on-surface-variant">Date Applied</th>
+<th class="px-6 py-4 font-label-md text-on-surface-variant">Status</th>
+<th class="px-6 py-4 font-label-md text-on-surface-variant">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-4 font-bold text-primary">Junior Design Engineer</td>
+<td class="px-6 py-4">Mahindra &amp; Mahindra</td>
+<td class="px-6 py-4 text-on-surface-variant">Oct 24, 2023</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 rounded-full text-label-sm font-bold bg-primary-fixed text-on-primary-fixed-variant">Under Review</span>
+</td>
+<td class="px-6 py-4">
+<button class="text-primary hover:text-primary-container"><span class="material-symbols-outlined">visibility</span></button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-4 font-bold text-primary">Production Supervisor Trainee</td>
+<td class="px-6 py-4">Bajaj Auto Ltd.</td>
+<td class="px-6 py-4 text-on-surface-variant">Oct 20, 2023</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 rounded-full text-label-sm font-bold bg-tertiary-fixed text-on-tertiary-fixed-variant">Interview Scheduled</span>
+</td>
+<td class="px-6 py-4">
+<button class="text-primary hover:text-primary-container"><span class="material-symbols-outlined">visibility</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Recommended for you -->
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-md text-headline-md">Recommended for you</h2>
+<div class="flex gap-2">
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant rounded-full hover:bg-surface-container" onclick="document.getElementById('jobScroll').scrollBy({left: -300, behavior: 'smooth'})">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant rounded-full hover:bg-surface-container" onclick="document.getElementById('jobScroll').scrollBy({left: 300, behavior: 'smooth'})">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="flex gap-gutter overflow-x-auto hide-scrollbar snap-x pb-4" id="jobScroll">
+<!-- Job Card 1 -->
+<div class="min-w-[300px] md:min-w-[380px] snap-start bg-white border border-outline-variant rounded-xl p-6 hover:shadow-lg transition-all border-l-4 border-l-primary">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded bg-surface-container p-2 flex items-center justify-center">
+<img alt="Company Logo" class="w-full h-full object-contain" data-alt="A minimalist logo of a modern industrial corporation featuring bold geometric lines. The logo is displayed in a clean, white-space heavy environment, emphasizing professional stability and corporate identity. The lighting is bright and architectural, reflecting a high-end corporate brand aesthetic with deep blues and metallic grays." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmsSb-mmZMluhkNDX4tYwocVsYz8GmXPPDg2RNR28k_wWSdJpjD85rIVyvxIYM80mu_-iV0N1RmuK4yUf3ARPd68qBg5A_2QVepKmT3F9i0bF3NhzK8myTAyiTcvt0Iy8h3Kyr9RhoEEvv_X9I7g24DJYdddQIzDR4ONZ41Et07dY83Y2Cmp5linnJk8QXY0PWxn0mdtaf5aZgL9k0WW03kGirN_2cp7u3HjY2pvMvPCcS5sbHE8LcXzG3snariNgQ0cErcJuoILg"/>
+</div>
+<span class="px-2 py-1 bg-secondary-fixed text-on-secondary-fixed text-label-sm font-bold rounded">New</span>
+</div>
+<h4 class="font-bold text-lg mb-1">Maintenance Engineer</h4>
+<p class="text-on-surface-variant text-body-md mb-4">Thermax Limited • Pune, MH</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-3 py-1 bg-primary-fixed text-primary text-label-sm rounded-full">Mechanical</span>
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-label-sm rounded-full">Full Time</span>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant">
+<span class="font-bold text-primary">₹3.5 - 4.2 LPA</span>
+<button class="bg-primary text-on-primary px-4 py-2 rounded font-bold hover:bg-primary-container transition-colors">Apply Now</button>
+</div>
+</div>
+<!-- Job Card 2 -->
+<div class="min-w-[300px] md:min-w-[380px] snap-start bg-white border border-outline-variant rounded-xl p-6 hover:shadow-lg transition-all">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded bg-surface-container p-2 flex items-center justify-center">
+<img alt="Company Logo" class="w-full h-full object-contain" data-alt="A professional branding mark for a technology and engineering firm, shown as a subtle metallic icon on a high-texture light gray background. The scene is lit with cool-toned studio lights, creating sharp highlights and soft shadows that convey a sense of precision and innovation in the manufacturing sector." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzABWiTx_FIhp-lynLLREgt4fKnXlzZZoT1LroXsV9uK0c8rC5yiebMuUc1SE0NO5ChzarLwQIsWxybq8ky5YGqtdoqc7DYGmeYcjE7UfQTEUcgIkLf3W3-H0banoavRcPs3W8wF7ra5QdPX0b5kmeKYyuI2WgK-ZlIj6iHTaPcMqaSAAFyci-It3U6_2FIimlyG6Bl-Ffx_VwCgNG9V9rH4cFQ39pOPnpk_jOr9JTNnIUxctKuKlv1NkdBnZtiAkyzumz2gq4XrE"/>
+</div>
+<span class="px-2 py-1 bg-surface-container-highest text-on-surface-variant text-label-sm font-bold rounded">Urgent</span>
+</div>
+<h4 class="font-bold text-lg mb-1">Quality Control Inspector</h4>
+<p class="text-on-surface-variant text-body-md mb-4">Godrej &amp; Boyce • Mumbai, MH</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-3 py-1 bg-primary-fixed text-primary text-label-sm rounded-full">Manufacturing</span>
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-label-sm rounded-full">Day Shift</span>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant">
+<span class="font-bold text-primary">₹3.2 - 3.8 LPA</span>
+<button class="bg-primary text-on-primary px-4 py-2 rounded font-bold hover:bg-primary-container transition-colors">Apply Now</button>
+</div>
+</div>
+<!-- Job Card 3 -->
+<div class="min-w-[300px] md:min-w-[380px] snap-start bg-white border border-outline-variant rounded-xl p-6 hover:shadow-lg transition-all">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded bg-surface-container p-2 flex items-center justify-center">
+<img alt="Company Logo" class="w-full h-full object-contain" data-alt="A sleek corporate emblem rendered in 3D with a polished chrome finish, set against a backdrop of minimalist modern architecture. The lighting is diffuse and soft, with accents of blue that match a professional design system palette, portraying a high-authority industrial brand in the infrastructure sector." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHo6CTs4SY-fSk8bAucbkzP0-H2hwJkM0eJ3HDJUt8ZkJ-Vv9iPyBn-e0PDVoQDHueelkL0RKwaKjWs3D8bnOh4AEKbP9PL0Piqnp4kNeWoOgleZu8kCrPSCuUlfgh6fa4kGkGg49RWfXOfsK6zAW8OEXI0VMCHo8lDLqJSDkO5qCF1JGmqVS2LWD3YLxOllbfgsfJHUxeYYp8IvtxY5AULyfOO7Icfoagvia4-dXItZQ9gEjsN8YmLakH_wa6T8AEZrGJqmHcHUk"/>
+</div>
+</div>
+<h4 class="font-bold text-lg mb-1">Site Supervisor (Civil)</h4>
+<p class="text-on-surface-variant text-body-md mb-4">Afcons Infrastructure • Nashik, MH</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-3 py-1 bg-primary-fixed text-primary text-label-sm rounded-full">Civil Eng.</span>
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-label-sm rounded-full">Permanent</span>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant">
+<span class="font-bold text-primary">₹4.0 - 5.0 LPA</span>
+<button class="bg-primary text-on-primary px-4 py-2 rounded font-bold hover:bg-primary-container transition-colors">Apply Now</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface dark:bg-on-background shadow-md rounded-t-xl">
+<!-- Dashboard (Active) -->
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-4 py-1 scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<!-- Jobs -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all duration-150" href="#">
+<span class="material-symbols-outlined">work</span>
+<span class="font-label-sm text-label-sm">Jobs</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all duration-150" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+<!-- Alerts -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all duration-150" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-label-sm text-label-sm">Alerts</span>
+</a>
+</nav>
+<!-- Floating Action Button (FAB) - For Home/Dashboard -->
+<button class="fixed bottom-20 right-4 md:bottom-8 md:right-8 w-14 h-14 bg-secondary-container text-on-secondary-container rounded-full shadow-lg flex items-center justify-center hover:scale-105 transition-transform z-40">
+<span class="material-symbols-outlined text-[32px]">search</span>
+</button>
+<script>
+        // Micro-interaction for smooth scrolling animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section, .grid > div').forEach(el => {
+            el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
+            observer.observe(el);
+        });
+    </script>
+</body></html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Candidate Review - MSBTE Jobs</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#001453",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f2f4f6",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "on-surface-variant": "#444653",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#dde1ff",
+                        "primary": "#00288e",
+                        "on-background": "#191c1e",
+                        "surface-variant": "#e0e3e5",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#2d3133",
+                        "secondary": "#9d4300",
+                        "surface-bright": "#f7f9fb",
+                        "primary-fixed-dim": "#b8c4ff",
+                        "tertiary-fixed": "#6ffbbe",
+                        "surface-container-high": "#e6e8ea",
+                        "surface-tint": "#3755c3",
+                        "primary-container": "#1e40af",
+                        "on-primary-container": "#a8b8ff",
+                        "secondary-fixed": "#ffdbca",
+                        "inverse-primary": "#b8c4ff",
+                        "outline-variant": "#c4c5d5",
+                        "on-secondary-fixed-variant": "#783200",
+                        "surface": "#f7f9fb",
+                        "surface-container": "#eceef0",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#ffb690",
+                        "outline": "#757684",
+                        "on-secondary-container": "#5c2400",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "tertiary-container": "#00563a",
+                        "on-tertiary-fixed": "#002113",
+                        "on-primary-fixed-variant": "#173bab",
+                        "surface-container-highest": "#e0e3e5",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#003d27",
+                        "on-secondary-fixed": "#341100",
+                        "background": "#f7f9fb",
+                        "on-surface": "#191c1e",
+                        "surface-dim": "#d8dadc",
+                        "on-tertiary-container": "#3fd298",
+                        "secondary-container": "#fd761a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "0.5rem",
+                        "margin-mobile": "1rem",
+                        "stack-lg": "2rem",
+                        "gutter": "1.5rem",
+                        "container-max": "1280px",
+                        "stack-md": "1rem"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-tab {
+            border-bottom: 2px solid #00288e;
+            color: #00288e;
+            font-weight: 700;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-on-background border-b border-outline-variant dark:border-outline flex justify-between items-center px-margin-mobile w-full max-w-container-max mx-auto z-50 sticky top-0 h-16">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-surface-container dark:hover:bg-inverse-surface rounded-full transition-colors duration-200">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Review Application</h1>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container overflow-hidden">
+<img alt="Recruiter Profile" class="w-full h-full object-cover" data-alt="A professional corporate headshot of a middle-aged recruiter in a high-end office setting. Soft, cinematic lighting highlights their professional attire and confident expression. The background features a blurred modern workspace with architectural lines and a cool-toned, professional color palette consistent with industrial corporate standards." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIFTWL622ukK0D1KxHRu8WVdsRHQyMVAHyu53Z12yH29x_o4bT7oj9qIXbFEABEyxS53abdI8NnlLbSaxwhcz_usEEBxdEnZnBpPEArHojkaz4AspDo9PKDdGmmpVWgBiCiIGW3suNG9TEU6Hkto70abdENSMD811z9JB9WeH-WyqE6Z4nYK_jkye2dyGut7RmXuKek6vhsCuWU_grJ-snOEkrxTC3q3rrR5o33zLPvX_Te-e9-tHCbeuWRteqkJ_x4cDBW1ohQnc">
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile py-stack-lg">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Left Column: Candidate Summary Card -->
+<section class="md:col-span-12 lg:col-span-4 space-y-gutter">
+<div class="bg-white border border-outline-variant rounded-xl p-6 shadow-sm">
+<div class="flex flex-col items-center text-center">
+<div class="relative mb-4">
+<img alt="Aditya Ahire" class="w-32 h-32 rounded-full border-4 border-surface-container object-cover shadow-md" data-alt="A close-up portrait of a young Indian male student with a bright, motivated expression, wearing a clean collared shirt. He stands against a subtle industrial backdrop with soft afternoon lighting. The image captures a sense of ambition and readiness for the professional world, emphasizing clear skin and high-resolution detail in a bright, modern corporate style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3apaU-tB7F_nFyPDBldSXLdfhQ_9Bjn6lYhM0vGulcm32TTP-tl5dmhoWdnSHs4UJb0EpontcoEcyd0AQ1vnc5hhwreOBpYWAKtI1LxfEPRza4eH6qd9C_xtDtpXyQ3tzryUfdFAH9tKjwhy6BmBUDwOYNaF0ur59JcZZFBMeDZoxmwKPjJsbVSjm6u52apTezuzW1u_hy5qEkN837_3N5CnCTn-vXiqz2IqKq2830_xxIazhexI4GhcBW8lSUQnkwUX5GJ7JmXE">
+<span class="absolute bottom-1 right-1 bg-tertiary-container text-on-tertiary-container p-1 rounded-full border-2 border-white">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Aditya Ahire</h2>
+<p class="text-on-surface-variant font-label-md mt-1">Mechanical Engineering</p>
+<div class="mt-4 flex flex-wrap justify-center gap-2">
+<span class="bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded-full text-label-sm">Class of 2024</span>
+<span class="bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full text-label-sm">Pune Region</span>
+</div>
+</div>
+<div class="mt-8 grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 py-3 border border-error text-error font-label-md rounded-lg hover:bg-error-container transition-colors duration-200">
+<span class="material-symbols-outlined">close</span>
+                            Reject
+                        </button>
+<button class="flex items-center justify-center gap-2 py-3 border border-primary text-primary font-label-md rounded-lg hover:bg-surface-container transition-colors duration-200">
+<span class="material-symbols-outlined">star</span>
+                            Shortlist
+                        </button>
+</div>
+</div>
+<!-- Quick Stats Bento Item -->
+<div class="bg-primary-container text-on-primary-container rounded-xl p-6 space-y-4 shadow-md">
+<h3 class="font-label-md uppercase tracking-wider text-on-primary-container/70">Candidate Metrics</h3>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<p class="text-2xl font-bold">88%</p>
+<p class="text-xs opacity-80">Aggregate GPA</p>
+</div>
+<div>
+<p class="text-2xl font-bold">180d</p>
+<p class="text-xs opacity-80">Internship Exp</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Column: Details & Tabs -->
+<section class="md:col-span-12 lg:col-span-8 space-y-6">
+<!-- Navigation Tabs -->
+<nav class="flex border-b border-outline-variant">
+<button class="px-6 py-4 font-label-md text-primary border-b-2 border-primary transition-all duration-200" id="tab-profile">Profile</button>
+<button class="px-6 py-4 font-label-md text-on-surface-variant hover:text-primary transition-all duration-200" id="tab-resume">Resume</button>
+<button class="px-6 py-4 font-label-md text-on-surface-variant hover:text-primary transition-all duration-200" id="tab-contact">Contact</button>
+</nav>
+<!-- Tab Content: Profile -->
+<div class="space-y-gutter animate-in fade-in duration-500" id="content-profile">
+<!-- Application Note (Glassmorphism-lite) -->
+<div class="bg-secondary-fixed/30 border border-secondary-fixed p-6 rounded-xl relative overflow-hidden">
+<div class="absolute -right-4 -top-4 opacity-10">
+<span class="material-symbols-outlined text-8xl">format_quote</span>
+</div>
+<h4 class="font-label-md text-on-secondary-fixed-variant mb-2">Application Note</h4>
+<p class="font-body-md text-on-secondary-container italic">"I am highly interested in the Maintenance Engineer role at Thermax as I have hands-on experience with thermal systems."</p>
+</div>
+<!-- Education -->
+<div class="bg-white border border-outline-variant p-6 rounded-xl">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary">school</span>
+<h3 class="font-headline-md text-on-surface">Education</h3>
+</div>
+<div class="pl-9 relative">
+<div class="absolute left-[11px] top-2 bottom-0 w-[2px] bg-outline-variant"></div>
+<div class="mb-2">
+<h4 class="font-label-md text-on-surface">MSBTE Diploma in Mechanical Engineering</h4>
+<p class="text-on-surface-variant text-body-md">Government Polytechnic, Pune</p>
+<div class="flex items-center gap-4 mt-1 text-label-sm text-primary font-bold">
+<span>Class of 2024</span>
+<span>Aggregate: 88%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Experience & Internships -->
+<div class="bg-white border border-outline-variant p-6 rounded-xl">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary">work_history</span>
+<h3 class="font-headline-md text-on-surface">Experience</h3>
+</div>
+<div class="pl-9 relative">
+<div class="absolute left-[11px] top-2 bottom-0 w-[2px] bg-outline-variant"></div>
+<div>
+<h4 class="font-label-md text-on-surface">Graduate Engineer Trainee (Intern)</h4>
+<p class="text-on-surface-variant text-body-md">Larsen &amp; Toubro (L&amp;T), Chakan</p>
+<p class="text-label-sm text-on-surface-variant mt-1">Dec 2023 - May 2024 (6 months)</p>
+<ul class="mt-3 list-disc list-inside text-body-md text-on-surface-variant space-y-1">
+<li>Assisted in maintenance of heavy hydraulic machinery.</li>
+<li>Worked with QC team on thermal system calibration.</li>
+<li>Documented boiler operational safety protocols.</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Skills Chips -->
+<div class="bg-white border border-outline-variant p-6 rounded-xl">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">psychology</span>
+<h3 class="font-headline-md text-on-surface">Key Skills</h3>
+</div>
+<div class="flex flex-wrap gap-3">
+<div class="bg-[#DBEAFE] text-[#1E40AF] px-4 py-2 rounded-lg font-label-md flex items-center gap-2 border border-[#1E40AF]/10">
+<span class="material-symbols-outlined text-sm">architecture</span>
+                                AutoCAD
+                            </div>
+<div class="bg-[#DBEAFE] text-[#1E40AF] px-4 py-2 rounded-lg font-label-md flex items-center gap-2 border border-[#1E40AF]/10">
+<span class="material-symbols-outlined text-sm">propane_tank</span>
+                                Boiler Operations
+                            </div>
+<div class="bg-[#DBEAFE] text-[#1E40AF] px-4 py-2 rounded-lg font-label-md flex items-center gap-2 border border-[#1E40AF]/10">
+<span class="material-symbols-outlined text-sm">settings_input_component</span>
+                                PLC
+                            </div>
+<div class="bg-[#DBEAFE] text-[#1E40AF] px-4 py-2 rounded-lg font-label-md flex items-center gap-2 border border-[#1E40AF]/10">
+<span class="material-symbols-outlined text-sm">precision_manufacturing</span>
+                                Thermal Systems
+                            </div>
+<div class="bg-[#DBEAFE] text-[#1E40AF] px-4 py-2 rounded-lg font-label-md flex items-center gap-2 border border-[#1E40AF]/10">
+<span class="material-symbols-outlined text-sm">engineering</span>
+                                QC Calibration
+                            </div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Sticky Bottom Action Bar -->
+<div class="sticky bottom-0 w-full bg-white border-t border-outline-variant px-margin-mobile py-4 z-40 shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
+<div class="max-w-container-max mx-auto flex items-center justify-between gap-4">
+<div class="hidden md:flex flex-col">
+<span class="text-label-sm text-on-surface-variant">Applying for</span>
+<span class="font-label-md text-primary">Maintenance Engineer @ Thermax</span>
+</div>
+<button class="w-full md:w-auto bg-secondary-container hover:bg-secondary-container/90 text-on-secondary-container font-label-md px-10 py-4 rounded-xl flex items-center justify-center gap-3 transition-transform duration-150 active:scale-95 shadow-md">
+<span class="material-symbols-outlined">calendar_month</span>
+                Schedule Interview
+            </button>
+</div>
+</div>
+<!-- Hidden Mobile Nav (using the template's BottomNavBar logic for consistency) -->
+<footer class="md:hidden">
+<!-- Spacing for the sticky action bar above -->
+<div class="h-16"></div>
+</footer>
+<script>
+        // Micro-interactions for tabs
+        const tabs = ['profile', 'resume', 'contact'];
+        tabs.forEach(tabId => {
+            const btn = document.getElementById(`tab-${tabId}`);
+            if (btn) {
+                btn.addEventListener('click', () => {
+                    // Update tab styling
+                    tabs.forEach(id => {
+                        const b = document.getElementById(`tab-${id}`);
+                        b.classList.remove('active-tab', 'text-primary', 'border-b-2', 'border-primary', 'font-bold');
+                        b.classList.add('text-on-surface-variant');
+                    });
+                    btn.classList.add('active-tab', 'text-primary', 'border-b-2', 'border-primary', 'font-bold');
+                    btn.classList.remove('text-on-surface-variant');
+                    
+                    // Toggle content (mock for now as only Profile is populated)
+                    if (tabId === 'profile') {
+                        document.getElementById('content-profile').classList.remove('hidden');
+                    } else {
+                        document.getElementById('content-profile').classList.add('hidden');
+                        // Potential placeholder for other tabs
+                    }
+                });
+            }
+        });
+    </script>
+</body></html>

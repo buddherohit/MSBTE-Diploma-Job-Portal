@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Verification Hub | MSBTE Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-surface-variant": "#444653",
+                "on-secondary": "#ffffff",
+                "secondary-container": "#fd761a",
+                "outline": "#757684",
+                "inverse-surface": "#2d3133",
+                "on-error-container": "#93000a",
+                "secondary-fixed": "#ffdbca",
+                "primary": "#00288e",
+                "on-secondary-fixed": "#341100",
+                "on-error": "#ffffff",
+                "secondary-fixed-dim": "#ffb690",
+                "on-tertiary-container": "#3fd298",
+                "on-primary-fixed": "#001453",
+                "on-primary-container": "#a8b8ff",
+                "secondary": "#9d4300",
+                "primary-fixed-dim": "#b8c4ff",
+                "inverse-primary": "#b8c4ff",
+                "primary-fixed": "#dde1ff",
+                "surface-container-highest": "#e0e3e5",
+                "surface-tint": "#3755c3",
+                "inverse-on-surface": "#eff1f3",
+                "background": "#f7f9fb",
+                "surface-dim": "#d8dadc",
+                "tertiary-container": "#00563a",
+                "surface-container-high": "#e6e8ea",
+                "error": "#ba1a1a",
+                "tertiary-fixed": "#6ffbbe",
+                "surface-bright": "#f7f9fb",
+                "surface-variant": "#e0e3e5",
+                "tertiary-fixed-dim": "#4edea3",
+                "surface-container-lowest": "#ffffff",
+                "primary-container": "#1e40af",
+                "on-surface": "#191c1e",
+                "surface-container": "#eceef0",
+                "outline-variant": "#c4c5d5",
+                "on-primary-fixed-variant": "#173bab",
+                "error-container": "#ffdad6",
+                "surface-container-low": "#f2f4f6",
+                "on-tertiary-fixed": "#002113",
+                "on-secondary-fixed-variant": "#783200",
+                "on-secondary-container": "#5c2400",
+                "tertiary": "#003d27",
+                "on-tertiary": "#ffffff",
+                "on-primary": "#ffffff",
+                "on-background": "#191c1e",
+                "surface": "#f7f9fb",
+                "on-tertiary-fixed-variant": "#005236"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "stack-sm": "0.5rem",
+                "stack-md": "1rem",
+                "stack-lg": "2rem",
+                "container-max": "1280px",
+                "gutter": "1.5rem",
+                "margin-mobile": "1rem"
+            },
+            "fontFamily": {
+                "headline-md": ["Inter"],
+                "display-lg": ["Inter"],
+                "label-md": ["Inter"],
+                "headline-lg-mobile": ["Inter"],
+                "body-md": ["Inter"],
+                "headline-lg": ["Inter"],
+                "body-lg": ["Inter"],
+                "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+      body { font-family: 'Inter', sans-serif; background-color: #f7f9fb; }
+      .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+      .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+      .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+      .custom-scrollbar::-webkit-scrollbar-thumb { background: #c4c5d5; border-radius: 10px; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopAppBar Component -->
+<header class="fixed top-0 w-full z-50 bg-surface border-b border-outline-variant flex justify-between items-center px-gutter h-16 w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer active:opacity-80" data-icon="grid_view">grid_view</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">MSBTE Admin Hub</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex gap-6 items-center">
+<span class="font-label-md text-label-md text-primary font-bold cursor-pointer transition-colors hover:bg-surface-container-high px-3 py-1 rounded">Verification</span>
+<span class="font-label-md text-label-md text-on-surface-variant cursor-pointer transition-colors hover:bg-surface-container-high px-3 py-1 rounded">Moderation</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold overflow-hidden cursor-pointer active:opacity-80">
+<img alt="Admin" class="w-full h-full object-cover" data-alt="A professional headshot of a mature male system administrator in a high-tech corporate office environment. He is wearing a crisp blue dress shirt and has a focused, authoritative expression. The background features blurred glass partitions and soft, high-key office lighting consistent with a modern Industrial Administration aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAj_dJ24BFeWJjPuAnL1MAa7rnoXRWGl1ZQjI_dQpDPQp59CZfky2UnCqd6EgfwvVRBdjOtqbMVxJQBM29v9sLQ0imz3QnzW5xqgtqSyX69yTFB1WGDU15Jy5wyuXD8obg3ixCoPoAWkep8eQABhIHY0cXHg9QLH1_Zoz763XxE2Q_qy262aRou9frP1ptuQ71vBvhBt5CoGx89YvrSpWFEIjsu2KU8rzNFTahxBldtj_gWq3M92AdtEFTdTSGTqGgPivmT1Lk7hto"/>
+</div>
+</div>
+</header>
+<!-- NavigationDrawer Component -->
+<aside class="h-screen w-72 fixed left-0 top-0 z-40 bg-surface-container-low shadow-sm hidden md:flex flex-col gap-stack-sm pt-20 pb-4">
+<div class="px-6 mb-6">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+</div>
+<div>
+<h2 class="font-label-md text-label-md text-on-surface font-bold">System Admin</h2>
+<p class="text-[11px] text-on-surface-variant uppercase tracking-wider">Superuser</p>
+</div>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 px-4 py-3 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Overview</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 px-4 py-3 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="gavel">gavel</span>
+<span class="font-label-md text-label-md">Moderation</span>
+</a>
+<a class="bg-primary-container text-on-primary-container font-bold rounded-lg mx-2 px-4 py-3 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-label-md text-label-md">Verification</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 px-4 py-3 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="factory">factory</span>
+<span class="font-label-md text-label-md">Partners</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 px-4 py-3 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span class="font-label-md text-label-md">Analytics</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 px-4 py-3 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings_heart">settings_heart</span>
+<span class="font-label-md text-label-md">System Health</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-0 md:ml-72 pt-20 px-gutter pb-stack-lg flex-grow">
+<!-- Header & Path Switcher -->
+<div class="max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-stack-lg">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary">Verification Hub</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Reviewing industrial credentials and student diplomas.</p>
+</div>
+<!-- Segmented Control / Path Switcher -->
+<div class="flex bg-surface-container-high p-1 rounded-xl w-full md:w-auto">
+<button class="flex-1 md:flex-none px-6 py-2 rounded-lg font-label-md text-label-md transition-all bg-white shadow-sm text-primary" id="tab-partners" onclick="switchTab('partners')">Pending Partners</button>
+<button class="flex-1 md:flex-none px-6 py-2 rounded-lg font-label-md text-label-md transition-all text-on-surface-variant hover:bg-white/50" id="tab-students" onclick="switchTab('students')">Pending Students</button>
+<button class="flex-1 md:flex-none px-6 py-2 rounded-lg font-label-md text-label-md transition-all text-on-surface-variant hover:bg-white/50" id="tab-docs" onclick="switchTab('docs')">Document Review</button>
+</div>
+</div>
+<!-- Content Grid: Pending Partners -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-stack-md" id="section-partners">
+<!-- Partner Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-stack-md rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row gap-6">
+<div class="w-20 h-20 rounded-lg bg-surface-container flex-shrink-0 flex items-center justify-center overflow-hidden border border-outline-variant">
+<img alt="Company Logo" class="w-full h-full object-cover" data-alt="A minimalist logo for a heavy engineering firm displayed on a brushed metal background. The logo is clean and professional, featuring geometric industrial shapes. The image is brightly lit with a corporate blue color grade, reflecting a modern industrial aesthetic in a high-key setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuADpXCmogvF4OS0thd6jx5OO52fU10cXr2T5IzBEu76sWbplmCg8j_t13NmuGC9gI895YNqeXdYf3_aBwmPfvqX0ct1A0Yxk6btDBnDA4KY7ma0w-4OcAmiXFAbvy2tFMndMSqLqfWbUU6afyEbH2pFcKzVXdUqKpujHYvGwNCFts2SLGsZVnh-1A20uzrEk7C4ne_SgJRxf3gP7h-mNtqgcpr7ZqYAQhzRdki0eAnTmglH3vhD3Pu_kmHpeYUpp3l1t2WqVZnFrDE"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h3 class="font-headline-md text-[20px] text-on-surface">Tata Advanced Systems</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Reg No: MH-IND-2024-8842</p>
+</div>
+<span class="bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded-full font-label-sm text-[10px] uppercase font-bold tracking-widest">Urgent</span>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant mb-6">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="location_on">location_on</span>
+<span class="font-body-md text-body-md">Pune, MH</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="business_center">business_center</span>
+<span class="font-body-md text-body-md">Aerospace &amp; Defense</span>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 bg-primary text-white py-3 rounded-lg font-label-md text-label-md hover:bg-primary-container transition-colors shadow-sm">Approve Accreditation</button>
+<button class="px-4 border border-error text-error py-3 rounded-lg font-label-md text-label-md hover:bg-error-container transition-colors">Flag</button>
+</div>
+</div>
+</div>
+<!-- Partner Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-stack-md rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row gap-6">
+<div class="w-20 h-20 rounded-lg bg-surface-container flex-shrink-0 flex items-center justify-center overflow-hidden border border-outline-variant">
+<img alt="Company Logo" data-alt="A modern corporate building facade reflected in high-contrast blue tones. The focus is on the structural integrity and professionalism of an industrial headquarters. The lighting is crisp morning sunlight, creating sharp shadows and highlights that emphasize the corporate stable aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBujPF3dLx90Y2jrJ7puRo6Ls0gbKqz1cSRM87POIDEcCQWQGNRaCIU0kQmUJM8kX_jMTmFpEHnWZ0j44Up6SKBsu8gOn9nRN90AOdflU79SwIqroZ48zJEyfe0oLPhMKcC6fXhPS_E7EqdSwU4jSabCWyrJlFfPPMLbk6UU54JtNZ7QanRKVilkMIDmiWTbNMxHJzHm_tw8T7iYibtVy15wm7z5E-kVnjMZLDiSnNd3QVFLWhtcDjkWVRkqGEpH86V-mYikjSjJIQ"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h3 class="font-headline-md text-[20px] text-on-surface">L&amp;T Infrastructure</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Reg No: MH-IND-2024-1109</p>
+</div>
+<span class="bg-surface-container-highest text-on-surface-variant px-3 py-1 rounded-full font-label-sm text-[10px] uppercase font-bold tracking-widest">Standard</span>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant mb-6">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="location_on">location_on</span>
+<span class="font-body-md text-body-md">Mumbai, MH</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="business_center">business_center</span>
+<span class="font-body-md text-body-md">Civil Construction</span>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 bg-primary text-white py-3 rounded-lg font-label-md text-label-md hover:bg-primary-container transition-colors shadow-sm">Approve Accreditation</button>
+<button class="px-4 border border-error text-error py-3 rounded-lg font-label-md text-label-md hover:bg-error-container transition-colors">Flag</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Content Grid: Pending Students (Hidden by Default) -->
+<section class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-stack-md" id="section-students">
+<!-- Student Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-stack-md rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">Rahul Deshmukh</h4>
+<p class="text-xs text-on-surface-variant">ID: STU-2023-4412</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-3 rounded-lg mb-4">
+<div class="flex justify-between items-center mb-1">
+<span class="text-[11px] uppercase text-on-surface-variant font-bold">Branch</span>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-2 py-0.5 rounded text-[10px] font-bold">Mechanical</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-[11px] uppercase text-on-surface-variant font-bold">Institution</span>
+<span class="text-xs text-on-surface">G.P. Nagpur</span>
+</div>
+</div>
+<div class="mb-6">
+<p class="text-[11px] uppercase text-on-surface-variant font-bold mb-2">Pending Document</p>
+<div class="flex items-center gap-2 border border-dashed border-outline-variant p-2 rounded cursor-pointer hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="description">description</span>
+<span class="text-xs font-medium">Final_Diploma_Cert.pdf</span>
+</div>
+</div>
+<div class="flex gap-2 mt-auto">
+<button class="flex-1 bg-secondary text-white py-2 rounded font-label-sm text-label-sm hover:bg-secondary-container transition-colors">Verify</button>
+<button class="px-3 border border-error text-error py-2 rounded font-label-sm text-label-sm hover:bg-error-container transition-colors">Reject</button>
+</div>
+</div>
+<!-- Student Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-stack-md rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">Anjali Patil</h4>
+<p class="text-xs text-on-surface-variant">ID: STU-2023-5590</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-3 rounded-lg mb-4">
+<div class="flex justify-between items-center mb-1">
+<span class="text-[11px] uppercase text-on-surface-variant font-bold">Branch</span>
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-2 py-0.5 rounded text-[10px] font-bold">Computer Tech</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-[11px] uppercase text-on-surface-variant font-bold">Institution</span>
+<span class="text-xs text-on-surface">V.J.T.I. Mumbai</span>
+</div>
+</div>
+<div class="mb-6">
+<p class="text-[11px] uppercase text-on-surface-variant font-bold mb-2">Pending Document</p>
+<div class="flex items-center gap-2 border border-dashed border-outline-variant p-2 rounded cursor-pointer hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="description">description</span>
+<span class="text-xs font-medium">Semester_6_Marksheet.pdf</span>
+</div>
+</div>
+<div class="flex gap-2 mt-auto">
+<button class="flex-1 bg-secondary text-white py-2 rounded font-label-sm text-label-sm hover:bg-secondary-container transition-colors">Verify</button>
+<button class="px-3 border border-error text-error py-2 rounded font-label-sm text-label-sm hover:bg-error-container transition-colors">Reject</button>
+</div>
+</div>
+</section>
+<!-- Content Section: Document Review (Bento Grid Style) -->
+<section class="hidden space-y-stack-md" id="section-docs">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-stack-md">
+<!-- Statistics Card -->
+<div class="md:col-span-1 bg-primary text-white p-stack-md rounded-xl shadow-lg flex flex-col justify-between">
+<div>
+<h4 class="font-label-md text-label-md opacity-80 mb-2">Total Queue</h4>
+<p class="text-[40px] font-bold">124</p>
+<p class="text-xs font-medium bg-white/20 inline-block px-2 py-1 rounded">Avg Review: 4.2m</p>
+</div>
+<div class="mt-8 flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="speed">speed</span>
+<span class="text-sm font-semibold">Priority Protocol Active</span>
+</div>
+</div>
+<!-- Main Review Panel -->
+<div class="md:col-span-2 bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden flex flex-col">
+<div class="bg-surface-container px-6 py-4 flex justify-between items-center">
+<h4 class="font-label-md text-label-md text-on-surface">Queue Spotlight: Accreditation ID-998</h4>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="zoom_in">zoom_in</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="print">print</span>
+</div>
+</div>
+<div class="aspect-video bg-inverse-surface flex items-center justify-center p-8 overflow-hidden relative group">
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+<p class="text-white text-xs">Viewing: Industrial_Safety_Certification_2024.jpg</p>
+</div>
+<img alt="Document Preview" class="max-h-full rounded shadow-2xl transform transition-transform group-hover:scale-105" data-alt="A high-quality scan of an official industrial accreditation certificate with ornate borders and a metallic seal. The document is laid flat on a clean architectural blueprint, conveying a sense of engineering precision and official government verification. The lighting is bright and uniform, typical of a high-end corporate archive." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6XOmOcIxc812HFcc0gRgVCsNH8jw69nw0cFTPIdmMWJ3-p3Ql_9F4eClfKXvywtKzoGKGWUxQE_OnsazqpI5gcr2B7VK7ca6Y1pH8bm5NrBUeFTvLC3I9SNBPOGkFbiNs8ZWle5O2MGxNdX9PC27wr2C_xkv0mZaTlgovBDouFJgAqYRiiI2y1z4mvxedFQZm6AQw2mdTJLPd6myxoIXpaNRt3a3Bt-lv10kN6j2HdNlvxbZcorauj7vBd9DN_HjXLmfJxBeHdTU"/>
+</div>
+<div class="p-6 flex justify-end gap-3 bg-surface-container-low">
+<button class="px-6 py-2 border border-outline text-on-surface font-label-md text-label-md rounded-lg hover:bg-surface-container-high transition-all">Defer Review</button>
+<button class="px-6 py-2 bg-secondary text-white font-label-md text-label-md rounded-lg hover:bg-secondary-container transition-all">Approve Document</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer Component -->
+<footer class="w-full py-4 mt-auto bg-surface-container border-t border-outline-variant flex justify-between items-center px-gutter w-full ml-0 md:ml-72 md:max-w-[calc(100%-18rem)]">
+<div class="flex flex-col md:flex-row gap-4 items-center w-full justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">© 2024 MSBTE Diploma Jobs - Industrial Administration Suite</span>
+<div class="flex gap-6">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">System Status</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Admin Support</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">API Docs</a>
+</div>
+</div>
+</footer>
+<script>
+        function switchTab(tab) {
+            // Sections
+            const sections = {
+                partners: document.getElementById('section-partners'),
+                students: document.getElementById('section-students'),
+                docs: document.getElementById('section-docs')
+            };
+            
+            // Buttons
+            const buttons = {
+                partners: document.getElementById('tab-partners'),
+                students: document.getElementById('tab-students'),
+                docs: document.getElementById('tab-docs')
+            };
+
+            // Reset all
+            Object.keys(sections).forEach(key => {
+                sections[key].classList.add('hidden');
+                buttons[key].classList.remove('bg-white', 'shadow-sm', 'text-primary');
+                buttons[key].classList.add('text-on-surface-variant', 'hover:bg-white/50');
+            });
+
+            // Activate current
+            sections[tab].classList.remove('hidden');
+            buttons[tab].classList.add('bg-white', 'shadow-sm', 'text-primary');
+            buttons[tab].classList.remove('text-on-surface-variant', 'hover:bg-white/50');
+        }
+
+        // Simple Fade-in effect on load
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('main').style.opacity = '0';
+            setTimeout(() => {
+                document.querySelector('main').style.transition = 'opacity 0.5s ease-out';
+                document.querySelector('main').style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body></html>

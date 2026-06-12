@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MSBTE Admin Hub | System Health</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 1);
+        }
+        .tech-grid {
+            background-image: radial-gradient(circle, #CBD5E1 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-surface-variant": "#444653",
+                      "on-secondary": "#ffffff",
+                      "secondary-container": "#fd761a",
+                      "outline": "#757684",
+                      "inverse-surface": "#2d3133",
+                      "on-error-container": "#93000a",
+                      "secondary-fixed": "#ffdbca",
+                      "primary": "#00288e",
+                      "on-secondary-fixed": "#341100",
+                      "on-error": "#ffffff",
+                      "secondary-fixed-dim": "#ffb690",
+                      "on-tertiary-container": "#3fd298",
+                      "on-primary-fixed": "#001453",
+                      "on-primary-container": "#a8b8ff",
+                      "secondary": "#9d4300",
+                      "primary-fixed-dim": "#b8c4ff",
+                      "inverse-primary": "#b8c4ff",
+                      "primary-fixed": "#dde1ff",
+                      "surface-container-highest": "#e0e3e5",
+                      "surface-tint": "#3755c3",
+                      "inverse-on-surface": "#eff1f3",
+                      "background": "#f7f9fb",
+                      "surface-dim": "#d8dadc",
+                      "tertiary-container": "#00563a",
+                      "surface-container-high": "#e6e8ea",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed": "#6ffbbe",
+                      "surface-bright": "#f7f9fb",
+                      "surface-variant": "#e0e3e5",
+                      "tertiary-fixed-dim": "#4edea3",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-container": "#1e40af",
+                      "on-surface": "#191c1e",
+                      "surface-container": "#eceef0",
+                      "outline-variant": "#c4c5d5",
+                      "on-primary-fixed-variant": "#173bab",
+                      "error-container": "#ffdad6",
+                      "surface-container-low": "#f2f4f6",
+                      "on-tertiary-fixed": "#002113",
+                      "on-secondary-fixed-variant": "#783200",
+                      "on-secondary-container": "#5c2400",
+                      "tertiary": "#003d27",
+                      "on-tertiary": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "on-background": "#191c1e",
+                      "surface": "#f7f9fb",
+                      "on-tertiary-fixed-variant": "#005236"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-sm": "0.5rem",
+                      "stack-md": "1rem",
+                      "stack-lg": "2rem",
+                      "container-max": "1280px",
+                      "gutter": "1.5rem",
+                      "margin-mobile": "1rem"
+              },
+              "fontFamily": {
+                      "headline-md": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-sm": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden min-h-screen flex flex-col tech-grid">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-inverse-surface border-b border-outline-variant dark:border-on-surface-variant flex justify-between items-center px-gutter h-16 w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim cursor-pointer active:opacity-80">grid_view</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">MSBTE Admin Hub</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-6 items-center">
+<span class="text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-colors cursor-pointer px-3 py-1 rounded">Metrics</span>
+<span class="text-primary font-bold font-label-md text-label-md cursor-pointer px-3 py-1 rounded bg-surface-container-high">System Health</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container cursor-pointer">
+<span class="material-symbols-outlined">person</span>
+</div>
+</div>
+</header>
+<!-- NavigationDrawer -->
+<aside class="h-screen w-72 fixed left-0 top-0 z-40 bg-surface-container-low dark:bg-inverse-surface shadow-sm flex flex-col gap-stack-sm pt-20 pb-4 hidden md:flex">
+<div class="px-6 mb-6 flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold text-primary">System Admin</p>
+<p class="text-xs text-on-surface-variant">MSBTE Platform</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 px-4 py-3 flex items-center gap-3 transition-all scale-98" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Overview</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 px-4 py-3 flex items-center gap-3 transition-all scale-98" href="#">
+<span class="material-symbols-outlined">gavel</span>
+<span class="font-label-md text-label-md">Moderation</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 px-4 py-3 flex items-center gap-3 transition-all scale-98" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+<span class="font-label-md text-label-md">Verification</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 px-4 py-3 flex items-center gap-3 transition-all scale-98" href="#">
+<span class="material-symbols-outlined">factory</span>
+<span class="font-label-md text-label-md">Partners</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 px-4 py-3 flex items-center gap-3 transition-all scale-98" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-label-md text-label-md">Analytics</span>
+</a>
+<a class="bg-primary-container text-on-primary-container font-bold rounded-lg mx-2 px-4 py-3 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings_heart</span>
+<span class="font-label-md text-label-md">System Health</span>
+</a>
+</nav>
+<div class="mt-auto px-6 py-4 border-t border-outline-variant">
+<div class="bg-primary/5 rounded-lg p-3">
+<p class="text-[10px] uppercase tracking-widest text-primary font-bold mb-1">Server Status</p>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-tertiary-fixed-dim animate-pulse"></div>
+<span class="text-xs font-bold text-on-surface">Operational</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-0 md:ml-72 pt-20 px-gutter pb-stack-lg flex-grow">
+<div class="max-w-container-max mx-auto">
+<!-- Header Section -->
+<div class="mb-stack-lg flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">System Health &amp; Ops</h2>
+<p class="text-on-surface-variant font-body-md">Real-time infrastructure monitoring and industrial-grade configuration.</p>
+</div>
+<div class="flex gap-stack-sm">
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-md text-label-md flex items-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[20px]">refresh</span>
+                        FORCE REFRESH
+                    </button>
+<button class="bg-secondary text-on-secondary px-6 py-2 rounded-lg font-label-md text-label-md flex items-center gap-2 hover:opacity-90 transition-opacity shadow-lg">
+<span class="material-symbols-outlined text-[20px]">bolt</span>
+                        EMERGENCY STOP
+                    </button>
+</div>
+</div>
+<!-- Bento Grid - Real-time Graphs -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-gutter">
+<!-- Server Load Graph -->
+<div class="md:col-span-8 glass-panel rounded-xl p-6 relative overflow-hidden">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="font-label-md text-label-md text-primary uppercase tracking-tighter">Server Load (CPU/MEM)</h3>
+<p class="text-2xl font-extrabold text-on-surface">42.8% <span class="text-xs font-normal text-on-surface-variant font-body-md ml-2">Avg. Cluster Load</span></p>
+</div>
+<div class="flex gap-2">
+<span class="px-2 py-1 bg-surface-container rounded text-[10px] font-bold">1h</span>
+<span class="px-2 py-1 bg-primary text-on-primary rounded text-[10px] font-bold">6h</span>
+<span class="px-2 py-1 bg-surface-container rounded text-[10px] font-bold">24h</span>
+</div>
+</div>
+<div class="h-48 w-full flex items-end gap-1">
+<!-- Simulated CSS Graph -->
+<div class="flex-1 bg-primary/20 rounded-t-sm hover:bg-primary transition-all cursor-pointer h-[40%]"></div>
+<div class="flex-1 bg-primary/20 rounded-t-sm hover:bg-primary transition-all cursor-pointer h-[45%]"></div>
+<div class="flex-1 bg-primary/20 rounded-t-sm hover:bg-primary transition-all cursor-pointer h-[38%]"></div>
+<div class="flex-1 bg-primary/20 rounded-t-sm hover:bg-primary transition-all cursor-pointer h-[50%]"></div>
+<div class="flex-1 bg-primary/20 rounded-t-sm hover:bg-primary transition-all cursor-pointer h-[62%]"></div>
+<div class="flex-1 bg-primary/20 rounded-t-sm hover:bg-primary transition-all cursor-pointer h-[58%]"></div>
+<div class="flex-1 bg-primary/20 rounded-t-sm hover:bg-primary transition-all cursor-pointer h-[42%]"></div>
+<div class="flex-1 bg-primary/20 rounded-t-sm hover:bg-primary transition-all cursor-pointer h-[30%]"></div>
+<div class="flex-1 bg-primary/20 rounded-t-sm hover:bg-primary transition-all cursor-pointer h-[45%]"></div>
+<div class="flex-1 bg-primary/20 rounded-t-sm hover:bg-primary transition-all cursor-pointer h-[55%]"></div>
+<div class="flex-1 bg-primary/20 rounded-t-sm hover:bg-primary transition-all cursor-pointer h-[40%]"></div>
+<div class="flex-1 bg-primary/20 rounded-t-sm hover:bg-primary transition-all cursor-pointer h-[65%]"></div>
+<div class="flex-1 bg-primary/20 rounded-t-sm hover:bg-primary transition-all cursor-pointer h-[80%] border-t-2 border-primary"></div>
+<div class="flex-1 bg-primary/20 rounded-t-sm hover:bg-primary transition-all cursor-pointer h-[55%]"></div>
+<div class="flex-1 bg-primary/20 rounded-t-sm hover:bg-primary transition-all cursor-pointer h-[40%]"></div>
+</div>
+<div class="mt-4 flex justify-between text-[10px] font-bold text-outline uppercase">
+<span>12:00 PM</span>
+<span>01:00 PM</span>
+<span>02:00 PM</span>
+<span>03:00 PM</span>
+<span>04:00 PM</span>
+<span>05:00 PM</span>
+</div>
+</div>
+<!-- API Latency -->
+<div class="md:col-span-4 glass-panel rounded-xl p-6 border-l-4 border-l-tertiary-container flex flex-col justify-between">
+<div>
+<h3 class="font-label-md text-label-md text-on-tertiary-fixed-variant uppercase tracking-tighter mb-4">API Latency</h3>
+<div class="flex items-center justify-center p-6 bg-surface-container rounded-full w-32 h-32 mx-auto border-4 border-tertiary-fixed">
+<div class="text-center">
+<p class="text-2xl font-black text-on-surface">84ms</p>
+<p class="text-[10px] font-bold text-tertiary-fixed-variant">NOMINAL</p>
+</div>
+</div>
+</div>
+<div class="mt-6 space-y-2">
+<div class="flex justify-between items-center text-xs">
+<span class="text-on-surface-variant">Auth Gateway</span>
+<span class="font-bold text-tertiary-fixed-variant">12ms</span>
+</div>
+<div class="flex justify-between items-center text-xs">
+<span class="text-on-surface-variant">Job Match Engine</span>
+<span class="font-bold text-tertiary-fixed-variant">42ms</span>
+</div>
+<div class="flex justify-between items-center text-xs">
+<span class="text-on-surface-variant">DB Read Replica</span>
+<span class="font-bold text-secondary">156ms</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Configuration & Logs Row -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Platform Maintenance & Settings -->
+<div class="lg:col-span-1 space-y-gutter">
+<section class="bg-inverse-surface text-on-primary rounded-xl p-6 shadow-xl border border-outline">
+<h3 class="font-label-md text-label-md text-primary-fixed uppercase tracking-widest mb-6">Platform Controls</h3>
+<div class="space-y-6">
+<div class="flex items-center justify-between">
+<div>
+<p class="font-bold text-sm">Maintenance Mode</p>
+<p class="text-xs text-primary-fixed-dim">Suspend all user traffic</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<div class="pt-4 border-t border-white/10">
+<p class="font-bold text-sm mb-3">Backup Scheduling</p>
+<div class="grid grid-cols-2 gap-2">
+<button class="bg-white/10 border border-white/20 text-[10px] font-bold py-2 rounded uppercase hover:bg-white/20">Daily Sync</button>
+<button class="bg-primary-container text-on-primary-container text-[10px] font-bold py-2 rounded uppercase border border-primary">Weekly Full</button>
+</div>
+<p class="text-[10px] text-primary-fixed-dim mt-2 italic">Next backup: Sunday, 02:00 AM</p>
+</div>
+</div>
+</section>
+<div class="bg-surface-container rounded-xl p-6 border border-outline-variant">
+<h4 class="font-label-md text-label-md text-on-surface mb-4">Quick Diagnostic</h4>
+<div class="flex gap-2">
+<input class="flex-grow bg-surface-container-lowest border-outline-variant rounded-lg text-xs p-2 focus:ring-primary" placeholder="Trace IP / URL..." type="text"/>
+<button class="p-2 bg-primary text-on-primary rounded-lg">
+<span class="material-symbols-outlined text-[18px]">search</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Logs Table -->
+<div class="lg:col-span-2 glass-panel rounded-xl flex flex-col overflow-hidden">
+<div class="px-6 py-4 bg-surface-container-high border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase">Incident Logs &amp; Security Events</h3>
+<div class="flex gap-2">
+<span class="flex items-center gap-1 text-[10px] font-bold text-error uppercase">
+<span class="w-2 h-2 rounded-full bg-error"></span> 4 Failed Jobs
+                            </span>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low text-[10px] font-bold text-outline uppercase border-b border-outline-variant">
+<tr>
+<th class="px-6 py-3">Timestamp</th>
+<th class="px-6 py-3">Event Type</th>
+<th class="px-6 py-3">Source</th>
+<th class="px-6 py-3">Status</th>
+<th class="px-6 py-3">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-primary/5 transition-colors cursor-default">
+<td class="px-6 py-4 text-xs font-mono text-on-surface-variant">14:22:01.04</td>
+<td class="px-6 py-4">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-[16px]">error</span>
+<span class="text-xs font-bold">Failed Job: Emailer_v2</span>
+</span>
+</td>
+<td class="px-6 py-4 text-xs text-on-surface-variant">Queue::Industrial_Jobs</td>
+<td class="px-6 py-4">
+<span class="bg-error-container text-on-error-container px-2 py-0.5 rounded text-[10px] font-bold uppercase">Critical</span>
+</td>
+<td class="px-6 py-4">
+<button class="text-primary hover:underline text-[10px] font-bold uppercase">Retry</button>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors cursor-default">
+<td class="px-6 py-4 text-xs font-mono text-on-surface-variant">14:18:45.12</td>
+<td class="px-6 py-4">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[16px]">security</span>
+<span class="text-xs font-bold">Failed Admin Login</span>
+</span>
+</td>
+<td class="px-6 py-4 text-xs text-on-surface-variant">IP: 192.168.1.104</td>
+<td class="px-6 py-4">
+<span class="bg-secondary-fixed text-on-secondary-fixed px-2 py-0.5 rounded text-[10px] font-bold uppercase">Warning</span>
+</td>
+<td class="px-6 py-4">
+<button class="text-primary hover:underline text-[10px] font-bold uppercase">Ban IP</button>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors cursor-default">
+<td class="px-6 py-4 text-xs font-mono text-on-surface-variant">14:05:00.00</td>
+<td class="px-6 py-4">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-[16px]">sync</span>
+<span class="text-xs font-bold">Daily Snapshot</span>
+</span>
+</td>
+<td class="px-6 py-4 text-xs text-on-surface-variant">Sys::Internal_Backup</td>
+<td class="px-6 py-4">
+<span class="bg-tertiary-container text-on-tertiary-container px-2 py-0.5 rounded text-[10px] font-bold uppercase">Success</span>
+</td>
+<td class="px-6 py-4">
+<button class="text-primary hover:underline text-[10px] font-bold uppercase">View Logs</button>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors cursor-default">
+<td class="px-6 py-4 text-xs font-mono text-on-surface-variant">13:58:22.88</td>
+<td class="px-6 py-4">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-[16px]">dangerous</span>
+<span class="text-xs font-bold">SQL Injection Blocked</span>
+</span>
+</td>
+<td class="px-6 py-4 text-xs text-on-surface-variant">WAF::Filter_Primary</td>
+<td class="px-6 py-4">
+<span class="bg-error-container text-on-error-container px-2 py-0.5 rounded text-[10px] font-bold uppercase">Blocked</span>
+</td>
+<td class="px-6 py-4">
+<button class="text-primary hover:underline text-[10px] font-bold uppercase">Details</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container dark:bg-inverse-surface border-t border-outline-variant w-full py-4 mt-auto flex justify-between items-center px-gutter ml-0 md:ml-72 md:max-w-[calc(100%-18rem)]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">© 2024 MSBTE Diploma Jobs - Industrial Administration Suite</span>
+</div>
+<div class="hidden md:flex gap-6">
+<a class="text-on-surface-variant font-label-sm text-label-sm hover:text-primary transition-all" href="#">System Status</a>
+<a class="text-on-surface-variant font-label-sm text-label-sm hover:text-primary transition-all" href="#">Admin Support</a>
+<a class="text-on-surface-variant font-label-sm text-label-sm hover:text-primary transition-all" href="#">API Docs</a>
+</div>
+</footer>
+<!-- FAB (Only on relevant screens, but restricted for this dashboard as per protocol) -->
+<script>
+        // Micro-interactions for the dashboard
+        document.querySelectorAll('tr').forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.style.transform = 'scale(1.005)';
+                row.style.transition = 'transform 0.1s ease';
+            });
+            row.addEventListener('mouseleave', () => {
+                row.style.transform = 'scale(1)';
+            });
+        });
+
+        // Toggle maintenance mode simulated interaction
+        const toggle = document.querySelector('input[type="checkbox"]');
+        if(toggle) {
+            toggle.addEventListener('change', (e) => {
+                if(e.target.checked) {
+                    console.log("Maintenance mode armed.");
+                }
+            });
+        }
+    </script>
+</body></html>

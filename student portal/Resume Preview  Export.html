@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .resume-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        @media print {
+            .no-print { display: none !important; }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#3fd298",
+                        "outline-variant": "#c4c5d5",
+                        "on-surface": "#191c1e",
+                        "on-secondary-container": "#5c2400",
+                        "on-primary-fixed": "#001453",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#444653",
+                        "secondary-fixed": "#ffdbca",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#d8dadc",
+                        "on-secondary-fixed": "#341100",
+                        "surface-container-low": "#f2f4f6",
+                        "inverse-primary": "#b8c4ff",
+                        "on-primary-fixed-variant": "#173bab",
+                        "on-primary-container": "#a8b8ff",
+                        "on-background": "#191c1e",
+                        "surface-variant": "#e0e3e5",
+                        "primary-container": "#1e40af",
+                        "on-secondary-fixed-variant": "#783200",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "surface-container": "#eceef0",
+                        "surface-bright": "#f7f9fb",
+                        "surface": "#f7f9fb",
+                        "primary-fixed-dim": "#b8c4ff",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#003d27",
+                        "surface-tint": "#3755c3",
+                        "outline": "#757684",
+                        "on-tertiary-fixed": "#002113",
+                        "surface-container-high": "#e6e8ea",
+                        "secondary": "#9d4300",
+                        "inverse-on-surface": "#eff1f3",
+                        "primary-fixed": "#dde1ff",
+                        "inverse-surface": "#2d3133",
+                        "tertiary-fixed": "#6ffbbe",
+                        "secondary-container": "#fd761a",
+                        "background": "#f7f9fb",
+                        "secondary-fixed-dim": "#ffb690",
+                        "primary": "#00288e",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "tertiary-container": "#00563a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "1rem",
+                        "stack-sm": "0.5rem",
+                        "margin-mobile": "1rem",
+                        "gutter": "1.5rem",
+                        "stack-lg": "2rem",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-dim font-body-md text-on-surface overflow-hidden">
+<!-- Top AppBar (JSON Content) -->
+<header class="bg-surface shadow-sm docked full-width top-0 z-40 no-print">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-gutter max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="school">school</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">MahaResume</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex gap-2 bg-surface-container rounded-full p-1">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors active:scale-95" id="zoomOut">
+<span class="material-symbols-outlined" data-icon="zoom_out">zoom_out</span>
+</button>
+<span class="px-2 flex items-center font-label-md text-label-md" id="zoomLevel">100%</span>
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors active:scale-95" id="zoomIn">
+<span class="material-symbols-outlined" data-icon="zoom_in">zoom_in</span>
+</button>
+</div>
+<button class="bg-primary text-on-primary font-label-md text-label-md px-6 py-2.5 rounded-full hover:opacity-90 active:scale-95 transition-all shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]" data-icon="picture_as_pdf">picture_as_pdf</span>
+                    Export PDF
+                </button>
+</div>
+</div>
+</header>
+<main class="h-[calc(100vh-64px)] overflow-auto custom-scrollbar bg-surface-dim/50 p-4 md:p-8 flex justify-center">
+<!-- Resume Canvas Container -->
+<div class="transition-transform duration-300 ease-out origin-top" id="resumeWrapper">
+<!-- Professional Resume Template -->
+<div class="bg-white w-[210mm] min-h-[297mm] resume-shadow p-12 text-[#1a1a1a] relative flex flex-col gap-8" id="resumePaper">
+<!-- Resume Header -->
+<section class="border-b-4 border-primary pb-6">
+<div class="flex justify-between items-end">
+<div>
+<h1 class="font-display-lg text-display-lg text-primary uppercase tracking-tight">Rajesh Kumar</h1>
+<p class="font-headline-md text-headline-md text-secondary font-semibold">Mechanical Engineering Student</p>
+</div>
+<div class="text-right space-y-1">
+<p class="flex items-center justify-end gap-2 text-on-surface-variant font-label-md text-label-md">
+                                rajesh.kumar.msbte@email.com <span class="material-symbols-outlined text-primary text-[18px]" data-icon="mail">mail</span>
+</p>
+<p class="flex items-center justify-end gap-2 text-on-surface-variant font-label-md text-label-md">
+                                +91 98765 43210 <span class="material-symbols-outlined text-primary text-[18px]" data-icon="call">call</span>
+</p>
+<p class="flex items-center justify-end gap-2 text-on-surface-variant font-label-md text-label-md">
+                                Pune, Maharashtra <span class="material-symbols-outlined text-primary text-[18px]" data-icon="location_on">location_on</span>
+</p>
+</div>
+</div>
+</section>
+<!-- Profile Summary -->
+<section>
+<h2 class="font-label-md text-label-md text-primary uppercase tracking-widest border-b border-outline-variant mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]" data-icon="person_search">person_search</span>
+                        Professional Summary
+                    </h2>
+<p class="font-body-md text-body-md leading-relaxed text-on-surface-variant">
+                        Detail-oriented Final Year Mechanical Engineering Diploma student at MSBTE with a strong foundation in thermal engineering, manufacturing processes, and CAD design. Proven ability to apply theoretical knowledge to practical industrial problems through hands-on internships at major automotive hubs. Aspiring to contribute technical expertise to Maharashtra's growing industrial sector.
+                    </p>
+</section>
+<!-- Grid Content -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Left Column -->
+<div class="col-span-4 space-y-8">
+<!-- Education -->
+<section>
+<h2 class="font-label-md text-label-md text-primary uppercase tracking-widest border-b border-outline-variant mb-4">Education</h2>
+<div class="space-y-4">
+<div>
+<p class="font-bold text-on-surface">Diploma in Mechanical Engineering</p>
+<p class="text-label-md font-label-md text-secondary">Government Polytechnic, Pune</p>
+<p class="text-label-sm font-label-sm text-outline">2021 – Present</p>
+<p class="text-label-md font-label-md mt-1">Current Aggregate: 88.5%</p>
+</div>
+<div>
+<p class="font-bold text-on-surface">SSC (Secondary School Certificate)</p>
+<p class="text-label-md font-label-md text-secondary">Maharashtra State Board</p>
+<p class="text-label-sm font-label-sm text-outline">2021</p>
+<p class="text-label-md font-label-md mt-1">Percentage: 92.4%</p>
+</div>
+</div>
+</section>
+<!-- Skills -->
+<section>
+<h2 class="font-label-md text-label-md text-primary uppercase tracking-widest border-b border-outline-variant mb-4">Technical Skills</h2>
+<div class="flex flex-wrap gap-2">
+<span class="bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded text-label-sm font-label-sm">AutoCAD</span>
+<span class="bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded text-label-sm font-label-sm">SolidWorks</span>
+<span class="bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded text-label-sm font-label-sm">CNC Programming</span>
+<span class="bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded text-label-sm font-label-sm">Thermodynamics</span>
+<span class="bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded text-label-sm font-label-sm">Hydraulics</span>
+<span class="bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded text-label-sm font-label-sm">Pneumatics</span>
+<span class="bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded text-label-sm font-label-sm">MS Office</span>
+</div>
+</section>
+<!-- Languages -->
+<section>
+<h2 class="font-label-md text-label-md text-primary uppercase tracking-widest border-b border-outline-variant mb-4">Languages</h2>
+<ul class="space-y-1 font-body-md text-body-md">
+<li class="flex justify-between"><span>Marathi</span> <span class="text-outline italic">Native</span></li>
+<li class="flex justify-between"><span>English</span> <span class="text-outline italic">Fluent</span></li>
+<li class="flex justify-between"><span>Hindi</span> <span class="text-outline italic">Fluent</span></li>
+</ul>
+</section>
+</div>
+<!-- Right Column -->
+<div class="col-span-8 space-y-8">
+<!-- Experience -->
+<section>
+<h2 class="font-label-md text-label-md text-primary uppercase tracking-widest border-b border-outline-variant mb-4">Internship Experience</h2>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-[18px] font-bold text-on-surface">Production Intern</h3>
+<span class="text-label-sm font-label-sm text-outline">Jun 2023 – Aug 2023</span>
+</div>
+<p class="text-secondary font-semibold font-label-md text-label-md mb-2">Tata Motors Limited, Pimpri</p>
+<ul class="list-disc list-outside ml-4 space-y-1 text-on-surface-variant">
+<li>Assisted in the quality control department monitoring engine block manufacturing lines.</li>
+<li>Participated in a Kaizen initiative that reduced assembly line downtime by 5% over two months.</li>
+<li>Documented safety protocols and created visual workflow charts for new trainees.</li>
+</ul>
+</div>
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-[18px] font-bold text-on-surface">Maintenance Trainee</h3>
+<span class="text-label-sm font-label-sm text-outline">Dec 2022 – Jan 2023</span>
+</div>
+<p class="text-secondary font-semibold font-label-md text-label-md mb-2">Bharat Forge Ltd, Mundhwa</p>
+<ul class="list-disc list-outside ml-4 space-y-1 text-on-surface-variant">
+<li>Observed preventative maintenance schedules for heavy-duty hydraulic presses.</li>
+<li>Aided the senior engineers in diagnosing valve failures in the forging division.</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Projects -->
+<section>
+<h2 class="font-label-md text-label-md text-primary uppercase tracking-widest border-b border-outline-variant mb-4">Academic Projects</h2>
+<div class="space-y-4">
+<div>
+<p class="font-bold text-on-surface">Final Year Project: Solar Powered Desalination System</p>
+<p class="text-on-surface-variant text-body-md mt-1">
+                                        Designed and fabricated a prototype solar still capable of producing 2 liters of potable water daily. Focus on thermal efficiency and sustainable material usage.
+                                    </p>
+</div>
+<div>
+<p class="font-bold text-on-surface">Pneumatic Jack System</p>
+<p class="text-on-surface-variant text-body-md mt-1">
+                                        Engineered a portable pneumatic jack for light commercial vehicles using standard MSBTE lab components to demonstrate fluid power applications.
+                                    </p>
+</div>
+</div>
+</section>
+<!-- Certifications -->
+<section>
+<h2 class="font-label-md text-label-md text-primary uppercase tracking-widest border-b border-outline-variant mb-4">Certifications</h2>
+<ul class="space-y-2">
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-[18px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-on-surface-variant font-body-md text-body-md">MS-CIT Certified (95% Score)</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-[18px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-on-surface-variant font-body-md text-body-md">SolidWorks Professional (CSWP) - Academic Version</span>
+</li>
+</ul>
+</section>
+</div>
+</div>
+<!-- Footer / Aesthetic Accent -->
+<div class="mt-auto pt-8 flex justify-between items-center text-outline-variant border-t border-outline-variant/30">
+<p class="text-label-sm font-label-sm">Generated by MahaResume</p>
+<div class="flex gap-4">
+<span class="text-label-sm font-label-sm">Reference available upon request</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Controls & Export (Enhanced FAB/Nav Hybrid) -->
+<footer class="fixed bottom-0 left-0 w-full z-50 bg-surface-container/95 backdrop-blur-md shadow-[0_-4px_20px_rgba(0,0,0,0.1)] no-print">
+<div class="max-w-container-max mx-auto px-margin-mobile py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="style">style</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface leading-none">Template: Maharashtra Industrial</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Standard A4 Layout</p>
+</div>
+</div>
+<div class="flex items-center gap-4 w-full md:w-auto">
+<button class="flex-1 md:flex-none border border-outline text-on-surface font-label-md text-label-md px-6 py-3 rounded-xl hover:bg-surface-container-high transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+                    Back to Builder
+                </button>
+<button class="flex-1 md:flex-none bg-secondary text-white font-label-md text-label-md px-10 py-3 rounded-xl hover:opacity-90 active:scale-95 transition-all shadow-md flex items-center justify-center gap-2 group" id="exportBtn">
+<span class="material-symbols-outlined group-hover:animate-bounce" data-icon="download">download</span>
+                    Export as PDF
+                </button>
+</div>
+</div>
+</footer>
+<script>
+        const resumeWrapper = document.getElementById('resumeWrapper');
+        const zoomIn = document.getElementById('zoomIn');
+        const zoomOut = document.getElementById('zoomOut');
+        const zoomLevelText = document.getElementById('zoomLevel');
+        const exportBtn = document.getElementById('exportBtn');
+
+        let zoom = 1.0;
+        const zoomStep = 0.1;
+        const minZoom = 0.5;
+        const maxZoom = 1.5;
+
+        function updateZoom() {
+            resumeWrapper.style.transform = `scale(${zoom})`;
+            zoomLevelText.textContent = `${Math.round(zoom * 100)}%`;
+        }
+
+        zoomIn.addEventListener('click', () => {
+            if (zoom < maxZoom) {
+                zoom += zoomStep;
+                updateZoom();
+            }
+        });
+
+        zoomOut.addEventListener('click', () => {
+            if (zoom > minZoom) {
+                zoom -= zoomStep;
+                updateZoom();
+            }
+        });
+
+        exportBtn.addEventListener('click', () => {
+            // Simulate preparation
+            exportBtn.innerHTML = `<span class="material-symbols-outlined animate-spin" data-icon="refresh">refresh</span> Generating PDF...`;
+            exportBtn.disabled = true;
+            
+            setTimeout(() => {
+                window.print();
+                exportBtn.innerHTML = `<span class="material-symbols-outlined" data-icon="download">download</span> Export as PDF`;
+                exportBtn.disabled = false;
+            }, 1000);
+        });
+
+        // Initialize mobile zoom adjustment
+        if (window.innerWidth < 768) {
+            zoom = 0.45;
+            updateZoom();
+        }
+    </script>
+</body></html>

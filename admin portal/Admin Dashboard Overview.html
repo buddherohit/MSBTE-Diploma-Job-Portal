@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MSBTE Admin Hub - Industrial Administration Suite</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-surface-variant": "#444653",
+                      "on-secondary": "#ffffff",
+                      "secondary-container": "#fd761a",
+                      "outline": "#757684",
+                      "inverse-surface": "#2d3133",
+                      "on-error-container": "#93000a",
+                      "secondary-fixed": "#ffdbca",
+                      "primary": "#00288e",
+                      "on-secondary-fixed": "#341100",
+                      "on-error": "#ffffff",
+                      "secondary-fixed-dim": "#ffb690",
+                      "on-tertiary-container": "#3fd298",
+                      "on-primary-fixed": "#001453",
+                      "on-primary-container": "#a8b8ff",
+                      "secondary": "#9d4300",
+                      "primary-fixed-dim": "#b8c4ff",
+                      "inverse-primary": "#b8c4ff",
+                      "primary-fixed": "#dde1ff",
+                      "surface-container-highest": "#e0e3e5",
+                      "surface-tint": "#3755c3",
+                      "inverse-on-surface": "#eff1f3",
+                      "background": "#f7f9fb",
+                      "surface-dim": "#d8dadc",
+                      "tertiary-container": "#00563a",
+                      "surface-container-high": "#e6e8ea",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed": "#6ffbbe",
+                      "surface-bright": "#f7f9fb",
+                      "surface-variant": "#e0e3e5",
+                      "tertiary-fixed-dim": "#4edea3",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-container": "#1e40af",
+                      "on-surface": "#191c1e",
+                      "surface-container": "#eceef0",
+                      "outline-variant": "#c4c5d5",
+                      "on-primary-fixed-variant": "#173bab",
+                      "error-container": "#ffdad6",
+                      "surface-container-low": "#f2f4f6",
+                      "on-tertiary-fixed": "#002113",
+                      "on-secondary-fixed-variant": "#783200",
+                      "on-secondary-container": "#5c2400",
+                      "tertiary": "#003d27",
+                      "on-tertiary": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "on-background": "#191c1e",
+                      "surface": "#f7f9fb",
+                      "on-tertiary-fixed-variant": "#005236"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-sm": "0.5rem",
+                      "stack-md": "1rem",
+                      "stack-lg": "2rem",
+                      "container-max": "1280px",
+                      "gutter": "1.5rem",
+                      "margin-mobile": "1rem"
+              },
+              "fontFamily": {
+                      "headline-md": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-sm": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .blueprint-bg {
+            background-image: 
+                linear-gradient(to right, rgba(0, 40, 142, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 40, 142, 0.05) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .scroll-hide::-webkit-scrollbar { display: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body-md text-on-background blueprint-bg min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface border-b border-outline-variant flex justify-between items-center px-gutter h-16 w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer active:opacity-80">grid_view</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">MSBTE Admin Hub</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center gap-2 px-3 py-1 bg-surface-container rounded-full border border-outline-variant">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">System: Optimal</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold overflow-hidden border-2 border-primary">
+<img alt="Admin" class="w-full h-full object-cover" data-alt="A professional headshot of a corporate executive in a modern, brightly lit office environment. He is wearing a tailored navy blue suit and has a confident, approachable expression. The background features clean glass partitions and architectural lines consistent with a high-end industrial tech firm, using a palette of whites, cool blues, and soft greys." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCg6YxAB84N6qeUS36KwJ9kGeF44JGX0dlz6vvD7mo6TWMS2gdy7TX-my1Rsp5S4DSD2syJzuRG2IaOQNDaIv5goiwH9jnx7MymA6TMGuoP-CryNUuI95v6nnjqMtY6eehnE3IHgDtu4hzw3jbGWsdPL6X5v1rDZ3RmwwiCP1OAzdOyVmt_L0hcRN0SiT5A5jGn8vu1u2Zqpuytlusm7kBdhA3lEpNUnBRUJlKlxG88SL2cmnhnnxdOnC2eg6XdE9VXBeW37_u1KUo"/>
+</div>
+</div>
+</header>
+<!-- NavigationDrawer -->
+<aside class="h-screen w-72 fixed left-0 top-0 z-40 bg-surface-container-low shadow-sm flex flex-col gap-stack-sm pt-20 pb-4 hidden md:flex">
+<div class="px-6 mb-6">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined">shield_person</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary font-bold">System Admin</p>
+<p class="text-[11px] text-on-surface-variant leading-none">Superuser • MSBTE Platform</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<!-- Overview Active -->
+<a class="bg-primary-container text-on-primary-container font-bold rounded-lg mx-2 px-4 py-3 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Overview</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 px-4 py-3 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">gavel</span>
+<span class="font-label-md text-label-md">Moderation</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 px-4 py-3 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+<span class="font-label-md text-label-md">Verification</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 px-4 py-3 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">factory</span>
+<span class="font-label-md text-label-md">Partners</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 px-4 py-3 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-label-md text-label-md">Analytics</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 px-4 py-3 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">settings_heart</span>
+<span class="font-label-md text-label-md">System Health</span>
+</a>
+</nav>
+<div class="mx-4 mt-auto p-4 bg-primary-fixed rounded-xl border border-primary-container/20">
+<p class="font-label-sm text-label-sm text-primary mb-2">Technical Support</p>
+<p class="text-[11px] text-primary/70 mb-3">Direct line for urgent infrastructure issues.</p>
+<button class="w-full py-2 bg-primary text-white text-[12px] font-bold rounded hover:bg-primary-container transition-colors">CALL OPS HUB</button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-0 md:ml-72 pt-20 px-gutter pb-12 flex-1">
+<!-- Page Header & Quick Actions -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
+<div>
+<p class="text-primary font-bold font-label-md uppercase tracking-widest text-[11px] mb-1">Infrastructure Control</p>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Platform Intelligence</h2>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 border border-primary text-primary font-bold rounded hover:bg-surface-container-high transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+<span class="text-label-md">Manage Users</span>
+</button>
+<button class="px-4 py-2 bg-secondary text-white font-bold rounded hover:brightness-110 shadow-sm transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+<span class="text-label-md">Global Settings</span>
+</button>
+</div>
+</div>
+<!-- Bento Grid: KPI Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-stack-md mb-8">
+<div class="bg-surface-container-lowest p-6 border border-outline-variant rounded-xl shadow-sm hover:shadow-md transition-all group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-primary/10 rounded-lg group-hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-white">school</span>
+</div>
+<span class="text-tertiary-fixed-dim font-bold text-label-sm">+12%</span>
+</div>
+<p class="font-label-sm text-on-surface-variant uppercase">Total Students</p>
+<p class="font-headline-lg text-headline-lg text-on-surface">124,592</p>
+</div>
+<div class="bg-surface-container-lowest p-6 border border-outline-variant rounded-xl shadow-sm hover:shadow-md transition-all group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-secondary-container/10 rounded-lg group-hover:bg-secondary-container transition-colors">
+<span class="material-symbols-outlined text-secondary-container group-hover:text-white">domain</span>
+</div>
+<span class="text-tertiary-fixed-dim font-bold text-label-sm">+8%</span>
+</div>
+<p class="font-label-sm text-on-surface-variant uppercase">Verified Employers</p>
+<p class="font-headline-lg text-headline-lg text-on-surface">3,204</p>
+</div>
+<div class="bg-surface-container-lowest p-6 border border-outline-variant rounded-xl shadow-sm hover:shadow-md transition-all group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-tertiary-container/10 rounded-lg group-hover:bg-tertiary-container transition-colors">
+<span class="material-symbols-outlined text-tertiary-container group-hover:text-white">work</span>
+</div>
+<span class="text-error font-bold text-label-sm">-3%</span>
+</div>
+<p class="font-label-sm text-on-surface-variant uppercase">Active Jobs</p>
+<p class="font-headline-lg text-headline-lg text-on-surface">18,940</p>
+</div>
+<div class="bg-primary p-6 border border-primary-container rounded-xl shadow-lg relative overflow-hidden">
+<!-- Abstract Blueprint Pattern Overlay -->
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 16px 16px;"></div>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-white/20 rounded-lg">
+<span class="material-symbols-outlined text-white">trending_up</span>
+</div>
+<span class="text-white/80 font-bold text-label-sm">High</span>
+</div>
+<p class="font-label-sm text-white/70 uppercase">Placement Rate</p>
+<p class="font-headline-lg text-headline-lg text-white">74.2%</p>
+</div>
+</div>
+</div>
+<!-- Main Dashboard Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-stack-lg">
+<!-- Left: Health & Metrics (2 cols) -->
+<div class="lg:col-span-2 flex flex-col gap-stack-lg">
+<!-- Platform Health Section -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6">
+<div class="flex justify-between items-center mb-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">analytics</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Platform Health</h3>
+</div>
+<button class="text-primary font-bold text-label-sm flex items-center gap-1">
+                            LOGS <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<div class="p-4 bg-surface-container-low rounded-lg border border-outline-variant/30">
+<div class="flex justify-between items-center mb-3">
+<span class="text-label-md font-bold text-on-surface">Server Uptime</span>
+<span class="px-2 py-0.5 bg-tertiary-fixed text-on-tertiary-fixed rounded text-[10px] font-bold">99.98%</span>
+</div>
+<div class="flex gap-1 h-8 items-end">
+<!-- Sparkline-like bars -->
+<div class="w-full bg-tertiary-fixed-dim h-6 rounded-t-sm"></div>
+<div class="w-full bg-tertiary-fixed-dim h-8 rounded-t-sm"></div>
+<div class="w-full bg-tertiary-fixed-dim h-7 rounded-t-sm"></div>
+<div class="w-full bg-tertiary-fixed-dim h-8 rounded-t-sm"></div>
+<div class="w-full bg-tertiary-fixed-dim h-8 rounded-t-sm"></div>
+<div class="w-full bg-tertiary-fixed-dim h-5 rounded-t-sm"></div>
+<div class="w-full bg-tertiary-fixed-dim h-8 rounded-t-sm"></div>
+<div class="w-full bg-tertiary-fixed-dim h-8 rounded-t-sm"></div>
+<div class="w-full bg-tertiary-fixed-dim h-7 rounded-t-sm"></div>
+<div class="w-full bg-tertiary-fixed-dim h-8 rounded-t-sm"></div>
+<div class="w-full bg-tertiary-fixed-dim h-8 rounded-t-sm"></div>
+<div class="w-full bg-tertiary-fixed-dim h-8 rounded-t-sm"></div>
+</div>
+<p class="mt-2 text-[11px] text-on-surface-variant italic">AWS-AP-SOUTH-1 Cluster: Operational</p>
+</div>
+<div class="p-4 bg-surface-container-low rounded-lg border border-outline-variant/30">
+<div class="flex justify-between items-center mb-3">
+<span class="text-label-md font-bold text-on-surface">Database Latency</span>
+<span class="px-2 py-0.5 bg-secondary-fixed text-on-secondary-fixed rounded text-[10px] font-bold">42ms</span>
+</div>
+<div class="relative h-8 w-full bg-surface-container overflow-hidden rounded">
+<div class="absolute inset-0 bg-secondary-container/20 w-3/4"></div>
+<div class="absolute inset-0 flex items-center justify-center text-[10px] font-bold text-secondary">75% LOAD</div>
+</div>
+<p class="mt-2 text-[11px] text-on-surface-variant italic">Auto-scaling group: 4 active nodes</p>
+</div>
+</div>
+</div>
+<!-- Industrial Blueprint Visual / Map -->
+<div class="bg-inverse-surface rounded-xl overflow-hidden h-64 relative border border-outline shadow-inner group">
+<img alt="Industrial Blueprint" class="w-full h-full object-cover opacity-40 mix-blend-luminosity transition-transform duration-700 group-hover:scale-105" data-alt="A macro photography shot of an intricate architectural blueprint spread across a high-tech workstation. The blueprint features sharp white and cyan lines over a deep navy blue technical paper. Glowing digital overlays and data points are visible as if projected onto the paper. The lighting is low-key and dramatic, with a focus on the precise engineering details, reflecting an industrial modern aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwbjx7ogfHBLrN-E-xmUdl3oHX1_sssbYmofQGAmK5CWOtv81g43XURDe46qcojPI7qGrA6zi2L8qqoLUKITX6WnOySqOaIsXXDr9NcQmVb7AFP_RSTp8DL4bm_LVqWctK_JDRgg0yIMgTzXpC0Tpvc47YyGVOgqT_knB6j4FGIc_Mqcc3lC1TugzvOhZKGLjKFaQzsdsV-GV_Eoc0tjW-Q12mrD0iQPwGefBNy6uTRol0QubrpWld8PKhL8AWLvL7BcaqYeqFK-U"/>
+<div class="absolute inset-0 p-8 flex flex-col justify-end bg-gradient-to-t from-inverse-surface to-transparent">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full border-2 border-primary-fixed-dim flex items-center justify-center animate-pulse">
+<span class="material-symbols-outlined text-primary-fixed-dim">location_on</span>
+</div>
+<div>
+<h4 class="text-white font-headline-md">Maharashtra Industrial Hub</h4>
+<p class="text-primary-fixed-dim text-label-md">Coordinating 42 Districts • 850 Colleges</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Activity Feed (1 col) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl flex flex-col h-[528px]">
+<div class="p-6 border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-on-surface">Recent Activity</h3>
+<div class="w-2 h-2 rounded-full bg-primary animate-ping"></div>
+</div>
+<div class="flex-1 overflow-y-auto p-4 scroll-hide">
+<!-- Activity Items -->
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="mt-1 w-2 h-2 rounded-full bg-tertiary-fixed-dim ring-4 ring-tertiary-fixed-dim/20"></div>
+<div>
+<p class="text-label-md font-bold text-on-surface">New Employer Registered</p>
+<p class="text-body-md text-on-surface-variant text-[13px]">Tata Motors Ltd. submitted verification documents.</p>
+<p class="text-[11px] text-outline mt-1 uppercase font-bold">2 minutes ago</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="mt-1 w-2 h-2 rounded-full bg-primary ring-4 ring-primary/20"></div>
+<div>
+<p class="text-label-md font-bold text-on-surface">Verification Request</p>
+<p class="text-body-md text-on-surface-variant text-[13px]">User ID #4592 requested manual profile audit.</p>
+<p class="text-[11px] text-outline mt-1 uppercase font-bold">14 minutes ago</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="mt-1 w-2 h-2 rounded-full bg-secondary-container ring-4 ring-secondary-container/20"></div>
+<div>
+<p class="text-label-md font-bold text-on-surface">High Placement Peak</p>
+<p class="text-body-md text-on-surface-variant text-[13px]">Batch 2023 Civil Eng saw 45 placements today.</p>
+<p class="text-[11px] text-outline mt-1 uppercase font-bold">1 hour ago</p>
+</div>
+</div>
+<div class="flex gap-4 opacity-60">
+<div class="mt-1 w-2 h-2 rounded-full bg-outline ring-4 ring-outline/20"></div>
+<div>
+<p class="text-label-md font-bold text-on-surface">System Backup</p>
+<p class="text-body-md text-on-surface-variant text-[13px]">Automated database snapshot completed successfully.</p>
+<p class="text-[11px] text-outline mt-1 uppercase font-bold">3 hours ago</p>
+</div>
+</div>
+<div class="flex gap-4 opacity-60">
+<div class="mt-1 w-2 h-2 rounded-full bg-outline ring-4 ring-outline/20"></div>
+<div>
+<p class="text-label-md font-bold text-on-surface">Security Patch Applied</p>
+<p class="text-body-md text-on-surface-variant text-[13px]">Kernel update deployed to Stage 2 servers.</p>
+<p class="text-[11px] text-outline mt-1 uppercase font-bold">Yesterday</p>
+</div>
+</div>
+</div>
+</div>
+<div class="p-4 bg-surface-container-low border-t border-outline-variant">
+<button class="w-full py-2 bg-surface text-primary border border-primary font-bold rounded-lg hover:bg-primary-container hover:text-white transition-all text-label-md">VIEW ALL ACTIVITY</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container border-t border-outline-variant w-full py-4 mt-auto flex justify-between items-center px-gutter w-full ml-0 md:ml-72 md:max-w-[calc(100%-18rem)]">
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 MSBTE Diploma Jobs - Industrial Administration Suite</p>
+<div class="flex gap-6">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">System Status</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Admin Support</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">API Docs</a>
+</div>
+</footer>
+<!-- FAB (Suppressed on Admin Dashboard) -->
+<script>
+        // Simple Micro-interactions
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                // Potential for hover animations or tooltips
+            });
+        });
+
+        // Simulating Live Feed
+        setInterval(() => {
+            const statusIndicator = document.querySelector('.animate-pulse');
+            if(statusIndicator) {
+                statusIndicator.classList.toggle('bg-tertiary-fixed-dim');
+                statusIndicator.classList.toggle('bg-tertiary-container');
+            }
+        }, 3000);
+    </script>
+</body></html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Post a Job | Maharashtra Industrial Job Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#003d27",
+                    "on-tertiary-container": "#3fd298",
+                    "tertiary-container": "#00563a",
+                    "primary-container": "#1e40af",
+                    "inverse-surface": "#2d3133",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "on-surface": "#191c1e",
+                    "inverse-primary": "#b8c4ff",
+                    "surface-container-low": "#f2f4f6",
+                    "error-container": "#ffdad6",
+                    "secondary": "#9d4300",
+                    "on-secondary-container": "#5c2400",
+                    "secondary-fixed-dim": "#ffb690",
+                    "outline-variant": "#c4c5d5",
+                    "surface-variant": "#e0e3e5",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed": "#6ffbbe",
+                    "secondary-fixed": "#ffdbca",
+                    "on-primary-fixed": "#001453",
+                    "surface-bright": "#f7f9fb",
+                    "primary": "#00288e",
+                    "surface": "#f7f9fb",
+                    "surface-dim": "#d8dadc",
+                    "on-surface-variant": "#444653",
+                    "secondary-container": "#fd761a",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "on-primary-fixed-variant": "#173bab",
+                    "on-error-container": "#93000a",
+                    "on-secondary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "surface-container-highest": "#e0e3e5",
+                    "background": "#f7f9fb",
+                    "surface-tint": "#3755c3",
+                    "on-tertiary-fixed": "#002113",
+                    "outline": "#757684",
+                    "primary-fixed-dim": "#b8c4ff",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed-variant": "#783200",
+                    "surface-container": "#eceef0",
+                    "inverse-on-surface": "#eff1f3",
+                    "surface-container-high": "#e6e8ea",
+                    "primary-fixed": "#dde1ff",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#341100",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-container": "#a8b8ff",
+                    "on-background": "#191c1e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "stack-sm": "0.5rem",
+                    "stack-lg": "2rem",
+                    "stack-md": "1rem",
+                    "margin-mobile": "1rem",
+                    "gutter": "1.5rem"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-active { width: 33.33%; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Top AppBar (Shared Component) -->
+<header class="bg-surface dark:bg-surface-container-low w-full top-0 sticky border-b border-outline-variant dark:border-outline z-40">
+<div class="flex items-center px-margin-mobile h-16 w-full max-w-container-max mx-auto">
+<div class="cursor-pointer active:opacity-70 p-2 -ml-2 hover:bg-surface-container-high transition-colors rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed">arrow_back</span>
+</div>
+<h1 class="font-headline-md text-headline-md ml-4 text-on-surface">Post a Job</h1>
+</div>
+</header>
+<main class="max-w-[800px] mx-auto px-margin-mobile py-stack-lg pb-32">
+<!-- Progress Indicator -->
+<div class="mb-stack-lg">
+<div class="flex justify-between items-end mb-2">
+<div>
+<span class="font-label-md text-primary block">Step 1 of 3</span>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Job Basics</h2>
+</div>
+<span class="font-label-sm text-on-surface-variant mb-1">33% Completed</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary step-active transition-all duration-500 ease-in-out"></div>
+</div>
+</div>
+<form class="space-y-stack-lg">
+<!-- Section: Core Details -->
+<div class="bg-surface-container p-stack-md md:p-stack-lg rounded-xl border border-outline-variant space-y-stack-md">
+<div class="flex items-center gap-2 border-b border-outline-variant pb-4 mb-4">
+<span class="material-symbols-outlined text-primary">precision_manufacturing</span>
+<h3 class="font-label-md uppercase tracking-wider text-on-surface-variant">Industrial Alignment</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-on-surface-variant">Job Title</label>
+<input class="bg-surface-container-lowest border border-outline-variant rounded-lg p-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md" placeholder="e.g. Production Engineer" required="" type="text">
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-on-surface-variant">Company Department</label>
+<select class="bg-surface-container-lowest border border-outline-variant rounded-lg p-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md">
+<option>Operations &amp; Maintenance</option>
+<option>Quality Assurance</option>
+<option>Research &amp; Development</option>
+<option>Supply Chain</option>
+</select>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-on-surface-variant">Employment Type</label>
+<div class="flex flex-wrap gap-stack-sm">
+<label class="cursor-pointer group">
+<input checked="" class="hidden peer" name="job_type" type="radio">
+<div class="px-6 py-2 rounded-full border border-outline-variant bg-surface-container-lowest peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary transition-all font-label-md">Full-time</div>
+</label>
+<label class="cursor-pointer group">
+<input class="hidden peer" name="job_type" type="radio">
+<div class="px-6 py-2 rounded-full border border-outline-variant bg-surface-container-lowest peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary transition-all font-label-md">Internship</div>
+</label>
+<label class="cursor-pointer group">
+<input class="hidden peer" name="job_type" type="radio">
+<div class="px-6 py-2 rounded-full border border-outline-variant bg-surface-container-lowest peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary transition-all font-label-md">Apprenticeship (NAPS)</div>
+</label>
+</div>
+</div>
+</div>
+<!-- Section: Target Diploma Branches -->
+<div class="bg-surface-container p-stack-md md:p-stack-lg rounded-xl border border-outline-variant">
+<h3 class="font-label-md text-on-surface mb-stack-md">Target Diploma Branch</h3>
+<div class="flex flex-wrap gap-2">
+<!-- Multi-select chips -->
+<label class="cursor-pointer group">
+<input checked="" class="hidden peer" type="checkbox">
+<div class="px-4 py-2 rounded-lg bg-surface-container-lowest border border-outline-variant peer-checked:bg-primary peer-checked:text-white flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+<span class="font-label-md">Mechanical</span>
+</div>
+</label>
+<label class="cursor-pointer group">
+<input class="hidden peer" type="checkbox">
+<div class="px-4 py-2 rounded-lg bg-surface-container-lowest border border-outline-variant peer-checked:bg-primary peer-checked:text-white flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span class="font-label-md">Electrical</span>
+</div>
+</label>
+<label class="cursor-pointer group">
+<input class="hidden peer" type="checkbox">
+<div class="px-4 py-2 rounded-lg bg-surface-container-lowest border border-outline-variant peer-checked:bg-primary peer-checked:text-white flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-[18px]">foundation</span>
+<span class="font-label-md">Civil</span>
+</div>
+</label>
+<label class="cursor-pointer group">
+<input class="hidden peer" type="checkbox">
+<div class="px-4 py-2 rounded-lg bg-surface-container-lowest border border-outline-variant peer-checked:bg-primary peer-checked:text-white flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-[18px]">memory</span>
+<span class="font-label-md">Electronics</span>
+</div>
+</label>
+<label class="cursor-pointer group">
+<input class="hidden peer" type="checkbox">
+<div class="px-4 py-2 rounded-lg bg-surface-container-lowest border border-outline-variant peer-checked:bg-primary peer-checked:text-white flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+<span class="font-label-md">Computer/IT</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Section: Candidate Requirements -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-lg">
+<div class="bg-surface-container p-stack-md rounded-xl border border-outline-variant flex flex-col gap-1.5">
+<label class="font-label-md text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">school</span> Minimum CGPA
+                    </label>
+<input class="bg-surface-container-lowest border border-outline-variant rounded-lg p-3 focus:border-primary outline-none transition-all font-body-md" placeholder="e.g. 6.5" step="0.1" type="number">
+<span class="text-label-sm text-on-surface-variant italic">Scale of 10.0</span>
+</div>
+<div class="bg-surface-container p-stack-md rounded-xl border border-outline-variant flex flex-col gap-1.5">
+<label class="font-label-md text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">psychology</span> Technical Skills
+                    </label>
+<input class="bg-surface-container-lowest border border-outline-variant rounded-lg p-3 focus:border-primary outline-none transition-all font-body-md" placeholder="AutoCAD, PLC, HVAC, ISO Standards" type="text">
+<span class="text-label-sm text-on-surface-variant italic">Separate by commas</span>
+</div>
+</div>
+<!-- Section: Logistics -->
+<div class="bg-surface-container p-stack-md md:p-stack-lg rounded-xl border border-outline-variant space-y-stack-md">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">location_on</span> Maharashtra Industrial Zone
+                    </label>
+<div class="relative">
+<select class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg p-3 appearance-none focus:border-primary outline-none transition-all font-body-md">
+<option>Chakan (MIDC), Pune</option>
+<option>Hinjewadi IT Park, Pune</option>
+<option>Waluj Industrial Area, Aurangabad</option>
+<option>Taloja MIDC, Navi Mumbai</option>
+<option>Butibori MIDC, Nagpur</option>
+<option>Ambad MIDC, Nashik</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-on-surface-variant">Monthly Salary Range (₹)</label>
+<div class="flex items-center gap-4">
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg p-3 focus:border-primary outline-none transition-all font-body-md" placeholder="Min" type="number">
+<span class="text-on-surface-variant">to</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg p-3 focus:border-primary outline-none transition-all font-body-md" placeholder="Max" type="number">
+</div>
+</div>
+</div>
+<!-- Section: Description -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-on-surface-variant">Job Description &amp; Responsibilities</label>
+<textarea class="bg-surface-container-lowest border border-outline-variant rounded-lg p-4 focus:border-primary outline-none transition-all font-body-md resize-none" placeholder="Describe day-to-day tasks, shift patterns, and equipment to be handled..." rows="6"></textarea>
+</div>
+</form>
+<!-- Help Card -->
+<div class="mt-stack-lg bg-secondary-container/10 border border-secondary/20 p-stack-md rounded-xl flex gap-stack-md items-start">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">info</span>
+<div>
+<p class="font-label-md text-on-secondary-fixed-variant">Tip for Employers</p>
+<p class="text-label-sm text-on-secondary-fixed-variant/80">List specific machinery knowledge (e.g., CNC Milling, injection molding) to attract candidates with specialized diploma certifications.</p>
+</div>
+</div>
+</main>
+<!-- Bottom Action Bar (Fixed) -->
+<div class="fixed bottom-0 left-0 w-full bg-surface border-t border-outline-variant p-4 z-50">
+<div class="max-w-[800px] mx-auto flex items-center justify-between gap-4">
+<button class="flex-1 py-3 px-6 rounded-lg border border-primary text-primary font-label-md hover:bg-primary-container/10 transition-colors">
+                Save Draft
+            </button>
+<button class="flex-[2] py-3 px-6 rounded-lg bg-primary text-white font-label-md flex items-center justify-center gap-2 hover:bg-primary/90 transition-all shadow-md active:scale-95">
+                Preview &amp; Post
+                <span class="material-symbols-outlined text-[20px]">send</span>
+</button>
+</div>
+</div>
+<!-- Bottom NavBar (Shared Component - Conditional Visibility: Active) -->
+<!-- Hidden on specific transactional screens like 'Post a Job' to focus user attention, as per shell guidelines -->
+<!-- Industrial Atmosphere Background Element -->
+<div class="fixed top-0 right-0 -z-10 opacity-5 pointer-events-none">
+<img class="w-[600px] h-[600px] object-contain rotate-12" data-alt="A highly detailed technical blueprint of a mechanical gear system, rendered in a clean architectural style. The background is a soft off-white, and the lines are a precise primary blue. The lighting is even and high-key, creating a professional engineering aesthetic that complements a modern corporate job portal for industrial students in Maharashtra." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDd3YXurWhmyF-ZeB2mrGIV9Ad2VFtolVflMDcVUP0THpSGgzySWEhfdJ9MApFqwvz1jdttMzhFuHVK0qVeufT7pjrGekKXSLZDh0m5o3t3lfvMZjUH5-noFaJLWQdHKFCfajyBHShvHJ4SkBoOKUMFzMVLAZvltMcSFlOCp30PhG3Sr-RNoJq6eEf8mkZOiFHXJiNJQ7MMLcCfzeOdE8ka_u_gvDS8pBt0UECsGGhIe_MOGphlyIhwzqgI-0qDtHtOmHdjDxjRaGI">
+</div>
+</body></html>

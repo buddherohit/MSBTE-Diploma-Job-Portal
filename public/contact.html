@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact Us - MahaDiploma Jobs</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error": "#ba1a1a",
+                      "background": "#f7f9fb",
+                      "primary-fixed-dim": "#b8c4ff",
+                      "on-error-container": "#93000a",
+                      "error-container": "#ffdad6",
+                      "tertiary": "#003d27",
+                      "primary-container": "#1e40af",
+                      "surface-container-low": "#f2f4f6",
+                      "surface": "#f7f9fb",
+                      "on-secondary-container": "#5c2400",
+                      "on-tertiary-fixed-variant": "#005236",
+                      "surface-dim": "#d8dadc",
+                      "tertiary-container": "#00563a",
+                      "primary": "#00288e",
+                      "on-primary-fixed": "#001453",
+                      "tertiary-fixed-dim": "#4edea3",
+                      "outline-variant": "#c4c5d5",
+                      "on-tertiary": "#ffffff",
+                      "surface-container": "#eceef0",
+                      "on-surface-variant": "#444653",
+                      "on-secondary": "#ffffff",
+                      "secondary-fixed": "#ffdbca",
+                      "surface-container-highest": "#e0e3e5",
+                      "on-primary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed": "#002113",
+                      "surface-container-high": "#e6e8ea",
+                      "on-background": "#191c1e",
+                      "on-primary-container": "#a8b8ff",
+                      "inverse-primary": "#b8c4ff",
+                      "surface-tint": "#3755c3",
+                      "secondary": "#9d4300",
+                      "on-tertiary-container": "#3fd298",
+                      "on-surface": "#191c1e",
+                      "surface-bright": "#f7f9fb",
+                      "on-secondary-fixed": "#341100",
+                      "surface-variant": "#e0e3e5",
+                      "on-error": "#ffffff",
+                      "inverse-surface": "#2d3133",
+                      "tertiary-fixed": "#6ffbbe",
+                      "secondary-container": "#fd761a",
+                      "secondary-fixed-dim": "#ffb690",
+                      "on-primary-fixed-variant": "#173bab",
+                      "on-secondary-fixed-variant": "#783200",
+                      "inverse-on-surface": "#eff1f3",
+                      "primary-fixed": "#dde1ff",
+                      "outline": "#757684"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-sm": "0.5rem",
+                      "stack-lg": "2rem",
+                      "margin-mobile": "1rem",
+                      "stack-md": "1rem",
+                      "gutter": "1.5rem",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "label-md": ["Inter"],
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"]
+              },
+              "fontSize": {
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface-container-lowest dark:bg-surface-container-highest w-full top-0 sticky shadow-sm border-b border-outline-variant dark:border-outline z-50">
+<div class="flex justify-between items-center px-margin-mobile md:px-gutter max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-2 cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" data-icon="architecture">architecture</span>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">MahaDiploma Jobs</span>
+</div>
+<nav class="hidden md:flex items-center gap-gutter">
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Jobs</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Talent</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Pricing</a>
+<a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary font-label-md text-label-md" href="#">Account</a>
+</nav>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity active:scale-95">
+                Post Job
+            </button>
+</div>
+</header>
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="bg-surface-container-low py-stack-lg">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter text-center">
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-4">Contact Our Industrial Relations Team</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Connecting MSBTE diploma talent with Maharashtra's leading industries. We are here to support your recruitment and career journey.</p>
+</div>
+</section>
+<!-- Contact Content -->
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter py-stack-lg">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-stack-lg">
+<!-- Left: Information Cards (Bento Style) -->
+<div class="lg:col-span-5 grid grid-cols-1 gap-stack-md">
+<!-- Official Address Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm">
+<div class="flex items-start gap-4">
+<div class="bg-primary-container p-3 rounded-lg">
+<span class="material-symbols-outlined text-on-primary" data-icon="location_on">location_on</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Main Headquarters</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                                    Maharashtra State Board of Technical Education (MSBTE)<br/>
+                                    49, Kherwadi, Bandra (E), Mumbai - 400 051
+                                </p>
+</div>
+</div>
+</div>
+<!-- Direct Support Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm">
+<div class="flex items-start gap-4">
+<div class="bg-tertiary-container p-3 rounded-lg">
+<span class="material-symbols-outlined text-on-tertiary" data-icon="contact_support">contact_support</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Helpdesk &amp; Support</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-1">Email: <a class="text-primary font-semibold" href="mailto:support@msbte-jobs.gov.in">support@msbte-jobs.gov.in</a></p>
+<p class="font-body-md text-body-md text-on-surface-variant">Phone: +91 22 2647 1255 / 2647 7208</p>
+</div>
+</div>
+</div>
+<!-- FAQ Quick Links -->
+<div class="bg-secondary-container bg-opacity-10 border border-secondary-container rounded-xl p-6">
+<h3 class="font-headline-md text-headline-md text-on-secondary-container mb-4">Quick Support</h3>
+<div class="space-y-3">
+<a class="flex items-center justify-between p-3 bg-surface-container-lowest rounded-lg hover:shadow-md transition-shadow group" href="#">
+<span class="font-label-md text-label-md text-on-surface">Employer Verification Guide</span>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</a>
+<a class="flex items-center justify-between p-3 bg-surface-container-lowest rounded-lg hover:shadow-md transition-shadow group" href="#">
+<span class="font-label-md text-label-md text-on-surface">Student Job Portal FAQ</span>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</a>
+<a class="flex items-center justify-between p-3 bg-surface-container-lowest rounded-lg hover:shadow-md transition-shadow group" href="#">
+<span class="font-label-md text-label-md text-on-surface">Technical Support Ticket</span>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Right: Contact Form -->
+<div class="lg:col-span-7">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-8 shadow-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-6">Send us a message</h2>
+<form class="space-y-6" id="contactForm">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant" for="name">Full Name</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" id="name" placeholder="Enter your full name" required="" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant" for="email">Work Email</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" id="email" placeholder="name@organization.com" required="" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant" for="subject">Subject</label>
+<select class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" id="subject">
+<option>Industrial Partnership Inquiry</option>
+<option>Technical Issue with Portal</option>
+<option>Job Verification Request</option>
+<option>Candidate Shortlisting Support</option>
+<option>Other</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant" for="message">Message</label>
+<textarea class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" id="message" placeholder="How can our industrial relations team assist you?" required="" rows="5"></textarea>
+</div>
+<button class="w-full bg-secondary-container text-on-secondary-container font-headline-md text-headline-md py-4 rounded-xl hover:opacity-95 active:scale-[0.98] transition-all flex justify-center items-center gap-2" type="submit">
+<span>Submit Inquiry</span>
+<span class="material-symbols-outlined" data-icon="send">send</span>
+</button>
+</form>
+</div>
+</div>
+</div>
+<!-- Map Placeholder Section -->
+<div class="mt-stack-lg rounded-xl overflow-hidden border border-outline-variant h-96 relative group">
+<div class="absolute inset-0 bg-surface-container-highest animate-pulse" id="map-loading"></div>
+<img class="w-full h-full object-cover" data-alt="A clean, professional 3D satellite map visualization of Mumbai, Maharashtra. The image shows the Bandra Kherwadi area with subtle industrial blue and white accents, maintaining a high-contrast corporate aesthetic. The lighting is bright and modern, emphasizing the strategic urban location of the headquarters. The mood is authoritative and structured, reflecting the official nature of the MSBTE institution." data-location="Mumbai, India" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdN39QX_hxa_1e1_qtq-NxaCYzjpZn_JTSgFWlHQiQlGqATZoAXomHKxLf7fDzugMSTvO9mUUqR3_O-s6YQx7lgLwBMEf15ZSl2jvKrN5iOeW1K4YAmKqEOaT2NX0w_VomZYt74-4ph2wVC9svMVIdXJfHFcLr29l9knbSUI4rm9EU5BIDjd7cLB4FxWh8s8XCO68iJ-8erYn2EKmkaaLJMMe3R5GMEGX1OiGCZpQLlbCcecsrNcYamVeFd-eFhHFNSq0WtQyfXD0"/>
+<div class="absolute bottom-6 left-6 bg-surface-container-lowest p-4 rounded-lg shadow-lg border border-outline-variant max-w-xs">
+<h4 class="font-label-md text-label-md text-primary font-bold">MSBTE Office Location</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Visit us for official verification and partnership discussions during business hours (10 AM - 5:30 PM).</p>
+<button class="mt-3 text-primary font-bold text-label-md flex items-center gap-1 hover:underline">
+                        Get Directions
+                        <span class="material-symbols-outlined text-[18px]" data-icon="open_in_new">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-inverse-surface dark:bg-surface-container-lowest border-t border-outline w-full mt-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md px-gutter py-stack-lg max-w-container-max mx-auto">
+<div class="space-y-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-surface-container-lowest" data-icon="architecture">architecture</span>
+<span class="font-headline-md text-headline-md text-surface-container-lowest">MSBTE Portal</span>
+</div>
+<p class="font-label-md text-label-md text-surface-variant opacity-80 max-w-sm">
+                    Empowering the technical workforce of Maharashtra through direct industrial collaboration and high-quality diploma recruitment.
+                </p>
+<p class="font-label-md text-label-md text-on-primary-fixed dark:text-on-primary-fixed-variant">
+                    © 2024 MSBTE Diploma Recruitment Portal. Industrial Blueprint Edition.
+                </p>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div class="space-y-3">
+<h4 class="font-label-md text-label-md text-surface-container-lowest uppercase tracking-wider">Resources</h4>
+<ul class="space-y-2">
+<li><a class="font-label-md text-label-md text-surface-variant opacity-80 hover:opacity-100 underline transition-opacity" href="#">Privacy Policy</a></li>
+<li><a class="font-label-md text-label-md text-surface-variant opacity-80 hover:opacity-100 underline transition-opacity" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div class="space-y-3">
+<h4 class="font-label-md text-label-md text-surface-container-lowest uppercase tracking-wider">Support</h4>
+<ul class="space-y-2">
+<li><a class="font-label-md text-label-md text-surface-variant opacity-80 hover:opacity-100 underline transition-opacity" href="#">Employer FAQ</a></li>
+<li><a class="font-label-md text-label-md text-surface-variant opacity-80 hover:opacity-100 underline transition-opacity" href="#">Student Support</a></li>
+</ul>
+</div>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 w-full z-50 md:hidden bg-surface-container-lowest dark:bg-surface-dim border-t border-outline-variant dark:border-outline shadow-lg flex justify-around items-center py-2 px-4">
+<div class="flex flex-col items-center justify-center text-on-surface-variant active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="work">work</span>
+<span class="font-label-sm text-label-sm">Jobs</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-sm text-label-sm">Talent</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label-sm text-label-sm">Pricing</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-3 py-1 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-sm text-label-sm">Account</span>
+</div>
+</nav>
+<script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerHTML;
+            
+            btn.disabled = true;
+            btn.innerHTML = '<span>Sending Inquiry...</span>';
+            
+            setTimeout(() => {
+                btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Inquiry Received';
+                btn.classList.replace('bg-secondary-container', 'bg-tertiary-container');
+                btn.classList.replace('text-on-secondary-container', 'text-on-tertiary');
+                e.target.reset();
+            }, 1500);
+        });
+
+        // Hide map loader after image "loads"
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('map-loading');
+            if (loader) loader.style.display = 'none';
+        });
+    </script>
+</body></html>

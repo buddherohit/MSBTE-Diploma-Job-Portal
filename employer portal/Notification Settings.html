@@ -1,0 +1,391 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Notification Settings | MAHA-INDUSTRIAL</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#003d27",
+                    "on-secondary-fixed-variant": "#783200",
+                    "on-surface-variant": "#444653",
+                    "on-primary-fixed-variant": "#173bab",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#a8b8ff",
+                    "surface-container": "#eceef0",
+                    "inverse-primary": "#b8c4ff",
+                    "inverse-on-surface": "#eff1f3",
+                    "surface-dim": "#d8dadc",
+                    "surface": "#f7f9fb",
+                    "on-secondary-fixed": "#341100",
+                    "on-primary-fixed": "#001453",
+                    "primary-container": "#1e40af",
+                    "primary-fixed": "#dde1ff",
+                    "secondary-fixed": "#ffdbca",
+                    "surface-bright": "#f7f9fb",
+                    "secondary-container": "#fd761a",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "surface-container-low": "#f2f4f6",
+                    "surface-container-highest": "#e0e3e5",
+                    "secondary-fixed-dim": "#ffb690",
+                    "tertiary-container": "#00563a",
+                    "primary-fixed-dim": "#b8c4ff",
+                    "on-surface": "#191c1e",
+                    "surface-container-high": "#e6e8ea",
+                    "inverse-surface": "#2d3133",
+                    "on-tertiary-fixed": "#002113",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#e0e3e5",
+                    "secondary": "#9d4300",
+                    "tertiary-fixed": "#6ffbbe",
+                    "primary": "#00288e",
+                    "on-secondary-container": "#5c2400",
+                    "error": "#ba1a1a",
+                    "surface-tint": "#3755c3",
+                    "on-background": "#191c1e",
+                    "on-tertiary-container": "#3fd298",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "outline": "#757684",
+                    "background": "#f7f9fb",
+                    "outline-variant": "#c4c5d5",
+                    "on-error": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "stack-sm": "0.5rem",
+                    "stack-lg": "2rem",
+                    "gutter": "1.5rem",
+                    "stack-md": "1rem",
+                    "margin-mobile": "1rem"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .toggle-checkbox:checked + .toggle-slot {
+            background-color: #00288e;
+        }
+        .toggle-checkbox:checked + .toggle-slot .toggle-dot {
+            transform: translateX(1.25rem);
+        }
+        .blueprint-bg {
+            background-image: radial-gradient(#c4c5d5 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md blueprint-bg min-h-screen">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-gutter w-full h-16 sticky top-0 z-50 bg-surface dark:bg-inverse-surface border-b border-outline-variant dark:border-outline">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" data-icon="factory">factory</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim tracking-tight">MAHA-INDUSTRIAL</h1>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-label-md text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors px-3 py-1 rounded" href="#">Dashboard</a>
+<a class="font-label-md text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors px-3 py-1 rounded" href="#">Post Job</a>
+<a class="font-label-md text-primary dark:text-primary-fixed-dim border-b-2 border-primary px-3 py-1" href="#">Settings</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="h-10 w-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold">
+                MI
+            </div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-gutter py-stack-lg mb-24">
+<div class="flex flex-col md:flex-row gap-gutter">
+<!-- Sidebar Navigation -->
+<aside class="w-full md:w-64 flex-shrink-0">
+<nav class="flex flex-col gap-2">
+<button class="flex items-center gap-3 px-4 py-3 rounded-lg bg-surface-container-high text-primary font-bold">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="font-label-md">Notifications</span>
+</button>
+<button class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined" data-icon="person_outline">person_outline</span>
+<span class="font-label-md">Account Details</span>
+</button>
+<button class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+<span class="font-label-md">Privacy &amp; Security</span>
+</button>
+<button class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label-md">Billing Info</span>
+</button>
+</nav>
+</aside>
+<!-- Settings Canvas -->
+<section class="flex-grow">
+<div class="mb-stack-lg">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Notification Settings</h2>
+<p class="text-on-surface-variant font-body-md max-w-2xl">Control how and when you receive updates about applications, interviews, and platform news. Choose the channels that best fit your industrial recruitment workflow.</p>
+</div>
+<!-- Bento-style Settings Grid -->
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-gutter">
+<!-- Category: New Applications -->
+<div class="bg-surface-container-lowest border border-outline-variant p-gutter rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between mb-4">
+<div class="flex items-center gap-4">
+<div class="p-3 bg-primary-container/10 rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md leading-tight">New Applications</h3>
+<p class="font-label-sm text-on-surface-variant">Alerts when candidates apply to your active job listings.</p>
+</div>
+</div>
+</div>
+<div class="space-y-4 pt-4 border-t border-outline-variant">
+<div class="flex items-center justify-between">
+<span class="font-body-md">Push Notification</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only toggle-checkbox" type="checkbox">
+<div class="w-11 h-6 bg-outline-variant rounded-full toggle-slot transition-colors duration-200">
+<div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full toggle-dot transition-transform duration-200"></div>
+</div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body-md">Email Summary</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only toggle-checkbox" type="checkbox">
+<div class="w-11 h-6 bg-outline-variant rounded-full toggle-slot transition-colors duration-200">
+<div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full toggle-dot transition-transform duration-200"></div>
+</div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body-md">SMS Alert</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only toggle-checkbox" type="checkbox">
+<div class="w-11 h-6 bg-outline-variant rounded-full toggle-slot transition-colors duration-200">
+<div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full toggle-dot transition-transform duration-200"></div>
+</div>
+</label>
+</div>
+</div>
+</div>
+<!-- Category: Interview Reminders -->
+<div class="bg-surface-container-lowest border border-outline-variant p-gutter rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between mb-4">
+<div class="flex items-center gap-4">
+<div class="p-3 bg-secondary-container/10 rounded-lg text-secondary">
+<span class="material-symbols-outlined" data-icon="event_available">event_available</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md leading-tight">Interview Reminders</h3>
+<p class="font-label-sm text-on-surface-variant">Stay on top of upcoming interviews and candidate meetings.</p>
+</div>
+</div>
+</div>
+<div class="space-y-4 pt-4 border-t border-outline-variant">
+<div class="flex items-center justify-between">
+<span class="font-body-md">Push Notification</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only toggle-checkbox" type="checkbox">
+<div class="w-11 h-6 bg-outline-variant rounded-full toggle-slot transition-colors duration-200">
+<div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full toggle-dot transition-transform duration-200"></div>
+</div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body-md">Email Invitation</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only toggle-checkbox" type="checkbox">
+<div class="w-11 h-6 bg-outline-variant rounded-full toggle-slot transition-colors duration-200">
+<div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full toggle-dot transition-transform duration-200"></div>
+</div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body-md">SMS Reminder (15 min prior)</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only toggle-checkbox" type="checkbox">
+<div class="w-11 h-6 bg-outline-variant rounded-full toggle-slot transition-colors duration-200">
+<div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full toggle-dot transition-transform duration-200"></div>
+</div>
+</label>
+</div>
+</div>
+</div>
+<!-- Category: Job Posting Status -->
+<div class="bg-surface-container-lowest border border-outline-variant p-gutter rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between mb-4">
+<div class="flex items-center gap-4">
+<div class="p-3 bg-tertiary-container/10 rounded-lg text-tertiary">
+<span class="material-symbols-outlined" data-icon="assignment_turned_in">assignment_turned_in</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md leading-tight">Job Posting Status</h3>
+<p class="font-label-sm text-on-surface-variant">Updates on job approvals, expirations, or requirement flags.</p>
+</div>
+</div>
+</div>
+<div class="space-y-4 pt-4 border-t border-outline-variant">
+<div class="flex items-center justify-between">
+<span class="font-body-md">Push Notification</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only toggle-checkbox" type="checkbox">
+<div class="w-11 h-6 bg-outline-variant rounded-full toggle-slot transition-colors duration-200">
+<div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full toggle-dot transition-transform duration-200"></div>
+</div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body-md">Email Report</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only toggle-checkbox" type="checkbox">
+<div class="w-11 h-6 bg-outline-variant rounded-full toggle-slot transition-colors duration-200">
+<div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full toggle-dot transition-transform duration-200"></div>
+</div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body-md">SMS Urgent Alert</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only toggle-checkbox" type="checkbox">
+<div class="w-11 h-6 bg-outline-variant rounded-full toggle-slot transition-colors duration-200">
+<div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full toggle-dot transition-transform duration-200"></div>
+</div>
+</label>
+</div>
+</div>
+</div>
+<!-- Category: Platform Updates -->
+<div class="bg-surface-container-lowest border border-outline-variant p-gutter rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between mb-4">
+<div class="flex items-center gap-4">
+<div class="p-3 bg-on-primary-fixed-variant/10 rounded-lg text-on-primary-fixed-variant">
+<span class="material-symbols-outlined" data-icon="update">update</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md leading-tight">Platform Updates</h3>
+<p class="font-label-sm text-on-surface-variant">News about new features, security updates, and maintenance.</p>
+</div>
+</div>
+</div>
+<div class="space-y-4 pt-4 border-t border-outline-variant">
+<div class="flex items-center justify-between">
+<span class="font-body-md">In-App Banner</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only toggle-checkbox" type="checkbox">
+<div class="w-11 h-6 bg-outline-variant rounded-full toggle-slot transition-colors duration-200">
+<div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full toggle-dot transition-transform duration-200"></div>
+</div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body-md">Monthly Newsletter</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only toggle-checkbox" type="checkbox">
+<div class="w-11 h-6 bg-outline-variant rounded-full toggle-slot transition-colors duration-200">
+<div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full toggle-dot transition-transform duration-200"></div>
+</div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body-md">SMS System Status</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only toggle-checkbox" type="checkbox">
+<div class="w-11 h-6 bg-outline-variant rounded-full toggle-slot transition-colors duration-200">
+<div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full toggle-dot transition-transform duration-200"></div>
+</div>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Action -->
+<div class="mt-stack-lg flex flex-col sm:flex-row items-center justify-end gap-4 border-t border-outline-variant pt-8">
+<button class="w-full sm:w-auto px-6 py-2 font-label-md text-primary border border-primary rounded-lg hover:bg-primary/5 transition-colors">Discard Changes</button>
+<button class="w-full sm:w-auto px-8 py-2 font-label-md bg-secondary-container text-on-secondary-container rounded-lg shadow-sm hover:opacity-90 transition-opacity">Save Preferences</button>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface dark:bg-inverse-surface border-t border-outline-variant dark:border-outline shadow-sm rounded-t-xl">
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:text-primary transition-transform active:scale-90 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:text-primary transition-transform active:scale-90 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:text-primary transition-transform active:scale-90 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="work">work</span>
+<span class="font-label-sm text-label-sm">My Jobs</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-xl px-3 py-1 transition-transform active:scale-90 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</div>
+</nav>
+<script>
+        // Simple micro-interaction for toggles
+        document.querySelectorAll('.toggle-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const parent = this.closest('.bg-surface-container-lowest');
+                if (this.checked) {
+                    // Optional: Visual feedback on successful toggle
+                }
+            });
+        });
+
+        // Feedback toast simulation
+        function showFeedback(message) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-20 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-6 py-3 rounded-full shadow-lg z-[100] transition-opacity duration-300';
+            toast.innerText = message;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 300);
+            }, 2000);
+        }
+
+        document.querySelector('button.bg-secondary-container').addEventListener('click', () => {
+            showFeedback('Settings updated successfully');
+        });
+    </script>
+</body></html>

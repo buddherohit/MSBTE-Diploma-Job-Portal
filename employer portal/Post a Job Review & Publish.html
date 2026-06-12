@@ -1,0 +1,286 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#c4c5d5",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-error-container": "#93000a",
+                    "inverse-primary": "#b8c4ff",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "tertiary-container": "#00563a",
+                    "outline": "#757684",
+                    "on-background": "#191c1e",
+                    "on-primary-fixed": "#001453",
+                    "on-surface-variant": "#444653",
+                    "surface-container-low": "#f2f4f6",
+                    "on-tertiary-container": "#3fd298",
+                    "error-container": "#ffdad6",
+                    "surface-dim": "#d8dadc",
+                    "surface-container-high": "#e6e8ea",
+                    "on-tertiary": "#ffffff",
+                    "tertiary": "#003d27",
+                    "inverse-surface": "#2d3133",
+                    "on-secondary-fixed-variant": "#783200",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-primary": "#ffffff",
+                    "on-primary-container": "#a8b8ff",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-primary-fixed-variant": "#173bab",
+                    "primary-container": "#1e40af",
+                    "on-secondary-container": "#5c2400",
+                    "background": "#f7f9fb",
+                    "surface-tint": "#3755c3",
+                    "surface-bright": "#f7f9fb",
+                    "secondary-fixed-dim": "#ffb690",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed": "#341100",
+                    "secondary": "#9d4300",
+                    "on-secondary": "#ffffff",
+                    "primary": "#00288e",
+                    "secondary-fixed": "#ffdbca",
+                    "on-surface": "#191c1e",
+                    "primary-fixed-dim": "#b8c4ff",
+                    "surface-variant": "#e0e3e5",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#eceef0",
+                    "surface": "#f7f9fb",
+                    "on-tertiary-fixed-variant": "#005236"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-lg": "2rem",
+                    "gutter": "1.5rem",
+                    "container-max": "1280px",
+                    "stack-sm": "0.5rem",
+                    "stack-md": "1rem",
+                    "margin-mobile": "1rem"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .blueprint-pattern {
+            background-color: #f7f9fb;
+            background-image: radial-gradient(#c4c5d5 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-background min-h-screen">
+<!-- Top Navigation -->
+<nav class="bg-surface dark:bg-surface-container-low w-full top-0 sticky border-b border-outline-variant dark:border-outline flex items-center px-margin-mobile h-16 w-full z-50">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed cursor-pointer active:opacity-70" data-icon="arrow_back">arrow_back</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Post a Job</h1>
+</div>
+</nav>
+<main class="max-w-container-max mx-auto px-4 py-8 pb-32">
+<!-- Progress Indicator -->
+<div class="mb-10 max-w-2xl mx-auto">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-md text-label-md text-primary">Final Verification</span>
+<span class="font-label-md text-label-md text-primary">100% Complete</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-full transition-all duration-1000 ease-out"></div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Detailed Summary -->
+<div class="lg:col-span-8 space-y-6">
+<!-- Job Summary Section -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-1">Junior Civil Engineer</h2>
+<p class="text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-base" data-icon="location_on">location_on</span>
+                                Mumbai, Maharashtra • Full-time
+                            </p>
+</div>
+<button class="flex items-center gap-2 text-primary font-label-md text-label-md hover:bg-surface-container-high px-3 py-2 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="edit">edit</span>
+                            Edit
+                        </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-outline-variant">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Salary Range</p>
+<p class="font-label-md text-label-md text-on-surface">₹3,50,000 - ₹5,00,000 P.A.</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Experience</p>
+<p class="font-label-md text-label-md text-on-surface">0 - 2 Years (Fresher)</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Application Deadline</p>
+<p class="font-label-md text-label-md text-on-surface">Oct 24, 2024</p>
+</div>
+</div>
+</section>
+<!-- Branch & Skills Section -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-headline-md text-on-surface">Target Audience &amp; Skills</h3>
+<button class="flex items-center gap-2 text-primary font-label-md text-label-md hover:bg-surface-container-high px-3 py-2 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="edit">edit</span>
+                            Edit
+                        </button>
+</div>
+<div class="space-y-6">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-3">Target MSBTE Branches</p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-primary-container/10 text-primary px-3 py-1.5 rounded-lg border border-primary-container/20 font-label-md text-label-md">Civil Engineering</span>
+<span class="bg-primary-container/10 text-primary px-3 py-1.5 rounded-lg border border-primary-container/20 font-label-md text-label-md">Construction Technology</span>
+</div>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-3">Required Technical Skills</p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container-high text-on-surface-variant px-3 py-1.5 rounded-lg font-label-md text-label-md">AutoCAD</span>
+<span class="bg-surface-container-high text-on-surface-variant px-3 py-1.5 rounded-lg font-label-md text-label-md">Site Supervision</span>
+<span class="bg-surface-container-high text-on-surface-variant px-3 py-1.5 rounded-lg font-label-md text-label-md">Surveying</span>
+<span class="bg-surface-container-high text-on-surface-variant px-3 py-1.5 rounded-lg font-label-md text-label-md">BIM</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Blueprint/Description Summary -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm blueprint-pattern relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4">
+<span class="font-label-sm text-label-sm text-outline-variant uppercase font-bold">Doc Ref: JB-2024-MUM-01</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">Job Description Summary</h3>
+<div class="space-y-4 max-w-2xl">
+<p class="text-on-surface leading-relaxed">
+                            We are seeking a motivated MSBTE Diploma graduate in Civil Engineering to join our infrastructure projects in Navi Mumbai. You will be responsible for on-site supervision, verifying technical drawings in AutoCAD, and ensuring quality control standards are met according to safety regulations.
+                        </p>
+<ul class="space-y-2 list-disc pl-5 text-on-surface">
+<li>Oversee daily on-site construction activities and worker coordination.</li>
+<li>Liaise with senior architects to interpret blueprint specifications.</li>
+<li>Maintain rigorous documentation for material inventory and daily progress reports.</li>
+</ul>
+</div>
+</section>
+</div>
+<!-- Right Column: Company & Sticky Actions -->
+<div class="lg:col-span-4 space-y-6">
+<!-- Company Profile Card -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm sticky top-24">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-16 h-16 rounded-xl border border-outline-variant flex items-center justify-center bg-white overflow-hidden p-2">
+<img alt="Company Logo" class="w-full h-full object-contain" data-alt="A minimalist and corporate logo for a modern construction and infrastructure firm. The logo features clean geometric lines forming a stylized 'M' or structural bridge shape. It is presented on a crisp white background with a professional blue and slate color palette, evoking a sense of engineering stability and corporate industrial authority." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOPblNEqMJqwxLDSoc9BtaPKFkEyeD6zyVMoGbiMSwSEEdIqnnZOtZ-o3woRamJl_7vMZm3O_ZJsJ4zvEM0qFwc4a3dSHQ72bmM_BLiwGLtju7LKOkM_EKtUpuQeAWx5ZkNO5oLSIlt8C7vX6BjXS5rzrZnl-RVz0a-XnfhFGkRUncKYI2eIcD5ueTg6oGNpyZSsilKdOBAiqZkXJG1h77yehjwgzvj0YiB_PIjDhjuIGEok-mcmaV2WXjqdvWNl7VrYBrPKP56FU">
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">Maharashtra Infra Corp</h4>
+<p class="text-label-sm text-on-surface-variant">Government Grade Contractor</p>
+</div>
+</div>
+<div class="space-y-4 mb-8">
+<div class="flex justify-between text-label-md">
+<span class="text-on-surface-variant">Industry</span>
+<span class="text-on-surface">Construction</span>
+</div>
+<div class="flex justify-between text-label-md">
+<span class="text-on-surface-variant">Company Size</span>
+<span class="text-on-surface">200-500 Employees</span>
+</div>
+</div>
+<div class="space-y-3">
+<button class="w-full bg-primary text-on-primary py-3.5 rounded-lg font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all shadow-md">
+                            Publish Job
+                        </button>
+<button class="w-full bg-surface-container-high text-on-surface-variant py-3.5 rounded-lg font-label-md text-label-md hover:bg-outline-variant transition-colors active:scale-95">
+                            Save as Draft
+                        </button>
+<button class="w-full border border-outline text-on-surface-variant py-3.5 rounded-lg font-label-md text-label-md hover:bg-surface-container-low transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="visibility">visibility</span>
+                            Preview as Candidate
+                        </button>
+</div>
+<div class="mt-6 pt-6 border-t border-outline-variant text-center">
+<p class="text-label-sm text-on-surface-variant mb-2">Need help? Contact recruitment support</p>
+<a class="text-primary font-label-sm text-label-sm font-bold hover:underline" href="#">support@maha-hire.gov.in</a>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Mobile Bottom Navigation Shell (Predictive Match: Post Job Active) -->
+<div class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 shadow-[0_-4px_12px_rgba(15,23,42,0.08)] bg-surface dark:bg-surface-container-lowest rounded-t-xl">
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="work">work</span>
+<span class="font-label-sm text-label-sm">My Jobs</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-full px-4 py-1 scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="font-label-sm text-label-sm">Post Job</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</div>
+</div>
+<!-- Micro-interaction Script -->
+<script>
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if(this.innerText.includes('Publish')) {
+                    const btn = this;
+                    const originalText = btn.innerHTML;
+                    btn.innerHTML = '<span class="flex items-center gap-2 justify-center"><svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Publishing...</span>';
+                    btn.disabled = true;
+                    setTimeout(() => {
+                        btn.innerHTML = '<span class="flex items-center gap-2 justify-center"><span class="material-symbols-outlined">check_circle</span> Published!</span>';
+                        btn.classList.replace('bg-primary', 'bg-tertiary-container');
+                        btn.classList.add('text-on-tertiary-container');
+                    }, 2000);
+                }
+            });
+        });
+    </script>
+</body></html>
