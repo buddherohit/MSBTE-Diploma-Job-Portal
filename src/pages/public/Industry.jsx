@@ -1,27 +1,11 @@
 import React from 'react';
+import Header from '../../components/Header';
 
 export default function Industry() {
   return (
     <div className="w-full min-h-screen">
-      
-{/* TopAppBar */}
-<header className="bg-surface-container-lowest dark:bg-surface-container-highest w-full top-0 sticky z-40 border-b border-outline-variant dark:border-outline shadow-sm h-16">
-<div className="flex justify-between items-center px-margin-mobile md:px-gutter max-w-container-max mx-auto h-full">
-<div className="flex items-center gap-2 cursor-pointer active:opacity-80">
-<span className="material-symbols-outlined text-primary dark:text-primary-fixed" style={{ fontVariationSettings: '\'FILL\' 1' }}>architecture</span>
-<span className="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">MahaDiploma Jobs</span>
-</div>
-<nav className="hidden md:flex items-center gap-6">
-<a className="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#">Jobs</a>
-<a className="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary font-label-md text-label-md" href="#">Talent</a>
-<a className="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#">Pricing</a>
-<a className="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#">Account</a>
-</nav>
-<button className="bg-primary-container text-on-primary text-label-md font-label-md px-6 py-2 rounded-lg hover:opacity-90 transition-all active:scale-95 shadow-sm">
-                Post Job
-            </button>
-</div>
-</header>
+      <Header activePage="companies" />
+
 <div className="flex flex-1 max-w-container-max mx-auto w-full relative">
 {/* NavigationDrawer (Sidebar) */}
 <aside className="h-full w-64 hidden md:flex flex-col border-r border-outline-variant bg-surface-container dark:bg-surface-dim fixed left-0 top-16 py-stack-lg">

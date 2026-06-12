@@ -1,27 +1,11 @@
 import React from 'react';
+import Header from '../../components/Header';
 
 export default function About() {
   return (
     <div className="w-full min-h-screen">
-      
-{/* TopAppBar */}
-<header className="bg-surface-container-lowest dark:bg-surface-container-highest w-full top-0 sticky z-50 shadow-sm border-b border-outline-variant dark:border-outline">
-<div className="flex justify-between items-center px-margin-mobile md:px-gutter max-w-container-max mx-auto h-16">
-<div className="flex items-center gap-2 cursor-pointer active:opacity-80">
-<span className="material-symbols-outlined text-primary dark:text-primary-fixed" data-icon="architecture">architecture</span>
-<span className="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">MahaDiploma Jobs</span>
-</div>
-<nav className="hidden md:flex items-center gap-gutter">
-<a className="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Jobs</a>
-<a className="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Talent</a>
-<a className="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Pricing</a>
-<a className="font-label-md text-label-md text-primary font-bold border-b-2 border-primary" href="#">About</a>
-</nav>
-<button className="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-md text-label-md hover:bg-primary-container transition-all active:scale-95">
-                Post Job
-            </button>
-</div>
-</header>
+      <Header activePage="about" />
+
 <main className="max-w-container-max mx-auto px-margin-mobile md:px-gutter py-stack-lg">
 {/* Hero Section: Mission */}
 <section className="grid grid-cols-1 lg:grid-cols-2 gap-stack-lg items-center mb-24">

@@ -1,27 +1,11 @@
 import React from 'react';
+import Header from '../../components/Header';
 
 export default function Contact() {
   return (
     <div className="w-full min-h-screen">
-      
-{/* TopAppBar */}
-<header className="bg-surface-container-lowest dark:bg-surface-container-highest w-full top-0 sticky shadow-sm border-b border-outline-variant dark:border-outline z-50">
-<div className="flex justify-between items-center px-margin-mobile md:px-gutter max-w-container-max mx-auto h-16">
-<div className="flex items-center gap-2 cursor-pointer active:opacity-80">
-<span className="material-symbols-outlined text-primary dark:text-primary-fixed" data-icon="architecture">architecture</span>
-<span className="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">MahaDiploma Jobs</span>
-</div>
-<nav className="hidden md:flex items-center gap-gutter">
-<a className="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Jobs</a>
-<a className="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Talent</a>
-<a className="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Pricing</a>
-<a className="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary font-label-md text-label-md" href="#">Account</a>
-</nav>
-<button className="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity active:scale-95">
-                Post Job
-            </button>
-</div>
-</header>
+      <Header activePage="contact" />
+
 <main className="flex-grow">
 {/* Hero Section */}
 <section className="bg-surface-container-low py-stack-lg">

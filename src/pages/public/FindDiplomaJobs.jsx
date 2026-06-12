@@ -1,26 +1,11 @@
 import React from 'react';
+import Header from '../../components/Header';
 
 export default function FindDiplomaJobs() {
   return (
     <div className="w-full min-h-screen">
-      
-{/* Top Navigation Bar */}
-<header className="flex justify-between items-center px-margin-mobile w-full max-w-container-max mx-auto z-50 sticky top-0 bg-surface dark:bg-on-background border-b border-outline-variant dark:border-outline h-16">
-<div className="flex items-center gap-4">
-<span className="material-symbols-outlined text-primary cursor-pointer">menu</span>
-<h1 className="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">MSBTE Jobs</h1>
-</div>
-{/* Desktop Nav */}
-<nav className="hidden md:flex gap-8 h-full items-center">
-<a className="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-inverse-surface px-3 py-2 rounded-lg transition-colors" href="#">Dashboard</a>
-<a className="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary h-full flex items-center px-2" href="#">Jobs</a>
-<a className="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-inverse-surface px-3 py-2 rounded-lg transition-colors" href="#">Profile</a>
-<a className="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-inverse-surface px-3 py-2 rounded-lg transition-colors" href="#">Alerts</a>
-</nav>
-<div className="flex items-center gap-2">
-<img alt="User" className="w-10 h-10 rounded-full object-cover border-2 border-primary-fixed" data-alt="A professional close-up portrait of a young Indian male engineering student with a warm, confident smile. He is wearing a clean, collared shirt in a bright, modern studio setting with soft, high-key lighting that emphasizes a clean and corporate aesthetic. The background is a soft, out-of-focus tech office environment with hints of Maharashtra Blue and corporate white." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGaciGsGumEe8JjQk4PMHidq9IeDK8B14qIEfih7AjFFHQ3GK35yhPHvbP0K90bh7MRSA4A5udI3eXn9R7ST6kbG3gTJUKFzO63FN8dLTzukih5CG7iO7wD9Ijh0MgIk29ONHHK5hYHR2USC0cZItUC9lA7Kg4cE-vXHcA-78vUQc3GxoJwZCiVpxGdQuvNP-dWDaljZqo__q51tAtUGnLrTe3v14gsx-n8UaYRf_1hfimVCN91xLAljs6kdlaK-8LTkxpWKUp2B0"/>
-</div>
-</header>
+      <Header activePage="jobs" />
+
 <main className="max-w-container-max mx-auto px-margin-mobile pb-32">
 {/* Hero & Search Section */}
 <section className="py-stack-lg">

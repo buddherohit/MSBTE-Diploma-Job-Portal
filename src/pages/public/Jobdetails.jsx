@@ -1,21 +1,11 @@
 import React from 'react';
+import Header from '../../components/Header';
 
 export default function Jobdetails() {
   return (
     <div className="w-full min-h-screen">
-      
-{/* Top Navigation Bar */}
-<header className="fixed top-0 left-0 right-0 z-50 glass-header border-b border-outline-variant">
-<div className="flex justify-between items-center px-margin-mobile h-16 w-full max-w-container-max mx-auto">
-<button className="p-2 hover:bg-surface-container rounded-full transition-colors">
-<span className="material-symbols-outlined text-on-surface">arrow_back</span>
-</button>
-<h1 className="font-headline-md text-headline-md font-bold text-primary">MSBTE Jobs</h1>
-<div className="w-10 h-10 rounded-full border border-outline-variant bg-surface-container overflow-hidden">
-<img alt="Profile" className="w-full h-full object-cover" data-alt="A professional headshot of a young male engineer wearing a crisp white shirt, captured in a brightly lit modern office environment with soft bokeh background. The lighting is high-key and professional, matching the clean and authoritative corporate modern UI aesthetic of the platform. The subject has a confident and approachable expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrWh8SDj52cM4qTR3DUFshfmGBaKKVRMIhB4B7lzZGwq0ad_BrrWi0BohvE9FH697BCWocbu-9cBf2SzNlOqrSyDSREp1zHtPQ70IdbiGtNo-0lXi5Ciw_tYzmVFgak7bEZIYq_Z_fFc3E5eeUiJp2X0q9MLF3JH1TX7_veduB_aCngK-eLfUYOtW_SNi0EJQ6OoSnOYiZI-wrOKpAcvZx8Tbwz1RDWlyKKGmi42PXt1Woh3bqWmrs66nCQp8A5mJdlcC6QuRPOzE"/>
-</div>
-</div>
-</header>
+      <Header activePage="jobs" />
+
 <main className="pt-20 pb-24 px-margin-mobile max-w-md mx-auto">
 {/* Job Header Section */}
 <section className="mb-stack-lg">

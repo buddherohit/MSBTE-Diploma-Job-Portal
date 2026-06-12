@@ -1,6 +1,39 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { getCurrentUser, logoutSession } from '../../utils/auth';
 
 export default function EmployerDashboardIndustrialBlueprintsRefined() {
+  const [user, setUser] = useState(null);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const session = getCurrentUser();
+    if (!session || session.role !== 'employer') {
+      navigate('/public/student-login');
+    } else {
+      setUser(session);
+    }
+  }, [navigate]);
+
+  const handleLogout = () => {
+    logoutSession();
+    navigate('/');
+  };
+
+  if (!user) {
+    return <div className="min-h-screen bg-background flex items-center justify-center">Loading...</div>;
+  }
+
+  const initials = user.name
+    ? user.name
+        .split(' ')
+        .map((n) => n[0])
+        .join('')
+        .toUpperCase()
+        .substring(0, 2)
+    : 'U';
+
   return (
     <div className="w-full min-h-screen">
       
@@ -8,20 +41,56 @@ export default function EmployerDashboardIndustrialBlueprintsRefined() {
 <header className="bg-surface sticky top-0 z-50 border-b border-outline-variant h-16 flex items-center justify-between px-margin-mobile max-w-container-max mx-auto">
 <div className="flex items-center gap-4">
 <span className="material-symbols-outlined text-primary cursor-pointer">menu</span>
-<h1 className="font-headline-md text-headline-md font-bold text-primary">MSBTE Jobs</h1>
+<Link to="/" className="font-headline-md text-headline-md font-bold text-primary">MSBTE Jobs</Link>
 </div>
-<div className="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant">
-<img alt="User" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCctXmdFXP90oGIHR_ZinwH-JNAf-1cxUWsTsGt52ys8XH9DaZKvKniSjf18LB2sRC0iAF4RenFn8qGOXQTpQ8s3TJ8esDyhDOlFjjm7HjSGO5mCgmtiV71NeSaZeEkZlJ8zigxCU0zIQ_8ZPnQTEOAy-B5zIcE2SJk8DfIyU_MhVCvteuCBE_W0MLX2LSGJqDrhsAWWnbbRtG90j4LCvtv6a25xniqcwP8gfIZu1agEQEq3X9izU50DsG5bYCq5dwhYVBNPrE6NN0" />
+<div className="flex items-center gap-4 relative">
+<button 
+  onClick={() => setDropdownOpen(!dropdownOpen)} 
+  className="w-10 h-10 rounded-full overflow-hidden border border-outline-variant bg-primary text-white flex items-center justify-center font-bold focus:outline-none"
+>
+  {initials}
+</button>
+
+{dropdownOpen && (
+  <>
+    <div className="fixed inset-0 z-40" onClick={() => setDropdownOpen(false)}></div>
+    <div className="absolute right-0 top-12 z-50 w-64 bg-white border border-outline-variant shadow-xl rounded-2xl p-4 flex flex-col gap-3">
+      <div className="pb-3 border-b border-outline-variant text-left">
+        <h4 className="font-bold text-on-surface text-body-md leading-tight">{user.name}</h4>
+        <p className="text-[11px] text-on-surface-variant font-semibold mt-1 truncate">{user.email}</p>
+        <span className="inline-block mt-2 px-2.5 py-0.5 rounded-full text-[9px] font-bold bg-secondary-fixed text-secondary uppercase tracking-wider">
+          Employer
+        </span>
+      </div>
+      <div className="flex flex-col gap-1">
+        <Link to="/" className="flex items-center gap-2 p-2 rounded-lg text-body-md text-on-surface hover:bg-surface-container transition-colors text-left" onClick={() => setDropdownOpen(false)}>
+          <span className="material-symbols-outlined text-xl text-on-surface-variant">home</span>
+          Home Page
+        </Link>
+        <Link to="/employer-portal/employer-profile-settings" className="flex items-center gap-2 p-2 rounded-lg text-body-md text-on-surface hover:bg-surface-container transition-colors text-left" onClick={() => setDropdownOpen(false)}>
+          <span className="material-symbols-outlined text-xl text-on-surface-variant">settings</span>
+          Company Settings
+        </Link>
+      </div>
+      <div className="pt-2 border-t border-outline-variant">
+        <button onClick={handleLogout} className="w-full flex items-center gap-2 p-2 rounded-lg text-body-md text-red-600 hover:bg-red-50 transition-colors text-left font-bold">
+          <span className="material-symbols-outlined text-xl">logout</span>
+          Log Out
+        </button>
+      </div>
+    </div>
+  </>
+)}
 </div>
 </header>
 <main className="max-w-container-max mx-auto px-margin-mobile pt-stack-lg pb-32">
 {/* Welcome Section */}
-<section className="mb-stack-lg space-y-stack-sm">
-<h2 className="font-headline-md text-headline-md text-on-surface">Welcome back, Rohan Sharma</h2>
+<section className="mb-stack-lg space-y-stack-sm text-left">
+<h2 className="font-headline-md text-headline-md text-on-surface font-bold">Welcome back, {user.name}</h2>
 <div className="flex flex-col gap-2">
 <p className="font-body-md text-on-surface-variant flex items-center gap-2">
 <span className="material-symbols-outlined text-primary text-xl filled-icon">business</span>
-                    Tata Communications Ltd.
+                    {user.companyName || 'Tata Communications Ltd.'}
                 </p>
 <div>
 <span className="inline-flex px-3 py-1 bg-tertiary-container text-on-tertiary-container rounded-full font-label-sm">Verified Recruiter</span>

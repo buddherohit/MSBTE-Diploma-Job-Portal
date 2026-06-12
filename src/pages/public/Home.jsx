@@ -1,82 +1,11 @@
 import React from 'react';
+import Header from '../../components/Header';
 
 export default function Home() {
   return (
     <div className="w-full min-h-screen">
-      
-{/* Mobile Drawer Toggle Checkbox */}
-<input type="checkbox" id="mobile-menu-toggle" className="peer hidden" />
+      <Header activePage="home" />
 
-{/* Mobile Drawer Overlay */}
-<div className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm hidden peer-checked:block lg:hidden">
-  <label htmlFor="mobile-menu-toggle" className="absolute inset-0 cursor-default"></label>
-</div>
-
-{/* Mobile Drawer Content */}
-<div className="fixed right-0 top-0 bottom-0 z-50 w-80 max-w-[85vw] bg-white shadow-2xl flex flex-col p-6 translate-x-full transition-transform duration-300 peer-checked:translate-x-0 lg:hidden">
-  {/* Drawer Header */}
-  <div className="flex justify-between items-center pb-6 border-b border-outline-variant">
-    <div className="flex items-center gap-2">
-      <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white shadow-sm">
-        <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: '\'FILL\' 1' }}>school</span>
-      </div>
-      <div className="flex flex-col leading-none text-left">
-        <span className="font-headline-md text-[16px] font-extrabold text-primary tracking-tight">MSBTE<span className="text-secondary-container">Jobs</span></span>
-        <span className="text-[8px] font-bold text-on-surface-variant tracking-wider uppercase mt-0.5">Diploma Jobs Portal</span>
-      </div>
-    </div>
-    {/* Close button */}
-    <label htmlFor="mobile-menu-toggle" className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary cursor-pointer hover:bg-surface-container-highest transition-colors">
-      <span className="material-symbols-outlined text-xl">close</span>
-    </label>
-  </div>
-  
-  {/* Drawer Navigation Links */}
-  <nav className="flex flex-col gap-5 py-8 text-left">
-    <a className="text-body-md font-bold text-primary transition-colors duration-150" href="/">Home</a>
-    <a className="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" href="/public/find-diploma-jobs">Find Jobs</a>
-    <a className="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" href="/public/industry">Companies</a>
-    <a className="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" href="Find Diploma Jobs.html?type=internship">Internships</a>
-    <a className="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" href="/public/about">About Us</a>
-    <a className="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" href="/public/contact">Contact</a>
-  </nav>
-  
-  {/* Drawer Action Buttons */}
-  <div className="mt-auto flex flex-col gap-3 pt-6 border-t border-outline-variant">
-    <a className="w-full text-center border border-outline-variant hover:border-primary text-on-surface hover:text-primary py-3 rounded-xl font-bold text-body-md transition-all duration-200 active:scale-95 shadow-sm" href="/public/student-login">Login</a>
-    <a className="w-full text-center bg-primary hover:bg-primary/95 text-white py-3 rounded-xl font-bold text-body-md transition-all duration-200 active:scale-95 shadow-md" href="/public/create-account">Register</a>
-  </div>
-</div>
-
-{/* TopAppBar */}
-<header className="bg-surface z-30 sticky top-0 border-b border-outline-variant">
-<div className="flex justify-between items-center px-margin-mobile w-full max-w-container-max mx-auto h-20">
-<div className="flex items-center gap-3">
-<label htmlFor="mobile-menu-toggle" className="material-symbols-outlined text-primary cursor-pointer lg:hidden text-2xl select-none" data-icon="menu">menu</label>
-<a className="flex items-center gap-2 cursor-pointer" href="/">
-<div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-white shadow-sm">
-<span className="material-symbols-outlined text-[24px]" style={{ fontVariationSettings: '\'FILL\' 1' }}>school</span>
-</div>
-<div className="flex flex-col leading-none">
-<span className="font-headline-md text-[20px] font-extrabold text-primary tracking-tight">MSBTE<span className="text-secondary-container">Jobs</span></span>
-<span className="text-[9px] font-bold text-on-surface-variant tracking-wider uppercase mt-0.5">Diploma Jobs Portal</span>
-</div>
-</a>
-</div>
-<nav className="hidden lg:flex items-center gap-8">
-<a className="text-body-md font-bold text-primary border-b-2 border-primary pb-1 transition-colors duration-150" href="/">Home</a>
-<a className="text-body-md font-semibold text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 hover:border-primary/60 transition-colors duration-150" href="/public/find-diploma-jobs">Find Jobs</a>
-<a className="text-body-md font-semibold text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 hover:border-primary/60 transition-colors duration-150" href="/public/industry">Companies</a>
-<a className="text-body-md font-semibold text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 hover:border-primary/60 transition-colors duration-150" href="Find Diploma Jobs.html?type=internship">Internships</a>
-<a className="text-body-md font-semibold text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 hover:border-primary/60 transition-colors duration-150" href="/public/about">About Us</a>
-<a className="text-body-md font-semibold text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 hover:border-primary/60 transition-colors duration-150" href="/public/contact">Contact</a>
-</nav>
-<div className="hidden sm:flex items-center gap-3">
-<a className="border border-outline-variant hover:border-primary text-on-surface hover:text-primary px-5 py-2 rounded-lg font-bold text-body-md transition-all duration-200 active:scale-95 shadow-sm" href="/public/student-login">Login</a>
-<a className="bg-primary hover:bg-primary/95 text-white px-5 py-2 rounded-lg font-bold text-body-md transition-all duration-200 hover:scale-105 active:scale-95 shadow-md" href="/public/create-account">Register</a>
-</div>
-</div>
-</header>
 <main className="pb-24 md:pb-12">
 {/* Hero Section */}
 <section className="relative overflow-hidden bg-background py-16 lg:py-24 text-on-surface border-b border-outline-variant">

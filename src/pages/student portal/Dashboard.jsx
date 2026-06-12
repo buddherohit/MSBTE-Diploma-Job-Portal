@@ -1,242 +1,336 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { getCurrentUser } from '../../utils/auth';
+import StudentHeader from '../../components/StudentHeader';
 
 export default function Dashboard() {
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const session = getCurrentUser();
+    if (!session || session.role !== 'student') {
+      navigate('/public/student-login');
+    } else {
+      setUser(session);
+    }
+  }, [navigate]);
+
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-background flex flex-col items-center justify-center">
+        <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+        <p className="mt-4 text-on-surface-variant font-bold">Verifying Session...</p>
+      </div>
+    );
+  }
+
   return (
-    <div className="w-full min-h-screen">
-      
-{/* TopAppBar */}
-<header className="bg-surface dark:bg-on-background border-b border-outline-variant dark:border-outline z-50 sticky top-0 flex justify-between items-center px-margin-mobile w-full max-w-container-max mx-auto h-16">
-<div className="flex items-center gap-4">
-<span className="material-symbols-outlined text-primary cursor-pointer">menu</span>
-<span className="font-headline-md text-headline-md font-extrabold text-primary dark:text-primary-fixed tracking-tight">MSBTE Jobs</span>
-</div>
-<div className="flex items-center gap-4">
-<button className="hidden md:flex items-center gap-2 px-4 py-2 text-primary font-bold border-b-2 border-primary">
-                Dashboard
-            </button>
-<button className="hidden md:flex items-center gap-2 px-4 py-2 text-on-surface-variant hover:bg-surface-container transition-colors duration-200">
-                Jobs
-            </button>
-<div className="w-10 h-10 rounded-full overflow-hidden border border-outline-variant">
-<img alt="User profile photo" className="w-full h-full object-cover" data-alt="A professional headshot of a young Indian male student with a confident smile, wearing a clean white shirt. The background is a soft, blurred corporate office setting with natural daylight filtering through large windows, creating a bright and optimistic atmosphere. The image has a modern, high-contrast look consistent with a professional career platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0_AhN0uta3x9Kdq5a91H41rF72dT_IRYfyTnLtDXrJ9tID6UIKMjyQU1hIUx1ekOPbv_7rT6B7GViPWoK3Q-8kRUkRKIj_nxVoKH_nqnU1WfRdlR-mLrlnFnnnNU7y-Xk8oYLq92PR5YVeJkQSxR-osSCRQ6UMxjv89DJED1cXrluqwa9DMw7Tx7BJiHpxKle6WOMyjcfIqcQj_VPZWdT4DEuz14cItIH2ccYgqlBCAhCs7XVZp_dSnjBGiXz-jxGIfRRiVnZMJE"/>
-</div>
-</div>
-</header>
-<main className="max-w-container-max mx-auto px-margin-mobile py-stack-lg space-y-stack-lg">
-{/* Welcome Section */}
-<section className="flex flex-col md:flex-row md:items-end justify-between gap-gutter">
-<div>
-<p className="text-on-surface-variant font-label-md uppercase tracking-wider">Student Overview</p>
-<h1 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mt-2 font-extrabold">Welcome back, Rahul Sharma!</h1>
-<p className="text-on-surface-variant mt-1">Check out your application status and recommended jobs for Diploma in Mechanical Engineering.</p>
-</div>
-<button className="bg-primary text-on-primary px-6 py-3 rounded-lg font-bold shadow-md hover:bg-primary-container transition-all flex items-center justify-center gap-2">
-<span className="material-symbols-outlined">upload_file</span>
-                Update Resume
-            </button>
-</section>
-{/* Profile & Stats Grid (Bento Style) */}
-<div className="grid grid-cols-1 md:grid-cols-12 gap-gutter">
-{/* Profile Completion Card */}
-<div className="md:col-span-4 bg-white border border-outline-variant rounded-xl p-6 shadow-sm flex flex-col justify-between">
-<div>
-<div className="flex justify-between items-start mb-4">
-<div className="p-3 bg-primary-fixed text-primary rounded-lg">
-<span className="material-symbols-outlined" style={{ fontVariationSettings: '\'FILL\' 1' }}>account_circle</span>
-</div>
-<span className="text-label-md font-bold text-primary">85% Complete</span>
-</div>
-<h3 className="font-headline-md text-headline-md mb-2">Profile Strength</h3>
-<p className="text-on-surface-variant text-body-md mb-6">Complete your technical certifications to reach 100% and get noticed by top recruiters.</p>
-</div>
-<div className="space-y-3">
-<div className="w-full bg-surface-container-highest h-3 rounded-full overflow-hidden">
-<div className="bg-primary h-full w-[85%] rounded-full transition-all duration-1000"></div>
-</div>
-<a className="text-primary font-bold text-label-md flex items-center gap-1 hover:underline" href="#">
-                        Complete Profile <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-</a>
-</div>
-</div>
-{/* Quick Stats Grid */}
-<div className="md:col-span-8 grid grid-cols-2 lg:grid-cols-4 gap-4">
-<div className="bg-white border border-outline-variant rounded-xl p-5 flex flex-col justify-center items-center text-center hover:shadow-md transition-shadow">
-<span className="text-display-lg font-display-lg text-primary">12</span>
-<span className="text-on-surface-variant font-label-md mt-1">Applied</span>
-</div>
-<div className="bg-secondary-fixed text-on-secondary-fixed border border-outline-variant rounded-xl p-5 flex flex-col justify-center items-center text-center hover:shadow-md transition-shadow">
-<span className="text-display-lg font-display-lg text-secondary">2</span>
-<span className="text-on-surface-variant font-label-md mt-1">Shortlisted</span>
-</div>
-<div className="bg-white border border-outline-variant rounded-xl p-5 flex flex-col justify-center items-center text-center hover:shadow-md transition-shadow">
-<span className="text-display-lg font-display-lg text-primary">5</span>
-<span className="text-on-surface-variant font-label-md mt-1">Saved</span>
-</div>
-<div className="bg-white border border-outline-variant rounded-xl p-5 flex flex-col justify-center items-center text-center hover:shadow-md transition-shadow">
-<span className="text-display-lg font-display-lg text-primary">45</span>
-<span className="text-on-surface-variant font-label-md mt-1">Profile Views</span>
-</div>
-{/* CTA / Promo Card in the Stats Grid */}
-<div className="col-span-2 lg:col-span-4 bg-tertiary-container text-white rounded-xl p-6 flex items-center justify-between overflow-hidden relative group">
-<div className="z-10">
-<h4 className="font-headline-md text-headline-md mb-2">Campus Drive 2024</h4>
-<p className="text-on-tertiary-container opacity-90 max-w-md">L&T and Tata Motors are visiting MSBTE affiliated colleges next week. Register now for the pre-placement talk.</p>
-<button className="mt-4 bg-on-tertiary-container text-tertiary px-5 py-2 rounded-lg font-bold hover:bg-tertiary-fixed transition-colors">Register Interest</button>
-</div>
-<div className="hidden lg:block absolute right-[-20px] top-[-20px] opacity-20 group-hover:scale-110 transition-transform duration-500">
-<span className="material-symbols-outlined text-[180px]">school</span>
-</div>
-</div>
-</div>
-</div>
-{/* Active Applications */}
-<section className="space-y-4">
-<div className="flex items-center justify-between">
-<h2 className="font-headline-md text-headline-md">Active Applications</h2>
-<a className="text-primary font-bold hover:underline" href="#">View All</a>
-</div>
-<div className="bg-white border border-outline-variant rounded-xl overflow-hidden">
-<div className="overflow-x-auto">
-<table className="w-full text-left border-collapse">
-<thead className="bg-surface-container-low border-b border-outline-variant">
-<tr>
-<th className="px-6 py-4 font-label-md text-on-surface-variant">Job Title</th>
-<th className="px-6 py-4 font-label-md text-on-surface-variant">Company</th>
-<th className="px-6 py-4 font-label-md text-on-surface-variant">Date Applied</th>
-<th className="px-6 py-4 font-label-md text-on-surface-variant">Status</th>
-<th className="px-6 py-4 font-label-md text-on-surface-variant">Action</th>
-</tr>
-</thead>
-<tbody className="divide-y divide-outline-variant">
-<tr className="hover:bg-surface-container-lowest transition-colors">
-<td className="px-6 py-4 font-bold text-primary">Junior Design Engineer</td>
-<td className="px-6 py-4">Mahindra & Mahindra</td>
-<td className="px-6 py-4 text-on-surface-variant">Oct 24, 2023</td>
-<td className="px-6 py-4">
-<span className="px-3 py-1 rounded-full text-label-sm font-bold bg-primary-fixed text-on-primary-fixed-variant">Under Review</span>
-</td>
-<td className="px-6 py-4">
-<button className="text-primary hover:text-primary-container"><span className="material-symbols-outlined">visibility</span></button>
-</td>
-</tr>
-<tr className="hover:bg-surface-container-lowest transition-colors">
-<td className="px-6 py-4 font-bold text-primary">Production Supervisor Trainee</td>
-<td className="px-6 py-4">Bajaj Auto Ltd.</td>
-<td className="px-6 py-4 text-on-surface-variant">Oct 20, 2023</td>
-<td className="px-6 py-4">
-<span className="px-3 py-1 rounded-full text-label-sm font-bold bg-tertiary-fixed text-on-tertiary-fixed-variant">Interview Scheduled</span>
-</td>
-<td className="px-6 py-4">
-<button className="text-primary hover:text-primary-container"><span className="material-symbols-outlined">visibility</span></button>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-{/* Recommended for you */}
-<section className="space-y-4">
-<div className="flex items-center justify-between">
-<h2 className="font-headline-md text-headline-md">Recommended for you</h2>
-<div className="flex gap-2">
-<button className="w-10 h-10 flex items-center justify-center border border-outline-variant rounded-full hover:bg-surface-container" onclick="document.getElementById('jobScroll').scrollBy({left: -300, behavior: 'smooth'})">
-<span className="material-symbols-outlined">chevron_left</span>
-</button>
-<button className="w-10 h-10 flex items-center justify-center border border-outline-variant rounded-full hover:bg-surface-container" onclick="document.getElementById('jobScroll').scrollBy({left: 300, behavior: 'smooth'})">
-<span className="material-symbols-outlined">chevron_right</span>
-</button>
-</div>
-</div>
-<div className="flex gap-gutter overflow-x-auto hide-scrollbar snap-x pb-4" id="jobScroll">
-{/* Job Card 1 */}
-<div className="min-w-[300px] md:min-w-[380px] snap-start bg-white border border-outline-variant rounded-xl p-6 hover:shadow-lg transition-all border-l-4 border-l-primary">
-<div className="flex justify-between items-start mb-4">
-<div className="w-12 h-12 rounded bg-surface-container p-2 flex items-center justify-center">
-<img alt="Company Logo" className="w-full h-full object-contain" data-alt="A minimalist logo of a modern industrial corporation featuring bold geometric lines. The logo is displayed in a clean, white-space heavy environment, emphasizing professional stability and corporate identity. The lighting is bright and architectural, reflecting a high-end corporate brand aesthetic with deep blues and metallic grays." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmsSb-mmZMluhkNDX4tYwocVsYz8GmXPPDg2RNR28k_wWSdJpjD85rIVyvxIYM80mu_-iV0N1RmuK4yUf3ARPd68qBg5A_2QVepKmT3F9i0bF3NhzK8myTAyiTcvt0Iy8h3Kyr9RhoEEvv_X9I7g24DJYdddQIzDR4ONZ41Et07dY83Y2Cmp5linnJk8QXY0PWxn0mdtaf5aZgL9k0WW03kGirN_2cp7u3HjY2pvMvPCcS5sbHE8LcXzG3snariNgQ0cErcJuoILg"/>
-</div>
-<span className="px-2 py-1 bg-secondary-fixed text-on-secondary-fixed text-label-sm font-bold rounded">New</span>
-</div>
-<h4 className="font-bold text-lg mb-1">Maintenance Engineer</h4>
-<p className="text-on-surface-variant text-body-md mb-4">Thermax Limited • Pune, MH</p>
-<div className="flex flex-wrap gap-2 mb-6">
-<span className="px-3 py-1 bg-primary-fixed text-primary text-label-sm rounded-full">Mechanical</span>
-<span className="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-label-sm rounded-full">Full Time</span>
-</div>
-<div className="flex items-center justify-between pt-4 border-t border-outline-variant">
-<span className="font-bold text-primary">₹3.5 - 4.2 LPA</span>
-<button className="bg-primary text-on-primary px-4 py-2 rounded font-bold hover:bg-primary-container transition-colors">Apply Now</button>
-</div>
-</div>
-{/* Job Card 2 */}
-<div className="min-w-[300px] md:min-w-[380px] snap-start bg-white border border-outline-variant rounded-xl p-6 hover:shadow-lg transition-all">
-<div className="flex justify-between items-start mb-4">
-<div className="w-12 h-12 rounded bg-surface-container p-2 flex items-center justify-center">
-<img alt="Company Logo" className="w-full h-full object-contain" data-alt="A professional branding mark for a technology and engineering firm, shown as a subtle metallic icon on a high-texture light gray background. The scene is lit with cool-toned studio lights, creating sharp highlights and soft shadows that convey a sense of precision and innovation in the manufacturing sector." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzABWiTx_FIhp-lynLLREgt4fKnXlzZZoT1LroXsV9uK0c8rC5yiebMuUc1SE0NO5ChzarLwQIsWxybq8ky5YGqtdoqc7DYGmeYcjE7UfQTEUcgIkLf3W3-H0banoavRcPs3W8wF7ra5QdPX0b5kmeKYyuI2WgK-ZlIj6iHTaPcMqaSAAFyci-It3U6_2FIimlyG6Bl-Ffx_VwCgNG9V9rH4cFQ39pOPnpk_jOr9JTNnIUxctKuKlv1NkdBnZtiAkyzumz2gq4XrE"/>
-</div>
-<span className="px-2 py-1 bg-surface-container-highest text-on-surface-variant text-label-sm font-bold rounded">Urgent</span>
-</div>
-<h4 className="font-bold text-lg mb-1">Quality Control Inspector</h4>
-<p className="text-on-surface-variant text-body-md mb-4">Godrej & Boyce • Mumbai, MH</p>
-<div className="flex flex-wrap gap-2 mb-6">
-<span className="px-3 py-1 bg-primary-fixed text-primary text-label-sm rounded-full">Manufacturing</span>
-<span className="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-label-sm rounded-full">Day Shift</span>
-</div>
-<div className="flex items-center justify-between pt-4 border-t border-outline-variant">
-<span className="font-bold text-primary">₹3.2 - 3.8 LPA</span>
-<button className="bg-primary text-on-primary px-4 py-2 rounded font-bold hover:bg-primary-container transition-colors">Apply Now</button>
-</div>
-</div>
-{/* Job Card 3 */}
-<div className="min-w-[300px] md:min-w-[380px] snap-start bg-white border border-outline-variant rounded-xl p-6 hover:shadow-lg transition-all">
-<div className="flex justify-between items-start mb-4">
-<div className="w-12 h-12 rounded bg-surface-container p-2 flex items-center justify-center">
-<img alt="Company Logo" className="w-full h-full object-contain" data-alt="A sleek corporate emblem rendered in 3D with a polished chrome finish, set against a backdrop of minimalist modern architecture. The lighting is diffuse and soft, with accents of blue that match a professional design system palette, portraying a high-authority industrial brand in the infrastructure sector." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHo6CTs4SY-fSk8bAucbkzP0-H2hwJkM0eJ3HDJUt8ZkJ-Vv9iPyBn-e0PDVoQDHueelkL0RKwaKjWs3D8bnOh4AEKbP9PL0Piqnp4kNeWoOgleZu8kCrPSCuUlfgh6fa4kGkGg49RWfXOfsK6zAW8OEXI0VMCHo8lDLqJSDkO5qCF1JGmqVS2LWD3YLxOllbfgsfJHUxeYYp8IvtxY5AULyfOO7Icfoagvia4-dXItZQ9gEjsN8YmLakH_wa6T8AEZrGJqmHcHUk"/>
-</div>
-</div>
-<h4 className="font-bold text-lg mb-1">Site Supervisor (Civil)</h4>
-<p className="text-on-surface-variant text-body-md mb-4">Afcons Infrastructure • Nashik, MH</p>
-<div className="flex flex-wrap gap-2 mb-6">
-<span className="px-3 py-1 bg-primary-fixed text-primary text-label-sm rounded-full">Civil Eng.</span>
-<span className="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-label-sm rounded-full">Permanent</span>
-</div>
-<div className="flex items-center justify-between pt-4 border-t border-outline-variant">
-<span className="font-bold text-primary">₹4.0 - 5.0 LPA</span>
-<button className="bg-primary text-on-primary px-4 py-2 rounded font-bold hover:bg-primary-container transition-colors">Apply Now</button>
-</div>
-</div>
-</div>
-</section>
-</main>
-{/* BottomNavBar (Mobile Only) */}
-<nav className="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface dark:bg-on-background shadow-md rounded-t-xl">
-{/* Dashboard (Active) */}
-<a className="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-4 py-1 scale-95 transition-transform duration-150" href="#">
-<span className="material-symbols-outlined" style={{ fontVariationSettings: '\'FILL\' 1' }}>dashboard</span>
-<span className="font-label-sm text-label-sm">Dashboard</span>
-</a>
-{/* Jobs */}
-<a className="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all duration-150" href="#">
-<span className="material-symbols-outlined">work</span>
-<span className="font-label-sm text-label-sm">Jobs</span>
-</a>
-{/* Profile */}
-<a className="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all duration-150" href="#">
-<span className="material-symbols-outlined">person</span>
-<span className="font-label-sm text-label-sm">Profile</span>
-</a>
-{/* Alerts */}
-<a className="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all duration-150" href="#">
-<span className="material-symbols-outlined">notifications</span>
-<span className="font-label-sm text-label-sm">Alerts</span>
-</a>
-</nav>
-{/* Floating Action Button (FAB) - For Home/Dashboard */}
-<button className="fixed bottom-20 right-4 md:bottom-8 md:right-8 w-14 h-14 bg-secondary-container text-on-secondary-container rounded-full shadow-lg flex items-center justify-center hover:scale-105 transition-transform z-40">
-<span className="material-symbols-outlined text-[32px]">search</span>
-</button>
+    <div className="w-full min-h-screen bg-background flex flex-col">
+      {/* Student Navbar */}
+      <StudentHeader activePage="dashboard" />
 
+      {/* Main Workspace */}
+      <main className="flex-grow max-w-container-max mx-auto w-full px-margin-mobile md:px-gutter py-8 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+        
+        {/* Welcome Section / Hero Banner */}
+        <section className="relative overflow-hidden bg-white border border-outline-variant rounded-3xl p-8 md:p-10 shadow-sm text-on-surface">
+          {/* Atmospheric Background Element */}
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary-fixed/20 rounded-full blur-[80px] -mr-32 -mt-32 pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-secondary-fixed/20 rounded-full blur-[80px] -ml-24 -mb-24 pointer-events-none"></div>
 
+          <div className="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            <div className="text-left space-y-3">
+              <span className="inline-block px-4 py-1.5 bg-primary-fixed text-on-primary-fixed-variant rounded-full text-xs font-bold uppercase tracking-wider">
+                Student Overview
+              </span>
+              <h1 className="font-display-lg text-headline-lg-mobile md:text-display-lg font-extrabold tracking-tight text-on-surface">
+                Welcome back, <span className="text-primary">{user.name}</span>!
+              </h1>
+              <p className="font-body-lg text-on-surface-variant max-w-2xl">
+                Check out your application status and recommended jobs for <span className="font-bold text-secondary">Diploma in {user.branch || 'Engineering'}</span>. Your engineering journey starts here.
+              </p>
+            </div>
+            <Link 
+              to="/student-portal/profile" 
+              className="bg-primary text-white hover:bg-primary/95 shadow-md font-bold px-6 py-3.5 rounded-xl transition-all hover:scale-105 active:scale-95 flex items-center gap-2 self-start md:self-auto shrink-0"
+            >
+              <span className="material-symbols-outlined text-[20px]">edit_document</span>
+              Update Profile
+            </Link>
+          </div>
+        </section>
+
+        {/* Stats Bento Grid */}
+        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Applied Jobs */}
+          <div className="bg-white border border-outline-variant rounded-2xl p-6 flex items-center gap-4 hover:shadow-md hover:-translate-y-0.5 transition-all">
+            <div className="w-12 h-12 rounded-xl bg-primary-fixed/40 text-primary flex items-center justify-center shrink-0">
+              <span className="material-symbols-outlined text-2xl font-bold">work</span>
+            </div>
+            <div className="text-left leading-tight">
+              <p className="text-headline-md font-extrabold text-on-surface">12</p>
+              <p className="text-on-surface-variant font-label-md text-[11px] font-bold uppercase tracking-wider mt-1">Applied</p>
+            </div>
+          </div>
+
+          {/* Shortlisted */}
+          <div className="bg-white border border-outline-variant rounded-2xl p-6 flex items-center gap-4 hover:shadow-md hover:-translate-y-0.5 transition-all">
+            <div className="w-12 h-12 rounded-xl bg-tertiary-fixed/30 text-on-tertiary-fixed-variant flex items-center justify-center shrink-0">
+              <span className="material-symbols-outlined text-2xl font-bold">verified</span>
+            </div>
+            <div className="text-left leading-tight">
+              <p className="text-headline-md font-extrabold text-on-surface">2</p>
+              <p className="text-on-surface-variant font-label-md text-[11px] font-bold uppercase tracking-wider mt-1">Shortlisted</p>
+            </div>
+          </div>
+
+          {/* Saved */}
+          <div className="bg-white border border-outline-variant rounded-2xl p-6 flex items-center gap-4 hover:shadow-md hover:-translate-y-0.5 transition-all">
+            <div className="w-12 h-12 rounded-xl bg-secondary-fixed/50 text-secondary flex items-center justify-center shrink-0">
+              <span className="material-symbols-outlined text-2xl font-bold">bookmark</span>
+            </div>
+            <div className="text-left leading-tight">
+              <p className="text-headline-md font-extrabold text-on-surface">5</p>
+              <p className="text-on-surface-variant font-label-md text-[11px] font-bold uppercase tracking-wider mt-1">Saved</p>
+            </div>
+          </div>
+
+          {/* Views */}
+          <div className="bg-white border border-outline-variant rounded-2xl p-6 flex items-center gap-4 hover:shadow-md hover:-translate-y-0.5 transition-all">
+            <div className="w-12 h-12 rounded-xl bg-secondary-container/10 text-secondary-container flex items-center justify-center shrink-0">
+              <span className="material-symbols-outlined text-2xl font-bold">visibility</span>
+            </div>
+            <div className="text-left leading-tight">
+              <p className="text-headline-md font-extrabold text-on-surface">45</p>
+              <p className="text-on-surface-variant font-label-md text-[11px] font-bold uppercase tracking-wider mt-1">Views</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Promo banner inside grid */}
+        <section className="bg-[#091E42] rounded-3xl p-8 text-white flex flex-col md:flex-row justify-between items-start md:items-center gap-6 shadow-sm relative overflow-hidden group">
+          <div className="absolute right-0 top-0 opacity-10 translate-x-1/4 -translate-y-1/4 group-hover:scale-105 transition-transform duration-500 pointer-events-none">
+            <span className="material-symbols-outlined text-[150px]">school</span>
+          </div>
+          <div className="text-left space-y-2 relative z-10">
+            <h4 className="font-headline-md text-[20px] font-extrabold text-white">MSBTE Campus Placement Drive 2024</h4>
+            <p className="text-slate-300 max-w-2xl text-body-md leading-relaxed">
+              Top industrial engineering firms like Tata Motors and Kirloskar are visiting Pune and Chakan zones for direct selection processes.
+            </p>
+          </div>
+          <button className="bg-white text-primary hover:bg-slate-50 font-bold px-6 py-3 rounded-xl text-body-md shrink-0 shadow-md relative z-10 transition-transform active:scale-95">
+            Register Interest
+          </button>
+        </section>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+          {/* Active Applications */}
+          <section className="lg:col-span-2 space-y-4 text-left">
+            <div className="flex items-center justify-between">
+              <h2 className="font-headline-md text-xl font-bold text-on-surface">Active Applications</h2>
+              <Link className="text-primary font-bold hover:underline text-sm flex items-center gap-0.5" to="/student-portal/application-history">
+                View History <span className="material-symbols-outlined text-sm">arrow_forward</span>
+              </Link>
+            </div>
+            <div className="bg-white border border-outline-variant rounded-2xl overflow-hidden shadow-sm">
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse">
+                  <thead className="bg-surface-container-low border-b border-outline-variant">
+                    <tr>
+                      <th className="px-6 py-4 font-bold text-xs uppercase tracking-wider text-on-surface-variant">Job Title</th>
+                      <th className="px-6 py-4 font-bold text-xs uppercase tracking-wider text-on-surface-variant">Company</th>
+                      <th className="px-6 py-4 font-bold text-xs uppercase tracking-wider text-on-surface-variant">Applied Date</th>
+                      <th className="px-6 py-4 font-bold text-xs uppercase tracking-wider text-on-surface-variant">Status</th>
+                      <th className="px-6 py-4 font-bold text-xs uppercase tracking-wider text-on-surface-variant">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-outline-variant">
+                    <tr className="hover:bg-slate-50 transition-colors">
+                      <td className="px-6 py-4 font-bold text-primary text-sm">Junior Design Engineer</td>
+                      <td className="px-6 py-4 text-sm text-on-surface">Mahindra & Mahindra</td>
+                      <td className="px-6 py-4 text-sm text-on-surface-variant">Oct 24, 2023</td>
+                      <td className="px-6 py-4">
+                        <span className="inline-block px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary-fixed text-primary">
+                          Under Review
+                        </span>
+                      </td>
+                      <td className="px-6 py-4">
+                        <Link to="/student-portal/job-application-status" className="text-primary hover:text-primary-dim transition-colors">
+                          <span className="material-symbols-outlined text-xl">visibility</span>
+                        </Link>
+                      </td>
+                    </tr>
+                    <tr className="hover:bg-slate-50 transition-colors">
+                      <td className="px-6 py-4 font-bold text-primary text-sm">Production Supervisor</td>
+                      <td className="px-6 py-4 text-sm text-on-surface">Bajaj Auto Ltd.</td>
+                      <td className="px-6 py-4 text-sm text-on-surface-variant">Oct 20, 2023</td>
+                      <td className="px-6 py-4">
+                        <span className="inline-block px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-tertiary-fixed/50 text-on-tertiary-fixed-variant">
+                          Interview
+                        </span>
+                      </td>
+                      <td className="px-6 py-4">
+                        <Link to="/student-portal/job-application-status" className="text-primary hover:text-primary-dim transition-colors">
+                          <span className="material-symbols-outlined text-xl">visibility</span>
+                        </Link>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          {/* Quick Actions Panel */}
+          <section className="space-y-4 text-left">
+            <h2 className="font-headline-md text-xl font-bold text-on-surface">Quick Actions</h2>
+            <div className="bg-white border border-outline-variant rounded-2xl p-6 shadow-sm space-y-4">
+              <Link 
+                to="/student-portal/resume-builder-dashboard" 
+                className="flex items-center gap-4 p-4 rounded-xl border border-outline-variant hover:border-primary hover:bg-primary/5 transition-all group"
+              >
+                <div className="w-10 h-10 rounded-lg bg-primary-fixed/40 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+                  <span className="material-symbols-outlined">description</span>
+                </div>
+                <div className="leading-tight">
+                  <h4 className="font-bold text-sm text-on-surface">AI Resume Builder</h4>
+                  <p className="text-xs text-on-surface-variant mt-0.5">Optimize your industrial resume</p>
+                </div>
+              </Link>
+
+              <Link 
+                to="/student-portal/saved-jobs-student-portal" 
+                className="flex items-center gap-4 p-4 rounded-xl border border-outline-variant hover:border-primary hover:bg-primary/5 transition-all group"
+              >
+                <div className="w-10 h-10 rounded-lg bg-primary-fixed/40 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+                  <span className="material-symbols-outlined">bookmark</span>
+                </div>
+                <div className="leading-tight">
+                  <h4 className="font-bold text-sm text-on-surface">Saved Positions</h4>
+                  <p className="text-xs text-on-surface-variant mt-0.5">Track jobs you want to apply for</p>
+                </div>
+              </Link>
+            </div>
+          </section>
+        </div>
+
+        {/* Recommended Jobs */}
+        <section className="space-y-4 text-left">
+          <div className="flex items-center justify-between">
+            <h2 className="font-headline-md text-xl font-bold text-on-surface">Recommended Openings</h2>
+            <div className="flex gap-2">
+              <button 
+                className="w-10 h-10 flex items-center justify-center border border-outline-variant rounded-full bg-white hover:bg-surface-container transition-colors shadow-sm active:scale-95" 
+                onClick={() => document.getElementById('jobScroll').scrollBy({left: -320, behavior: 'smooth'})}
+              >
+                <span className="material-symbols-outlined">chevron_left</span>
+              </button>
+              <button 
+                className="w-10 h-10 flex items-center justify-center border border-outline-variant rounded-full bg-white hover:bg-surface-container transition-colors shadow-sm active:scale-95" 
+                onClick={() => document.getElementById('jobScroll').scrollBy({left: 320, behavior: 'smooth'})}
+              >
+                <span className="material-symbols-outlined">chevron_right</span>
+              </button>
+            </div>
+          </div>
+
+          <div className="flex gap-6 overflow-x-auto hide-scrollbar snap-x pb-4" id="jobScroll" style={{ scrollbarWidth: 'none' }}>
+            
+            {/* Job Card 1 */}
+            <div className="min-w-[300px] md:min-w-[360px] snap-start bg-white border border-outline-variant rounded-2xl p-6 hover:shadow-lg transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex justify-between items-start mb-4">
+                  <div className="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center p-2 border border-outline-variant">
+                    <span className="material-symbols-outlined text-primary text-2xl">architecture</span>
+                  </div>
+                  <span className="px-2.5 py-1 bg-secondary-fixed text-on-secondary-fixed text-[10px] font-bold uppercase rounded-md">New</span>
+                </div>
+                <h4 className="font-bold text-lg text-on-surface leading-tight hover:text-primary transition-colors cursor-pointer">Maintenance Engineer</h4>
+                <p className="text-on-surface-variant text-sm mt-1">Thermax Limited • Pune, MH</p>
+                <div className="flex flex-wrap gap-2 mt-4">
+                  <span className="px-2.5 py-1 bg-primary-fixed/40 text-primary text-[10px] font-bold rounded-md">Mechanical</span>
+                  <span className="px-2.5 py-1 bg-surface-container-highest text-on-surface-variant text-[10px] font-bold rounded-md">Full Time</span>
+                </div>
+              </div>
+              <div className="flex items-center justify-between pt-4 mt-6 border-t border-outline-variant/60">
+                <span className="font-bold text-primary">₹3.5 - 4.2 LPA</span>
+                <Link to="/public/jobdetails" className="bg-primary text-white hover:bg-primary/95 px-5 py-2.5 rounded-xl font-bold text-xs hover:scale-105 active:scale-95 transition-all shadow-sm">
+                  Apply Now
+                </Link>
+              </div>
+            </div>
+
+            {/* Job Card 2 */}
+            <div className="min-w-[300px] md:min-w-[360px] snap-start bg-white border border-outline-variant rounded-2xl p-6 hover:shadow-lg transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex justify-between items-start mb-4">
+                  <div className="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center p-2 border border-outline-variant">
+                    <span className="material-symbols-outlined text-primary text-2xl">precision_manufacturing</span>
+                  </div>
+                  <span className="px-2.5 py-1 bg-error-container text-on-error-container text-[10px] font-bold uppercase rounded-md">Urgent</span>
+                </div>
+                <h4 className="font-bold text-lg text-on-surface leading-tight hover:text-primary transition-colors cursor-pointer">Quality Control Inspector</h4>
+                <p className="text-on-surface-variant text-sm mt-1">Godrej & Boyce • Mumbai, MH</p>
+                <div className="flex flex-wrap gap-2 mt-4">
+                  <span className="px-2.5 py-1 bg-primary-fixed/40 text-primary text-[10px] font-bold rounded-md">Manufacturing</span>
+                  <span className="px-2.5 py-1 bg-surface-container-highest text-on-surface-variant text-[10px] font-bold rounded-md">Day Shift</span>
+                </div>
+              </div>
+              <div className="flex items-center justify-between pt-4 mt-6 border-t border-outline-variant/60">
+                <span className="font-bold text-primary">₹3.2 - 3.8 LPA</span>
+                <Link to="/public/jobdetails" className="bg-primary text-white hover:bg-primary/95 px-5 py-2.5 rounded-xl font-bold text-xs hover:scale-105 active:scale-95 transition-all shadow-sm">
+                  Apply Now
+                </Link>
+              </div>
+            </div>
+
+            {/* Job Card 3 */}
+            <div className="min-w-[300px] md:min-w-[360px] snap-start bg-white border border-outline-variant rounded-2xl p-6 hover:shadow-lg transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex justify-between items-start mb-4">
+                  <div className="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center p-2 border border-outline-variant">
+                    <span className="material-symbols-outlined text-primary text-2xl">home_work</span>
+                  </div>
+                </div>
+                <h4 className="font-bold text-lg text-on-surface leading-tight hover:text-primary transition-colors cursor-pointer">Site Supervisor (Civil)</h4>
+                <p className="text-on-surface-variant text-sm mt-1">Afcons Infrastructure • Nashik, MH</p>
+                <div className="flex flex-wrap gap-2 mt-4">
+                  <span className="px-2.5 py-1 bg-primary-fixed/40 text-primary text-[10px] font-bold rounded-md">Civil Eng</span>
+                  <span className="px-2.5 py-1 bg-surface-container-highest text-on-surface-variant text-[10px] font-bold rounded-md">Permanent</span>
+                </div>
+              </div>
+              <div className="flex items-center justify-between pt-4 mt-6 border-t border-outline-variant/60">
+                <span className="font-bold text-primary">₹4.0 - 5.0 LPA</span>
+                <Link to="/public/jobdetails" className="bg-primary text-white hover:bg-primary/95 px-5 py-2.5 rounded-xl font-bold text-xs hover:scale-105 active:scale-95 transition-all shadow-sm">
+                  Apply Now
+                </Link>
+              </div>
+            </div>
+
+          </div>
+        </section>
+      </main>
+
+      {/* Footer bar for Mobile bottom navigation */}
+      <nav className="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-white border-t border-outline-variant shadow-lg rounded-t-2xl">
+        <Link className="flex flex-col items-center justify-center text-primary py-1 scale-95" to="/student-portal/dashboard">
+          <span className="material-symbols-outlined filled-icon">dashboard</span>
+          <span className="font-label-sm text-[10px] mt-0.5">Dashboard</span>
+        </Link>
+        <Link className="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary py-1" to="/public/find-diploma-jobs">
+          <span className="material-symbols-outlined">work</span>
+          <span className="font-label-sm text-[10px] mt-0.5">Jobs</span>
+        </Link>
+        <Link className="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary py-1" to="/student-portal/profile">
+          <span className="material-symbols-outlined">person</span>
+          <span className="font-label-sm text-[10px] mt-0.5">Profile</span>
+        </Link>
+        <Link className="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary py-1" to="/student-portal/notifications-alerts">
+          <span className="material-symbols-outlined">notifications</span>
+          <span className="font-label-sm text-[10px] mt-0.5">Alerts</span>
+        </Link>
+      </nav>
     </div>
   );
 }
