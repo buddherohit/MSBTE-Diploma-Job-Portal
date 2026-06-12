@@ -109,13 +109,15 @@ function convertHtmlToJsx(htmlContent, currentFileMap) {
   content = content.replace(/<!--([\s\S]*?)-->/g, '{/*$1*/}');
 
   // Replace links to other pages
-  // Match href="path/file.html" or href="file.html"
+  // Match href="path/file.html" or href="file.html" supporting queries and hashes
   content = content.replace(/href="([^"]+)"/g, (match, href) => {
-    const parsedHref = path.basename(href);
+    const [pathPart, ...queryParts] = href.split(/([?#])/);
+    const parsedHref = path.basename(pathPart);
     if (parsedHref.endsWith('.html')) {
       const matchFile = currentFileMap.find(f => f.originalName.toLowerCase() === parsedHref.toLowerCase());
       if (matchFile) {
-        return `href="${matchFile.route}"`;
+        const suffix = queryParts.join('');
+        return `href="${matchFile.route}${suffix}"`;
       }
     }
     return match;

@@ -300,12 +300,82 @@
 <div class="fixed top-0 right-0 -z-10 w-[500px] h-[500px] bg-primary-fixed/20 blur-[100px] rounded-full translate-x-1/2 -translate-y-1/2"></div>
 <div class="fixed bottom-0 left-0 -z-10 w-[400px] h-[400px] bg-secondary-fixed/20 blur-[100px] rounded-full -translate-x-1/2 translate-y-1/2"></div>
 <script>
-        // Micro-interaction for filter chips
-        const chips = document.querySelectorAll('.flex-none.rounded-full');
-        chips.forEach(chip => {
-            chip.addEventListener('click', function() {
-                if (!this.classList.contains('bg-primary-fixed') && !this.classList.contains('bg-tertiary-fixed')) {
-                    // Check if it's a branch or filter
+        document.addEventListener('DOMContentLoaded', () => {
+            const chips = document.querySelectorAll('.flex-none.rounded-full');
+            const articles = document.querySelectorAll('article');
+
+            // Helper to set active chip class
+            function setActiveBranchChip(branchText) {
+                chips.forEach(chip => {
+                    const text = chip.textContent.toLowerCase();
+                    const isMatch = (branchText === 'mechanical' && text.includes('mechanical')) ||
+                                    (branchText === 'civil' && text.includes('civil')) ||
+                                    (branchText === 'electrical' && text.includes('electrical')) ||
+                                    (branchText === 'computer' && text.includes('it/comp')) ||
+                                    (branchText === 'it' && text.includes('it/comp'));
+
+                    if (isMatch) {
+                        const parent = chip.parentElement;
+                        parent.querySelectorAll('.bg-primary-fixed').forEach(c => {
+                            c.classList.remove('bg-primary-fixed', 'text-on-primary-fixed');
+                            c.classList.add('bg-surface-container-high', 'text-on-surface-variant', 'border', 'border-outline-variant');
+                        });
+                        chip.classList.remove('bg-surface-container-high', 'text-on-surface-variant', 'border', 'border-outline-variant');
+                        chip.classList.add('bg-primary-fixed', 'text-on-primary-fixed');
+                    }
+                });
+            }
+
+            // Helper to filter articles
+            function filterJobs(branchText) {
+                if (!branchText || branchText === 'all') {
+                    articles.forEach(art => art.style.display = 'flex');
+                    return;
+                }
+
+                articles.forEach(art => {
+                    const schoolBadge = art.innerHTML;
+                    const hasMechanical = schoolBadge.toLowerCase().includes('mechanical');
+                    const hasCivil = schoolBadge.toLowerCase().includes('civil');
+                    const hasITComp = schoolBadge.toLowerCase().includes('it / computer') || schoolBadge.toLowerCase().includes('it/comp') || schoolBadge.toLowerCase().includes('computer');
+
+                    let matches = false;
+                    if (branchText === 'mechanical') matches = hasMechanical;
+                    else if (branchText === 'civil') matches = hasCivil;
+                    else if (branchText === 'computer' || branchText === 'it') matches = hasITComp;
+                    else if (branchText === 'electrical') matches = false;
+                    else if (branchText === 'electronics') matches = false;
+
+                    if (matches) {
+                        art.style.display = 'flex';
+                    } else {
+                        art.style.display = 'none';
+                    }
+                });
+            }
+
+            // Parse URL param
+            const urlParams = new URLSearchParams(window.location.search);
+            const branchParam = urlParams.get('branch');
+            if (branchParam) {
+                const normalized = branchParam.toLowerCase();
+                setActiveBranchChip(normalized);
+                filterJobs(normalized);
+            }
+
+            // Handle clicks on branch chips
+            chips.forEach(chip => {
+                const text = chip.textContent.toLowerCase();
+                const isBranch = text.includes('mechanical') || text.includes('civil') || text.includes('electrical') || text.includes('it/comp');
+                if (!isBranch) return;
+
+                chip.addEventListener('click', function() {
+                    let branch = 'all';
+                    if (text.includes('mechanical')) branch = 'mechanical';
+                    else if (text.includes('civil')) branch = 'civil';
+                    else if (text.includes('electrical')) branch = 'electrical';
+                    else if (text.includes('it/comp')) branch = 'computer';
+
                     const parent = this.parentElement;
                     parent.querySelectorAll('.bg-primary-fixed').forEach(c => {
                         c.classList.remove('bg-primary-fixed', 'text-on-primary-fixed');
@@ -313,7 +383,13 @@
                     });
                     this.classList.remove('bg-surface-container-high', 'text-on-surface-variant', 'border', 'border-outline-variant');
                     this.classList.add('bg-primary-fixed', 'text-on-primary-fixed');
-                }
+
+                    filterJobs(branch);
+
+                    const url = new URL(window.location);
+                    url.searchParams.set('branch', branch);
+                    window.history.pushState({}, '', url);
+                });
             });
         });
     </script>

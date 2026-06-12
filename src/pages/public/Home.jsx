@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../../components/Header';
 
 export default function Home() {
@@ -237,53 +238,53 @@ View All Jobs
 </div>
 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
 {/* Mechanical */}
-<div className="group bg-white p-6 rounded-2xl border border-outline-variant flex flex-col items-center text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer">
+<Link to="/public/find-diploma-jobs?branch=Mechanical" className="group bg-white p-6 rounded-2xl border border-outline-variant flex flex-col items-center text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer">
 <div className="w-16 h-16 rounded-full bg-primary-fixed/40 flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
 <span className="material-symbols-outlined text-3xl" data-icon="settings">settings</span>
 </div>
 <span className="font-bold text-on-surface text-lg">Mechanical</span>
 <span className="text-on-surface-variant text-sm mt-1">520+ Jobs</span>
-</div>
+</Link>
 {/* Civil */}
-<div className="group bg-white p-6 rounded-2xl border border-outline-variant flex flex-col items-center text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer">
+<Link to="/public/find-diploma-jobs?branch=Civil" className="group bg-white p-6 rounded-2xl border border-outline-variant flex flex-col items-center text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer">
 <div className="w-16 h-16 rounded-full bg-primary-fixed/40 flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
 <span className="material-symbols-outlined text-3xl" data-icon="apartment">apartment</span>
 </div>
-<span className="font-bold text-on-surface text-lg">Civil</span>
+<span class="font-bold text-on-surface text-lg">Civil</span>
 <span className="text-on-surface-variant text-sm mt-1">320+ Jobs</span>
-</div>
+</Link>
 {/* Electrical */}
-<div className="group bg-white p-6 rounded-2xl border border-outline-variant flex flex-col items-center text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer">
+<Link to="/public/find-diploma-jobs?branch=Electrical" className="group bg-white p-6 rounded-2xl border border-outline-variant flex flex-col items-center text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer">
 <div className="w-16 h-16 rounded-full bg-primary-fixed/40 flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
 <span className="material-symbols-outlined text-3xl" data-icon="bolt">bolt</span>
 </div>
 <span className="font-bold text-on-surface text-lg">Electrical</span>
 <span className="text-on-surface-variant text-sm mt-1">280+ Jobs</span>
-</div>
+</Link>
 {/* Computer */}
-<div className="group bg-white p-6 rounded-2xl border border-outline-variant flex flex-col items-center text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer">
+<Link to="/public/find-diploma-jobs?branch=Computer" className="group bg-white p-6 rounded-2xl border border-outline-variant flex flex-col items-center text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer">
 <div className="w-16 h-16 rounded-full bg-primary-fixed/40 flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
 <span className="material-symbols-outlined text-3xl" data-icon="terminal">terminal</span>
 </div>
 <span className="font-bold text-on-surface text-lg">Computer</span>
 <span className="text-on-surface-variant text-sm mt-1">680+ Jobs</span>
-</div>
+</Link>
 {/* Electronics */}
-<div className="group bg-white p-6 rounded-2xl border border-outline-variant flex flex-col items-center text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer">
+<Link to="/public/find-diploma-jobs?branch=Electronics" className="group bg-white p-6 rounded-2xl border border-outline-variant flex flex-col items-center text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer">
 <div className="w-16 h-16 rounded-full bg-primary-fixed/40 flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
 <span className="material-symbols-outlined text-3xl" data-icon="memory">memory</span>
 </div>
 <span className="font-bold text-on-surface text-lg">Electronics</span>
 <span className="text-on-surface-variant text-sm mt-1">260+ Jobs</span>
-</div>
+</Link>
 {/* IT */}
-<div className="group bg-white p-6 rounded-2xl border border-outline-variant flex flex-col items-center text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer">
+<Link to="/public/find-diploma-jobs?branch=IT" className="group bg-white p-6 rounded-2xl border border-outline-variant flex flex-col items-center text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer">
 <div className="w-16 h-16 rounded-full bg-primary-fixed/40 flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
 <span className="material-symbols-outlined text-3xl" data-icon="cloud">cloud</span>
 </div>
 <span className="font-bold text-on-surface text-lg">IT</span>
 <span className="text-on-surface-variant text-sm mt-1">420+ Jobs</span>
-</div>
+</Link>
 </div>
 <div className="flex justify-center mt-10">
 <a href="/public/find-diploma-jobs" className="border-2 border-primary text-primary hover:bg-primary/5 px-6 py-2.5 rounded-xl font-bold text-body-md hover:scale-105 active:scale-95 transition-all flex items-center gap-2 justify-center w-fit shadow-sm">
