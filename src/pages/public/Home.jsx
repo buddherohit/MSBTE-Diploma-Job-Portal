@@ -301,7 +301,7 @@ View All Categories
 <h3 className="font-display-lg text-headline-lg-mobile md:text-headline-lg font-extrabold text-on-surface">Top Hiring <span className="text-secondary-container">Companies</span></h3>
 <p className="text-on-surface-variant mt-2">Leading companies trust MSBTEJobs to find skilled diploma students</p>
 </div>
-<div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-6 items-center">
+<div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-6 items-center">
 <div className="bg-white p-4 rounded-xl border border-outline-variant shadow-sm flex items-center justify-center h-20 transition-all hover:shadow-md cursor-pointer">
 <img alt="L&T Construction" className="max-h-12 max-w-full object-contain grayscale hover:grayscale-0 transition-all duration-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiFs7b87SClp0twyCqOcNg9ytADmF1QThGiVCfL5WonlPpGPffbnyYfU1ueHCvZ1hQEFhe1u1JrggW2JjhXAnkZMwwvCclS-9onIYygox4Kh4KVtIZ-yp53UhPZjupjamwQq0QFMaGRvhAhfszu2s85RR_6JC6iATn5Hzd2Y0FImiDYm_hIRdvB9mVUsf1tjwD46lkTzgX0PJP3xSSWjErf6rNblygHKYm7HsNi4Cg-wuStSBo1JVyUI4Priqk3f1y6mBONTaaYbg"/>
 </div>
@@ -314,14 +314,32 @@ View All Categories
 <div className="bg-white p-4 rounded-xl border border-outline-variant shadow-sm flex items-center justify-center h-20 transition-all hover:shadow-md cursor-pointer">
 <img alt="Adani" className="max-h-12 max-w-full object-contain grayscale hover:grayscale-0 transition-all duration-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoqmpxDTQkGaGMN3vNXrkxlalYcCdGlKoU9Y5TFLDY2K8noVa7cHekMlHHhSBpQhdoDXckzRXtTYgEEtaIhy1AvbwDN6mYTNBmLXHJn1vzTceI1zSNy2U_zDeNOEzSc9qQUy31gm413Rj4rVgLEeIK_uCcxPiqHskOgRt7CXPMA6OMERC521pz8VMJGnXQAMgsR1bVdEtQrd_co3Ci_Zvjnffp8GfMIRs2QgMS5yHcgB-3Yzm9MXLnNuFygnNOdNYolyuYDaEvhKA"/>
 </div>
-<div className="bg-white p-4 rounded-xl border border-outline-variant shadow-sm flex items-center justify-center h-20 transition-all hover:shadow-md cursor-pointer">
+<div class="bg-white p-4 rounded-xl border border-outline-variant shadow-sm flex items-center justify-center h-20 transition-all hover:shadow-md cursor-pointer">
 <img alt="Godrej" className="max-h-12 max-w-full object-contain grayscale hover:grayscale-0 transition-all duration-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5BRoulY5Wcb7LD4ZhD5lNoEERr3KaaCBcbUyy2jsIe_4TagIol6AZCUOiohlN4CKTjPnDQdo8O4f9_-yCSPVGow8YZQTRUIZml5zGtCFPYVsC7znMqmaw88zgy97DthaNnjNsnCh-kvQCLLQXOg_9toBqP8ADHdiGLta-ZrCNW1PvDg1FvGcoB9DeJa5u0X-Hwu9znXFUlP7HsmMOe7TxK0Mt6QC9rguYpXOpeYBTRX6rNbsv6-S2QC87Km4zKLvZJ9eGOXqKYYY"/>
 </div>
 <div className="bg-white p-4 rounded-xl border border-outline-variant shadow-sm flex items-center justify-center h-20 transition-all hover:shadow-md cursor-pointer">
-<span className="font-extrabold text-lg text-outline tracking-tight uppercase">Kirloskar</span>
+<img alt="TCS" className="max-h-10 max-w-full object-contain grayscale hover:grayscale-0 transition-all duration-200" src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Tata_Consultancy_Services_Logo.svg"/>
+</div>
+<div className="bg-white p-4 rounded-xl border border-outline-variant shadow-sm flex items-center justify-center h-20 transition-all hover:shadow-md cursor-pointer">
+<img alt="Wipro" className="max-h-12 max-w-full object-contain grayscale hover:grayscale-0 transition-all duration-200" src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Wipro_Logo_2017.svg"/>
+</div>
+<div className="bg-white p-4 rounded-xl border border-outline-variant shadow-sm flex items-center justify-center h-20 transition-all hover:shadow-md cursor-pointer">
+<img alt="Infosys" className="max-h-8 max-w-full object-contain grayscale hover:grayscale-0 transition-all duration-200" src="https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg"/>
+</div>
+<div className="bg-white p-4 rounded-xl border border-outline-variant shadow-sm flex items-center justify-center h-20 transition-all hover:shadow-md cursor-pointer">
+<img alt="Capgemini" className="max-h-10 max-w-full object-contain grayscale hover:grayscale-0 transition-all duration-200" src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Capgemini_201x_logo.svg"/>
+</div>
+<div className="bg-white p-4 rounded-xl border border-outline-variant shadow-sm flex items-center justify-center h-20 transition-all hover:shadow-md cursor-pointer">
+<img alt="Cognizant" className="max-h-8 max-w-full object-contain grayscale hover:grayscale-0 transition-all duration-200" src="https://upload.wikimedia.org/wikipedia/commons/2/25/Cognizant_logo_2022.svg"/>
+</div>
+<div className="bg-white p-4 rounded-xl border border-outline-variant shadow-sm flex items-center justify-center h-20 transition-all hover:shadow-md cursor-pointer">
+<img alt="Accenture" className="max-h-10 max-w-full object-contain grayscale hover:grayscale-0 transition-all duration-200" src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg"/>
 </div>
 <div className="bg-white p-4 rounded-xl border border-outline-variant shadow-sm flex items-center justify-center h-20 transition-all hover:shadow-md cursor-pointer">
 <span className="font-extrabold text-lg text-primary tracking-tight uppercase">Mahindra</span>
+</div>
+<div className="bg-white p-4 rounded-xl border border-outline-variant shadow-sm flex items-center justify-center h-20 transition-all hover:shadow-md cursor-pointer">
+<span className="font-extrabold text-lg text-outline tracking-tight uppercase">Kirloskar</span>
 </div>
 <div className="bg-white p-4 rounded-xl border border-outline-variant shadow-sm flex items-center justify-center h-20 transition-all hover:shadow-md cursor-pointer">
 <span className="font-extrabold text-lg text-secondary tracking-tight uppercase">JSW</span>
