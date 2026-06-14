@@ -150,7 +150,7 @@
 <!-- Search Bar -->
 <div class="relative w-full max-w-2xl mb-stack-md">
 <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
-<input class="w-full pl-12 pr-4 py-4 rounded-xl border-outline-variant bg-surface focus:ring-2 focus:ring-primary focus:border-primary shadow-sm transition-all text-body-md outline-none border" placeholder="Search jobs, roles or companies" type="text"/>
+<input id="jobSearchInput" class="w-full pl-12 pr-4 py-4 rounded-xl border-outline-variant bg-surface focus:ring-2 focus:ring-primary focus:border-primary shadow-sm transition-all text-body-md outline-none border" placeholder="Search jobs, roles or companies" type="text"/>
 </div>
 <!-- Path Switcher -->
 <div class="flex p-1 bg-surface-container rounded-full w-fit mb-stack-lg border border-outline-variant">
@@ -179,7 +179,7 @@
 <!-- Job Cards Vertical List -->
 <div class="space-y-stack-md">
 <!-- Job Card 1 -->
-<article class="bg-surface border border-outline-variant rounded-xl p-5 hover:shadow-[0px_4px_12px_rgba(15,23,42,0.08)] transition-all flex flex-col md:flex-row md:items-center gap-4 group">
+<article data-id="tata-trainee" data-title="Junior Production Engineer" data-company="Tata Motors Ltd." data-location="Pune, Chakan" data-salary="₹18,000 - ₹25,000 /mo" data-branch="Mechanical" data-type="job" data-logo="https://lh3.googleusercontent.com/aida-public/AB6AXuBHZbskzHAfSKrl6u9OSn1ObIOn-DXLGTKnaRZvolIzK4N7vq1GeIeTKU5igHOyO18LS5P3CCdm6I0Ojj6BMvGHGfG0sUN8phGR2CVayQ7U3gbY50HUnqLfHRqjBlw-lhnS3vGqlj1qm-_Q0cQ4PBpvmuVQ1YimDx9miCg9BRYhyY3eP4mHaU9SwHnkz04xy5BCTzrWa6PbqvkwErkuzqimXyr8vathBn2OpgEYQ0cvaE6KLEaaFrozTkHEpOWhfZAMjMiKjmccCAM" class="bg-surface border border-outline-variant rounded-xl p-5 hover:shadow-[0px_4px_12px_rgba(15,23,42,0.08)] transition-all flex flex-col md:flex-row md:items-center gap-4 group">
 <div class="flex-none w-16 h-16 rounded-lg bg-surface-container flex items-center justify-center p-2 border border-outline-variant">
 <img alt="Tata Motors" class="w-full h-full object-contain" data-alt="A minimalist and high-contrast corporate logo of a major automotive manufacturing company, Tata Motors. The logo is displayed cleanly on a white background with professional, sharp edges. The visual style is modern, industrial, and institutional, reflecting the stability and power of a leading Indian conglomerate." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHZbskzHAfSKrl6u9OSn1ObIOn-DXLGTKnaRZvolIzK4N7vq1GeIeTKU5igHOyO18LS5P3CCdm6I0Ojj6BMvGHGfG0sUN8phGR2CVayQ7U3gbY50HUnqLfHRqjBlw-lhnS3vGqlj1qm-_Q0cQ4PBpvmuVQ1YimDx9miCg9BRYhyY3eP4mHaU9SwHnkz04xy5BCTzrWa6PbqvkwErkuzqimXyr8vathBn2OpgEYQ0cvaE6KLEaaFrozTkHEpOWhfZAMjMiKjmccCAM"/>
 </div>
@@ -203,13 +203,13 @@
 </div>
 <div class="flex gap-2 mt-4 md:mt-0 md:flex-col lg:flex-row">
 <a href="jobdetails.html?id=tata-trainee" class="bg-primary text-on-primary px-6 py-3 rounded-lg font-label-md flex-grow md:flex-none hover:opacity-90 transition-opacity text-center flex items-center justify-center">Apply Now</a>
-<button class="border border-primary text-primary px-4 py-3 rounded-lg flex items-center justify-center hover:bg-primary-fixed transition-colors">
+<button class="save-job-btn border border-primary text-primary px-4 py-3 rounded-lg flex items-center justify-center hover:bg-primary-fixed transition-colors" data-job-id="tata-trainee">
 <span class="material-symbols-outlined">bookmark</span>
 </button>
 </div>
 </article>
 <!-- Job Card 2 -->
-<article class="bg-surface border border-outline-variant rounded-xl p-5 hover:shadow-[0px_4px_12px_rgba(15,23,42,0.08)] transition-all flex flex-col md:flex-row md:items-center gap-4 group">
+<article data-id="lt-civil" data-title="Diploma Trainee - Civil" data-company="L&T Construction" data-location="Mumbai, BKC" data-salary="₹22,000 - ₹28,000 /mo" data-branch="Civil" data-type="job" data-logo="https://lh3.googleusercontent.com/aida-public/AB6AXuDLwXPfFn650ZbsE5QvOtHamVhFqaKHYnq2mtJioTwzaZXrLiY7vNll5Dgb17R2dJBbaI7WnQ4WpB6LbLrxu1E-IXjIoo453hRhzaR65VH46cSto3EH6Biw2b0NSBTQv_jrhtK9QTe5P_MWZQoJktRK19x-PDfIALRh9TVt3BUNyOG16SLJCsWPdo5Ae9vKB89ntKBDjckrKJLlcaIM0N-ogbl2MS8UDBLWu-5EowxvXQgXbwkM_gj966iqZeFMu2t7UtScI0mupjc" class="bg-surface border border-outline-variant rounded-xl p-5 hover:shadow-[0px_4px_12px_rgba(15,23,42,0.08)] transition-all flex flex-col md:flex-row md:items-center gap-4 group">
 <div class="flex-none w-16 h-16 rounded-lg bg-surface-container flex items-center justify-center p-2 border border-outline-variant">
 <img alt="L&amp;T Construction" class="w-full h-full object-contain" data-alt="A professional and sleek architectural firm logo, Larsen and Toubro, emphasizing civil engineering excellence. The logo is rendered in high-definition on a clean surface, surrounded by soft lighting that suggests a corporate, trustworthy, and institutional environment. The color scheme is disciplined, using navy blues and greys." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLwXPfFn650ZbsE5QvOtHamVhFqaKHYnq2mtJioTwzaZXrLiY7vNll5Dgb17R2dJBbaI7WnQ4WpB6LbLrxu1E-IXjIoo453hRhzaR65VH46cSto3EH6Biw2b0NSBTQv_jrhtK9QTe5P_MWZQoJktRK19x-PDfIALRh9TVt3BUNyOG16SLJCsWPdo5Ae9vKB89ntKBDjckrKJLlcaIM0N-ogbl2MS8UDBLWu-5EowxvXQgXbwkM_gj966iqZeFMu2t7UtScI0mupjc"/>
 </div>
@@ -233,13 +233,13 @@
 </div>
 <div class="flex gap-2 mt-4 md:mt-0 md:flex-col lg:flex-row">
 <a href="jobdetails.html?id=lt-civil" class="bg-primary text-on-primary px-6 py-3 rounded-lg font-label-md flex-grow md:flex-none hover:opacity-90 transition-opacity text-center flex items-center justify-center">Apply Now</a>
-<button class="border border-primary text-primary px-4 py-3 rounded-lg flex items-center justify-center hover:bg-primary-fixed transition-colors">
+<button class="save-job-btn border border-primary text-primary px-4 py-3 rounded-lg flex items-center justify-center hover:bg-primary-fixed transition-colors" data-job-id="lt-civil">
 <span class="material-symbols-outlined">bookmark</span>
 </button>
 </div>
 </article>
 <!-- Job Card 3 (IT) -->
-<article class="bg-surface border border-outline-variant rounded-xl p-5 hover:shadow-[0px_4px_12px_rgba(15,23,42,0.08)] transition-all flex flex-col md:flex-row md:items-center gap-4 group">
+<article data-id="infosys-support" data-title="Technical Support Associate" data-company="Infosys BPM" data-location="Pune, Hinjewadi" data-salary="₹15,000 /mo (Stipend)" data-branch="Computer" data-type="internship" data-logo="https://lh3.googleusercontent.com/aida-public/AB6AXuD3CbBD6Kt5yN3o40-c0NWMJu60bjp8I1X1mcDZnNr1s5HloNQKHsBKGLOl9I7LOsbGxMWSPVBXWcVttB7kAArXqeRz0tD_DJ_Cm0i715jgqMyfRxe-lf4zZcoPXwuW2cPJngwAQNPokeFiEE5YIyLbfUoEt5Rlv1ZxQYWshP-P6yfnlB8p2pB3vJFMVdK2Xs9wlIor6LUbNa8ymqhvHZf9bWxRtiZjDfl7d0jbXkKNl25dyPC28XGUtiLphe8NxA7fPC6goxSWWWg" class="bg-surface border border-outline-variant rounded-xl p-5 hover:shadow-[0px_4px_12px_rgba(15,23,42,0.08)] transition-all flex flex-col md:flex-row md:items-center gap-4 group">
 <div class="flex-none w-16 h-16 rounded-lg bg-surface-container flex items-center justify-center p-2 border border-outline-variant">
 <img alt="Infosys" class="w-full h-full object-contain" data-alt="A vibrant and modern tech company logo, Infosys, presented with crisp resolution. The environment around it suggests a cutting-edge software development park in Hinjewadi, Pune, with glass buildings and green spaces reflecting in the background. The lighting is bright and optimistic, perfect for a high-energy job seeker portal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3CbBD6Kt5yN3o40-c0NWMJu60bjp8I1X1mcDZnNr1s5HloNQKHsBKGLOl9I7LOsbGxMWSPVBXWcVttB7kAArXqeRz0tD_DJ_Cm0i715jgqMyfRxe-lf4zZcoPXwuW2cPJngwAQNPokeFiEE5YIyLbfUoEt5Rlv1ZxQYWshP-P6yfnlB8p2pB3vJFMVdK2Xs9wlIor6LUbNa8ymqhvHZf9bWxRtiZjDfl7d0jbXkKNl25dyPC28XGUtiLphe8NxA7fPC6goxSWWWg"/>
 </div>
@@ -265,18 +265,29 @@
 </div>
 <div class="flex gap-2 mt-4 md:mt-0 md:flex-col lg:flex-row">
 <a href="jobdetails.html?id=infosys-support" class="bg-primary text-on-primary px-6 py-3 rounded-lg font-label-md flex-grow md:flex-none hover:opacity-90 transition-opacity text-center flex items-center justify-center">Apply Now</a>
-<button class="border border-primary text-primary px-4 py-3 rounded-lg flex items-center justify-center hover:bg-primary-fixed transition-colors">
+<button class="save-job-btn border border-primary text-primary px-4 py-3 rounded-lg flex items-center justify-center hover:bg-primary-fixed transition-colors" data-job-id="infosys-support">
 <span class="material-symbols-outlined">bookmark</span>
 </button>
 </div>
 </article>
+
+<!-- No Jobs Available Empty State -->
+<div id="noJobsContainer" class="hidden border-2 border-dashed border-outline-variant rounded-xl flex-col items-center justify-center p-8 text-center bg-surface-container-low min-h-[350px]">
+<div class="w-20 h-20 bg-surface-container-high rounded-full flex items-center justify-center mb-4 text-outline">
+<span class="material-symbols-outlined text-[40px]">search_off</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">No matching jobs found</h3>
+<p class="font-body-md text-on-surface-variant max-w-md mb-6">We couldn't find any positions matching your search. Try adjusting your search query or branch filters.</p>
+<button id="clearFiltersBtn" class="px-6 py-2 bg-primary text-on-primary font-label-md text-label-md rounded-lg hover:opacity-90 transition-opacity">Clear Search & Filters</button>
+</div>
+
 </div>
 </main>
 <!-- Floating Action Button -->
-<button class="fixed bottom-24 right-6 w-14 h-14 bg-secondary-container text-on-secondary-container rounded-full shadow-lg flex items-center justify-center hover:scale-105 transition-transform active:scale-95 z-40">
+<a href="../student portal/Saved Jobs  Student Portal.html" class="fixed bottom-24 right-6 w-14 h-14 bg-secondary-container text-on-secondary-container rounded-full shadow-lg flex items-center justify-center hover:scale-105 transition-transform active:scale-95 z-40">
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bookmark</span>
-<span class="absolute -top-1 -right-1 bg-error text-on-error text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold">3</span>
-</button>
+<span id="floatingBookmarkCount" class="absolute -top-1 -right-1 bg-error text-on-error text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
+</a>
 <!-- Bottom Navigation Bar (Mobile only via md:hidden handled by design system logic) -->
 <footer class="md:hidden fixed bottom-0 w-full z-50 bg-surface dark:bg-on-background shadow-md rounded-t-xl flex justify-around items-center px-4 py-2 pb-safe">
 <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary scale-95 transition-transform duration-150" href="#">
@@ -302,7 +313,140 @@
 <script>
         document.addEventListener('DOMContentLoaded', () => {
             const chips = document.querySelectorAll('.flex-none.rounded-full');
-            const articles = document.querySelectorAll('article');
+            const articles = document.querySelectorAll('article[data-id]');
+            const searchInput = document.getElementById('jobSearchInput');
+            const noJobsContainer = document.getElementById('noJobsContainer');
+            const clearFiltersBtn = document.getElementById('clearFiltersBtn');
+            const floatingCountSpan = document.getElementById('floatingBookmarkCount');
+
+            // --- 1. Seed & Load Saved Jobs ---
+            const defaultSavedJobs = [
+                {
+                    id: "forbes-qc",
+                    title: "Quality Control Engineer",
+                    company: "Forbes Marshall Pvt. Ltd.",
+                    location: "Pune, Maharashtra",
+                    salary: "₹3.5L - ₹5.2L Per Annum",
+                    branch: "Mechanical",
+                    tags: ["Mechanical", "Six Sigma"],
+                    badge: "Urgent",
+                    badgeClass: "bg-secondary-container text-on-secondary-container",
+                    logo: "https://lh3.googleusercontent.com/aida-public/AB6AXuAzqlHrRpiLt_9I2iccBzwdDS3BvlnuH2kzlYAQIe2Z9fX556Rgs38MGlhMn8wJMpc_F33Qa3welcCuRZ9QiAwqA-75Y2w6JcTi__raDLlFl7KWr2WYZ70zTjUJRPtmnJQ-uvvd-tVJwPcmqwUaYkrYMOv_S3eMAT5PtGvdMkHEy7zdwUdzU0-Yq0due6W6EeqQGovepFAgzGicZ8HUlEdVS2A8y7R6sHnyPQV1yU3MUBeP76DbmzccMMnlCNalfmggSZpIWkFTc9U"
+                },
+                {
+                    id: "kirloskar-gte",
+                    title: "Graduate Trainee Engineer",
+                    company: "Kirloskar Brothers Ltd.",
+                    location: "Sangli, Maharashtra",
+                    salary: "₹2.8L - ₹4.0L Per Annum",
+                    branch: "Production",
+                    tags: ["Production", "CAD"],
+                    badge: "",
+                    logo: "https://lh3.googleusercontent.com/aida-public/AB6AXuDEuXCkjWrjF6AEzl7-muBXszDGmhc_g-32S3HBBSE170Zqkp3_YFOpc8NKUCKg3zugtMkHhicbzbGoZsW2ekBRShA2QfCw-mGRaLRjABoRX-0ATAfNPllFgDQiyYa5HcccbZErBSzKafd9UhKa1IrA56Ok0UEeH_Gs-lCKx4arwnf_dNIk3Sfgee9gPymt2nk0VIbL8_rZViqOckTdQmvvh0QbegmEhA5kh7NYrRaB5hSg-GuLHtbHE1hrTOj75TJS7FxEn-XWN4U"
+                },
+                {
+                    id: "tata-als",
+                    title: "Assembly Line Supervisor",
+                    company: "Tata Motors",
+                    location: "Pimpri, Pune",
+                    salary: "₹4.2L - ₹6.0L Per Annum",
+                    branch: "Electrical",
+                    tags: ["Electrical", "Automation"],
+                    badge: "New",
+                    badgeClass: "bg-primary-container text-on-primary-container",
+                    logo: "https://lh3.googleusercontent.com/aida-public/AB6AXuAiItun5oeHuUyyFHesxSZ9Jp_Z3XdVMkU8NhOMlAuetPELVPiWLKfCkTw7dJ0hJqV1QpMAQk4ekcbQYTpsnRsyZAfxUYAaVZZhKevMwbv69Y8j6Ku6fJliQaq5Zy0OBT9lk-kOJNErMFfsq_p2rF6i9Qukzv6bHuWSyky7qm2h5RaiN4nzkghlmv1b2J0UIqUAubu1QbmnVqCAK-rP1PvsEhSnBlLSdtjpbHBzxInTVf5L_a400X-AOWK3GDbx1KoL4tUokwF7gNA"
+                }
+            ];
+
+            function getSavedJobs() {
+                const raw = localStorage.getItem('saved_jobs');
+                if (!raw) {
+                    localStorage.setItem('saved_jobs', JSON.stringify(defaultSavedJobs));
+                    return defaultSavedJobs;
+                }
+                return JSON.parse(raw);
+            }
+
+            function setSavedJobs(jobs) {
+                localStorage.setItem('saved_jobs', JSON.stringify(jobs));
+                updateSavedUI();
+            }
+
+            function updateSavedUI() {
+                const saved = getSavedJobs();
+                if (floatingCountSpan) {
+                    floatingCountSpan.textContent = saved.length;
+                }
+                document.querySelectorAll('.save-job-btn').forEach(btn => {
+                    const jobId = btn.getAttribute('data-job-id');
+                    const isSaved = saved.some(j => j.id === jobId);
+                    const icon = btn.querySelector('.material-symbols-outlined');
+                    if (isSaved) {
+                        icon.style.fontVariationSettings = "'FILL' 1";
+                        btn.classList.add('bg-primary-fixed');
+                    } else {
+                        icon.style.fontVariationSettings = "'FILL' 0";
+                        btn.classList.remove('bg-primary-fixed');
+                    }
+                });
+            }
+
+            // --- 2. Combined Filtering & Search Logic ---
+            let activeBranch = 'mechanical'; // Matches initial active chip default
+
+            function applyFiltersAndSearch() {
+                const searchQuery = (searchInput.value || '').toLowerCase().trim();
+                let visibleCount = 0;
+
+                articles.forEach(art => {
+                    // Branch matching
+                    const artBranch = art.getAttribute('data-branch').toLowerCase();
+                    const artTitle = art.getAttribute('data-title').toLowerCase();
+                    const artCompany = art.getAttribute('data-company').toLowerCase();
+                    const artLocation = art.getAttribute('data-location').toLowerCase();
+                    const artType = art.getAttribute('data-type').toLowerCase();
+
+                    // Check if branch matches active chip
+                    let branchMatch = false;
+                    if (activeBranch === 'all') {
+                        branchMatch = true;
+                    } else if (activeBranch === 'mechanical') {
+                        branchMatch = artBranch.includes('mechanical');
+                    } else if (activeBranch === 'civil') {
+                        branchMatch = artBranch.includes('civil');
+                    } else if (activeBranch === 'electrical') {
+                        branchMatch = artBranch.includes('electrical');
+                    } else if (activeBranch === 'computer') {
+                        branchMatch = artBranch.includes('computer') || artBranch.includes('it') || artBranch.includes('comp');
+                    }
+
+                    // Check if query matches title, company, location, branch, or type
+                    let searchMatch = true;
+                    if (searchQuery) {
+                        searchMatch = artTitle.includes(searchQuery) ||
+                                      artCompany.includes(searchQuery) ||
+                                      artLocation.includes(searchQuery) ||
+                                      artBranch.includes(searchQuery) ||
+                                      artType.includes(searchQuery);
+                    }
+
+                    if (branchMatch && searchMatch) {
+                        art.style.display = 'flex';
+                        visibleCount++;
+                    } else {
+                        art.style.display = 'none';
+                    }
+                });
+
+                // Display empty state if no matching jobs
+                if (visibleCount === 0) {
+                    noJobsContainer.classList.remove('hidden');
+                    noJobsContainer.classList.add('flex');
+                } else {
+                    noJobsContainer.classList.remove('flex');
+                    noJobsContainer.classList.add('hidden');
+                }
+            }
 
             // Helper to set active chip class
             function setActiveBranchChip(branchText) {
@@ -326,42 +470,18 @@
                 });
             }
 
-            // Helper to filter articles
-            function filterJobs(branchText) {
-                if (!branchText || branchText === 'all') {
-                    articles.forEach(art => art.style.display = 'flex');
-                    return;
-                }
-
-                articles.forEach(art => {
-                    const schoolBadge = art.innerHTML;
-                    const hasMechanical = schoolBadge.toLowerCase().includes('mechanical');
-                    const hasCivil = schoolBadge.toLowerCase().includes('civil');
-                    const hasITComp = schoolBadge.toLowerCase().includes('it / computer') || schoolBadge.toLowerCase().includes('it/comp') || schoolBadge.toLowerCase().includes('computer');
-
-                    let matches = false;
-                    if (branchText === 'mechanical') matches = hasMechanical;
-                    else if (branchText === 'civil') matches = hasCivil;
-                    else if (branchText === 'computer' || branchText === 'it') matches = hasITComp;
-                    else if (branchText === 'electrical') matches = false;
-                    else if (branchText === 'electronics') matches = false;
-
-                    if (matches) {
-                        art.style.display = 'flex';
-                    } else {
-                        art.style.display = 'none';
-                    }
-                });
-            }
-
-            // Parse URL param
+            // Parse URL param on load
             const urlParams = new URLSearchParams(window.location.search);
             const branchParam = urlParams.get('branch');
             if (branchParam) {
                 const normalized = branchParam.toLowerCase();
-                setActiveBranchChip(normalized);
-                filterJobs(normalized);
+                if (['mechanical', 'civil', 'electrical', 'computer', 'it'].includes(normalized)) {
+                    activeBranch = normalized === 'it' ? 'computer' : normalized;
+                    setActiveBranchChip(activeBranch);
+                }
             }
+            applyFiltersAndSearch();
+            updateSavedUI();
 
             // Handle clicks on branch chips
             chips.forEach(chip => {
@@ -370,11 +490,10 @@
                 if (!isBranch) return;
 
                 chip.addEventListener('click', function() {
-                    let branch = 'all';
-                    if (text.includes('mechanical')) branch = 'mechanical';
-                    else if (text.includes('civil')) branch = 'civil';
-                    else if (text.includes('electrical')) branch = 'electrical';
-                    else if (text.includes('it/comp')) branch = 'computer';
+                    if (text.includes('mechanical')) activeBranch = 'mechanical';
+                    else if (text.includes('civil')) activeBranch = 'civil';
+                    else if (text.includes('electrical')) activeBranch = 'electrical';
+                    else if (text.includes('it/comp')) activeBranch = 'computer';
 
                     const parent = this.parentElement;
                     parent.querySelectorAll('.bg-primary-fixed').forEach(c => {
@@ -384,11 +503,80 @@
                     this.classList.remove('bg-surface-container-high', 'text-on-surface-variant', 'border', 'border-outline-variant');
                     this.classList.add('bg-primary-fixed', 'text-on-primary-fixed');
 
-                    filterJobs(branch);
+                    applyFiltersAndSearch();
 
                     const url = new URL(window.location);
-                    url.searchParams.set('branch', branch);
+                    url.searchParams.set('branch', activeBranch);
                     window.history.pushState({}, '', url);
+                });
+            });
+
+            // Handle search input keystrokes
+            if (searchInput) {
+                searchInput.addEventListener('input', applyFiltersAndSearch);
+            }
+
+            // Clear search and filter button
+            if (clearFiltersBtn) {
+                clearFiltersBtn.addEventListener('click', () => {
+                    if (searchInput) searchInput.value = '';
+                    activeBranch = 'mechanical';
+                    setActiveBranchChip(activeBranch);
+                    applyFiltersAndSearch();
+                    
+                    const url = new URL(window.location);
+                    url.searchParams.set('branch', activeBranch);
+                    window.history.pushState({}, '', url);
+                });
+            }
+
+            // --- 3. Save Job Click Handler ---
+            document.querySelectorAll('.save-job-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const jobId = btn.getAttribute('data-job-id');
+                    const article = btn.closest('article');
+                    const saved = getSavedJobs();
+                    
+                    const isSavedIndex = saved.findIndex(j => j.id === jobId);
+                    if (isSavedIndex > -1) {
+                        saved.splice(isSavedIndex, 1);
+                    } else if (article) {
+                        // Gather metadata from data tags to save
+                        const id = article.getAttribute('data-id');
+                        const title = article.getAttribute('data-title');
+                        const company = article.getAttribute('data-company');
+                        const location = article.getAttribute('data-location');
+                        const salary = article.getAttribute('data-salary');
+                        const branch = article.getAttribute('data-branch');
+                        const logo = article.getAttribute('data-logo');
+                        const type = article.getAttribute('data-type');
+                        
+                        // Parse optional badge content
+                        const badgeEl = article.querySelector('.bg-error-container, .bg-secondary-fixed, .bg-blue-100');
+                        const badge = badgeEl ? badgeEl.textContent.trim() : "";
+                        let badgeClass = "bg-primary-container text-on-primary-container";
+                        if (badgeEl) {
+                            if (badgeEl.classList.contains('bg-error-container')) badgeClass = "bg-secondary-container text-on-secondary-container";
+                            else if (badgeEl.classList.contains('bg-secondary-fixed')) badgeClass = "bg-secondary-fixed text-on-secondary-fixed-variant";
+                            else if (badgeEl.classList.contains('bg-blue-100')) badgeClass = "bg-blue-100 text-blue-800";
+                        }
+
+                        saved.push({
+                            id,
+                            title,
+                            company,
+                            location,
+                            salary,
+                            branch,
+                            logo,
+                            type,
+                            tags: [branch, type === 'internship' ? 'Internship' : 'Full Time'],
+                            badge,
+                            badgeClass
+                        });
+                    }
+                    setSavedJobs(saved);
                 });
             });
         });

@@ -3,9 +3,48 @@ import { Link, useNavigate } from 'react-router-dom';
 import { getCurrentUser } from '../../utils/auth';
 import StudentHeader from '../../components/StudentHeader';
 
+const defaultSavedJobs = [
+  {
+    id: "forbes-qc",
+    title: "Quality Control Engineer",
+    company: "Forbes Marshall Pvt. Ltd.",
+    location: "Pune, Maharashtra",
+    salary: "₹3.5L - ₹5.2L Per Annum",
+    branch: "Mechanical",
+    tags: ["Mechanical", "Six Sigma"],
+    badge: "Urgent",
+    badgeClass: "bg-secondary-container text-on-secondary-container",
+    logo: "https://lh3.googleusercontent.com/aida-public/AB6AXuAzqlHrRpiLt_9I2iccBzwdDS3BvlnuH2kzlYAQIe2Z9fX556Rgs38MGlhMn8wJMpc_F33Qa3welcCuRZ9QiAwqA-75Y2w6JcTi__raDLlFl7KWr2WYZ70zTjUJRPtmnJQ-uvvd-tVJwPcmqwUaYkrYMOv_S3eMAT5PtGvdMkHEy7zdwUdzU0-Yq0due6W6EeqQGovepFAgzGicZ8HUlEdVS2A8y7R6sHnyPQV1yU3MUBeP76DbmzccMMnlCNalfmggSZpIWkFTc9U"
+  },
+  {
+    id: "kirloskar-gte",
+    title: "Graduate Trainee Engineer",
+    company: "Kirloskar Brothers Ltd.",
+    location: "Sangli, Maharashtra",
+    salary: "₹2.8L - ₹4.0L Per Annum",
+    branch: "Production",
+    tags: ["Production", "CAD"],
+    badge: "",
+    logo: "https://lh3.googleusercontent.com/aida-public/AB6AXuDEuXCkjWrjF6AEzl7-muBXszDGmhc_g-32S3HBBSE170Zqkp3_YFOpc8NKUCKg3zugtMkHhicbzbGoZsW2ekBRShA2QfCw-mGRaLRjABoRX-0ATAfNPllFgDQiyYa5HcccbZErBSzKafd9UhKa1IrA56Ok0UEeH_Gs-lCKx4arwnf_dNIk3Sfgee9gPymt2nk0VIbL8_rZViqOckTdQmvvh0QbegmEhA5kh7NYrRaB5hSg-GuLHtbHE1hrTOj75TJS7FxEn-XWN4U"
+  },
+  {
+    id: "tata-als",
+    title: "Assembly Line Supervisor",
+    company: "Tata Motors",
+    location: "Pimpri, Pune",
+    salary: "₹4.2L - ₹6.0L Per Annum",
+    branch: "Electrical",
+    tags: ["Electrical", "Automation"],
+    badge: "New",
+    badgeClass: "bg-primary-container text-on-primary-container",
+    logo: "https://lh3.googleusercontent.com/aida-public/AB6AXuAiItun5oeHuUyyFHesxSZ9Jp_Z3XdVMkU8NhOMlAuetPELVPiWLKfCkTw7dJ0hJqV1QpMAQk4ekcbQYTpsnRsyZAfxUYAaVZZhKevMwbv69Y8j6Ku6fJliQaq5Zy0OBT9lk-kOJNErMFfsq_p2rF6i9Qukzv6bHuWSyky7qm2h5RaiN4nzkghlmv1b2J0UIqUAubu1QbmnVqCAK-rP1PvsEhSnBlLSdtjpbHBzxInTVf5L_a400X-AOWK3GDbx1KoL4tUokwF7gNA"
+  }
+];
+
 export default function Dashboard() {
   const [user, setUser] = useState(null);
   const [appliedDetails, setAppliedDetails] = useState([]);
+  const [savedCount, setSavedCount] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,6 +57,14 @@ export default function Dashboard() {
 
     const details = JSON.parse(localStorage.getItem('applied_job_details') || '[]');
     setAppliedDetails(details);
+
+    const rawSaved = localStorage.getItem('saved_jobs');
+    if (!rawSaved) {
+      localStorage.setItem('saved_jobs', JSON.stringify(defaultSavedJobs));
+      setSavedCount(defaultSavedJobs.length);
+    } else {
+      setSavedCount(JSON.parse(rawSaved).length);
+    }
   }, [navigate]);
 
   if (!user) {
@@ -90,15 +137,15 @@ export default function Dashboard() {
           </div>
 
           {/* Saved */}
-          <div className="bg-white border border-outline-variant rounded-2xl p-6 flex items-center gap-4 hover:shadow-md hover:-translate-y-0.5 transition-all">
+          <Link to="/student-portal/saved-jobs-student-portal" className="bg-white border border-outline-variant rounded-2xl p-6 flex items-center gap-4 hover:shadow-md hover:-translate-y-0.5 transition-all">
             <div className="w-12 h-12 rounded-xl bg-secondary-fixed/50 text-secondary flex items-center justify-center shrink-0">
               <span className="material-symbols-outlined text-2xl font-bold">bookmark</span>
             </div>
             <div className="text-left leading-tight">
-              <p className="text-headline-md font-extrabold text-on-surface">5</p>
+              <p className="text-headline-md font-extrabold text-on-surface">{savedCount}</p>
               <p className="text-on-surface-variant font-label-md text-[11px] font-bold uppercase tracking-wider mt-1">Saved</p>
             </div>
-          </div>
+          </Link>
 
           {/* Views */}
           <div className="bg-white border border-outline-variant rounded-2xl p-6 flex items-center gap-4 hover:shadow-md hover:-translate-y-0.5 transition-all">

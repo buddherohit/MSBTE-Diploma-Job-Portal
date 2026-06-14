@@ -185,10 +185,10 @@
 <span class="text-display-lg font-display-lg text-secondary">2</span>
 <span class="text-on-surface-variant font-label-md mt-1">Shortlisted</span>
 </div>
-<div class="bg-white border border-outline-variant rounded-xl p-5 flex flex-col justify-center items-center text-center hover:shadow-md transition-shadow">
-<span class="text-display-lg font-display-lg text-primary">5</span>
+<a href="Saved Jobs  Student Portal.html" class="bg-white border border-outline-variant rounded-xl p-5 flex flex-col justify-center items-center text-center hover:shadow-md transition-shadow hover:scale-[1.02] transition-transform">
+<span id="savedCountStat" class="text-display-lg font-display-lg text-primary">5</span>
 <span class="text-on-surface-variant font-label-md mt-1">Saved</span>
-</div>
+</a>
 <div class="bg-white border border-outline-variant rounded-xl p-5 flex flex-col justify-center items-center text-center hover:shadow-md transition-shadow">
 <span class="text-display-lg font-display-lg text-primary">45</span>
 <span class="text-on-surface-variant font-label-md mt-1">Profile Views</span>
@@ -401,6 +401,58 @@
                     `;
                     tableBody.insertBefore(tr, tableBody.firstChild);
                 });
+            }
+
+            // 3. Initialize saved jobs if missing and update stats card
+            const defaultSavedJobs = [
+                {
+                    id: "forbes-qc",
+                    title: "Quality Control Engineer",
+                    company: "Forbes Marshall Pvt. Ltd.",
+                    location: "Pune, Maharashtra",
+                    salary: "₹3.5L - ₹5.2L Per Annum",
+                    branch: "Mechanical",
+                    tags: ["Mechanical", "Six Sigma"],
+                    badge: "Urgent",
+                    badgeClass: "bg-secondary-container text-on-secondary-container",
+                    logo: "https://lh3.googleusercontent.com/aida-public/AB6AXuAzqlHrRpiLt_9I2iccBzwdDS3BvlnuH2kzlYAQIe2Z9fX556Rgs38MGlhMn8wJMpc_F33Qa3welcCuRZ9QiAwqA-75Y2w6JcTi__raDLlFl7KWr2WYZ70zTjUJRPtmnJQ-uvvd-tVJwPcmqwUaYkrYMOv_S3eMAT5PtGvdMkHEy7zdwUdzU0-Yq0due6W6EeqQGovepFAgzGicZ8HUlEdVS2A8y7R6sHnyPQV1yU3MUBeP76DbmzccMMnlCNalfmggSZpIWkFTc9U"
+                },
+                {
+                    id: "kirloskar-gte",
+                    title: "Graduate Trainee Engineer",
+                    company: "Kirloskar Brothers Ltd.",
+                    location: "Sangli, Maharashtra",
+                    salary: "₹2.8L - ₹4.0L Per Annum",
+                    branch: "Production",
+                    tags: ["Production", "CAD"],
+                    badge: "",
+                    logo: "https://lh3.googleusercontent.com/aida-public/AB6AXuDEuXCkjWrjF6AEzl7-muBXszDGmhc_g-32S3HBBSE170Zqkp3_YFOpc8NKUCKg3zugtMkHhicbzbGoZsW2ekBRShA2QfCw-mGRaLRjABoRX-0ATAfNPllFgDQiyYa5HcccbZErBSzKafd9UhKa1IrA56Ok0UEeH_Gs-lCKx4arwnf_dNIk3Sfgee9gPymt2nk0VIbL8_rZViqOckTdQmvvh0QbegmEhA5kh7NYrRaB5hSg-GuLHtbHE1hrTOj75TJS7FxEn-XWN4U"
+                },
+                {
+                    id: "tata-als",
+                    title: "Assembly Line Supervisor",
+                    company: "Tata Motors",
+                    location: "Pimpri, Pune",
+                    salary: "₹4.2L - ₹6.0L Per Annum",
+                    branch: "Electrical",
+                    tags: ["Electrical", "Automation"],
+                    badge: "New",
+                    badgeClass: "bg-primary-container text-on-primary-container",
+                    logo: "https://lh3.googleusercontent.com/aida-public/AB6AXuAiItun5oeHuUyyFHesxSZ9Jp_Z3XdVMkU8NhOMlAuetPELVPiWLKfCkTw7dJ0hJqV1QpMAQk4ekcbQYTpsnRsyZAfxUYAaVZZhKevMwbv69Y8j6Ku6fJliQaq5Zy0OBT9lk-kOJNErMFfsq_p2rF6i9Qukzv6bHuWSyky7qm2h5RaiN4nzkghlmv1b2J0UIqUAubu1QbmnVqCAK-rP1PvsEhSnBlLSdtjpbHBzxInTVf5L_a400X-AOWK3GDbx1KoL4tUokwF7gNA"
+                }
+            ];
+
+            let savedJobs = localStorage.getItem('saved_jobs');
+            if (!savedJobs) {
+                localStorage.setItem('saved_jobs', JSON.stringify(defaultSavedJobs));
+                savedJobs = defaultSavedJobs;
+            } else {
+                savedJobs = JSON.parse(savedJobs);
+            }
+
+            const savedCountSpan = document.getElementById('savedCountStat');
+            if (savedCountSpan) {
+                savedCountSpan.textContent = savedJobs.length;
             }
         });
     </script>
