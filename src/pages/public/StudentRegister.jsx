@@ -73,9 +73,14 @@ export default function StudentRegister() {
     <div className="w-full min-h-screen flex flex-col bg-background">
       {/* Top Navigation */}
       <header className="fixed top-0 w-full bg-surface dark:bg-inverse-surface shadow-sm z-50 flex items-center justify-between px-margin-mobile h-16">
-        <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-          <span className="material-symbols-outlined text-primary dark:text-primary-fixed-dim text-3xl" data-icon="school">school</span>
-          <h1 className="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">MSBTE Jobs</h1>
+        <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+          <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-white shadow-sm">
+            <span className="material-symbols-outlined text-[24px]" style={{ fontVariationSettings: "'FILL' 1" }}>school</span>
+          </div>
+          <div className="flex flex-col leading-none text-left">
+            <span className="font-headline-md text-[20px] font-extrabold text-primary tracking-tight">MSBTE<span className="text-secondary-container">Jobs</span></span>
+            <span className="text-[9px] font-bold text-on-surface-variant tracking-wider uppercase mt-0.5">Diploma Jobs Portal</span>
+          </div>
         </Link>
         <Link to="/public/student-login" className="font-label-md text-label-md text-primary hover:bg-surface-container-high transition-colors duration-200 px-4 py-2 rounded-lg">
           Back to Login

@@ -77,8 +77,13 @@ export default function EmployerRegister() {
       {/* TopAppBar */}
       <header className="fixed top-0 w-full z-50 flex items-center justify-between px-margin-mobile h-16 bg-surface shadow-sm">
         <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-          <span className="material-symbols-outlined text-primary text-3xl" data-icon="school">school</span>
-          <span className="font-headline-md text-headline-md font-bold text-primary">MSBTE Jobs</span>
+          <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-white shadow-sm">
+            <span className="material-symbols-outlined text-[24px]" style={{ fontVariationSettings: "'FILL' 1" }}>school</span>
+          </div>
+          <div className="flex flex-col leading-none text-left">
+            <span className="font-headline-md text-[20px] font-extrabold text-primary tracking-tight">MSBTE<span className="text-secondary-container">Jobs</span></span>
+            <span className="text-[9px] font-bold text-on-surface-variant tracking-wider uppercase mt-0.5">Diploma Jobs Portal</span>
+          </div>
         </Link>
         <div className="hidden md:flex gap-6 items-center">
           <Link className="text-on-surface-variant font-label-md hover:text-primary transition-colors" to="/">Portal Home</Link>
