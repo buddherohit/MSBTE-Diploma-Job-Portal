@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function EditEducationDetails() {
   return (
@@ -7,8 +8,15 @@ export default function EditEducationDetails() {
 {/* Desktop Navigation Drawer */}
 <aside className="hidden md:flex flex-col h-screen fixed left-0 top-0 border-r border-outline-variant bg-surface w-80 z-40">
 <div className="p-6 flex items-center gap-3">
-<span className="material-symbols-outlined text-primary text-3xl">school</span>
-<span className="font-headline-md text-headline-md font-bold text-primary">MahaResume</span>
+<Link className="flex items-center gap-2 cursor-pointer text-left" to="/">
+<div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-white shadow-sm">
+<span className="material-symbols-outlined text-[24px]" style={{ fontVariationSettings: "'FILL' 1" }}>school</span>
+</div>
+<div className="flex flex-col leading-none text-left">
+<span className="font-headline-md text-[20px] font-extrabold text-primary tracking-tight">MSBTE<span className="text-secondary-container">Jobs</span></span>
+<span className="text-[9px] font-bold text-on-surface-variant tracking-wider uppercase mt-0.5">Diploma Jobs Portal</span>
+</div>
+</Link>
 </div>
 <div className="px-4 py-6 flex items-center gap-4">
 <div className="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary">
@@ -48,8 +56,15 @@ export default function EditEducationDetails() {
 {/* Top App Bar (Mobile Only) */}
 <header className="md:hidden sticky top-0 z-50 bg-surface shadow-sm px-margin-mobile py-4 flex justify-between items-center">
 <div className="flex items-center gap-2">
-<span className="material-symbols-outlined text-primary">school</span>
-<span className="font-headline-md text-headline-md font-bold text-primary">MahaResume</span>
+<Link className="flex items-center gap-2 cursor-pointer text-left" to="/">
+<div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white shadow-sm">
+<span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: "'FILL' 1" }}>school</span>
+</div>
+<div className="flex flex-col leading-none text-left">
+<span className="font-headline-md text-[16px] font-extrabold text-primary tracking-tight">MSBTE<span className="text-secondary-container">Jobs</span></span>
+<span className="text-[8px] font-bold text-on-surface-variant tracking-wider uppercase mt-0.5">Diploma Jobs Portal</span>
+</div>
+</Link>
 </div>
 <button className="p-2 rounded-full hover:bg-surface-container transition-colors">
 <span className="material-symbols-outlined text-on-surface-variant">menu</span>
