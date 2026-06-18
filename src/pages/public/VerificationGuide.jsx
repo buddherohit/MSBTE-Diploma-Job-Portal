@@ -50,7 +50,7 @@ export default function VerificationGuide() {
       </div>
 
       {/* TopAppBar */}
-      <header className="fixed top-0 w-full z-50 flex items-center justify-between px-margin-mobile h-16 bg-surface shadow-sm border-b border-outline-variant">
+      <header className="fixed top-0 w-full z-50 flex items-center justify-between px-margin-mobile h-16 bg-white shadow-sm border-b border-outline-variant">
         <div className="flex items-center gap-3">
           <label htmlFor="mobile-menu-toggle" className="material-symbols-outlined text-primary cursor-pointer md:hidden text-2xl select-none">menu</label>
           <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
