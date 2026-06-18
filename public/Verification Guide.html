@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Company Verification Guide | MSBTE Diploma Jobs Portal</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#191c1e",
+                        "outline": "#757684",
+                        "primary": "#00288e",
+                        "secondary": "#9d4300",
+                        "background": "#f7f9fb",
+                        "surface-container": "#eceef0",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#1e40af",
+                        "secondary-container": "#fd761a",
+                        "outline-variant": "#c4c5d5",
+                        "on-surface-variant": "#444653"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "1rem",
+                        "container-max": "1280px",
+                        "margin-mobile": "1rem",
+                        "stack-sm": "0.5rem",
+                        "gutter": "1.5rem",
+                        "stack-lg": "2rem"
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .blueprint-pattern {
+            background-color: #f7f9fb;
+            background-image: radial-gradient(#cbd5e1 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md blueprint-pattern min-h-screen">
+
+<!-- Mobile Drawer Toggle Checkbox -->
+<input type="checkbox" id="mobile-menu-toggle" class="peer hidden" />
+
+<!-- Mobile Drawer Overlay -->
+<div class="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm hidden peer-checked:block lg:hidden">
+  <label for="mobile-menu-toggle" class="absolute inset-0 cursor-default"></label>
+</div>
+
+<!-- Mobile Drawer Content -->
+<div class="fixed right-0 top-0 bottom-0 z-50 w-80 max-w-[85vw] bg-white shadow-2xl flex flex-col p-6 translate-x-full transition-transform duration-300 peer-checked:translate-x-0 lg:hidden">
+  <!-- Drawer Header -->
+  <div class="flex justify-between items-center pb-6 border-b border-outline-variant">
+    <div class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white shadow-sm">
+        <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1">school</span>
+      </div>
+      <div class="flex flex-col leading-none text-left">
+        <span class="font-headline-md text-[16px] font-extrabold text-primary tracking-tight">MSBTE<span class="text-secondary-container">Jobs</span></span>
+        <span class="text-[8px] font-bold text-on-surface-variant tracking-wider uppercase mt-0.5">Diploma Jobs Portal</span>
+      </div>
+    </div>
+    <!-- Close button -->
+    <label for="mobile-menu-toggle" class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary cursor-pointer hover:bg-surface-container-highest transition-colors">
+      <span class="material-symbols-outlined text-xl">close</span>
+    </label>
+  </div>
+  
+  <!-- Drawer Navigation Links -->
+  <nav class="flex flex-col gap-5 py-8 text-left">
+    <a class="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" href="home.html">Home</a>
+    <a class="text-body-md font-bold text-primary transition-colors duration-150" href="Verification Guide.html">Verification Guide</a>
+    <a class="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" href="Find Diploma Jobs.html">Find Jobs</a>
+    <a class="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" href="industry.html">Companies</a>
+    <a class="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" href="Find Diploma Jobs.html?type=internship">Internships</a>
+    <a class="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" href="contact.html">Contact</a>
+  </nav>
+  
+  <!-- Drawer Action Buttons -->
+  <div class="mt-auto flex flex-col gap-3 pt-6 border-t border-outline-variant">
+    <a class="w-full text-center border border-outline-variant hover:border-primary text-on-surface hover:text-primary py-3 rounded-xl font-bold text-body-md transition-all duration-200 active:scale-95 shadow-sm" href="Student Login.html">Login</a>
+    <a class="w-full text-center bg-primary hover:bg-primary/95 text-white py-3 rounded-xl font-bold text-body-md transition-all duration-200 active:scale-95 shadow-md" href="create account.html">Register</a>
+  </div>
+</div>
+
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex items-center justify-between px-margin-mobile h-16 bg-surface shadow-sm border-b border-outline-variant">
+<div class="flex items-center gap-3">
+<label for="mobile-menu-toggle" class="material-symbols-outlined text-primary cursor-pointer md:hidden text-2xl select-none" data-icon="menu">menu</label>
+<a class="flex items-center gap-2 cursor-pointer" href="home.html">
+<div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-white shadow-sm">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1">school</span>
+</div>
+<div class="flex flex-col leading-none text-left">
+<span class="font-headline-md text-[20px] font-extrabold text-primary tracking-tight">MSBTE<span class="text-secondary-container">Jobs</span></span>
+<span class="text-[9px] font-bold text-on-surface-variant tracking-wider uppercase mt-0.5">Diploma Jobs Portal</span>
+</div>
+</a>
+</div>
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-on-surface-variant font-label-md hover:text-primary transition-colors" href="home.html">Portal Home</a>
+<a class="text-primary font-bold font-label-md transition-colors" href="Verification Guide.html">Verification Guide</a>
+<a class="text-on-surface-variant font-label-md hover:text-primary transition-colors" href="Find Diploma Jobs.html">Find Jobs</a>
+<a class="text-on-surface-variant font-label-md hover:text-primary transition-colors" href="contact.html">Contact</a>
+<a class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-md transition-transform active:scale-95 block text-center" href="Student Login.html">Student Login</a>
+</div>
+</header>
+
+<main class="pt-24 pb-16 px-margin-mobile flex flex-col items-center">
+    <div class="w-full max-w-container-max space-y-12">
+        
+        <!-- Hero Section -->
+        <div class="text-center space-y-4 max-w-3xl mx-auto py-6">
+            <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">verified_user</span>
+                Industrial Authenticity
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold text-primary tracking-tight leading-tight">
+                Employer Verification Guide
+            </h1>
+            <p class="text-on-surface-variant text-base md:text-lg leading-relaxed">
+                To maintain a safe, high-trust network for polytechnic diploma students in Maharashtra, MSBTE Jobs Portal requires all corporate accounts to undergo a brief verification process before publishing jobs.
+            </p>
+        </div>
+
+        <!-- Verification Benefits (Why verify?) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="glass-panel p-6 rounded-2xl border border-outline-variant text-left space-y-3">
+                <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
+                    <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1">security</span>
+                </div>
+                <h3 class="font-bold text-lg text-primary">Student Data Protection</h3>
+                <p class="text-sm text-on-surface-variant leading-relaxed">
+                    Protects student profiles, portfolios, and contact information from scrapers and unauthorized third parties.
+                </p>
+            </div>
+            <div class="glass-panel p-6 rounded-2xl border border-outline-variant text-left space-y-3">
+                <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary">
+                    <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1">workspace_premium</span>
+                </div>
+                <h3 class="font-bold text-lg text-secondary">Verified Recruiter Badge</h3>
+                <p class="text-sm text-on-surface-variant leading-relaxed">
+                    Your company gains a verified mark, increasing application rates from top-tier diploma students by up to 80%.
+                </p>
+            </div>
+            <div class="glass-panel p-6 rounded-2xl border border-outline-variant text-left space-y-3">
+                <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center text-green-700">
+                    <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1">send</span>
+                </div>
+                <h3 class="font-bold text-lg text-green-700">Direct Campus Link</h3>
+                <p class="text-sm text-on-surface-variant leading-relaxed">
+                    Unlocks direct coordination channels with polytechnic placement officers and coordinates walk-in drives.
+                </p>
+            </div>
+        </div>
+
+        <!-- Step-by-Step Verification Process -->
+        <div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant shadow-sm space-y-8 text-left">
+            <div>
+                <h2 class="text-2xl font-bold text-primary font-headline-md">Corporate Verification Process</h2>
+                <p class="text-on-surface-variant text-sm mt-1">Our simple step-by-step workflow detailing how admin audits are conducted</p>
+            </div>
+
+            <!-- Visual Timeline -->
+            <div class="relative pl-6 md:pl-0 grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-6 pt-4">
+                <!-- Connective Line (for Desktop) -->
+                <div class="absolute top-[52px] left-8 right-8 h-[2px] bg-outline-variant hidden md:block z-0"></div>
+
+                <!-- Step 1 -->
+                <div class="relative z-10 space-y-4 flex flex-col items-start md:items-center text-left md:text-center">
+                    <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg shadow-md border-4 border-white">
+                        1
+                    </div>
+                    <div class="space-y-1">
+                        <h4 class="font-bold text-on-surface text-base">Corporate Register</h4>
+                        <p class="text-xs text-on-surface-variant leading-relaxed max-w-[220px] mx-auto">
+                            Submit your company name, industry, contact HR name, official email, and MIDC/registration ID.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative z-10 space-y-4 flex flex-col items-start md:items-center text-left md:text-center">
+                    <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg shadow-md border-4 border-white">
+                        2
+                    </div>
+                    <div class="space-y-1">
+                        <h4 class="font-bold text-on-surface text-base">Admin Audit</h4>
+                        <p class="text-xs text-on-surface-variant leading-relaxed max-w-[220px] mx-auto">
+                            The MSBTE portal admin team reviews details and checks government databases (MIDC, MCA, MSME) for validity.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative z-10 space-y-4 flex flex-col items-start md:items-center text-left md:text-center">
+                    <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg shadow-md border-4 border-white">
+                        3
+                    </div>
+                    <div class="space-y-1">
+                        <h4 class="font-bold text-on-surface text-base">Verification Approval</h4>
+                        <p class="text-xs text-on-surface-variant leading-relaxed max-w-[220px] mx-auto">
+                            If authentic, the admin approves your account, and a verification tick-mark badge is added to your profile.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="relative z-10 space-y-4 flex flex-col items-start md:items-center text-left md:text-center">
+                    <div class="w-12 h-12 rounded-full bg-secondary text-white flex items-center justify-center font-bold text-lg shadow-md border-4 border-white">
+                        4
+                    </div>
+                    <div class="space-y-1">
+                        <h4 class="font-bold text-secondary text-base">Unrestricted Access</h4>
+                        <p class="text-xs text-on-surface-variant leading-relaxed max-w-[220px] mx-auto">
+                            Start posting jobs, search student databases, access resume details, and coordinate campus selections.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Accepted Verification Documents -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start text-left">
+            <div class="space-y-6">
+                <div>
+                    <h2 class="text-2xl font-bold text-primary font-headline-md">Accepted Supporting Documents</h2>
+                    <p class="text-on-surface-variant text-sm mt-1">To expedite approval, please have one of these legal documents ready during verification.</p>
+                </div>
+                <div class="border border-outline-variant rounded-xl overflow-hidden bg-surface-container-lowest">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-surface-container border-b border-outline-variant font-bold text-primary">
+                            <tr>
+                                <th class="p-4">Document Type</th>
+                                <th class="p-4">Authority</th>
+                                <th class="p-4">Key Verified Info</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-outline-variant text-on-surface-variant">
+                            <tr>
+                                <td class="p-4 font-bold text-on-surface">MIDC Lease / Allotment</td>
+                                <td class="p-4">Govt of Maharashtra</td>
+                                <td class="p-4">Plot Allotment & Company Name</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-bold text-on-surface">Certificate of Incorporation</td>
+                                <td class="p-4">Ministry of Corporate Affairs (MCA)</td>
+                                <td class="p-4">CIN Number & Company Name</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-bold text-on-surface">Udyam Registration Certificate</td>
+                                <td class="p-4">Ministry of MSME</td>
+                                <td class="p-4">Udyam ID & Industrial Sector</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-bold text-on-surface">GSTIN Certificate</td>
+                                <td class="p-4">Dept of Revenue, Govt of India</td>
+                                <td class="p-4">GST Number & Legal Name</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Admin Approval Criteria -->
+            <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant space-y-6">
+                <div>
+                    <h2 class="text-2xl font-bold text-primary font-headline-md">Admin Approval Criteria</h2>
+                    <p class="text-on-surface-variant text-sm mt-1">What our administrative team checks during screening:</p>
+                </div>
+                <ul class="space-y-4">
+                    <li class="flex gap-3">
+                        <span class="material-symbols-outlined text-green-600 mt-0.5" style="font-variation-settings: 'FILL' 1">check_circle</span>
+                        <div>
+                            <span class="font-bold text-on-surface text-sm block">Company Legitimacy</span>
+                            <span class="text-xs text-on-surface-variant">Active registration details checked directly on national and state corporate databases.</span>
+                        </div>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="material-symbols-outlined text-green-600 mt-0.5" style="font-variation-settings: 'FILL' 1">check_circle</span>
+                        <div>
+                            <span class="font-bold text-on-surface text-sm block">Official HR / Corporate Email Domain</span>
+                            <span class="text-xs text-on-surface-variant">Verification emails must be sent from a corporate domain (e.g., hr@company.com). Registrations via Gmail/Yahoo are subjected to additional documentation audits.</span>
+                        </div>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="material-symbols-outlined text-green-600 mt-0.5" style="font-variation-settings: 'FILL' 1">check_circle</span>
+                        <div>
+                            <span class="font-bold text-on-surface text-sm block">Physical Workplace Presence</span>
+                            <span class="text-xs text-on-surface-variant">Verification of physical industrial setups, factories, offices, or technology spaces within Maharashtra.</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Frequently Asked Questions -->
+        <div class="space-y-6 text-left">
+            <div class="text-center">
+                <h2 class="text-2xl font-bold text-primary font-headline-md">Verification Frequently Asked Questions</h2>
+                <p class="text-on-surface-variant text-sm mt-1">Common queries from industrial and corporate recruitment partners</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant space-y-2">
+                    <h4 class="font-bold text-primary text-base">How long does the verification take?</h4>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">
+                        Verification audits are typically completed by the MSBTE placement board admin team within 24 to 48 business hours after registration.
+                    </p>
+                </div>
+                <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant space-y-2">
+                    <h4 class="font-bold text-primary text-base">What if my company lacks MIDC lease documents?</h4>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">
+                        If you are not located in an MIDC zone, you can submit an MCA Certificate of Incorporation, MSME registration, or a GST certificate showing your Maharashtra address.
+                    </p>
+                </div>
+                <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant space-y-2">
+                    <h4 class="font-bold text-primary text-base">Why are free email domains audited heavily?</h4>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">
+                        To protect diploma students from fraudulent job postings, accounts registered using generic emails (Gmail, Outlook) must submit additional registration proof and face manual audits.
+                    </p>
+                </div>
+                <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant space-y-2">
+                    <h4 class="font-bold text-primary text-base">Who should I contact if verification is delayed?</h4>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">
+                        You can reach out to the MSBTE placement coordination desk via the Contact Us form, or email verification@msbtejobs.org with your company registration ID.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="bg-primary text-white p-8 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center gap-6 text-left relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10 pointer-events-none">
+                <div class="absolute top-0 right-0 w-80 h-80 bg-white rounded-full blur-3xl"></div>
+            </div>
+            <div class="space-y-2 relative z-10 max-w-xl">
+                <h3 class="text-2xl font-bold font-headline-md">Ready to Hire Diploma Talent?</h3>
+                <p class="text-sm text-white/80 leading-relaxed">
+                    Set up your organization profile and get verified to access profiles from Maharashtra's leading diploma institutes today.
+                </p>
+            </div>
+            <a class="relative z-10 bg-white text-primary hover:bg-surface-container-low px-8 py-4 rounded-xl font-bold transition-all duration-200 active:scale-95 shadow-md flex items-center gap-2" href="Employer Register.html">
+                Register Company
+                <span class="material-symbols-outlined font-bold">arrow_forward</span>
+            </a>
+        </div>
+
+    </div>
+</main>
+
+</body>
+</html>

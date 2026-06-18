@@ -14,6 +14,7 @@ import Jobdetails from './pages/public/Jobdetails';
 import StudentLogin from './pages/public/StudentLogin';
 import StudentRegister from './pages/public/StudentRegister';
 import Verification from './pages/public/Verification';
+import VerificationGuide from './pages/public/VerificationGuide';
 import ApplicationConfirmation from './pages/student portal/ApplicationConfirmation';
 import ApplicationHistory from './pages/student portal/ApplicationHistory';
 import Dashboard from './pages/student portal/Dashboard';
@@ -74,6 +75,7 @@ function App() {
         <Route path="/public/student-login" element={<StudentLogin />} />
         <Route path="/public/student-register" element={<StudentRegister />} />
         <Route path="/public/verification" element={<Verification />} />
+        <Route path="/public/verification-guide" element={<VerificationGuide />} />
         <Route path="/student-portal/application-confirmation" element={<ApplicationConfirmation />} />
         <Route path="/student-portal/application-history" element={<ApplicationHistory />} />
         <Route path="/student-portal/dashboard" element={<Dashboard />} />
