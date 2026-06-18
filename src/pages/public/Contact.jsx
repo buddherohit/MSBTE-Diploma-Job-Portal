@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 export default function Contact() {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [activeAccordion, setActiveAccordion] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,6 +15,109 @@ export default function Contact() {
       e.target.reset();
     }, 1500);
   };
+
+  const accordionData = [
+    {
+      title: "Employer Verification Guide",
+      icon: "verified_user",
+      content: (
+        <div className="space-y-3 text-sm text-on-surface-variant leading-relaxed text-left">
+          <p className="font-semibold text-primary">Required Verification Documents:</p>
+          <ul className="list-disc list-inside space-y-1 pl-1 text-xs">
+            <li>GST Registration Certificate</li>
+            <li>Company PAN Card</li>
+            <li>Certificate of Incorporation / Registration</li>
+          </ul>
+          <p className="mt-2 text-xs">
+            <span className="font-semibold">Verification Process:</span> Upload these documents during registration. Our admin panel audits credentials within <span className="font-semibold text-secondary">24-48 hours</span> before granting unrestricted hiring access.
+          </p>
+          <Link to="/public/verification-guide" className="inline-flex items-center gap-1 text-primary hover:underline font-bold mt-1 text-xs">
+            View Verification Guide
+            <span className="material-symbols-outlined text-[14px]">open_in_new</span>
+          </Link>
+        </div>
+      )
+    },
+    {
+      title: "Student Job Portal FAQ",
+      icon: "help_center",
+      content: (
+        <div className="space-y-3 text-sm text-on-surface-variant leading-relaxed text-left">
+          <div className="space-y-3">
+            <div>
+              <p className="font-semibold text-primary text-xs">How to apply for jobs?</p>
+              <p className="text-xs">Navigate to "Find Jobs", click a job listing, and hit the "Apply Now" button.</p>
+            </div>
+            <div>
+              <p className="font-semibold text-primary text-xs">How to update profile & upload resume?</p>
+              <p className="text-xs">Go to your Student Dashboard, select "Profile Settings" or "Resume Builder" to edit details and upload a PDF resume.</p>
+            </div>
+            <div>
+              <p className="font-semibold text-primary text-xs">How to track application status?</p>
+              <p className="text-xs">Your dashboard's "Applied Jobs" tab lists real-time status updates (Applied, Shortlisted, Interview Scheduled, Rejected).</p>
+            </div>
+            <div>
+              <p className="font-semibold text-primary text-xs">How to contact support?</p>
+              <p className="text-xs">Raise a ticket using the Technical Support section below or use the form on the right.</p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      title: "Technical Support Ticket",
+      icon: "support_agent",
+      content: (
+        <div className="space-y-3 text-sm text-on-surface-variant leading-relaxed text-left">
+          <p className="text-xs">Experiencing portal issues? We can help resolve:</p>
+          <ul className="list-disc list-inside space-y-0.5 text-xs pl-1">
+            <li>Login or account activation issues</li>
+            <li>Employer registration anomalies</li>
+            <li>Resume upload limits or file errors</li>
+            <li>Application form submission errors</li>
+          </ul>
+          <div className="pt-2">
+            <a
+              href="#contactForm"
+              onClick={() => setActiveAccordion(null)}
+              className="inline-flex items-center justify-center gap-2 bg-primary text-white font-bold py-2 px-4 rounded-lg hover:bg-primary/95 transition-all text-xs shadow-sm"
+            >
+              Raise Support Ticket
+              <span className="material-symbols-outlined text-[16px]">send</span>
+            </a>
+          </div>
+        </div>
+      )
+    },
+    {
+      title: "Resume Builder Help",
+      icon: "description",
+      content: (
+        <div className="space-y-2 text-sm text-on-surface-variant leading-relaxed text-left">
+          <p className="text-xs">Our built-in Resume Builder assists in compiling professional portfolios:</p>
+          <ul className="list-disc list-inside space-y-1 text-xs pl-1">
+            <li>Step-by-step detail creation (Education, Projects, Experience)</li>
+            <li>Instant template selection matching industrial styles</li>
+            <li>One-click export as PDF for download or job applications</li>
+          </ul>
+        </div>
+      )
+    },
+    {
+      title: "Account Recovery",
+      icon: "lock_reset",
+      content: (
+        <div className="space-y-2 text-sm text-on-surface-variant leading-relaxed text-left">
+          <p className="font-semibold text-primary text-xs">Need access back?</p>
+          <ul className="list-disc list-inside space-y-1 text-xs pl-1">
+            <li><span className="font-medium">Forgot password:</span> Click "Forgot Password" on login pages to get a reset link via email.</li>
+            <li><span className="font-medium">Email verification:</span> Enter the code sent to your registered email to verify.</li>
+            <li><span className="font-medium">Account reactivation:</span> Contact our helpdesk if your account was deactivated.</li>
+          </ul>
+        </div>
+      )
+    }
+  ];
   return (
     <div className="w-full min-h-screen">
       
@@ -132,22 +236,41 @@ export default function Contact() {
 </div>
 </div>
 {/* FAQ Quick Links */}
-<div className="bg-secondary-container bg-opacity-10 border border-secondary-container rounded-xl p-6">
-<h3 className="font-headline-md text-headline-md text-on-secondary-container mb-4">Quick Support</h3>
-<div className="space-y-3">
-<Link className="flex items-center justify-between p-3 bg-surface-container-lowest rounded-lg hover:shadow-md transition-shadow group" to="/public/verification-guide">
-<span className="font-label-md text-label-md text-on-surface">Employer Verification Guide</span>
-<span className="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
-</Link>
-<a className="flex items-center justify-between p-3 bg-surface-container-lowest rounded-lg hover:shadow-md transition-shadow group" href="#">
-<span className="font-label-md text-label-md text-on-surface">Student Job Portal FAQ</span>
-<span className="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
-</a>
-<a className="flex items-center justify-between p-3 bg-surface-container-lowest rounded-lg hover:shadow-md transition-shadow group" href="#contactForm">
-<span className="font-label-md text-label-md text-on-surface">Technical Support Ticket</span>
-<span className="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
-</a>
-</div>
+<div className="bg-surface-container-low border border-outline-variant rounded-2xl p-6 shadow-sm">
+  <h3 className="font-headline-md text-headline-md text-primary mb-4 flex items-center gap-2">
+    <span className="material-symbols-outlined text-primary animate-pulse" style={{ fontVariationSettings: "'FILL' 1" }}>help_center</span>
+    Quick Support
+  </h3>
+  <div className="space-y-3">
+    {accordionData.map((item, index) => {
+      const isOpen = activeAccordion === index;
+      return (
+        <div key={index} className="border border-outline-variant rounded-xl overflow-hidden bg-white shadow-sm transition-all duration-200 hover:border-primary/50">
+          <button
+            type="button"
+            onClick={() => setActiveAccordion(isOpen ? null : index)}
+            className="w-full flex items-center justify-between p-4 text-left font-semibold text-on-surface hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
+            aria-expanded={isOpen}
+          >
+            <div className="flex items-center gap-3 select-none">
+              <span className="material-symbols-outlined text-primary text-xl" style={{ fontVariationSettings: "'FILL' 0" }}>{item.icon}</span>
+              <span className="font-label-md text-label-md text-on-surface font-semibold">{item.title}</span>
+            </div>
+            <span className={`material-symbols-outlined text-primary transition-transform duration-300 select-none ${isOpen ? 'rotate-180' : ''}`}>
+              expand_more
+            </span>
+          </button>
+          <div className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
+            <div className="overflow-hidden">
+              <div className="p-4 pt-2 border-t border-outline-variant/40 bg-surface-container-lowest">
+                {item.content}
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    })}
+  </div>
 </div>
 </div>
 {/* Right: Contact Form */}
