@@ -236,33 +236,27 @@ export default function Contact() {
 </div>
 </div>
 {/* FAQ Quick Links */}
-<div className="bg-surface-container-low border border-outline-variant rounded-2xl p-6 shadow-sm">
-  <h3 className="font-headline-md text-headline-md text-primary mb-4 flex items-center gap-2">
-    <span className="material-symbols-outlined text-primary animate-pulse" style={{ fontVariationSettings: "'FILL' 1" }}>help_center</span>
-    Quick Support
-  </h3>
+<div className="bg-secondary-container bg-opacity-10 border border-secondary-container rounded-xl p-6">
+  <h3 className="font-headline-md text-headline-md text-on-secondary-container mb-4">Quick Support</h3>
   <div className="space-y-3">
     {accordionData.map((item, index) => {
       const isOpen = activeAccordion === index;
       return (
-        <div key={index} className="border border-outline-variant rounded-xl overflow-hidden bg-white shadow-sm transition-all duration-200 hover:border-primary/50">
+        <div key={index} className="bg-surface-container-lowest rounded-lg border border-outline-variant/30 overflow-hidden shadow-sm transition-all duration-200">
           <button
             type="button"
             onClick={() => setActiveAccordion(isOpen ? null : index)}
-            className="w-full flex items-center justify-between p-4 text-left font-semibold text-on-surface hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
+            className="w-full flex items-center justify-between p-3 text-left font-semibold text-on-surface transition-colors focus:outline-none focus:ring-2 focus:ring-primary/40 focus:ring-inset"
             aria-expanded={isOpen}
           >
-            <div className="flex items-center gap-3 select-none">
-              <span className="material-symbols-outlined text-primary text-xl" style={{ fontVariationSettings: "'FILL' 0" }}>{item.icon}</span>
-              <span className="font-label-md text-label-md text-on-surface font-semibold">{item.title}</span>
-            </div>
-            <span className={`material-symbols-outlined text-primary transition-transform duration-300 select-none ${isOpen ? 'rotate-180' : ''}`}>
-              expand_more
+            <span className="font-label-md text-label-md text-on-surface font-semibold">{item.title}</span>
+            <span className={`material-symbols-outlined text-primary transition-transform duration-300 select-none chevron-icon ${isOpen ? 'rotate-90' : ''}`}>
+              chevron_right
             </span>
           </button>
           <div className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
             <div className="overflow-hidden">
-              <div className="p-4 pt-2 border-t border-outline-variant/40 bg-surface-container-lowest">
+              <div className="p-4 pt-0 border-t border-outline-variant/20 bg-surface-container-lowest/50">
                 {item.content}
               </div>
             </div>
