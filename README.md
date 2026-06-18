@@ -6,7 +6,6 @@
 </div>
 
 ---
-
 ## 🚀 Key Features
 
 The portal is split into three high-impact management interfaces tailored to the Maharashtra industrial ecosystem:
