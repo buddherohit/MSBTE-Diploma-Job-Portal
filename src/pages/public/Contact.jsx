@@ -5,6 +5,25 @@ export default function Contact() {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [activeAccordion, setActiveAccordion] = useState(null);
+  const [formSubject, setFormSubject] = useState("Industrial Partnership Inquiry");
+
+  const handleRaiseTicket = (e) => {
+    e.preventDefault();
+    setFormSubject("Technical Issue with Portal");
+    setActiveAccordion(null);
+
+    const form = document.getElementById("contactForm");
+    if (form) {
+      form.scrollIntoView({ behavior: "smooth" });
+      setTimeout(() => {
+        const messageField = document.getElementById("message");
+        if (messageField) {
+          messageField.focus();
+          messageField.placeholder = "Please describe the technical issue you are experiencing...";
+        }
+      }, 500);
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -79,7 +98,7 @@ export default function Contact() {
           <div className="pt-2">
             <a
               href="#contactForm"
-              onClick={() => setActiveAccordion(null)}
+              onClick={handleRaiseTicket}
               className="inline-flex items-center justify-center gap-2 bg-primary text-white font-bold py-2 px-4 rounded-lg hover:bg-primary/95 transition-all text-xs shadow-sm"
             >
               Raise Support Ticket
@@ -284,7 +303,12 @@ export default function Contact() {
 </div>
 <div className="space-y-2">
 <label className="font-label-md text-label-md text-on-surface-variant" htmlFor="subject">Subject</label>
-<select className="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" id="subject">
+<select
+  className="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all"
+  id="subject"
+  value={formSubject}
+  onChange={(e) => setFormSubject(e.target.value)}
+>
 <option>Industrial Partnership Inquiry</option>
 <option>Technical Issue with Portal</option>
 <option>Job Verification Request</option>

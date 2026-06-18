@@ -596,9 +596,18 @@ Connecting Maharashtra diploma students with high-impact career opportunities in
             });
         });
 
-        // Trigger button inside ticket click should close the accordion
+        // Trigger button inside ticket click should close the accordion and set subject + focus
         document.querySelectorAll('.support-scroll-trigger').forEach(btn => {
-            btn.addEventListener('click', () => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Select "Technical Issue with Portal" in subject select
+                const subjectSelect = document.getElementById('subject');
+                if (subjectSelect) {
+                    subjectSelect.value = 'Technical Issue with Portal';
+                }
+                
+                // Close accordions
                 document.querySelectorAll('.accordion-trigger').forEach(trigger => {
                     const item = trigger.closest('.accordion-item');
                     const panel = item.querySelector('.accordion-panel');
@@ -607,6 +616,19 @@ Connecting Maharashtra diploma students with high-impact career opportunities in
                     panel.classList.replace('grid-rows-[1fr]', 'grid-rows-[0fr]');
                     chevron.classList.remove('rotate-90');
                 });
+                
+                // Scroll to form and focus message
+                const form = document.getElementById('contactForm');
+                if (form) {
+                    form.scrollIntoView({ behavior: 'smooth' });
+                    setTimeout(() => {
+                        const messageField = document.getElementById('message');
+                        if (messageField) {
+                            messageField.focus();
+                            messageField.placeholder = 'Please describe the technical issue you are experiencing...';
+                        }
+                    }, 500);
+                }
             });
         });
     </script>
