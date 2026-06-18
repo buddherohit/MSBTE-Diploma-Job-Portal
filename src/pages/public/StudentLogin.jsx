@@ -1,5 +1,5 @@
 // MANUAL_JSX_FILE
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { loginUser } from '../../utils/auth';
 
@@ -11,6 +11,16 @@ export default function StudentLogin() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const tab = params.get('tab');
+    if (tab === 'employer') {
+      setActiveTab('employer');
+    } else {
+      setActiveTab('student');
+    }
+  }, []);
 
   const handleSignIn = (e) => {
     e.preventDefault();
@@ -138,7 +148,7 @@ export default function StudentLogin() {
               <div>
                 <div className="flex justify-between items-center mb-2">
                   <label className="block text-label-md font-label-md text-on-surface" htmlFor="password">Password</label>
-                  <a className="text-label-sm font-label-sm text-primary hover:underline" href="#">Forgot Password?</a>
+                  <Link className="text-label-sm font-label-sm text-primary hover:underline" to="/public/forgot-password">Forgot Password?</Link>
                 </div>
                 <div className="relative">
                   <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline" data-icon="lock">lock</span>

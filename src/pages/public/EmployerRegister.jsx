@@ -88,9 +88,11 @@ export default function EmployerRegister() {
         </Link>
         <div className="hidden md:flex gap-6 items-center">
           <Link className="text-on-surface-variant font-label-md hover:text-primary transition-colors" to="/">Portal Home</Link>
-          <a className="text-on-surface-variant font-label-md hover:text-primary transition-colors" href="#">Verification Guide</a>
+          <Link className="text-on-surface-variant font-label-md hover:text-primary transition-colors" to="/public/about">About Us</Link>
+          <Link className="text-on-surface-variant font-label-md hover:text-primary transition-colors" to="/public/find-diploma-jobs">Find Jobs</Link>
+          <Link className="text-on-surface-variant font-label-md hover:text-primary transition-colors" to="/public/contact">Contact</Link>
           <Link to="/public/student-login" className="bg-primary text-white px-6 py-2 rounded-lg font-label-md transition-transform active:scale-95 hover:bg-primary/90">
-            Login
+            Student Login
           </Link>
         </div>
       </header>
@@ -287,7 +289,7 @@ export default function EmployerRegister() {
 
               <div className="mt-8 pt-8 border-t border-outline-variant text-center">
                 <p className="font-label-md text-on-surface-variant">
-                  Already have an account? <Link className="text-primary font-bold hover:underline ml-1" to="/public/student-login">Employer Login</Link>
+                  Already have an account? <Link className="text-primary font-bold hover:underline ml-1" to="/public/employer-login">Employer Login</Link>
                 </p>
               </div>
             </div>

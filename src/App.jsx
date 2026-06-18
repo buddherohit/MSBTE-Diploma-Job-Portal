@@ -4,13 +4,16 @@ import About from './pages/public/About';
 import CompanyProfile from './pages/public/CompanyProfile';
 import Contact from './pages/public/Contact';
 import CreateAccount from './pages/public/CreateAccount';
+import EmployerLogin from './pages/public/EmployerLogin';
 import EmployerRegister from './pages/public/EmployerRegister';
 import FindDiplomaJobs from './pages/public/FindDiplomaJobs';
+import ForgotPassword from './pages/public/ForgotPassword';
 import Home from './pages/public/Home';
 import Industry from './pages/public/Industry';
 import Jobdetails from './pages/public/Jobdetails';
 import StudentLogin from './pages/public/StudentLogin';
 import StudentRegister from './pages/public/StudentRegister';
+import Verification from './pages/public/Verification';
 import ApplicationConfirmation from './pages/student portal/ApplicationConfirmation';
 import ApplicationHistory from './pages/student portal/ApplicationHistory';
 import Dashboard from './pages/student portal/Dashboard';
@@ -61,13 +64,16 @@ function App() {
         <Route path="/public/company-profile" element={<CompanyProfile />} />
         <Route path="/public/contact" element={<Contact />} />
         <Route path="/public/create-account" element={<CreateAccount />} />
+        <Route path="/public/employer-login" element={<EmployerLogin />} />
         <Route path="/public/employer-register" element={<EmployerRegister />} />
         <Route path="/public/find-diploma-jobs" element={<FindDiplomaJobs />} />
+        <Route path="/public/forgot-password" element={<ForgotPassword />} />
         <Route path="/" element={<Home />} />
         <Route path="/public/industry" element={<Industry />} />
         <Route path="/public/jobdetails" element={<Jobdetails />} />
         <Route path="/public/student-login" element={<StudentLogin />} />
         <Route path="/public/student-register" element={<StudentRegister />} />
+        <Route path="/public/verification" element={<Verification />} />
         <Route path="/student-portal/application-confirmation" element={<ApplicationConfirmation />} />
         <Route path="/student-portal/application-history" element={<ApplicationHistory />} />
         <Route path="/student-portal/dashboard" element={<Dashboard />} />

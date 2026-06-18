@@ -148,7 +148,7 @@
 </div>
 <!-- Form Card -->
 <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-8 shadow-sm">
-<form class="space-y-stack-md" onsubmit="event.preventDefault();">
+<form class="space-y-stack-md" onsubmit="handleLogin(event)">
 <!-- Dynamic Label -->
 <div id="id-label-container">
 <label class="block text-label-md font-label-md text-on-surface mb-2" for="user-id">Enrollment Number / Email</label>
@@ -160,7 +160,7 @@
 <div>
 <div class="flex justify-between items-center mb-2">
 <label class="block text-label-md font-label-md text-on-surface" for="password">Password</label>
-<a class="text-label-sm font-label-sm text-primary hover:underline" href="#">Forgot Password?</a>
+<a class="text-label-sm font-label-sm text-primary hover:underline" href="Forgot Password.html">Forgot Password?</a>
 </div>
 <div class="relative">
 <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline" data-icon="lock">lock</span>
@@ -182,7 +182,7 @@
 <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-outline-variant"></div></div>
 <div class="relative flex justify-center text-label-sm"><span class="bg-surface-container-lowest px-4 text-outline uppercase tracking-widest">or</span></div>
 </div>
-<button class="w-full bg-surface-container-lowest border border-primary text-primary py-4 rounded-lg font-label-md text-label-md hover:bg-primary/5 transition-colors" type="button">
+<button class="w-full bg-surface-container-lowest border border-primary text-primary py-4 rounded-lg font-label-md text-label-md hover:bg-primary/5 transition-colors" type="button" onclick="window.location.href='create account.html'">
                         Create an Account
                     </button>
 </form>
@@ -213,7 +213,10 @@
 </div>
 </div>
 <script>
+        let activeTab = 'student';
+
         function switchTab(type) {
+            activeTab = type;
             const highlight = document.getElementById('toggle-highlight');
             const studentBtn = document.getElementById('btn-student');
             const employerBtn = document.getElementById('btn-employer');
@@ -242,7 +245,7 @@
         // Add micro-interaction for the password visibility toggle
         document.querySelectorAll('button[type="button"] .material-symbols-outlined[data-icon="visibility"]').forEach(btn => {
             btn.parentElement.addEventListener('click', function() {
-                const input = this.previousElementSibling;
+                const input = this.parentElement.querySelector('input');
                 if (input.type === 'password') {
                     input.type = 'text';
                     this.querySelector('span').textContent = 'visibility_off';
@@ -252,5 +255,30 @@
                 }
             });
         });
+
+        // Listen for query parameters to switch tab automatically
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const tab = urlParams.get('tab');
+            if (tab === 'employer') {
+                switchTab('employer');
+            } else {
+                switchTab('student');
+            }
+        });
+
+        // Handle login redirection
+        function handleLogin(e) {
+            e.preventDefault();
+            document.body.style.opacity = '0.7';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+                if (activeTab === 'student') {
+                    window.location.href = '../student portal/Dashboard.html';
+                } else {
+                    window.location.href = '../employer portal/Employer Dashboard  Industrial Blueprints Refined.html';
+                }
+            }, 500);
+        }
     </script>
 </body></html>

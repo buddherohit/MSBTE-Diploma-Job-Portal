@@ -195,7 +195,7 @@
                     Next Step <span class="material-symbols-outlined">chevron_right</span>
 </button>
 <p class="text-label-sm font-label-sm text-on-surface-variant">
-                    Already have an account? <a class="text-primary font-bold hover:underline" href="#">Log In</a>
+                    Already have an account? <a class="text-primary font-bold hover:underline" href="Student Login.html">Log In</a>
 </p>
 </div>
 </div>
@@ -247,9 +247,11 @@
                 // Flash effect before navigating
                 document.body.style.opacity = '0.5';
                 setTimeout(() => {
-                    console.log(`Navigating to ${selectedRole} registration...`);
-                    // In a real app: window.location.href = `/register/${selectedRole}`;
-                    alert(`Proceeding to ${selectedRole} registration form.`);
+                    if (selectedRole === 'student') {
+                        window.location.href = 'Student Register.html';
+                    } else if (selectedRole === 'employer') {
+                        window.location.href = 'Employer Register.html';
+                    }
                     document.body.style.opacity = '1';
                 }, 300);
             }
