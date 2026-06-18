@@ -1,263 +1,329 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import AdminHeader from '../../components/AdminHeader';
+import { getUsers } from '../../utils/auth';
 
 export default function VerificationHub() {
+  const [activeTab, setActiveTab] = useState('partners');
+  const [pendingEmployers, setPendingEmployers] = useState([]);
+  const [pendingStudents, setPendingStudents] = useState([]);
+
+  useEffect(() => {
+    loadQueues();
+  }, []);
+
+  const loadQueues = () => {
+    const allUsers = getUsers();
+    
+    // Fetch pending employers
+    const employers = allUsers.filter(u => 
+      u.role === 'employer' && 
+      (u.status === 'Pending Verification' || !u.verified)
+    ).map(e => ({
+      ...e,
+      companyName: e.companyName || 'Unknown Corporation',
+      sector: e.sector || 'Manufacturing',
+      location: e.location || 'Maharashtra',
+      status: e.status || 'Pending Verification',
+      id: e.id || `MSBTE-${Math.floor(1000 + Math.random() * 9000)}`,
+      logo: e.logo || 'https://images.unsplash.com/photo-1549923746-c502d488b3ea?auto=format&fit=crop&q=80&w=150'
+    }));
+
+    // Fetch pending students
+    const students = allUsers.filter(u => 
+      u.role === 'student' && 
+      (u.status === 'Pending' || !u.verified)
+    ).map(s => ({
+      ...s,
+      enrollment: s.enrollment || `2100${Math.floor(1000 + Math.random() * 9000)}`,
+      branch: s.branch || 'Mechanical Engineering',
+      institute: s.institute || 'Government Polytechnic, Pune',
+      status: s.status || 'Pending',
+      avatar: s.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150'
+    }));
+
+    setPendingEmployers(employers);
+    setPendingStudents(students);
+  };
+
+  const updateStatus = (email, newStatus) => {
+    const allUsers = getUsers();
+    const updated = allUsers.map(u => {
+      if (u.email.toLowerCase() === email.toLowerCase()) {
+        return { 
+          ...u, 
+          status: newStatus,
+          verified: newStatus === 'Verified'
+        };
+      }
+      return u;
+    });
+    localStorage.setItem('msbte_users', JSON.stringify(updated));
+    loadQueues();
+  };
+
   return (
-    <div className="w-full min-h-screen">
-      
-{/* TopAppBar Component */}
-<header className="fixed top-0 w-full z-50 bg-surface border-b border-outline-variant flex justify-between items-center px-gutter h-16 w-full">
-<div className="flex items-center gap-4">
-<span className="material-symbols-outlined text-primary cursor-pointer active:opacity-80" data-icon="grid_view">grid_view</span>
-<h1 className="font-headline-md text-headline-md font-bold text-primary">MSBTE Admin Hub</h1>
-</div>
-<div className="flex items-center gap-4">
-<div className="hidden md:flex gap-6 items-center">
-<span className="font-label-md text-label-md text-primary font-bold cursor-pointer transition-colors hover:bg-surface-container-high px-3 py-1 rounded">Verification</span>
-<span className="font-label-md text-label-md text-on-surface-variant cursor-pointer transition-colors hover:bg-surface-container-high px-3 py-1 rounded">Moderation</span>
-</div>
-<div className="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold overflow-hidden cursor-pointer active:opacity-80">
-<img alt="Admin" className="w-full h-full object-cover" data-alt="A professional headshot of a mature male system administrator in a high-tech corporate office environment. He is wearing a crisp blue dress shirt and has a focused, authoritative expression. The background features blurred glass partitions and soft, high-key office lighting consistent with a modern Industrial Administration aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAj_dJ24BFeWJjPuAnL1MAa7rnoXRWGl1ZQjI_dQpDPQp59CZfky2UnCqd6EgfwvVRBdjOtqbMVxJQBM29v9sLQ0imz3QnzW5xqgtqSyX69yTFB1WGDU15Jy5wyuXD8obg3ixCoPoAWkep8eQABhIHY0cXHg9QLH1_Zoz763XxE2Q_qy262aRou9frP1ptuQ71vBvhBt5CoGx89YvrSpWFEIjsu2KU8rzNFTahxBldtj_gWq3M92AdtEFTdTSGTqGgPivmT1Lk7hto"/>
-</div>
-</div>
-</header>
-{/* NavigationDrawer Component */}
-<aside className="h-screen w-72 fixed left-0 top-0 z-40 bg-surface-container-low shadow-sm hidden md:flex flex-col gap-stack-sm pt-20 pb-4">
-<div className="px-6 mb-6">
-<div className="flex items-center gap-3">
-<div className="w-12 h-12 rounded-lg bg-primary flex items-center justify-center text-white">
-<span className="material-symbols-outlined" data-icon="verified_user">verified_user</span>
-</div>
-<div>
-<h2 className="font-label-md text-label-md text-on-surface font-bold">System Admin</h2>
-<p className="text-[11px] text-on-surface-variant uppercase tracking-wider">Superuser</p>
-</div>
-</div>
-</div>
-<nav className="flex flex-col gap-1">
-<a className="text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 px-4 py-3 flex items-center gap-3 transition-all" href="#">
-<span className="material-symbols-outlined" data-icon="dashboard">dashboard</span>
-<span className="font-label-md text-label-md">Overview</span>
-</a>
-<a className="text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 px-4 py-3 flex items-center gap-3 transition-all" href="#">
-<span className="material-symbols-outlined" data-icon="gavel">gavel</span>
-<span className="font-label-md text-label-md">Moderation</span>
-</a>
-<a className="bg-primary-container text-on-primary-container font-bold rounded-lg mx-2 px-4 py-3 flex items-center gap-3" href="#">
-<span className="material-symbols-outlined" data-icon="verified_user" style={{ fontVariationSettings: '\'FILL\' 1' }}>verified_user</span>
-<span className="font-label-md text-label-md">Verification</span>
-</a>
-<a className="text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 px-4 py-3 flex items-center gap-3 transition-all" href="#">
-<span className="material-symbols-outlined" data-icon="factory">factory</span>
-<span className="font-label-md text-label-md">Partners</span>
-</a>
-<a className="text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 px-4 py-3 flex items-center gap-3 transition-all" href="#">
-<span className="material-symbols-outlined" data-icon="insights">insights</span>
-<span className="font-label-md text-label-md">Analytics</span>
-</a>
-<a className="text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 px-4 py-3 flex items-center gap-3 transition-all" href="#">
-<span className="material-symbols-outlined" data-icon="settings_heart">settings_heart</span>
-<span className="font-label-md text-label-md">System Health</span>
-</a>
-</nav>
-</aside>
-{/* Main Content Canvas */}
-<main className="ml-0 md:ml-72 pt-20 px-gutter pb-stack-lg flex-grow">
-{/* Header & Path Switcher */}
-<div className="max-w-container-max mx-auto">
-<div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-stack-lg">
-<div>
-<h2 className="font-headline-lg text-headline-lg text-primary">Verification Hub</h2>
-<p className="font-body-md text-body-md text-on-surface-variant mt-1">Reviewing industrial credentials and student diplomas.</p>
-</div>
-{/* Segmented Control / Path Switcher */}
-<div className="flex bg-surface-container-high p-1 rounded-xl w-full md:w-auto">
-<button className="flex-1 md:flex-none px-6 py-2 rounded-lg font-label-md text-label-md transition-all bg-white shadow-sm text-primary" id="tab-partners" onclick="switchTab('partners')">Pending Partners</button>
-<button className="flex-1 md:flex-none px-6 py-2 rounded-lg font-label-md text-label-md transition-all text-on-surface-variant hover:bg-white/50" id="tab-students" onclick="switchTab('students')">Pending Students</button>
-<button className="flex-1 md:flex-none px-6 py-2 rounded-lg font-label-md text-label-md transition-all text-on-surface-variant hover:bg-white/50" id="tab-docs" onclick="switchTab('docs')">Document Review</button>
-</div>
-</div>
-{/* Content Grid: Pending Partners */}
-<section className="grid grid-cols-1 lg:grid-cols-2 gap-stack-md" id="section-partners">
-{/* Partner Card 1 */}
-<div className="bg-surface-container-lowest border border-outline-variant p-stack-md rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row gap-6">
-<div className="w-20 h-20 rounded-lg bg-surface-container flex-shrink-0 flex items-center justify-center overflow-hidden border border-outline-variant">
-<img alt="Company Logo" className="w-full h-full object-cover" data-alt="A minimalist logo for a heavy engineering firm displayed on a brushed metal background. The logo is clean and professional, featuring geometric industrial shapes. The image is brightly lit with a corporate blue color grade, reflecting a modern industrial aesthetic in a high-key setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuADpXCmogvF4OS0thd6jx5OO52fU10cXr2T5IzBEu76sWbplmCg8j_t13NmuGC9gI895YNqeXdYf3_aBwmPfvqX0ct1A0Yxk6btDBnDA4KY7ma0w-4OcAmiXFAbvy2tFMndMSqLqfWbUU6afyEbH2pFcKzVXdUqKpujHYvGwNCFts2SLGsZVnh-1A20uzrEk7C4ne_SgJRxf3gP7h-mNtqgcpr7ZqYAQhzRdki0eAnTmglH3vhD3Pu_kmHpeYUpp3l1t2WqVZnFrDE"/>
-</div>
-<div className="flex-grow">
-<div className="flex justify-between items-start mb-2">
-<div>
-<h3 className="font-headline-md text-[20px] text-on-surface">Tata Advanced Systems</h3>
-<p className="font-label-sm text-label-sm text-on-surface-variant">Reg No: MH-IND-2024-8842</p>
-</div>
-<span className="bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded-full font-label-sm text-[10px] uppercase font-bold tracking-widest">Urgent</span>
-</div>
-<div className="flex items-center gap-4 text-on-surface-variant mb-6">
-<div className="flex items-center gap-1">
-<span className="material-symbols-outlined text-[18px]" data-icon="location_on">location_on</span>
-<span className="font-body-md text-body-md">Pune, MH</span>
-</div>
-<div className="flex items-center gap-1">
-<span className="material-symbols-outlined text-[18px]" data-icon="business_center">business_center</span>
-<span className="font-body-md text-body-md">Aerospace & Defense</span>
-</div>
-</div>
-<div className="flex gap-3">
-<button className="flex-1 bg-primary text-white py-3 rounded-lg font-label-md text-label-md hover:bg-primary-container transition-colors shadow-sm">Approve Accreditation</button>
-<button className="px-4 border border-error text-error py-3 rounded-lg font-label-md text-label-md hover:bg-error-container transition-colors">Flag</button>
-</div>
-</div>
-</div>
-{/* Partner Card 2 */}
-<div className="bg-surface-container-lowest border border-outline-variant p-stack-md rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row gap-6">
-<div className="w-20 h-20 rounded-lg bg-surface-container flex-shrink-0 flex items-center justify-center overflow-hidden border border-outline-variant">
-<img alt="Company Logo" data-alt="A modern corporate building facade reflected in high-contrast blue tones. The focus is on the structural integrity and professionalism of an industrial headquarters. The lighting is crisp morning sunlight, creating sharp shadows and highlights that emphasize the corporate stable aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBujPF3dLx90Y2jrJ7puRo6Ls0gbKqz1cSRM87POIDEcCQWQGNRaCIU0kQmUJM8kX_jMTmFpEHnWZ0j44Up6SKBsu8gOn9nRN90AOdflU79SwIqroZ48zJEyfe0oLPhMKcC6fXhPS_E7EqdSwU4jSabCWyrJlFfPPMLbk6UU54JtNZ7QanRKVilkMIDmiWTbNMxHJzHm_tw8T7iYibtVy15wm7z5E-kVnjMZLDiSnNd3QVFLWhtcDjkWVRkqGEpH86V-mYikjSjJIQ"/>
-</div>
-<div className="flex-grow">
-<div className="flex justify-between items-start mb-2">
-<div>
-<h3 className="font-headline-md text-[20px] text-on-surface">L&T Infrastructure</h3>
-<p className="font-label-sm text-label-sm text-on-surface-variant">Reg No: MH-IND-2024-1109</p>
-</div>
-<span className="bg-surface-container-highest text-on-surface-variant px-3 py-1 rounded-full font-label-sm text-[10px] uppercase font-bold tracking-widest">Standard</span>
-</div>
-<div className="flex items-center gap-4 text-on-surface-variant mb-6">
-<div className="flex items-center gap-1">
-<span className="material-symbols-outlined text-[18px]" data-icon="location_on">location_on</span>
-<span className="font-body-md text-body-md">Mumbai, MH</span>
-</div>
-<div className="flex items-center gap-1">
-<span className="material-symbols-outlined text-[18px]" data-icon="business_center">business_center</span>
-<span className="font-body-md text-body-md">Civil Construction</span>
-</div>
-</div>
-<div className="flex gap-3">
-<button className="flex-1 bg-primary text-white py-3 rounded-lg font-label-md text-label-md hover:bg-primary-container transition-colors shadow-sm">Approve Accreditation</button>
-<button className="px-4 border border-error text-error py-3 rounded-lg font-label-md text-label-md hover:bg-error-container transition-colors">Flag</button>
-</div>
-</div>
-</div>
-</section>
-{/* Content Grid: Pending Students (Hidden by Default) */}
-<section className="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-stack-md" id="section-students">
-{/* Student Card 1 */}
-<div className="bg-surface-container-lowest border border-outline-variant p-stack-md rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col">
-<div className="flex items-center gap-4 mb-4">
-<div className="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed">
-<span className="material-symbols-outlined" data-icon="person">person</span>
-</div>
-<div>
-<h4 className="font-label-md text-label-md text-on-surface">Rahul Deshmukh</h4>
-<p className="text-xs text-on-surface-variant">ID: STU-2023-4412</p>
-</div>
-</div>
-<div className="bg-surface-container-low p-3 rounded-lg mb-4">
-<div className="flex justify-between items-center mb-1">
-<span className="text-[11px] uppercase text-on-surface-variant font-bold">Branch</span>
-<span className="bg-tertiary-fixed text-on-tertiary-fixed px-2 py-0.5 rounded text-[10px] font-bold">Mechanical</span>
-</div>
-<div className="flex justify-between items-center">
-<span className="text-[11px] uppercase text-on-surface-variant font-bold">Institution</span>
-<span className="text-xs text-on-surface">G.P. Nagpur</span>
-</div>
-</div>
-<div className="mb-6">
-<p className="text-[11px] uppercase text-on-surface-variant font-bold mb-2">Pending Document</p>
-<div className="flex items-center gap-2 border border-dashed border-outline-variant p-2 rounded cursor-pointer hover:bg-surface-container transition-colors">
-<span className="material-symbols-outlined text-primary" data-icon="description">description</span>
-<span className="text-xs font-medium">Final_Diploma_Cert.pdf</span>
-</div>
-</div>
-<div className="flex gap-2 mt-auto">
-<button className="flex-1 bg-secondary text-white py-2 rounded font-label-sm text-label-sm hover:bg-secondary-container transition-colors">Verify</button>
-<button className="px-3 border border-error text-error py-2 rounded font-label-sm text-label-sm hover:bg-error-container transition-colors">Reject</button>
-</div>
-</div>
-{/* Student Card 2 */}
-<div className="bg-surface-container-lowest border border-outline-variant p-stack-md rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col">
-<div className="flex items-center gap-4 mb-4">
-<div className="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
-<span className="material-symbols-outlined" data-icon="person">person</span>
-</div>
-<div>
-<h4 className="font-label-md text-label-md text-on-surface">Anjali Patil</h4>
-<p className="text-xs text-on-surface-variant">ID: STU-2023-5590</p>
-</div>
-</div>
-<div className="bg-surface-container-low p-3 rounded-lg mb-4">
-<div className="flex justify-between items-center mb-1">
-<span className="text-[11px] uppercase text-on-surface-variant font-bold">Branch</span>
-<span className="bg-primary-fixed text-on-primary-fixed-variant px-2 py-0.5 rounded text-[10px] font-bold">Computer Tech</span>
-</div>
-<div className="flex justify-between items-center">
-<span className="text-[11px] uppercase text-on-surface-variant font-bold">Institution</span>
-<span className="text-xs text-on-surface">V.J.T.I. Mumbai</span>
-</div>
-</div>
-<div className="mb-6">
-<p className="text-[11px] uppercase text-on-surface-variant font-bold mb-2">Pending Document</p>
-<div className="flex items-center gap-2 border border-dashed border-outline-variant p-2 rounded cursor-pointer hover:bg-surface-container transition-colors">
-<span className="material-symbols-outlined text-primary" data-icon="description">description</span>
-<span className="text-xs font-medium">Semester_6_Marksheet.pdf</span>
-</div>
-</div>
-<div className="flex gap-2 mt-auto">
-<button className="flex-1 bg-secondary text-white py-2 rounded font-label-sm text-label-sm hover:bg-secondary-container transition-colors">Verify</button>
-<button className="px-3 border border-error text-error py-2 rounded font-label-sm text-label-sm hover:bg-error-container transition-colors">Reject</button>
-</div>
-</div>
-</section>
-{/* Content Section: Document Review (Bento Grid Style) */}
-<section className="hidden space-y-stack-md" id="section-docs">
-<div className="grid grid-cols-1 md:grid-cols-3 gap-stack-md">
-{/* Statistics Card */}
-<div className="md:col-span-1 bg-primary text-white p-stack-md rounded-xl shadow-lg flex flex-col justify-between">
-<div>
-<h4 className="font-label-md text-label-md opacity-80 mb-2">Total Queue</h4>
-<p className="text-[40px] font-bold">124</p>
-<p className="text-xs font-medium bg-white/20 inline-block px-2 py-1 rounded">Avg Review: 4.2m</p>
-</div>
-<div className="mt-8 flex items-center gap-2">
-<span className="material-symbols-outlined" data-icon="speed">speed</span>
-<span className="text-sm font-semibold">Priority Protocol Active</span>
-</div>
-</div>
-{/* Main Review Panel */}
-<div className="md:col-span-2 bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden flex flex-col">
-<div className="bg-surface-container px-6 py-4 flex justify-between items-center">
-<h4 className="font-label-md text-label-md text-on-surface">Queue Spotlight: Accreditation ID-998</h4>
-<div className="flex gap-2">
-<span className="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="zoom_in">zoom_in</span>
-<span className="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="print">print</span>
-</div>
-</div>
-<div className="aspect-video bg-inverse-surface flex items-center justify-center p-8 overflow-hidden relative group">
-<div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-<p className="text-white text-xs">Viewing: Industrial_Safety_Certification_2024.jpg</p>
-</div>
-<img alt="Document Preview" className="max-h-full rounded shadow-2xl transform transition-transform group-hover:scale-105" data-alt="A high-quality scan of an official industrial accreditation certificate with ornate borders and a metallic seal. The document is laid flat on a clean architectural blueprint, conveying a sense of engineering precision and official government verification. The lighting is bright and uniform, typical of a high-end corporate archive." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6XOmOcIxc812HFcc0gRgVCsNH8jw69nw0cFTPIdmMWJ3-p3Ql_9F4eClfKXvywtKzoGKGWUxQE_OnsazqpI5gcr2B7VK7ca6Y1pH8bm5NrBUeFTvLC3I9SNBPOGkFbiNs8ZWle5O2MGxNdX9PC27wr2C_xkv0mZaTlgovBDouFJgAqYRiiI2y1z4mvxedFQZm6AQw2mdTJLPd6myxoIXpaNRt3a3Bt-lv10kN6j2HdNlvxbZcorauj7vBd9DN_HjXLmfJxBeHdTU"/>
-</div>
-<div className="p-6 flex justify-end gap-3 bg-surface-container-low">
-<button className="px-6 py-2 border border-outline text-on-surface font-label-md text-label-md rounded-lg hover:bg-surface-container-high transition-all">Defer Review</button>
-<button className="px-6 py-2 bg-secondary text-white font-label-md text-label-md rounded-lg hover:bg-secondary-container transition-all">Approve Document</button>
-</div>
-</div>
-</div>
-</section>
-</div>
-</main>
-{/* Footer Component */}
-<footer className="w-full py-4 mt-auto bg-surface-container border-t border-outline-variant flex justify-between items-center px-gutter w-full ml-0 md:ml-72 md:max-w-[calc(100%-18rem)]">
-<div className="flex flex-col md:flex-row gap-4 items-center w-full justify-between">
-<span className="font-label-sm text-label-sm text-on-surface-variant">© 2024 MSBTE Diploma Jobs - Industrial Administration Suite</span>
-<div className="flex gap-6">
-<a className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">System Status</a>
-<a className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Admin Support</a>
-<a className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">API Docs</a>
-</div>
-</div>
-</footer>
+    <div className="w-full min-h-screen bg-surface-container-lowest">
+      <AdminHeader activePage="verification" />
 
+      {/* Main Content Area */}
+      <main className="lg:ml-72 pt-20 px-6 pb-24 text-left">
+        
+        {/* Header & Tab Switcher */}
+        <div className="flex flex-col gap-6 mb-8 mt-4">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
+            <div>
+              <h2 className="text-3xl font-extrabold text-primary tracking-tight">Verification Hub</h2>
+              <p className="font-medium text-sm text-on-surface-variant mt-1">
+                Review industrial credentials and student diploma authenticity reports.
+              </p>
+            </div>
+            
+            {/* Segmented Control / Path Switcher */}
+            <div className="flex bg-surface-container-high p-1 rounded-xl w-full lg:w-auto self-start">
+              <button 
+                className={`flex-1 lg:flex-none px-6 py-2 rounded-lg font-bold text-xs transition-all ${
+                  activeTab === 'partners' ? 'bg-white shadow-sm text-primary' : 'text-on-surface-variant hover:bg-white/50'
+                }`}
+                onClick={() => setActiveTab('partners')}
+              >
+                Pending Partners ({pendingEmployers.length})
+              </button>
+              <button 
+                className={`flex-1 lg:flex-none px-6 py-2 rounded-lg font-bold text-xs transition-all ${
+                  activeTab === 'students' ? 'bg-white shadow-sm text-primary' : 'text-on-surface-variant hover:bg-white/50'
+                }`}
+                onClick={() => setActiveTab('students')}
+              >
+                Pending Students ({pendingStudents.length})
+              </button>
+              <button 
+                className={`flex-1 lg:flex-none px-6 py-2 rounded-lg font-bold text-xs transition-all ${
+                  activeTab === 'docs' ? 'bg-white shadow-sm text-primary' : 'text-on-surface-variant hover:bg-white/50'
+                }`}
+                onClick={() => setActiveTab('docs')}
+              >
+                Document Review
+              </button>
+            </div>
+          </div>
+        </div>
 
+        {/* Content Section: Pending Partners */}
+        {activeTab === 'partners' && (
+          <section className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+            {pendingEmployers.length > 0 ? (
+              pendingEmployers.map(emp => (
+                <div key={emp.email} className="bg-white border border-outline-variant p-5 rounded-2xl shadow-sm hover:shadow-md transition-all flex flex-col sm:flex-row gap-5">
+                  <div className="w-16 h-16 rounded-xl bg-surface-container flex-shrink-0 flex items-center justify-center overflow-hidden border border-outline-variant shadow-sm">
+                    <img 
+                      alt="Company Logo" 
+                      className="w-full h-full object-contain" 
+                      src={emp.logo}
+                      onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1549923746-c502d488b3ea?auto=format&fit=crop&q=80&w=150'; }}
+                    />
+                  </div>
+                  <div className="flex-grow flex flex-col justify-between min-w-0">
+                    <div className="mb-4">
+                      <div className="flex justify-between items-start gap-2">
+                        <h3 className="font-bold text-lg text-on-surface truncate">{emp.companyName}</h3>
+                        <span className="shrink-0 bg-primary-fixed text-on-primary-fixed px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider">
+                          Urgent
+                        </span>
+                      </div>
+                      <p className="text-[10px] text-on-surface-variant font-bold mt-0.5">Reg ID: {emp.id}</p>
+                      <div className="flex flex-wrap items-center gap-3 text-on-surface-variant mt-2 text-xs font-semibold">
+                        <span className="flex items-center gap-0.5">
+                          <span className="material-symbols-outlined text-[15px]">location_on</span>
+                          {emp.location}
+                        </span>
+                        <span className="flex items-center gap-0.5">
+                          <span className="material-symbols-outlined text-[15px]">business_center</span>
+                          {emp.sector}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="flex gap-2">
+                      <button 
+                        onClick={() => updateStatus(emp.email, 'Verified')}
+                        className="flex-1 bg-primary text-white py-2.5 rounded-xl font-bold text-xs hover:brightness-110 transition-all shadow-sm"
+                      >
+                        Approve Partner
+                      </button>
+                      <Link 
+                        to="/admin-portal/verify-employer-maharashtra-industrial-corp"
+                        className="px-4 py-2.5 bg-white border border-outline-variant text-on-surface hover:bg-surface-container rounded-xl font-bold text-xs transition-all flex items-center justify-center"
+                        title="View Full Credentials Audit"
+                      >
+                        Details
+                      </Link>
+                      <button 
+                        onClick={() => updateStatus(emp.email, 'Flagged')}
+                        className="px-3 border border-red-200 text-red-600 hover:bg-red-50 py-2.5 rounded-xl font-bold text-xs transition-colors"
+                      >
+                        Flag
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className="col-span-full py-12 text-center text-on-surface-variant font-medium bg-white rounded-2xl border border-dashed border-outline-variant">
+                No industrial partners currently awaiting accreditation review.
+              </div>
+            )}
+          </section>
+        )}
+
+        {/* Content Section: Pending Students */}
+        {activeTab === 'students' && (
+          <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            {pendingStudents.length > 0 ? (
+              pendingStudents.map(student => (
+                <div key={student.email} className="bg-white border border-outline-variant p-5 rounded-2xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="w-12 h-12 rounded-full overflow-hidden border border-outline-variant bg-surface-container shrink-0">
+                        <img 
+                          alt={student.name} 
+                          className="w-full h-full object-cover" 
+                          src={student.avatar}
+                          onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=150'; }}
+                        />
+                      </div>
+                      <div className="min-w-0">
+                        <h4 className="font-bold text-on-surface text-base truncate">{student.name}</h4>
+                        <p className="text-[10px] font-bold text-outline">EN: {student.enrollment}</p>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-surface-container-low p-3.5 rounded-xl mb-4 text-xs font-semibold text-on-surface-variant flex flex-col gap-2">
+                      <div className="flex justify-between items-center">
+                        <span>Branch</span>
+                        <span className="bg-primary-fixed text-on-primary-fixed-variant px-2 py-0.5 rounded text-[10px] font-bold">
+                          {student.branch}
+                        </span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span>Institution</span>
+                        <span className="text-on-surface font-bold truncate max-w-[150px]">{student.institute}</span>
+                      </div>
+                    </div>
+                    
+                    <div className="mb-4">
+                      <p className="text-[9px] uppercase text-outline font-bold tracking-wider mb-2">Pending Document</p>
+                      <a 
+                        href="#" 
+                        onClick={(e) => { e.preventDefault(); alert("Opening Document Preview..."); }}
+                        className="flex items-center gap-2 border border-dashed border-outline-variant p-2 rounded-lg hover:bg-surface-container transition-colors"
+                      >
+                        <span className="material-symbols-outlined text-primary text-base">description</span>
+                        <span className="text-xs font-bold text-primary hover:underline truncate">Final_Diploma_Cert.pdf</span>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-2 pt-2">
+                    <button 
+                      onClick={() => updateStatus(student.email, 'Verified')}
+                      className="flex-grow bg-primary text-white py-2 rounded-lg font-bold text-xs hover:brightness-110 transition-all shadow-sm"
+                    >
+                      Verify
+                    </button>
+                    <Link 
+                      to="/admin-portal/review-student_rahul-deshmukh"
+                      className="px-3 py-2 bg-white border border-outline-variant text-on-surface font-bold text-xs rounded-lg hover:bg-surface-container flex items-center justify-center"
+                    >
+                      Details
+                    </Link>
+                    <button 
+                      onClick={() => updateStatus(student.email, 'Flagged')}
+                      className="px-2.5 border border-red-200 text-red-600 hover:bg-red-50 py-2 rounded-lg font-bold text-xs transition-colors"
+                    >
+                      Reject
+                    </button>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className="col-span-full py-12 text-center text-on-surface-variant font-medium bg-white rounded-2xl border border-dashed border-outline-variant">
+                No student profiles currently awaiting document verification.
+              </div>
+            )}
+          </section>
+        )}
+
+        {/* Content Section: Document Review (Bento Grid Style) */}
+        {activeTab === 'docs' && (
+          <section className="space-y-6">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              {/* Statistics Card */}
+              <div className="lg:col-span-1 bg-primary text-white p-6 rounded-2xl shadow-lg flex flex-col justify-between text-left relative overflow-hidden">
+                <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '16px 1px' }}></div>
+                <div className="relative z-10">
+                  <h4 className="text-xs font-bold opacity-80 uppercase tracking-wider mb-2">Total Queue Size</h4>
+                  <p className="text-5xl font-black">124</p>
+                  <p className="text-xs font-bold bg-white/20 inline-block px-2.5 py-1 rounded-full mt-3">Avg Review Time: 4.2m</p>
+                </div>
+                <div className="mt-12 flex items-center gap-2 relative z-10 font-bold text-sm">
+                  <span className="material-symbols-outlined">speed</span>
+                  <span>Priority Protocol Active</span>
+                </div>
+              </div>
+              
+              {/* Main Review Panel */}
+              <div className="lg:col-span-2 bg-white border border-outline-variant rounded-2xl overflow-hidden shadow-sm flex flex-col">
+                <div className="bg-surface-container px-6 py-4 flex justify-between items-center border-b border-outline-variant">
+                  <h4 className="text-sm font-bold text-on-surface">Queue Spotlight: Accreditation ID-998</h4>
+                  <div className="flex gap-3 text-on-surface-variant">
+                    <button className="hover:text-primary transition-colors text-xl font-bold flex items-center" onClick={() => alert("Zooming In...")}>
+                      <span className="material-symbols-outlined text-lg">zoom_in</span>
+                    </button>
+                    <button className="hover:text-primary transition-colors text-xl font-bold flex items-center" onClick={() => alert("Printing Document...")}>
+                      <span className="material-symbols-outlined text-lg">print</span>
+                    </button>
+                  </div>
+                </div>
+                <div className="aspect-video bg-neutral-900 flex items-center justify-center p-8 overflow-hidden relative group">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                    <p className="text-white text-xs font-semibold">Viewing: Industrial_Safety_Accreditation_2024.jpg</p>
+                  </div>
+                  <img 
+                    alt="Document Preview" 
+                    className="max-h-full rounded shadow-2xl transform transition-transform group-hover:scale-[1.02] duration-300" 
+                    src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&q=80&w=800"
+                  />
+                </div>
+                <div className="p-5 flex justify-end gap-3 bg-surface-container-low border-t border-outline-variant">
+                  <button 
+                    onClick={() => alert("Document review deferred to supervisor.")}
+                    className="px-5 py-2.5 bg-white border border-outline-variant text-on-surface font-bold text-xs rounded-xl hover:bg-surface-container transition-all"
+                  >
+                    Defer Review
+                  </button>
+                  <button 
+                    onClick={() => alert("Safety certificate approved and logged!")}
+                    className="px-6 py-2.5 bg-secondary text-white font-bold text-xs rounded-xl hover:brightness-110 transition-all shadow-md"
+                  >
+                    Approve Document
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-surface-container border-t border-outline-variant w-full py-4 mt-auto flex flex-col sm:flex-row justify-between items-center px-6 lg:ml-72 lg:max-w-[calc(100%-18rem)]">
+        <p className="text-xs text-on-surface-variant font-medium">© 2024 MSBTE Diploma Jobs - Industrial Administration Suite</p>
+        <div className="flex gap-6 mt-2 sm:mt-0">
+          <Link className="text-xs text-on-surface-variant hover:text-primary font-bold transition-colors" to="/admin-portal/system-health-monitoring">System Status</Link>
+          <a className="text-xs text-on-surface-variant hover:text-primary font-bold transition-colors" href="mailto:support@dte.gov.in">Admin Support</a>
+          <Link className="text-xs text-on-surface-variant hover:text-primary font-bold transition-colors" to="/admin-portal/admin-settings-platform-controls">Platform Controls</Link>
+        </div>
+      </footer>
     </div>
   );
 }

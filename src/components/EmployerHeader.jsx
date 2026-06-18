@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getCurrentUser, logoutSession, initAuth } from '../utils/auth';
 
-export default function StudentHeader({ activePage }) {
+export default function EmployerHeader({ activePage }) {
   const [user, setUser] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -11,7 +11,7 @@ export default function StudentHeader({ activePage }) {
   useEffect(() => {
     initAuth();
     const session = getCurrentUser();
-    if (session && session.role === 'student') {
+    if (session && session.role === 'employer') {
       setUser(session);
     }
   }, []);
@@ -46,7 +46,7 @@ export default function StudentHeader({ activePage }) {
         .join('')
         .toUpperCase()
         .substring(0, 2)
-    : 'S';
+    : 'R';
 
   return (
     <>
@@ -66,11 +66,11 @@ export default function StudentHeader({ activePage }) {
         <div className="flex justify-between items-center pb-6 border-b border-outline-variant">
           <Link to="/" className="flex items-center gap-2 text-left" onClick={() => setMobileMenuOpen(false)}>
             <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white shadow-sm">
-              <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: '\'FILL\' 1' }}>school</span>
+              <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: '\'FILL\' 1' }}>business_center</span>
             </div>
             <div className="flex flex-col leading-none">
               <span className="font-headline-md text-[16px] font-extrabold text-primary tracking-tight">MSBTE<span className="text-secondary-container">Jobs</span></span>
-              <span className="text-[8px] font-bold text-on-surface-variant tracking-wider uppercase mt-0.5">Diploma Jobs Portal</span>
+              <span className="text-[8px] font-bold text-on-surface-variant tracking-wider uppercase mt-0.5">Recruiter Console</span>
             </div>
           </Link>
           <button 
@@ -83,12 +83,11 @@ export default function StudentHeader({ activePage }) {
         
         {/* Drawer Navigation Links */}
         <nav className="flex flex-col gap-5 py-8 text-left">
-          <Link className={getMobileLinkClass('dashboard')} to="/student-portal/dashboard" onClick={() => setMobileMenuOpen(false)}>Dashboard</Link>
-          <Link className={getMobileLinkClass('jobs')} to="/public/find-diploma-jobs" onClick={() => setMobileMenuOpen(false)}>Find Jobs</Link>
-          <Link className={getMobileLinkClass('applications')} to="/student-portal/application-history" onClick={() => setMobileMenuOpen(false)}>My Applications</Link>
-          <Link className={getMobileLinkClass('resumes')} to="/student-portal/resume-builder-dashboard" onClick={() => setMobileMenuOpen(false)}>Resume Builder</Link>
-          <Link className={getMobileLinkClass('profile')} to="/student-portal/profile" onClick={() => setMobileMenuOpen(false)}>My Profile</Link>
-          <Link className={getMobileLinkClass('notifications')} to="/student-portal/notifications-alerts" onClick={() => setMobileMenuOpen(false)}>Notifications</Link>
+          <Link className={getMobileLinkClass('dashboard')} to="/employer-portal/employer-dashboard-industrial-blueprints-refined" onClick={() => setMobileMenuOpen(false)}>Dashboard</Link>
+          <Link className={getMobileLinkClass('jobs')} to="/employer-portal/manage-jobs-employer-portal" onClick={() => setMobileMenuOpen(false)}>Job Postings</Link>
+          <Link className={getMobileLinkClass('applicants')} to="/employer-portal/applicants-maintenance-engineer" onClick={() => setMobileMenuOpen(false)}>Applicants</Link>
+          <Link className={getMobileLinkClass('settings')} to="/employer-portal/employer-settings-main-menuemployer-settings-main-menu" onClick={() => setMobileMenuOpen(false)}>Settings</Link>
+          <Link className={getMobileLinkClass('notifications')} to="/employer-portal/employer-notifications" onClick={() => setMobileMenuOpen(false)}>Notifications</Link>
         </nav>
         
         {/* Drawer Action/Profile Section */}
@@ -98,9 +97,10 @@ export default function StudentHeader({ activePage }) {
               <div className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg shadow-sm">
                 {initials}
               </div>
-              <div className="text-left">
-                <h4 className="font-bold text-on-surface text-body-md leading-tight">{user.name}</h4>
-                <p className="text-[11px] text-on-surface-variant font-semibold truncate max-w-[180px]">{user.email}</p>
+              <div className="text-left flex-1 min-w-0">
+                <h4 className="font-bold text-on-surface text-body-md leading-tight truncate">{user.name}</h4>
+                <p className="text-[11px] text-on-surface-variant font-semibold truncate">{user.email}</p>
+                <p className="text-[10px] text-primary font-bold truncate mt-0.5">{user.companyName}</p>
               </div>
             </div>
             <button
@@ -124,35 +124,34 @@ export default function StudentHeader({ activePage }) {
             >
               menu
             </button>
-            <Link className="flex items-center gap-2 cursor-pointer text-left" to="/student-portal/dashboard">
+            <Link className="flex items-center gap-2 cursor-pointer text-left" to="/employer-portal/employer-dashboard-industrial-blueprints-refined">
               <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-white shadow-sm">
-                <span className="material-symbols-outlined text-[24px]" style={{ fontVariationSettings: '\'FILL\' 1' }}>school</span>
+                <span className="material-symbols-outlined text-[24px]" style={{ fontVariationSettings: '\'FILL\' 1' }}>business_center</span>
               </div>
               <div className="flex flex-col leading-none">
                 <span className="font-headline-md text-[20px] font-extrabold text-primary tracking-tight">MSBTE<span className="text-secondary-container">Jobs</span></span>
-                <span className="text-[9px] font-bold text-on-surface-variant tracking-wider uppercase mt-0.5">Diploma Jobs Portal</span>
+                <span className="text-[9px] font-bold text-on-surface-variant tracking-wider uppercase mt-0.5">Recruiter Console</span>
               </div>
             </Link>
           </div>
           
           <nav className="hidden lg:flex items-center gap-8">
-            <Link className={getLinkClass('dashboard')} to="/student-portal/dashboard">Dashboard</Link>
-            <Link className={getLinkClass('jobs')} to="/public/find-diploma-jobs">Find Jobs</Link>
-            <Link className={getLinkClass('applications')} to="/student-portal/application-history">My Applications</Link>
-            <Link className={getLinkClass('resumes')} to="/student-portal/resume-builder-dashboard">Resume Builder</Link>
-            <Link className={getLinkClass('profile')} to="/student-portal/profile">My Profile</Link>
+            <Link className={getLinkClass('dashboard')} to="/employer-portal/employer-dashboard-industrial-blueprints-refined">Dashboard</Link>
+            <Link className={getLinkClass('jobs')} to="/employer-portal/manage-jobs-employer-portal">Job Postings</Link>
+            <Link className={getLinkClass('applicants')} to="/employer-portal/applicants-maintenance-engineer">Applicants</Link>
+            <Link className={getLinkClass('settings')} to="/employer-portal/employer-settings-main-menuemployer-settings-main-menu">Settings</Link>
           </nav>
 
           {user && (
             <div className="relative flex items-center gap-4 z-50">
               <Link 
-                to="/student-portal/notifications-alerts" 
+                to="/employer-portal/employer-notifications" 
                 className="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center relative p-1.5 rounded-full hover:bg-surface-container"
                 title="Notifications"
               >
                 <span className="material-symbols-outlined text-2xl">notifications</span>
                 <span className="absolute top-1 right-1 bg-primary text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
-                  3
+                  2
                 </span>
               </Link>
 
@@ -173,8 +172,8 @@ export default function StudentHeader({ activePage }) {
                     <div className="pb-3 border-b border-outline-variant text-left">
                       <h4 className="font-bold text-on-surface text-body-md leading-tight">{user.name}</h4>
                       <p className="text-[11px] text-on-surface-variant font-semibold mt-1 truncate">{user.email}</p>
-                      <span className="inline-block mt-2 px-2.5 py-0.5 rounded-full text-[9px] font-bold bg-primary-fixed text-primary uppercase tracking-wider">
-                        Student Account
+                      <span className="inline-block mt-2 px-2.5 py-0.5 rounded-full text-[9px] font-bold bg-secondary-fixed text-secondary uppercase tracking-wider">
+                        Recruiter Account
                       </span>
                     </div>
                     <div className="flex flex-col gap-1">
@@ -182,17 +181,21 @@ export default function StudentHeader({ activePage }) {
                         <span className="material-symbols-outlined text-xl text-on-surface-variant">home</span>
                         Home Page
                       </Link>
-                      <Link to="/student-portal/profile" className="flex items-center gap-2 p-2 rounded-lg text-body-md text-on-surface hover:bg-surface-container transition-colors text-left" onClick={() => setDropdownOpen(false)}>
+                      <Link to="/employer-portal/employer-profile-settings" className="flex items-center gap-2 p-2 rounded-lg text-body-md text-on-surface hover:bg-surface-container transition-colors text-left" onClick={() => setDropdownOpen(false)}>
                         <span className="material-symbols-outlined text-xl text-on-surface-variant">person</span>
-                        My Profile
+                        Account Details
                       </Link>
-                      <Link to="/student-portal/notifications-alerts" className="flex items-center gap-2 p-2 rounded-lg text-body-md text-on-surface hover:bg-surface-container transition-colors text-left" onClick={() => setDropdownOpen(false)}>
+                      <Link to="/employer-portal/company-profile-settings" className="flex items-center gap-2 p-2 rounded-lg text-body-md text-on-surface hover:bg-surface-container transition-colors text-left" onClick={() => setDropdownOpen(false)}>
+                        <span className="material-symbols-outlined text-xl text-on-surface-variant">domain</span>
+                        Company Profile
+                      </Link>
+                      <Link to="/employer-portal/employer-notifications" className="flex items-center gap-2 p-2 rounded-lg text-body-md text-on-surface hover:bg-surface-container transition-colors text-left" onClick={() => setDropdownOpen(false)}>
                         <span className="material-symbols-outlined text-xl text-on-surface-variant">notifications</span>
                         Notifications
                       </Link>
-                      <Link to="/student-portal/settings-student-portal" className="flex items-center gap-2 p-2 rounded-lg text-body-md text-on-surface hover:bg-surface-container transition-colors text-left" onClick={() => setDropdownOpen(false)}>
+                      <Link to="/employer-portal/employer-settings-main-menuemployer-settings-main-menu" className="flex items-center gap-2 p-2 rounded-lg text-body-md text-on-surface hover:bg-surface-container transition-colors text-left" onClick={() => setDropdownOpen(false)}>
                         <span className="material-symbols-outlined text-xl text-on-surface-variant">settings</span>
-                        Account Settings
+                        Settings Menu
                       </Link>
                     </div>
                     <div className="pt-2 border-t border-outline-variant">

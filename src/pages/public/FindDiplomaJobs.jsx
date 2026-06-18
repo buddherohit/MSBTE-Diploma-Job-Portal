@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import Header from '../../components/Header';
+import { getJobs, getSavedJobIds, toggleSaveJobId } from '../../utils/db';
 
 const allJobs = [
   {
@@ -188,15 +189,15 @@ export default function FindDiplomaJobs() {
     }
   }, [typeParam]);
 
-  // Load saved jobs from localStorage
+  const [jobs, setJobs] = useState([]);
+
+  // Load jobs and saved jobs
   useEffect(() => {
-    const raw = localStorage.getItem('saved_jobs');
-    if (!raw) {
-      localStorage.setItem('saved_jobs', JSON.stringify(defaultSavedJobs));
-      setSavedJobs(defaultSavedJobs);
-    } else {
-      setSavedJobs(JSON.parse(raw));
-    }
+    setJobs(getJobs());
+    const savedIds = getSavedJobIds();
+    const all = getJobs();
+    const saved = all.filter(j => savedIds.includes(j.id));
+    setSavedJobs(saved);
   }, []);
 
   const handleBranchSelect = (branch) => {
@@ -245,23 +246,11 @@ export default function FindDiplomaJobs() {
   };
 
   const toggleSaveJob = (job) => {
-    let updated;
-    const isSaved = savedJobs.some(j => j.id === job.id);
-    if (isSaved) {
-      updated = savedJobs.filter(j => j.id !== job.id);
-    } else {
-      updated = [...savedJobs, {
-        id: job.id,
-        title: job.title,
-        company: job.company,
-        location: job.location,
-        salary: job.salary,
-        branch: job.branch,
-        logo: job.logo
-      }];
-    }
-    setSavedJobs(updated);
-    localStorage.setItem('saved_jobs', JSON.stringify(updated));
+    toggleSaveJobId(job.id);
+    const savedIds = getSavedJobIds();
+    const all = getJobs();
+    const saved = all.filter(j => savedIds.includes(j.id));
+    setSavedJobs(saved);
   };
 
   const clearFilters = () => {
@@ -277,7 +266,7 @@ export default function FindDiplomaJobs() {
   };
 
   // Filter & Sort Logic
-  const filteredJobs = allJobs.filter(job => {
+  const filteredJobs = jobs.filter(job => {
     // 1. Branch Filter
     if (selectedBranches.length > 0) {
       const matchesBranch = selectedBranches.some(b => {

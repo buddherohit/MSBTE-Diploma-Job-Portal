@@ -1,178 +1,316 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams, useNavigate, Link } from 'react-router-dom';
+import { getCurrentUser } from '../../utils/auth';
+import { getApplications, updateApplicationStatus } from '../../utils/db';
 
 export default function ReviewCandidateAdityaAhire() {
+  const [searchParams] = useSearchParams();
+  const appId = searchParams.get('appId') || "APP-82761"; // Fallback to Aditya's application
+  const navigate = useNavigate();
+
+  const [user, setUser] = useState(null);
+  const [application, setApplication] = useState(null);
+  const [activeTab, setActiveTab] = useState('profile');
+  const [successMsg, setSuccessMsg] = useState('');
+
+  useEffect(() => {
+    const session = getCurrentUser();
+    if (!session || session.role !== 'employer') {
+      navigate('/public/student-login?tab=employer');
+      return;
+    }
+    setUser(session);
+
+    // Find the specific application
+    const allApps = getApplications();
+    const currentApp = allApps.find(a => a.id === appId);
+    setApplication(currentApp || allApps[0]);
+  }, [appId, navigate]);
+
+  const handleStatusUpdate = (newStatus) => {
+    if (!application) return;
+    const updated = updateApplicationStatus(application.id, newStatus);
+    if (updated) {
+      setApplication(updated);
+      setSuccessMsg(`Application status updated to "${newStatus}"!`);
+      setTimeout(() => {
+        setSuccessMsg('');
+      }, 3000);
+    }
+  };
+
+  if (!user || !application) {
+    return <div className="min-h-screen bg-surface flex items-center justify-center font-bold">Loading candidate profile...</div>;
+  }
+
+  const initials = application.studentName
+    ? application.studentName.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2)
+    : 'S';
+
+  const isRejected = application.status === 'Rejected';
+  const isShortlisted = application.status === 'Shortlisted';
+  const isInterview = application.status === 'Interview Scheduled' || application.status === 'Interview';
+  const isSelected = application.status === 'Selected';
+
   return (
-    <div className="w-full min-h-screen">
-      
-{/* TopAppBar */}
-<header className="bg-surface dark:bg-on-background border-b border-outline-variant dark:border-outline flex justify-between items-center px-margin-mobile w-full max-w-container-max mx-auto z-50 sticky top-0 h-16">
-<div className="flex items-center gap-4">
-<button className="p-2 hover:bg-surface-container dark:hover:bg-inverse-surface rounded-full transition-colors duration-200">
-<span className="material-symbols-outlined text-primary dark:text-primary-fixed">arrow_back</span>
-</button>
-<h1 className="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Review Application</h1>
-</div>
-<div className="flex items-center gap-2">
-<div className="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container overflow-hidden">
-<img alt="Recruiter Profile" className="w-full h-full object-cover" data-alt="A professional corporate headshot of a middle-aged recruiter in a high-end office setting. Soft, cinematic lighting highlights their professional attire and confident expression. The background features a blurred modern workspace with architectural lines and a cool-toned, professional color palette consistent with industrial corporate standards." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIFTWL622ukK0D1KxHRu8WVdsRHQyMVAHyu53Z12yH29x_o4bT7oj9qIXbFEABEyxS53abdI8NnlLbSaxwhcz_usEEBxdEnZnBpPEArHojkaz4AspDo9PKDdGmmpVWgBiCiIGW3suNG9TEU6Hkto70abdENSMD811z9JB9WeH-WyqE6Z4nYK_jkye2dyGut7RmXuKek6vhsCuWU_grJ-snOEkrxTC3q3rrR5o33zLPvX_Te-e9-tHCbeuWRteqkJ_x4cDBW1ohQnc" />
-</div>
-</div>
-</header>
-{/* Main Content Canvas */}
-<main className="flex-grow w-full max-w-container-max mx-auto px-margin-mobile py-stack-lg">
-<div className="grid grid-cols-1 md:grid-cols-12 gap-gutter">
-{/* Left Column: Candidate Summary Card */}
-<section className="md:col-span-12 lg:col-span-4 space-y-gutter">
-<div className="bg-white border border-outline-variant rounded-xl p-6 shadow-sm">
-<div className="flex flex-col items-center text-center">
-<div className="relative mb-4">
-<img alt="Aditya Ahire" className="w-32 h-32 rounded-full border-4 border-surface-container object-cover shadow-md" data-alt="A close-up portrait of a young Indian male student with a bright, motivated expression, wearing a clean collared shirt. He stands against a subtle industrial backdrop with soft afternoon lighting. The image captures a sense of ambition and readiness for the professional world, emphasizing clear skin and high-resolution detail in a bright, modern corporate style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3apaU-tB7F_nFyPDBldSXLdfhQ_9Bjn6lYhM0vGulcm32TTP-tl5dmhoWdnSHs4UJb0EpontcoEcyd0AQ1vnc5hhwreOBpYWAKtI1LxfEPRza4eH6qd9C_xtDtpXyQ3tzryUfdFAH9tKjwhy6BmBUDwOYNaF0ur59JcZZFBMeDZoxmwKPjJsbVSjm6u52apTezuzW1u_hy5qEkN837_3N5CnCTn-vXiqz2IqKq2830_xxIazhexI4GhcBW8lSUQnkwUX5GJ7JmXE" />
-<span className="absolute bottom-1 right-1 bg-tertiary-container text-on-tertiary-container p-1 rounded-full border-2 border-white">
-<span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: '\'FILL\' 1' }}>verified</span>
-</span>
-</div>
-<h2 className="font-headline-md text-headline-md text-on-surface">Aditya Ahire</h2>
-<p className="text-on-surface-variant font-label-md mt-1">Mechanical Engineering</p>
-<div className="mt-4 flex flex-wrap justify-center gap-2">
-<span className="bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded-full text-label-sm">Class of 2024</span>
-<span className="bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full text-label-sm">Pune Region</span>
-</div>
-</div>
-<div className="mt-8 grid grid-cols-2 gap-4">
-<button className="flex items-center justify-center gap-2 py-3 border border-error text-error font-label-md rounded-lg hover:bg-error-container transition-colors duration-200">
-<span className="material-symbols-outlined">close</span>
-                            Reject
-                        </button>
-<button className="flex items-center justify-center gap-2 py-3 border border-primary text-primary font-label-md rounded-lg hover:bg-surface-container transition-colors duration-200">
-<span className="material-symbols-outlined">star</span>
-                            Shortlist
-                        </button>
-</div>
-</div>
-{/* Quick Stats Bento Item */}
-<div className="bg-primary-container text-on-primary-container rounded-xl p-6 space-y-4 shadow-md">
-<h3 className="font-label-md uppercase tracking-wider text-on-primary-container/70">Candidate Metrics</h3>
-<div className="grid grid-cols-2 gap-4">
-<div>
-<p className="text-2xl font-bold">88%</p>
-<p className="text-xs opacity-80">Aggregate GPA</p>
-</div>
-<div>
-<p className="text-2xl font-bold">180d</p>
-<p className="text-xs opacity-80">Internship Exp</p>
-</div>
-</div>
-</div>
-</section>
-{/* Right Column: Details & Tabs */}
-<section className="md:col-span-12 lg:col-span-8 space-y-6">
-{/* Navigation Tabs */}
-<nav className="flex border-b border-outline-variant">
-<button className="px-6 py-4 font-label-md text-primary border-b-2 border-primary transition-all duration-200" id="tab-profile">Profile</button>
-<button className="px-6 py-4 font-label-md text-on-surface-variant hover:text-primary transition-all duration-200" id="tab-resume">Resume</button>
-<button className="px-6 py-4 font-label-md text-on-surface-variant hover:text-primary transition-all duration-200" id="tab-contact">Contact</button>
-</nav>
-{/* Tab Content: Profile */}
-<div className="space-y-gutter animate-in fade-in duration-500" id="content-profile">
-{/* Application Note (Glassmorphism-lite) */}
-<div className="bg-secondary-fixed/30 border border-secondary-fixed p-6 rounded-xl relative overflow-hidden">
-<div className="absolute -right-4 -top-4 opacity-10">
-<span className="material-symbols-outlined text-8xl">format_quote</span>
-</div>
-<h4 className="font-label-md text-on-secondary-fixed-variant mb-2">Application Note</h4>
-<p className="font-body-md text-on-secondary-container italic">"I am highly interested in the Maintenance Engineer role at Thermax as I have hands-on experience with thermal systems."</p>
-</div>
-{/* Education */}
-<div className="bg-white border border-outline-variant p-6 rounded-xl">
-<div className="flex items-center gap-3 mb-4">
-<span className="material-symbols-outlined text-primary">school</span>
-<h3 className="font-headline-md text-on-surface">Education</h3>
-</div>
-<div className="pl-9 relative">
-<div className="absolute left-[11px] top-2 bottom-0 w-[2px] bg-outline-variant"></div>
-<div className="mb-2">
-<h4 className="font-label-md text-on-surface">MSBTE Diploma in Mechanical Engineering</h4>
-<p className="text-on-surface-variant text-body-md">Government Polytechnic, Pune</p>
-<div className="flex items-center gap-4 mt-1 text-label-sm text-primary font-bold">
-<span>Class of 2024</span>
-<span>Aggregate: 88%</span>
-</div>
-</div>
-</div>
-</div>
-{/* Experience & Internships */}
-<div className="bg-white border border-outline-variant p-6 rounded-xl">
-<div className="flex items-center gap-3 mb-4">
-<span className="material-symbols-outlined text-primary">work_history</span>
-<h3 className="font-headline-md text-on-surface">Experience</h3>
-</div>
-<div className="pl-9 relative">
-<div className="absolute left-[11px] top-2 bottom-0 w-[2px] bg-outline-variant"></div>
-<div>
-<h4 className="font-label-md text-on-surface">Graduate Engineer Trainee (Intern)</h4>
-<p className="text-on-surface-variant text-body-md">Larsen & Toubro (L&T), Chakan</p>
-<p className="text-label-sm text-on-surface-variant mt-1">Dec 2023 - May 2024 (6 months)</p>
-<ul className="mt-3 list-disc list-inside text-body-md text-on-surface-variant space-y-1">
-<li>Assisted in maintenance of heavy hydraulic machinery.</li>
-<li>Worked with QC team on thermal system calibration.</li>
-<li>Documented boiler operational safety protocols.</li>
-</ul>
-</div>
-</div>
-</div>
-{/* Skills Chips */}
-<div className="bg-white border border-outline-variant p-6 rounded-xl">
-<div className="flex items-center gap-3 mb-6">
-<span className="material-symbols-outlined text-primary">psychology</span>
-<h3 className="font-headline-md text-on-surface">Key Skills</h3>
-</div>
-<div className="flex flex-wrap gap-3">
-<div className="bg-[#DBEAFE] text-[#1E40AF] px-4 py-2 rounded-lg font-label-md flex items-center gap-2 border border-[#1E40AF]/10">
-<span className="material-symbols-outlined text-sm">architecture</span>
-                                AutoCAD
-                            </div>
-<div className="bg-[#DBEAFE] text-[#1E40AF] px-4 py-2 rounded-lg font-label-md flex items-center gap-2 border border-[#1E40AF]/10">
-<span className="material-symbols-outlined text-sm">propane_tank</span>
-                                Boiler Operations
-                            </div>
-<div className="bg-[#DBEAFE] text-[#1E40AF] px-4 py-2 rounded-lg font-label-md flex items-center gap-2 border border-[#1E40AF]/10">
-<span className="material-symbols-outlined text-sm">settings_input_component</span>
-                                PLC
-                            </div>
-<div className="bg-[#DBEAFE] text-[#1E40AF] px-4 py-2 rounded-lg font-label-md flex items-center gap-2 border border-[#1E40AF]/10">
-<span className="material-symbols-outlined text-sm">precision_manufacturing</span>
-                                Thermal Systems
-                            </div>
-<div className="bg-[#DBEAFE] text-[#1E40AF] px-4 py-2 rounded-lg font-label-md flex items-center gap-2 border border-[#1E40AF]/10">
-<span className="material-symbols-outlined text-sm">engineering</span>
-                                QC Calibration
-                            </div>
-</div>
-</div>
-</div>
-</section>
-</div>
-</main>
-{/* Sticky Bottom Action Bar */}
-<div className="sticky bottom-0 w-full bg-white border-t border-outline-variant px-margin-mobile py-4 z-40 shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
-<div className="max-w-container-max mx-auto flex items-center justify-between gap-4">
-<div className="hidden md:flex flex-col">
-<span className="text-label-sm text-on-surface-variant">Applying for</span>
-<span className="font-label-md text-primary">Maintenance Engineer @ Thermax</span>
-</div>
-<button className="w-full md:w-auto bg-secondary-container hover:bg-secondary-container/90 text-on-secondary-container font-label-md px-10 py-4 rounded-xl flex items-center justify-center gap-3 transition-transform duration-150 active:scale-95 shadow-md">
-<span className="material-symbols-outlined">calendar_month</span>
-                Schedule Interview
-            </button>
-</div>
-</div>
-{/* Hidden Mobile Nav (using the template's BottomNavBar logic for consistency) */}
-<footer className="md:hidden">
-{/* Spacing for the sticky action bar above */}
-<div className="h-16"></div>
-</footer>
+    <div className="w-full min-h-screen bg-surface text-on-surface">
+      {/* TopAppBar */}
+      <header className="bg-white border-b border-outline-variant flex justify-between items-center px-margin-mobile w-full max-w-container-max mx-auto h-16 z-50 sticky top-0">
+        <div className="flex items-center gap-4">
+          <button 
+            onClick={() => navigate('/employer-portal/employer-dashboard-industrial-blueprints-refined')}
+            className="p-2 hover:bg-surface-container rounded-full transition-colors flex items-center justify-center"
+          >
+            <span className="material-symbols-outlined text-primary">arrow_back</span>
+          </button>
+          <h1 className="font-headline-md text-headline-md font-bold text-primary">Review Application</h1>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="text-xs font-bold text-on-surface-variant hidden md:inline">{user.companyName}</span>
+        </div>
+      </header>
 
+      {/* Main Content Canvas */}
+      <main className="flex-grow w-full max-w-container-max mx-auto px-margin-mobile py-6 text-left">
+        {successMsg && (
+          <div className="mb-6 bg-green-50 text-green-700 border border-green-200 rounded-lg p-4 font-semibold flex items-center gap-2">
+            <span className="material-symbols-outlined">check_circle</span>
+            <span>{successMsg}</span>
+          </div>
+        )}
 
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+          {/* Left Column: Candidate Summary Card */}
+          <section className="lg:col-span-4 space-y-gutter">
+            <div className="bg-white border border-outline-variant rounded-xl p-6 shadow-sm flex flex-col justify-between">
+              <div className="flex flex-col items-center text-center">
+                <div className="relative mb-4">
+                  <div className="w-28 h-28 rounded-full bg-primary text-white font-headline-lg flex items-center justify-center text-3xl font-extrabold shadow-md">
+                    {initials}
+                  </div>
+                  <span className="absolute bottom-1 right-1 bg-[#E2F0D9] text-[#385723] p-1 rounded-full border-2 border-white flex items-center justify-center">
+                    <span className="material-symbols-outlined text-sm font-bold">verified</span>
+                  </span>
+                </div>
+                <h2 className="font-headline-md text-headline-md text-on-surface font-bold">{application.studentName}</h2>
+                <p className="text-on-surface-variant font-semibold text-sm mt-1">{application.branch || 'Mechanical Engineering'}</p>
+                <div className="mt-4 flex flex-wrap justify-center gap-2">
+                  <span className="bg-primary-fixed text-primary px-3 py-1 rounded-full text-xs font-bold">Class of 2026</span>
+                  <span className="bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full text-xs font-bold">Maharashtra Region</span>
+                </div>
+              </div>
+
+              <div className="mt-8 grid grid-cols-2 gap-4">
+                <button 
+                  onClick={() => handleStatusUpdate('Rejected')}
+                  className={`flex items-center justify-center gap-2 py-3 border font-bold rounded-lg transition-colors ${
+                    isRejected 
+                      ? 'bg-red-50 border-red-300 text-red-600' 
+                      : 'border-red-500 text-red-600 hover:bg-red-50'
+                  }`}
+                >
+                  <span className="material-symbols-outlined text-sm">close</span>
+                  Reject
+                </button>
+                <button 
+                  onClick={() => handleStatusUpdate('Shortlisted')}
+                  className={`flex items-center justify-center gap-2 py-3 border font-bold rounded-lg transition-colors ${
+                    isShortlisted 
+                      ? 'bg-green-50 border-green-300 text-green-700' 
+                      : 'border-primary text-primary hover:bg-primary/5'
+                  }`}
+                >
+                  <span className="material-symbols-outlined text-sm">check</span>
+                  Shortlist
+                </button>
+              </div>
+            </div>
+
+            {/* Quick Stats Bento Item */}
+            <div className="bg-[#091E42] text-white rounded-xl p-6 space-y-4 shadow-md text-left">
+              <h3 className="font-label-md uppercase tracking-wider text-slate-300 text-xs font-extrabold">Candidate Metrics</h3>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <p className="text-2xl font-extrabold text-white">{application.gpa ? `${application.gpa} CGPA` : '8.80'}</p>
+                  <p className="text-[10px] uppercase font-bold text-slate-300">Aggregate GPA</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-extrabold text-white">180d</p>
+                  <p className="text-[10px] uppercase font-bold text-slate-300">Internship Exp</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Right Column: Details & Tabs */}
+          <section className="lg:col-span-8 space-y-6">
+            {/* Navigation Tabs */}
+            <nav className="flex border-b border-outline-variant">
+              {['profile', 'resume', 'contact'].map((tab) => (
+                <button 
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`px-6 py-4 font-bold text-sm transition-all border-b-2 uppercase tracking-wider ${
+                    activeTab === tab 
+                      ? 'text-primary border-primary' 
+                      : 'text-on-surface-variant border-transparent hover:text-primary'
+                  }`}
+                >
+                  {tab}
+                </button>
+              ))}
+            </nav>
+
+            {/* Tab Content: Profile */}
+            {activeTab === 'profile' && (
+              <div className="space-y-6 animate-in fade-in duration-300">
+                {/* Application Note */}
+                <div className="bg-[#F0F4F8] border border-outline-variant/60 p-6 rounded-xl relative overflow-hidden text-left">
+                  <div className="absolute -right-4 -top-4 opacity-10">
+                    <span className="material-symbols-outlined text-8xl">format_quote</span>
+                  </div>
+                  <h4 className="font-bold text-sm text-primary mb-2 uppercase tracking-wide">Application Note</h4>
+                  <p className="font-body-md text-on-surface-variant italic">
+                    "I am highly interested in the positions at {user.companyName} as I have hands-on experience in these fields and I'm eager to contribute to Maharashtra's engineering growth."
+                  </p>
+                </div>
+
+                {/* Education */}
+                <div className="bg-white border border-outline-variant p-6 rounded-xl">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="material-symbols-outlined text-primary">school</span>
+                    <h3 className="font-headline-md text-on-surface font-bold">Education</h3>
+                  </div>
+                  <div className="pl-9 relative">
+                    <div className="absolute left-[11px] top-2 bottom-0 w-[2px] bg-outline-variant"></div>
+                    <div className="mb-2">
+                      <h4 className="font-bold text-on-surface">MSBTE Diploma in Engineering</h4>
+                      <p className="text-on-surface-variant text-sm font-semibold">Government Polytechnic, Pune</p>
+                      <div className="flex items-center gap-4 mt-2 text-xs text-primary font-bold">
+                        <span>Class of 2026</span>
+                        <span>Aggregate CGPA: {application.gpa || '8.80'}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Experience & Internships */}
+                <div className="bg-white border border-outline-variant p-6 rounded-xl">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="material-symbols-outlined text-primary">work_history</span>
+                    <h3 className="font-headline-md text-on-surface font-bold">Experience</h3>
+                  </div>
+                  <div className="pl-9 relative">
+                    <div className="absolute left-[11px] top-2 bottom-0 w-[2px] bg-outline-variant"></div>
+                    <div>
+                      <h4 className="font-bold text-on-surface">Graduate Engineer Trainee (Intern)</h4>
+                      <p className="text-on-surface-variant text-sm font-semibold">Larsen & Toubro (L&T), Chakan</p>
+                      <p className="text-xs text-outline mt-1">Dec 2025 - May 2026 (6 months)</p>
+                      <ul className="mt-3 list-disc list-inside text-sm text-on-surface-variant space-y-1 font-medium">
+                        <li>Assisted in maintenance of heavy machinery and production lines.</li>
+                        <li>Worked with QC team on component testing and calibration.</li>
+                        <li>Documented boiler operational safety protocols.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Skills Chips */}
+                <div className="bg-white border border-outline-variant p-6 rounded-xl">
+                  <div className="flex items-center gap-3 mb-6">
+                    <span className="material-symbols-outlined text-primary">psychology</span>
+                    <h3 className="font-headline-md text-on-surface font-bold">Key Skills</h3>
+                  </div>
+                  <div className="flex flex-wrap gap-3">
+                    {['AutoCAD', 'Boiler Operations', 'PLC Programming', 'Calibration', '5S Principles'].map((skill, i) => (
+                      <div key={i} className="bg-[#DBEAFE] text-[#1E40AF] px-4 py-2 rounded-lg font-bold text-xs flex items-center gap-2 border border-[#1E40AF]/10 shadow-sm">
+                        <span className="material-symbols-outlined text-sm">check</span>
+                        {skill}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Tab Content: Resume */}
+            {activeTab === 'resume' && (
+              <div className="bg-white border border-outline-variant p-8 rounded-xl space-y-6 text-center animate-in fade-in duration-300">
+                <div className="w-20 h-20 bg-surface-container-high rounded-full flex items-center justify-center mx-auto text-primary">
+                  <span className="material-symbols-outlined text-[44px]">picture_as_pdf</span>
+                </div>
+                <div>
+                  <h3 className="font-bold text-lg text-on-surface">{application.studentName}_Resume.pdf</h3>
+                  <p className="text-on-surface-variant text-sm mt-1">MSBTE Portal Verified Profile Resume (PDF format)</p>
+                </div>
+                <div className="flex justify-center gap-4">
+                  <a 
+                    href="#" 
+                    onClick={(e) => { e.preventDefault(); alert("Downloading resume..."); }}
+                    className="bg-primary text-white px-6 py-3 rounded-lg font-bold text-sm hover:bg-primary/95 flex items-center gap-2 shadow-sm"
+                  >
+                    <span className="material-symbols-outlined text-base">download</span>
+                    Download Resume
+                  </a>
+                </div>
+              </div>
+            )}
+
+            {/* Tab Content: Contact */}
+            {activeTab === 'contact' && (
+              <div className="bg-white border border-outline-variant p-6 rounded-xl space-y-4 animate-in fade-in duration-300 text-left">
+                <h3 className="font-bold text-lg text-on-surface mb-4">Contact Information</h3>
+                <div className="space-y-3 font-semibold text-sm">
+                  <div className="flex items-center gap-3">
+                    <span className="material-symbols-outlined text-primary text-xl">mail</span>
+                    <div>
+                      <span className="text-on-surface-variant text-xs block font-bold">Email Address</span>
+                      <a href={`mailto:${application.studentEmail}`} className="text-primary hover:underline font-extrabold">{application.studentEmail}</a>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="material-symbols-outlined text-primary text-xl">phone</span>
+                    <div>
+                      <span className="text-on-surface-variant text-xs block font-bold">Mobile Phone</span>
+                      <span className="text-on-surface font-extrabold">+91 98765 43210</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="material-symbols-outlined text-primary text-xl">badge</span>
+                    <div>
+                      <span className="text-on-surface-variant text-xs block font-bold">Enrollment Number</span>
+                      <span className="text-on-surface font-mono font-extrabold">{application.enrollment || '2100000001'}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </section>
+        </div>
+      </main>
+
+      {/* Sticky Bottom Action Bar */}
+      <div className="sticky bottom-0 w-full bg-white border-t border-outline-variant px-margin-mobile py-4 z-40 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] text-left">
+        <div className="max-w-container-max mx-auto flex items-center justify-between gap-4">
+          <div className="hidden md:flex flex-col">
+            <span className="text-xs text-on-surface-variant font-bold">Reviewing Application for</span>
+            <span className="font-bold text-primary">{application.jobTitle} • {application.id}</span>
+          </div>
+          
+          <button 
+            disabled={isRejected || isInterview}
+            onClick={() => handleStatusUpdate('Interview Scheduled')}
+            className={`w-full md:w-auto font-bold px-8 py-3.5 rounded-xl flex items-center justify-center gap-2 shadow-sm ${
+              isInterview 
+                ? 'bg-amber-100 text-amber-800 border border-amber-200 cursor-not-allowed'
+                : 'bg-primary text-white hover:bg-primary/95 active:scale-95 transition-all'
+            }`}
+          >
+            <span className="material-symbols-outlined text-base">calendar_month</span>
+            <span>{isInterview ? 'Interview Scheduled' : 'Schedule Interview'}</span>
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

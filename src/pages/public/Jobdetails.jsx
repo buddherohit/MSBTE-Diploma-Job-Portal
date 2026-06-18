@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import Header from '../../components/Header';
+import { getCurrentUser } from '../../utils/auth';
+import { getJobById, applyToJob, getSavedJobIds, toggleSaveJobId, getJobs } from '../../utils/db';
 
 const jobsDatabase = {
   "thermax-maintenance": {
@@ -193,7 +195,7 @@ const jobsDatabase = {
 export default function Jobdetails() {
   const [searchParams] = useSearchParams();
   const jobId = searchParams.get('id') || "thermax-maintenance";
-  const currentJob = jobsDatabase[jobId] || jobsDatabase["thermax-maintenance"];
+  const currentJob = getJobById(jobId) || getJobs()[0];
 
   const [isApplied, setIsApplied] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
@@ -208,12 +210,29 @@ export default function Jobdetails() {
   const [gpa, setGpa] = useState('8.92');
 
   useEffect(() => {
-    // Check applied status
-    const appliedJobs = JSON.parse(localStorage.getItem('applied_jobs') || '[]');
-    setIsApplied(appliedJobs.includes(currentJob.id));
-  }, [currentJob.id]);
+    const user = getCurrentUser();
+    if (user) {
+      setFullName(user.name || '');
+      setEmail(user.email || '');
+      setEnrollment(user.enrollment || '');
+    }
+    
+    if (currentJob) {
+      const savedIds = getSavedJobIds();
+      setIsSaved(savedIds.includes(currentJob.id));
+      
+      const appliedDetails = JSON.parse(localStorage.getItem('msbte_applications') || '[]');
+      const userEmail = user ? user.email : email;
+      const alreadyApplied = appliedDetails.some(
+        app => app.jobId === currentJob.id && app.studentEmail.toLowerCase() === userEmail.toLowerCase()
+      );
+      setIsApplied(alreadyApplied);
+    }
+  }, [currentJob?.id]);
 
   const toggleSave = () => {
+    if (!currentJob) return;
+    toggleSaveJobId(currentJob.id);
     setIsSaved(!isSaved);
   };
 
@@ -224,31 +243,22 @@ export default function Jobdetails() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    // Save to local storage
-    const appliedJobs = JSON.parse(localStorage.getItem('applied_jobs') || '[]');
-    if (!appliedJobs.includes(currentJob.id)) {
-      appliedJobs.push(currentJob.id);
-      localStorage.setItem('applied_jobs', JSON.stringify(appliedJobs));
-    }
+    if (!currentJob) return;
 
-    // Save application details for status tracking
-    const appliedDetails = JSON.parse(localStorage.getItem('applied_job_details') || '[]');
-    if (!appliedDetails.some(j => j.id === currentJob.id)) {
-      appliedDetails.push({
-        id: currentJob.id,
-        title: currentJob.title,
-        company: currentJob.company,
-        logo: currentJob.logo,
-        location: currentJob.location,
-        date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
-        status: 'Under Review'
-      });
-      localStorage.setItem('applied_job_details', JSON.stringify(appliedDetails));
-    }
-    
-    const mockRef = `APP-${Math.floor(10000 + Math.random() * 90000)}`;
-    setRefId(mockRef);
+    const user = getCurrentUser();
+    const app = applyToJob({
+      jobId: currentJob.id,
+      jobTitle: currentJob.title,
+      company: currentJob.company,
+      logo: currentJob.logo,
+      location: currentJob.location,
+      studentEmail: user ? user.email : email,
+      studentName: fullName,
+      enrollment,
+      gpa
+    });
+
+    setRefId(app.id);
     setIsSubmitted(true);
     setIsApplied(true);
   };
@@ -262,11 +272,11 @@ export default function Jobdetails() {
   };
 
   // Find similar jobs matching branch
-  const similarJobs = Object.values(jobsDatabase)
-    .filter(job => job.branch === currentJob.branch && job.id !== currentJob.id);
+  const similarJobs = getJobs()
+    .filter(job => job.branch === (currentJob ? currentJob.branch : '') && job.id !== (currentJob ? currentJob.id : ''));
   const displaySimilar = similarJobs.length > 0 
     ? similarJobs 
-    : Object.values(jobsDatabase).filter(job => job.id !== currentJob.id);
+    : getJobs().filter(job => job.id !== (currentJob ? currentJob.id : ''));
 
   return (
     <div className="w-full min-h-screen bg-surface text-on-surface">

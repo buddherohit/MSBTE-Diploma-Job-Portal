@@ -1,219 +1,344 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { getCurrentUser, updateUserProfile, logoutSession } from '../../utils/auth';
+import EmployerHeader from '../../components/EmployerHeader';
 
 export default function EmployerProfileSettings() {
+  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+
+  // Form States
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [hiringStatus, setHiringStatus] = useState(true);
+  const [categories, setCategories] = useState(['Mechanical', 'Electrical']);
+  const [newCategory, setNewCategory] = useState('');
+  
+  const [successMsg, setSuccessMsg] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
+
+  useEffect(() => {
+    const session = getCurrentUser();
+    if (!session || session.role !== 'employer') {
+      navigate('/public/student-login?tab=employer');
+      return;
+    }
+    setUser(session);
+    setName(session.name || session.contactPerson || '');
+    setPhone(session.phone || '');
+    setHiringStatus(session.hiringStatus !== false);
+    if (session.categories) {
+      setCategories(session.categories);
+    }
+  }, [navigate]);
+
+  const handleSave = (e) => {
+    if (e) e.preventDefault();
+    if (!user) return;
+
+    if (!name.trim() || !phone.trim()) {
+      setErrorMsg("Please fill out recruiter name and phone number.");
+      return;
+    }
+
+    const updated = {
+      ...user,
+      name: name.trim(),
+      contactPerson: name.trim(),
+      phone: phone.trim(),
+      hiringStatus,
+      categories
+    };
+
+    updateUserProfile(updated);
+    setUser(updated);
+    setSuccessMsg("Account details updated successfully!");
+    setErrorMsg('');
+    setTimeout(() => setSuccessMsg(''), 3000);
+  };
+
+  const handleAddCategory = () => {
+    if (newCategory.trim() && !categories.includes(newCategory.trim())) {
+      setCategories([...categories, newCategory.trim()]);
+      setNewCategory('');
+    }
+  };
+
+  const handleRemoveCategory = (cat) => {
+    setCategories(categories.filter(c => c !== cat));
+  };
+
+  const handleLogout = () => {
+    logoutSession();
+    navigate('/');
+  };
+
+  if (!user) {
+    return <div className="min-h-screen bg-surface flex items-center justify-center font-bold">Loading session...</div>;
+  }
+
   return (
-    <div className="w-full min-h-screen">
-      
-{/* TopAppBar */}
-<header className="fixed top-0 right-0 left-0 md:left-80 z-40 bg-surface-container-highest dark:bg-surface-container-highest border-b border-outline-variant dark:border-outline flex justify-between items-center px-margin-mobile md:px-gutter w-full h-16">
-<div className="flex items-center gap-4">
-<span className="material-symbols-outlined text-primary md:hidden cursor-pointer" data-icon="menu">menu</span>
-<h1 className="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Admin Verification</h1>
-</div>
-<div className="flex items-center gap-4">
-<button className="bg-secondary-container text-on-secondary-container px-6 py-2 rounded-full font-label-md text-label-md transition-all active:scale-95 hover:shadow-md">
-                Save Changes
+    <div className="w-full min-h-screen bg-surface text-on-surface">
+      <EmployerHeader activePage="settings" />
+
+      {/* Top Save Bar for Quick Access */}
+      <div className="bg-white border-b border-outline-variant py-3 sticky top-20 z-20 shadow-xs">
+        <div className="max-w-container-max mx-auto px-margin-mobile flex justify-between items-center">
+          <span className="font-label-md text-xs font-bold text-on-surface-variant uppercase tracking-wider">Account Settings</span>
+          <button 
+            onClick={handleSave}
+            className="bg-primary hover:bg-primary/95 text-white px-6 py-2 rounded-xl font-bold text-sm transition-all active:scale-95 shadow-md"
+          >
+            Save Changes
+          </button>
+        </div>
+      </div>
+
+      <main className="max-w-container-max mx-auto flex text-left">
+        {/* Navigation Drawer (Sidebar) */}
+        <aside className="hidden md:flex flex-col h-[calc(100vh-128px)] py-6 w-80 bg-surface border-r border-outline-variant shrink-0 sticky top-32">
+          <div className="px-6 mb-8 flex items-center gap-4">
+            <div className="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center border border-outline-variant">
+              <span className="material-symbols-outlined text-primary">admin_panel_settings</span>
+            </div>
+            <div>
+              <h2 className="font-label-md text-on-surface font-bold text-sm">Settings Hub</h2>
+              <p className="text-xs text-on-surface-variant font-semibold">Manage organization & account</p>
+            </div>
+          </div>
+          <nav className="flex-grow flex flex-col gap-1 px-3">
+            <Link 
+              className="flex items-center gap-3 px-6 py-3 rounded-lg text-primary font-bold bg-primary-fixed/30 border-r-4 border-primary transition-all text-sm" 
+              to="/employer-portal/employer-profile-settings"
+            >
+              <span className="material-symbols-outlined">account_circle</span>
+              <span>Account Details</span>
+            </Link>
+            <Link 
+              className="flex items-center gap-3 px-6 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-all font-bold text-sm" 
+              to="/employer-portal/company-profile-settings"
+            >
+              <span className="material-symbols-outlined">domain</span>
+              <span>Company Profile</span>
+            </Link>
+            <Link 
+              className="flex items-center gap-3 px-6 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-all font-bold text-sm" 
+              to="/employer-portal/billing-&-subscription-settings"
+            >
+              <span className="material-symbols-outlined">payments</span>
+              <span>Billing & Subscription</span>
+            </Link>
+            <Link 
+              className="flex items-center gap-3 px-6 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-all font-bold text-sm" 
+              to="/employer-portal/team-management-settings"
+            >
+              <span className="material-symbols-outlined">group</span>
+              <span>Team Management</span>
+            </Link>
+          </nav>
+          <div className="px-6 mt-auto">
+            <button 
+              onClick={handleLogout}
+              className="flex items-center gap-3 w-full px-4 py-3 rounded-lg text-red-600 hover:bg-red-50 transition-all font-bold text-sm"
+            >
+              <span className="material-symbols-outlined">logout</span>
+              <span>Logout</span>
             </button>
-<div className="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden border border-outline-variant">
-<img alt="Admin Profile" className="w-full h-full object-cover" data-alt="A professional corporate portrait of a middle-aged male recruiter wearing a crisp white shirt and navy blue blazer. The lighting is soft and professional, set against a blurred high-tech office background. The overall aesthetic is clean, trustworthy, and institutional, aligning with a premium job platform's administrative interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCduyxlv20MgJcv3CZuAvXW0l2kmBrFM8rdSJN4RXCF09HFB6Meo26phBFuoxTwxKDvXbfirLgYQzgepX41Lp32aejilLMGKw4x95xuGP1BUYQ7cUcAszYosq60Dd7WhZLi4yyK2exaaLyS09Qri6BcEO6fvrlNWUQtq2nb_AQlRgHQ-k0JydQttn-_4AP_kFYmUZ5WjieL0cUl1lVyJ_ybOPJJdbdLMfDJ2OB2wQ8OsQZcNCtf2xo6uK5XZtHy-jo8Su9_jw38Yvk" />
-</div>
-</div>
-</header>
-{/* NavigationDrawer (Desktop Only) */}
-<nav className="hidden md:flex flex-col h-screen fixed left-0 top-0 w-80 bg-surface dark:bg-surface border-r border-outline-variant z-50">
-<div className="p-6 border-b border-surface-container-low flex flex-col items-start gap-4">
-<div className="w-16 h-16 rounded-xl bg-primary-container flex items-center justify-center text-on-primary">
-<span className="material-symbols-outlined text-4xl" data-icon="corporate_fare">corporate_fare</span>
-</div>
-<div>
-<h2 className="font-headline-md text-headline-md font-bold text-primary">Moderator Panel</h2>
-<p className="text-on-surface-variant font-label-sm">MSBTE Diploma Jobs</p>
-<span className="bg-tertiary-fixed text-on-tertiary-fixed px-2 py-0.5 rounded text-[10px] font-bold uppercase mt-1 inline-block">Super Admin</span>
-</div>
-</div>
-<div className="flex-1 py-4 space-y-1">
-<a className="text-on-surface-variant hover:bg-surface-container-highest rounded-full mx-2 px-4 py-3 flex items-center gap-4 transition-all group" href="#">
-<span className="material-symbols-outlined group-hover:text-primary" data-icon="pending_actions">pending_actions</span>
-<span className="font-label-md">Pending Requests</span>
-</a>
-<a className="text-on-surface-variant hover:bg-surface-container-highest rounded-full mx-2 px-4 py-3 flex items-center gap-4 transition-all group" href="#">
-<span className="material-symbols-outlined group-hover:text-primary" data-icon="verified_user">verified_user</span>
-<span className="font-label-md">Verified Entities</span>
-</a>
-<a className="text-on-surface-variant hover:bg-surface-container-highest rounded-full mx-2 px-4 py-3 flex items-center gap-4 transition-all group" href="#">
-<span className="material-symbols-outlined group-hover:text-primary" data-icon="report_problem">report_problem</span>
-<span className="font-label-md">Flagged Profiles</span>
-</a>
-<a className="text-on-surface-variant hover:bg-surface-container-highest rounded-full mx-2 px-4 py-3 flex items-center gap-4 transition-all group" href="#">
-<span className="material-symbols-outlined group-hover:text-primary" data-icon="history_edu">history_edu</span>
-<span className="font-label-md">Audit Logs</span>
-</a>
-<a className="bg-secondary-container text-on-secondary-container rounded-full mx-2 px-4 py-3 flex items-center gap-4 font-bold" href="#">
-<span className="material-symbols-outlined" data-icon="settings">settings</span>
-<span className="font-label-md">System Settings</span>
-</a>
-</div>
-</nav>
-{/* Main Content Canvas */}
-<main className="pt-24 px-margin-mobile md:px-gutter max-w-6xl mx-auto pb-12">
-<header className="mb-8">
-<h2 className="font-display-lg text-display-lg text-primary tracking-tight">Employer Profile</h2>
-<p className="text-on-surface-variant max-w-2xl">Manage your organization's public identity and recruitment preferences for the MSBTE Diploma talent pool.</p>
-</header>
-<div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-{/* Section 1: Company Identity */}
-<div className="lg:col-span-8 space-y-8">
-<section className="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant shadow-sm transition-hover hover:shadow-md">
-<div className="flex items-center gap-4 mb-6">
-<span className="material-symbols-outlined text-primary" data-icon="business">business</span>
-<h3 className="font-headline-md text-headline-md text-on-surface">Company Identity</h3>
-</div>
-<div className="flex flex-col md:flex-row gap-8">
-<div className="flex-shrink-0">
-<div className="relative w-32 h-32 rounded-xl bg-surface-container border-2 border-dashed border-outline flex flex-col items-center justify-center cursor-pointer group hover:bg-surface-container-high transition-colors">
-<img alt="Company Logo" className="w-full h-full object-contain p-2" data-alt="A minimalist logo for Thermax Limited, a prominent engineering and manufacturing firm, presented in a clean, high-resolution format. The background is a crisp white square with rounded corners, reflecting a modern corporate identity that balances industrial strength with technological precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-vqbMKEd6G0Yq40XBIpOtzW5e1JruKmqtA-XZx7muJzoMiOlGVGmpF1gcXxABVbQlNLt_4HoOD_r_J80jRIDp4CQtbQ-E5Em_87hYA70Kp7iaSufzAemZ59tFtB45i-cBne2IMFVAVBtOzcdzh4LlajjK7l0zlzPO5ePKmdO9LPFWpndPZNcT7942O4Rfh7GuSbJp0vE35tF5fegUy-WnNw4DXvmagGDpH_DVML_k0DvRCT4Dp2GplRoZKMzYxH5FKA3TrDxVn4M" />
-<div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 flex items-center justify-center rounded-xl transition-opacity">
-<span className="material-symbols-outlined text-white" data-icon="edit">edit</span>
-</div>
-</div>
-<p className="text-center text-label-sm font-label-sm mt-2 text-outline">Change Logo</p>
-</div>
-<div className="flex-1 space-y-4">
-<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div className="space-y-1">
-<label className="font-label-md text-label-md text-on-surface-variant">Company Name</label>
-<input className="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-2.5 font-body-md" type="text" value="Thermax Limited" />
-</div>
-<div className="space-y-1">
-<label className="font-label-md text-label-md text-on-surface-variant">Industry</label>
-<select className="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-2.5 font-body-md">
-<option>Engineering & Manufacturing</option>
-<option>Energy & Environment</option>
-<option>Automotive</option>
-<option>Chemical Process</option>
-</select>
-</div>
-</div>
-<div className="space-y-1">
-<label className="font-label-md text-label-md text-on-surface-variant">MIDC Location (Maharashtra)</label>
-<div className="relative">
-<span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="location_on">location_on</span>
-<input className="w-full bg-surface-container-low border border-outline-variant rounded-lg pl-10 pr-4 py-2.5 font-body-md" type="text" value="Pimpri-Chinchwad MIDC, Pune" />
-</div>
-</div>
-</div>
-</div>
-</section>
-{/* Section 2: Professional Details */}
-<section className="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant shadow-sm">
-<div className="flex items-center gap-4 mb-6">
-<span className="material-symbols-outlined text-primary" data-icon="description">description</span>
-<h3 className="font-headline-md text-headline-md text-on-surface">Professional Details</h3>
-</div>
-<div className="space-y-6">
-<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div className="space-y-1">
-<label className="font-label-md text-label-md text-on-surface-variant">Company Website</label>
-<input className="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-2.5 font-body-md" type="url" value="https://www.thermaxglobal.com" />
-</div>
-<div className="space-y-1">
-<label className="font-label-md text-label-md text-on-surface-variant">Year Established</label>
-<input className="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-2.5 font-body-md" type="number" value="1966" />
-</div>
-</div>
-<div className="space-y-1">
-<label className="font-label-md text-label-md text-on-surface-variant">Brief Bio</label>
-<textarea className="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-2.5 font-body-md resize-none" rows="4">Thermax Limited is a leading conglomerate in the energy and environment space. We offer integrated innovative solutions in the areas of heating, cooling, power, water and waste management, air pollution control and chemicals.</textarea>
-<p className="text-label-sm font-label-sm text-outline text-right">186 / 500 characters</p>
-</div>
-</div>
-</section>
-</div>
-{/* Sidebar Column */}
-<div className="lg:col-span-4 space-y-8">
-{/* Section 3: Contact Information */}
-<section className="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant shadow-sm">
-<div className="flex items-center gap-4 mb-6">
-<span className="material-symbols-outlined text-primary" data-icon="contact_mail">contact_mail</span>
-<h3 className="font-headline-md text-headline-md text-on-surface">Contact</h3>
-</div>
-<div className="space-y-4">
-<div className="space-y-1">
-<label className="font-label-md text-label-md text-on-surface-variant">Recruiter Name</label>
-<input className="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-2.5 font-body-md" type="text" value="Deepak Deshpande" />
-</div>
-<div className="space-y-1">
-<label className="font-label-md text-label-md text-on-surface-variant">Phone Number</label>
-<input className="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-2.5 font-body-md" type="tel" value="+91 20 6612 2999" />
-</div>
-<div className="space-y-1">
-<label className="font-label-md text-label-md text-on-surface-variant">Verified Email</label>
-<div className="relative">
-<input className="w-full bg-surface-dim border border-outline-variant rounded-lg px-4 py-2.5 font-body-md text-on-surface-variant" disabled="" type="email" value="careers@thermaxglobal.com" />
-<span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-tertiary-container text-sm" data-icon="verified" style={{ fontVariationSettings: '\'FILL\' 1' }}>verified</span>
-</div>
-</div>
-</div>
-</section>
-{/* Section 4: Recruitment Preferences */}
-<section className="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant shadow-sm border-l-4 border-l-secondary-container">
-<div className="flex items-center gap-4 mb-6">
-<span className="material-symbols-outlined text-secondary" data-icon="person_search">person_search</span>
-<h3 className="font-headline-md text-headline-md text-on-surface">Recruitment</h3>
-</div>
-<div className="space-y-6">
-<div className="space-y-3">
-<label className="font-label-md text-label-md text-on-surface-variant">Hiring Status</label>
-<div className="flex items-center justify-between p-3 bg-secondary-fixed/30 rounded-lg">
-<span className="font-label-md text-on-secondary-fixed">Currently Hiring</span>
-<label className="relative inline-flex items-center cursor-pointer">
-<input checked="" className="sr-only peer" type="checkbox" />
-<div className="w-11 h-6 bg-outline rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary-container"></div>
-</label>
-</div>
-</div>
-<div className="space-y-2">
-<label className="font-label-md text-label-md text-on-surface-variant">Default Categories</label>
-<div className="flex flex-wrap gap-2">
-<span className="bg-primary-fixed text-on-primary-fixed-variant px-3 py-1 rounded-full text-label-sm font-label-sm flex items-center gap-1">
-                                    Mechanical <span className="material-symbols-outlined text-[14px] cursor-pointer" data-icon="close">close</span>
-</span>
-<span className="bg-primary-fixed text-on-primary-fixed-variant px-3 py-1 rounded-full text-label-sm font-label-sm flex items-center gap-1">
-                                    Electrical <span className="material-symbols-outlined text-[14px] cursor-pointer" data-icon="close">close</span>
-</span>
-<span className="bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full text-label-sm font-label-sm border border-outline-variant cursor-pointer hover:bg-surface-container-highest">+ Add New</span>
-</div>
-</div>
-</div>
-</section>
-{/* Danger Zone */}
-<div className="p-4 border border-error-container bg-error-container/10 rounded-xl flex items-center justify-between">
-<div>
-<p className="font-label-md text-on-surface font-bold">Deactivate Profile</p>
-<p className="text-label-sm text-on-surface-variant">Temporarily hide your listing</p>
-</div>
-<button className="text-error font-label-md hover:underline">Deactivate</button>
-</div>
-</div>
-</div>
-</main>
-{/* BottomNavBar (Mobile Only) */}
-<nav className="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-surface-container border-t border-outline-variant px-2 shadow-lg">
-<a className="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 transition-transform active:scale-95" href="#">
-<span className="material-symbols-outlined" data-icon="hourglass_empty">hourglass_empty</span>
-<span className="font-label-sm text-label-sm">Pending</span>
-</a>
-<a className="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 transition-transform active:scale-95" href="#">
-<span className="material-symbols-outlined" data-icon="check_circle">check_circle</span>
-<span className="font-label-sm text-label-sm">Verified</span>
-</a>
-<a className="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-4 py-1 transition-transform active:scale-95" href="#">
-<span className="material-symbols-outlined" data-icon="settings" style={{ fontVariationSettings: '\'FILL\' 1' }}>settings</span>
-<span className="font-label-sm text-label-sm">Settings</span>
-</a>
-</nav>
+          </div>
+        </aside>
 
+        {/* Content Canvas */}
+        <div className="flex-1 p-4 md:p-8 overflow-y-auto pb-24 md:pb-8">
+          <header className="mb-8">
+            <h2 className="font-display-lg text-headline-lg text-primary font-extrabold tracking-tight">Recruiter Profile</h2>
+            <p className="text-on-surface-variant max-w-2xl mt-1">Manage your recruiter login details, contact coordinates, and basic notification filters.</p>
+          </header>
 
+          {successMsg && (
+            <div className="bg-green-50 text-green-700 border border-green-200 rounded-xl p-4 mb-6 text-sm font-semibold flex items-center gap-2">
+              <span className="material-symbols-outlined">check_circle</span>
+              <span>{successMsg}</span>
+            </div>
+          )}
+
+          {errorMsg && (
+            <div className="bg-red-50 text-red-700 border border-red-200 rounded-xl p-4 mb-6 text-sm font-semibold flex items-center gap-2">
+              <span className="material-symbols-outlined">error</span>
+              <span>{errorMsg}</span>
+            </div>
+          )}
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            {/* Identity Form */}
+            <div className="lg:col-span-8 space-y-6">
+              <section className="bg-white rounded-xl p-6 border border-outline-variant shadow-sm">
+                <div className="flex items-center gap-4 mb-6 pb-4 border-b border-outline-variant">
+                  <span className="material-symbols-outlined text-primary">contact_phone</span>
+                  <h3 className="font-headline-md text-base text-on-surface font-bold">Personal Recruiter Identity</h3>
+                </div>
+                
+                <form onSubmit={handleSave} className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-1">
+                      <label className="font-label-md text-xs uppercase font-bold text-on-surface-variant">Full Name</label>
+                      <input 
+                        className="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-2.5 font-body-md text-sm font-semibold" 
+                        type="text" 
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="Your full name"
+                        required
+                      />
+                    </div>
+                    <div className="space-y-1">
+                      <label className="font-label-md text-xs uppercase font-bold text-on-surface-variant">Phone Number</label>
+                      <input 
+                        className="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-2.5 font-body-md text-sm font-semibold" 
+                        type="tel" 
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        placeholder="Recruiter contact phone"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-1">
+                    <label className="font-label-md text-xs uppercase font-bold text-on-surface-variant">Corporate Email (Uneditable)</label>
+                    <div className="relative">
+                      <input 
+                        className="w-full bg-surface-dim border border-outline-variant rounded-lg px-4 py-2.5 font-body-md text-sm font-semibold text-on-surface-variant" 
+                        disabled 
+                        type="email" 
+                        value={user.email} 
+                      />
+                      <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-green-700 text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
+                    </div>
+                    <span className="text-[10px] text-outline font-medium">To modify your corporate email contact, reach out to helpdesk@msbtejobs.in</span>
+                  </div>
+                </form>
+              </section>
+
+              {/* Password change panel */}
+              <section className="bg-white rounded-xl p-6 border border-outline-variant shadow-sm">
+                <div className="flex items-center gap-4 mb-4 pb-4 border-b border-outline-variant">
+                  <span className="material-symbols-outlined text-primary">security</span>
+                  <h3 className="font-headline-md text-base text-on-surface font-bold">Security & Sign In</h3>
+                </div>
+                <div className="p-3 bg-surface-container rounded-lg border border-outline-variant/60">
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <p className="font-bold text-sm">Reset Password</p>
+                      <p className="text-xs text-on-surface-variant mt-0.5">Need a new secure password? Request a reset token.</p>
+                    </div>
+                    <button 
+                      onClick={() => alert("Password reset token sent to your corporate email.")}
+                      className="px-4 py-1.5 border border-primary text-primary hover:bg-primary-fixed/20 rounded-lg text-xs font-bold transition-all"
+                    >
+                      Request Reset
+                    </button>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            {/* Recruitment Preferences Column */}
+            <div className="lg:col-span-4 space-y-6">
+              <section className="bg-white rounded-xl p-6 border border-outline-variant border-l-4 border-l-secondary shadow-sm">
+                <div className="flex items-center gap-4 mb-6">
+                  <span className="material-symbols-outlined text-secondary">person_search</span>
+                  <h3 className="font-headline-md text-base text-on-surface font-bold">Recruitment Options</h3>
+                </div>
+                
+                <div className="space-y-6">
+                  <div className="space-y-3">
+                    <label className="font-label-md text-xs font-bold uppercase text-on-surface-variant">Hiring Status</label>
+                    <div className="flex items-center justify-between p-3 bg-surface-container rounded-lg border border-outline-variant">
+                      <span className="font-bold text-xs text-on-surface">{hiringStatus ? 'Currently Hiring' : 'Hiring Paused'}</span>
+                      <label className="relative inline-flex items-center cursor-pointer">
+                        <input 
+                          type="checkbox" 
+                          checked={hiringStatus}
+                          onChange={(e) => setHiringStatus(e.target.checked)}
+                          className="sr-only peer" 
+                        />
+                        <div className="w-11 h-6 bg-outline rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                      </label>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <label className="font-label-md text-xs font-bold uppercase text-on-surface-variant">Target MSBTE Branches</label>
+                    <div className="flex flex-wrap gap-2">
+                      {categories.map((cat) => (
+                        <span key={cat} className="bg-primary-fixed text-primary px-3 py-1 rounded-full text-[10px] font-bold border border-primary/20 flex items-center gap-1">
+                          {cat} 
+                          <span 
+                            onClick={() => handleRemoveCategory(cat)}
+                            className="material-symbols-outlined text-[14px] cursor-pointer hover:bg-primary-fixed-dim rounded-full"
+                          >
+                            close
+                          </span>
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex gap-2 mt-2">
+                      <input 
+                        type="text" 
+                        placeholder="e.g. Civil" 
+                        value={newCategory}
+                        onChange={(e) => setNewCategory(e.target.value)}
+                        className="bg-surface border border-outline-variant rounded px-2.5 py-1 text-xs outline-none focus:ring-1 focus:ring-primary flex-1 font-semibold"
+                      />
+                      <button 
+                        type="button"
+                        onClick={handleAddCategory}
+                        className="px-3 py-1 bg-primary text-white text-xs font-bold rounded hover:bg-primary/95"
+                      >
+                        Add
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* Danger Zone */}
+              <div className="p-4 border border-red-200 bg-red-50 rounded-xl flex items-center justify-between shadow-xs">
+                <div>
+                  <p className="font-bold text-sm text-on-surface">Deactivate Profile</p>
+                  <p className="text-xs text-on-surface-variant">Temporarily hide recruiter profile</p>
+                </div>
+                <button 
+                  onClick={() => {
+                    if (window.confirm("Are you sure you want to deactivate your recruiter profile? This will temporarily pause your visibility.")) {
+                      alert("Profile deactivated.");
+                    }
+                  }} 
+                  className="text-red-600 font-bold text-xs hover:underline"
+                >
+                  Deactivate
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      {/* Mobile Settings Navigation */}
+      <nav className="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-20 px-2 pb-safe bg-surface-container border-t border-outline-variant z-50 rounded-t-xl shadow-md">
+        <Link className="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" to="/employer-portal/employer-dashboard-industrial-blueprints-refined">
+          <span className="material-symbols-outlined">dashboard</span>
+          <span className="font-label-sm text-xs font-semibold">Dashboard</span>
+        </Link>
+        <Link className="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" to="/employer-portal/manage-jobs-employer-portal">
+          <span className="material-symbols-outlined">work</span>
+          <span className="font-label-sm text-xs font-semibold">Jobs</span>
+        </Link>
+        <Link className="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1" to="/employer-portal/employer-settings-main-menuemployer-settings-main-menu">
+          <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>settings</span>
+          <span className="font-label-sm text-xs font-bold">Settings</span>
+        </Link>
+      </nav>
     </div>
   );
 }
