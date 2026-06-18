@@ -120,31 +120,33 @@ export default function EmployerRegister() {
       </div>
 
       {/* TopAppBar */}
-      <header className="fixed top-0 w-full z-50 flex items-center justify-between px-margin-mobile h-16 bg-surface shadow-sm">
-        <div className="flex items-center gap-3">
-          <label htmlFor="mobile-menu-toggle" className="material-symbols-outlined text-primary cursor-pointer md:hidden text-2xl select-none">menu</label>
-          <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-white shadow-sm">
-              <span className="material-symbols-outlined text-[24px]" style={{ fontVariationSettings: "'FILL' 1" }}>school</span>
-            </div>
-            <div className="flex flex-col leading-none text-left">
-              <span className="font-headline-md text-[20px] font-extrabold text-primary tracking-tight">MSBTE<span class="text-secondary-container">Jobs</span></span>
-              <span className="text-[9px] font-bold text-on-surface-variant tracking-wider uppercase mt-0.5">Diploma Jobs Portal</span>
-            </div>
-          </Link>
-        </div>
-        <div className="hidden md:flex gap-6 items-center">
-          <Link className="text-on-surface-variant font-label-md hover:text-primary transition-colors" to="/">Portal Home</Link>
-          <Link className="text-on-surface-variant font-label-md hover:text-primary transition-colors" to="/public/verification-guide">Verification Guide</Link>
-          <Link className="text-on-surface-variant font-label-md hover:text-primary transition-colors" to="/public/find-diploma-jobs">Find Jobs</Link>
-          <Link className="text-on-surface-variant font-label-md hover:text-primary transition-colors" to="/public/contact">Contact</Link>
-          <Link to="/public/student-login" className="bg-primary text-white px-6 py-2 rounded-lg font-label-md transition-transform active:scale-95 hover:bg-primary/90">
-            Student Login
-          </Link>
+      <header className="fixed top-0 w-full z-50 bg-white shadow-sm border-b border-outline-variant">
+        <div className="flex justify-between items-center px-margin-mobile w-full max-w-container-max mx-auto h-20">
+          <div className="flex items-center gap-3">
+            <label htmlFor="mobile-menu-toggle" className="material-symbols-outlined text-primary cursor-pointer lg:hidden text-2xl select-none">menu</label>
+            <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-white shadow-sm">
+                <span className="material-symbols-outlined text-[24px]" style={{ fontVariationSettings: "'FILL' 1" }}>school</span>
+              </div>
+              <div className="flex flex-col leading-none text-left">
+                <span className="font-headline-md text-[20px] font-extrabold text-primary tracking-tight">MSBTE<span className="text-secondary-container">Jobs</span></span>
+                <span className="text-[9px] font-bold text-on-surface-variant tracking-wider uppercase mt-0.5">Diploma Jobs Portal</span>
+              </div>
+            </Link>
+          </div>
+          <div className="hidden lg:flex gap-6 items-center">
+            <Link className="text-on-surface-variant font-label-md hover:text-primary transition-colors" to="/">Portal Home</Link>
+            <Link className="text-on-surface-variant font-label-md hover:text-primary transition-colors" to="/public/verification-guide">Verification Guide</Link>
+            <Link className="text-on-surface-variant font-label-md hover:text-primary transition-colors" to="/public/find-diploma-jobs">Find Jobs</Link>
+            <Link className="text-on-surface-variant font-label-md hover:text-primary transition-colors" to="/public/contact">Contact</Link>
+            <Link to="/public/student-login" className="bg-primary text-white px-6 py-2 rounded-lg font-label-md transition-transform active:scale-95 hover:bg-primary/90">
+              Student Login
+            </Link>
+          </div>
         </div>
       </header>
 
-      <main className="pt-24 pb-12 px-margin-mobile flex flex-col items-center">
+      <main className="pt-28 pb-12 px-margin-mobile flex flex-col items-center">
         <div className="w-full max-w-container-max grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
           {/* Context & Trust Panel */}
           <div className="lg:col-span-5 space-y-8 text-left">
