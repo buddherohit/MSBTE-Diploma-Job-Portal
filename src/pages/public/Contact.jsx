@@ -1,6 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Contact() {
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setShowSuccessModal(true);
+      e.target.reset();
+    }, 1500);
+  };
   return (
     <div className="w-full min-h-screen">
       
@@ -122,15 +135,15 @@ export default function Contact() {
 <div className="bg-secondary-container bg-opacity-10 border border-secondary-container rounded-xl p-6">
 <h3 className="font-headline-md text-headline-md text-on-secondary-container mb-4">Quick Support</h3>
 <div className="space-y-3">
-<a className="flex items-center justify-between p-3 bg-surface-container-lowest rounded-lg hover:shadow-md transition-shadow group" href="#">
+<Link className="flex items-center justify-between p-3 bg-surface-container-lowest rounded-lg hover:shadow-md transition-shadow group" to="/public/verification-guide">
 <span className="font-label-md text-label-md text-on-surface">Employer Verification Guide</span>
 <span className="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
-</a>
+</Link>
 <a className="flex items-center justify-between p-3 bg-surface-container-lowest rounded-lg hover:shadow-md transition-shadow group" href="#">
 <span className="font-label-md text-label-md text-on-surface">Student Job Portal FAQ</span>
 <span className="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
 </a>
-<a className="flex items-center justify-between p-3 bg-surface-container-lowest rounded-lg hover:shadow-md transition-shadow group" href="#">
+<a className="flex items-center justify-between p-3 bg-surface-container-lowest rounded-lg hover:shadow-md transition-shadow group" href="#contactForm">
 <span className="font-label-md text-label-md text-on-surface">Technical Support Ticket</span>
 <span className="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
 </a>
@@ -141,7 +154,7 @@ export default function Contact() {
 <div className="lg:col-span-7">
 <div className="bg-surface-container-lowest border border-outline-variant rounded-xl p-8 shadow-sm">
 <h2 className="font-headline-md text-headline-md text-on-surface mb-6">Send us a message</h2>
-<form className="space-y-6" id="contactForm" onsubmit="event.preventDefault(); const btn = this.querySelector('button[type=submit]'); btn.disabled = true; btn.innerHTML = '<span>Sending Inquiry...</span>'; setTimeout(() => { btn.innerHTML = '<span className=\'material-symbols-outlined\'>check_circle</span> Inquiry Received'; btn.classList.replace('bg-secondary-container', 'bg-tertiary-container'); btn.classList.replace('text-on-secondary-container', 'text-on-tertiary'); this.reset(); }, 1500);">
+<form className="space-y-6" id="contactForm" onSubmit={handleSubmit}>
 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 <div className="space-y-2">
 <label className="font-label-md text-label-md text-on-surface-variant" htmlFor="name">Full Name</label>
@@ -166,27 +179,72 @@ export default function Contact() {
 <label className="font-label-md text-label-md text-on-surface-variant" htmlFor="message">Message</label>
 <textarea className="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" id="message" placeholder="How can our industrial relations team assist you?" required="" rows="5"></textarea>
 </div>
-<button className="w-full bg-secondary-container text-on-secondary-container font-headline-md text-headline-md py-4 rounded-xl hover:opacity-95 active:scale-[0.98] transition-all flex justify-center items-center gap-2" type="submit">
-<span>Submit Inquiry</span>
-<span className="material-symbols-outlined" data-icon="send">send</span>
+<button
+  className="w-full bg-secondary-container text-on-secondary-container font-headline-md text-headline-md py-4 rounded-xl hover:opacity-95 active:scale-[0.98] transition-all flex justify-center items-center gap-2"
+  type="submit"
+  disabled={isSubmitting}
+>
+  {isSubmitting ? (
+    <span>Sending Inquiry...</span>
+  ) : (
+    <>
+      <span>Submit Inquiry</span>
+      <span className="material-symbols-outlined" data-icon="send">send</span>
+    </>
+  )}
 </button>
 </form>
 </div>
 </div>
 </div>
-{/* Map Placeholder Section */}
-<div className="mt-stack-lg rounded-xl overflow-hidden border border-outline-variant h-96 relative group">
-<div className="absolute inset-0 bg-surface-container-highest animate-pulse" id="map-loading"></div>
-<img className="w-full h-full object-cover" data-alt="A clean, professional 3D satellite map visualization of Mumbai, Maharashtra. The image shows the Bandra Kherwadi area with subtle industrial blue and white accents, maintaining a high-contrast corporate aesthetic. The lighting is bright and modern, emphasizing the strategic urban location of the headquarters. The mood is authoritative and structured, reflecting the official nature of the MSBTE institution." data-location="Mumbai, India" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdN39QX_hxa_1e1_qtq-NxaCYzjpZn_JTSgFWlHQiQlGqATZoAXomHKxLf7fDzugMSTvO9mUUqR3_O-s6YQx7lgLwBMEf15ZSl2jvKrN5iOeW1K4YAmKqEOaT2NX0w_VomZYt74-4ph2wVC9svMVIdXJfHFcLr29l9knbSUI4rm9EU5BIDjd7cLB4FxWh8s8XCO68iJ-8erYn2EKmkaaLJMMe3R5GMEGX1OiGCZpQLlbCcecsrNcYamVeFd-eFhHFNSq0WtQyfXD0"/>
-<div className="absolute bottom-6 left-6 bg-surface-container-lowest p-4 rounded-lg shadow-lg border border-outline-variant max-w-xs">
-<h4 className="font-label-md text-label-md text-primary font-bold">MSBTE Office Location</h4>
-<p className="font-label-sm text-label-sm text-on-surface-variant mt-1">Visit us for official verification and partnership discussions during business hours (10 AM - 5:30 PM).</p>
-<button className="mt-3 text-primary font-bold text-label-md flex items-center gap-1 hover:underline">
-                        Get Directions
-                        <span className="material-symbols-outlined text-[18px]" data-icon="open_in_new">open_in_new</span>
-</button>
+{/* Real Location Map Section */}
+<div className="mt-stack-lg rounded-xl overflow-hidden border border-outline-variant h-96 relative group bg-white shadow-sm">
+  <iframe
+    className="w-full h-full border-0"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.812239634907!2d72.85077277579621!3d19.06099195279442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c919df5b1fd3%3A0xebe7f677fb6a1883!2sMaharashtra%20State%20Board%20Of%20Technical%20Education%20(MSBTE)!5e0!3m2!1sen!2sin!4v1718700000000!5m2!1sen!2sin"
+    allowFullScreen=""
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+  ></iframe>
+  <div className="absolute bottom-6 left-6 bg-surface-container-lowest p-4 rounded-lg shadow-lg border border-outline-variant max-w-xs z-10">
+    <h4 className="font-label-md text-label-md text-primary font-bold">MSBTE Office Location</h4>
+    <p className="font-label-sm text-label-sm text-on-surface-variant mt-1 text-xs leading-relaxed">
+      Visit us for official verification and partnership discussions during business hours (10 AM - 5:30 PM).
+    </p>
+    <a
+      className="mt-3 text-primary font-bold text-label-md flex items-center gap-1 hover:underline text-xs"
+      href="https://maps.google.com/?q=Maharashtra+State+Board+of+Technical+Education+Mumbai"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Get Directions
+      <span className="material-symbols-outlined text-[16px]">open_in_new</span>
+    </a>
+  </div>
 </div>
-</div>
+
+{/* Success Modal Popup */}
+{showSuccessModal && (
+  <div id="success-modal" className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm animate-in fade-in duration-200">
+    <div className="bg-white rounded-2xl p-8 max-w-md w-full mx-4 shadow-2xl border border-outline-variant space-y-6 text-center animate-in zoom-in-95 duration-200">
+      <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center text-green-600 mx-auto">
+        <span className="material-symbols-outlined text-4xl" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+      </div>
+      <div className="space-y-2">
+        <h3 className="text-2xl font-bold text-on-surface">Message Sent!</h3>
+        <p className="text-on-surface-variant text-sm leading-relaxed">
+          Thank you for reaching out. Your inquiry has been sent successfully. Our industrial relations team will get back to you shortly.
+        </p>
+      </div>
+      <button
+        onClick={() => setShowSuccessModal(false)}
+        className="w-full bg-primary hover:bg-primary/95 text-white py-3 rounded-xl font-bold text-body-md transition-all active:scale-[0.98]"
+      >
+        Close Window
+      </button>
+    </div>
+  </div>
+)}
 </div>
 </main>{/* Desktop Footer Info */}
 <footer className="hidden md:block py-16 border-t border-outline-variant bg-white text-on-surface">
