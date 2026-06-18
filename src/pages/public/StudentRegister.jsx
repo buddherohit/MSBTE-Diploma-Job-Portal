@@ -277,8 +277,8 @@ export default function StudentRegister() {
             <span className="font-label-sm text-label-sm text-on-surface-variant text-left">Official Platform of Maharashtra State Board of Technical Education</span>
           </div>
           <div className="flex gap-6">
-            <a className="font-label-sm text-label-sm text-outline hover:text-primary transition-colors" href="#">Privacy Policy</a>
-            <a className="font-label-sm text-label-sm text-outline hover:text-primary transition-colors" href="#">Terms of Service</a>
+            <Link className="font-label-sm text-label-sm text-outline hover:text-primary transition-colors" to="/public/terms#privacy">Privacy Policy</Link>
+            <Link className="font-label-sm text-label-sm text-outline hover:text-primary transition-colors" to="/public/terms#terms">Terms of Service</Link>
           </div>
         </div>
       </footer>

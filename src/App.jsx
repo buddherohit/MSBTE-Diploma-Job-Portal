@@ -13,6 +13,7 @@ import Industry from './pages/public/Industry';
 import Jobdetails from './pages/public/Jobdetails';
 import StudentLogin from './pages/public/StudentLogin';
 import StudentRegister from './pages/public/StudentRegister';
+import TermsPrivacy from './pages/public/TermsPrivacy';
 import Verification from './pages/public/Verification';
 import VerificationGuide from './pages/public/VerificationGuide';
 import ApplicationConfirmation from './pages/student portal/ApplicationConfirmation';
@@ -74,6 +75,7 @@ function App() {
         <Route path="/public/jobdetails" element={<Jobdetails />} />
         <Route path="/public/student-login" element={<StudentLogin />} />
         <Route path="/public/student-register" element={<StudentRegister />} />
+        <Route path="/public/terms" element={<TermsPrivacy />} />
         <Route path="/public/verification" element={<Verification />} />
         <Route path="/public/verification-guide" element={<VerificationGuide />} />
         <Route path="/student-portal/application-confirmation" element={<ApplicationConfirmation />} />

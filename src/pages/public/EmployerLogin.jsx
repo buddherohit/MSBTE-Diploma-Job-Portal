@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function EmployerLogin() {
   return (
@@ -85,9 +86,17 @@ export default function EmployerLogin() {
             <div className="mt-8 text-center space-y-4">
                 <p className="text-xs text-on-surface-variant">
                     By signing in, you agree to our 
-                    <a className="text-secondary hover:underline" href="#">Terms of Service</a> & 
-                    <a className="text-secondary hover:underline" href="#">Privacy Policy</a>
+                    <Link className="text-secondary hover:underline ml-1" to="/public/terms#terms">Terms of Service</Link> & 
+                    <Link className="text-secondary hover:underline ml-1" to="/public/terms#privacy">Privacy Policy</Link>
                 </p>
+                <div className="flex justify-center gap-6 text-outline">
+                    <Link className="hover:text-secondary transition-colors flex items-center gap-1 text-xs font-semibold" to="/public/contact">
+                        <span className="material-symbols-outlined text-sm" data-icon="help">help</span> Help Center
+                    </Link>
+                    <a className="hover:text-secondary transition-colors flex items-center gap-1 text-xs font-semibold" href="#">
+                        <span className="material-symbols-outlined text-sm" data-icon="language">language</span> English (IN)
+                    </a>
+                </div>
             </div>
         </div>
     </main>

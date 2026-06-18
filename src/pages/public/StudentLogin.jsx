@@ -200,13 +200,13 @@ export default function StudentLogin() {
           <div className="mt-stack-lg text-center space-y-4">
             <p className="text-label-sm font-label-sm text-on-surface-variant">
               By signing in, you agree to our 
-              <a className="text-primary hover:underline ml-1" href="#">Terms of Service</a> & 
-              <a className="text-primary hover:underline ml-1" href="#">Privacy Policy</a>
+              <Link className="text-primary hover:underline ml-1" to="/public/terms#terms">Terms of Service</Link> & 
+              <Link className="text-primary hover:underline ml-1" to="/public/terms#privacy">Privacy Policy</Link>
             </p>
             <div className="flex justify-center gap-6 text-outline">
-              <a className="hover:text-primary transition-colors flex items-center gap-1 text-label-sm font-label-sm" href="#">
+              <Link className="hover:text-primary transition-colors flex items-center gap-1 text-label-sm font-label-sm" to="/public/contact">
                 <span className="material-symbols-outlined text-sm" data-icon="help">help</span> Help Center
-              </a>
+              </Link>
               <a className="hover:text-primary transition-colors flex items-center gap-1 text-label-sm font-label-sm" href="#">
                 <span className="material-symbols-outlined text-sm" data-icon="language">language</span> English (IN)
               </a>

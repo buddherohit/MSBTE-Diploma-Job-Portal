@@ -130,8 +130,8 @@ export default function CreateAccount() {
             <p className="text-label-sm font-label-sm">© 2024 MSBTE Jobs. MSBTE Placement Portal.</p>
           </div>
           <div className="flex gap-stack-md">
-            <a className="text-label-sm font-label-sm text-on-surface-variant hover:text-primary" href="#">Privacy Policy</a>
-            <a className="text-label-sm font-label-sm text-on-surface-variant hover:text-primary" href="#">Terms of Service</a>
+            <Link className="text-label-sm font-label-sm text-on-surface-variant hover:text-primary" to="/public/terms#privacy">Privacy Policy</Link>
+            <Link className="text-label-sm font-label-sm text-on-surface-variant hover:text-primary" to="/public/terms#terms">Terms of Service</Link>
           </div>
         </div>
       </footer>

@@ -323,7 +323,7 @@ export default function EmployerRegister() {
                     onChange={(e) => setAgreeTerms(e.target.checked)}
                   />
                   <label className="font-label-sm text-on-surface-variant text-sm" htmlFor="terms">
-                    I agree to the <a className="text-primary font-bold hover:underline" href="#">Terms of Service</a> and <a className="text-primary font-bold hover:underline" href="#">Privacy Policy</a>. I understand that MIDC verification is mandatory for industrial access.
+                    I agree to the <Link className="text-primary font-bold hover:underline" to="/public/terms#terms">Terms of Service</Link> and <Link className="text-primary font-bold hover:underline" to="/public/terms#privacy">Privacy Policy</Link>. I understand that MIDC verification is mandatory for industrial access.
                   </label>
                 </div>
 
