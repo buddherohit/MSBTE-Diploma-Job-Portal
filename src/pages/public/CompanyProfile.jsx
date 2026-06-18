@@ -1,30 +1,16 @@
-import React from 'react';
+// MANUAL_JSX_FILE
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import Header from '../../components/Header';
 
 export default function CompanyProfile() {
+  const [isFollowing, setIsFollowing] = useState(false);
+
   return (
-    <div className="w-full min-h-screen">
-      
-{/* TopAppBar Shell */}
-<header className="bg-surface dark:bg-on-background border-b border-outline-variant dark:border-outline fixed top-0 w-full z-50">
-<div className="flex justify-between items-center px-4 w-full max-w-container-max mx-auto h-16">
-<div className="flex items-center gap-4">
-<span className="material-symbols-outlined text-primary dark:text-primary-fixed cursor-pointer">menu</span>
-<h1 className="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">MSBTE Jobs</h1>
-</div>
-<nav className="hidden md:flex items-center gap-8 h-full">
-<a className="h-full flex items-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-inverse-surface transition-colors duration-200 px-2" href="#">Dashboard</a>
-<a className="h-full flex items-center text-primary dark:text-primary-fixed font-bold border-b-2 border-primary hover:bg-surface-container dark:hover:bg-inverse-surface transition-colors duration-200 px-2" href="#">Jobs</a>
-<a className="h-full flex items-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-inverse-surface transition-colors duration-200 px-2" href="#">Profile</a>
-<a className="h-full flex items-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-inverse-surface transition-colors duration-200 px-2" href="#">Alerts</a>
-</nav>
-<div className="flex items-center">
-<div className="w-10 h-10 rounded-full overflow-hidden border-2 border-primary">
-<img alt="User profile photo" className="w-full h-full object-cover" data-alt="A professional close-up portrait of a young Indian engineer wearing a subtle smile and business casual attire. The lighting is soft and natural, suggesting a bright office environment. The style is clean and corporate, utilizing a high-key aesthetic with soft shadows and a focused, trustworthy expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABaCccqTbb6plE7SkJ7qItWn-M90SqlK1yc7zJM23aJLLQtllzazVE_4qBTdg0T_ZbeYzXxnXcP57iFNKQFFDn4PQfqrOfHTsEUC7Xnjph2BCNleV1qwwgc4-u3rwf9g3cLog9WXaLlR23WNWlamim3GNF3kWL5ol9VPzKJxESLtB5Yhwe7eRCMnjVD38-UVWFd1jOdBQjAFXYnRIuVFzCKTwbZGQUSczNUqITxzaalhOxijT4mBdpiiwGng662D24QMtctVwEP8I"/>
-</div>
-</div>
-</div>
-</header>
-<main className="pt-16 pb-24 md:pb-8">
+    <div className="w-full min-h-screen bg-background">
+      <Header activePage="companies" />
+
+      <main className="pb-24 md:pb-8">
 {/* Brand Hero Section */}
 <section className="relative w-full h-[300px] md:h-[450px] overflow-hidden">
 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10"></div>
@@ -34,7 +20,7 @@ export default function CompanyProfile() {
 {/* Logo Container */}
 <div className="relative group">
 <div className="w-24 h-24 md:w-32 md:h-32 bg-white rounded-xl shadow-lg flex items-center justify-center p-4 border border-outline-variant overflow-hidden">
-<img alt="Thermax Logo" className="w-full h-full object-contain" data-alt="A professional, minimalist company logo for a global industrial leader, presented on a clean white square background. The logo features abstract geometric shapes in deep Maharashtra blue and sharp action orange, symbolizing energy, sustainability, and mechanical precision. The design is bold, corporate, and modern, conveying institutional stability and innovative power." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALzA2b87tOrdglue6dxJPhf5U5M51w52ReeYwrI57TxliB5DPsKmRFx03nSWOaOeNBQxa6dFdLvRZfWtglQUEgLR3w5d15EUIAQ9E7YrB0tw8JyaExefpUMU8v99sfVmNcPm1T2nxfNcQmD6F6uxYH-GHMBKVXz1Y3ndSPxfHAh2iYcbM9Tg5YjrAx01evEYy_IwNi_FbBTPKJjJFZb8WD90xYuOAxR3lfIZHbkeL9PeOK-9Lmb3rQC96C2QJVdUpVN1B0KLudrak"/>
+<img alt="Thermax Logo" className="w-full h-full object-contain" data-alt="A professional, minimalist company logo for a global industrial leader, presented on a clean white square background. The logo features abstract geometric shapes in Maharashtra blue and sharp action orange, symbolizing energy, sustainability, and mechanical precision. The design is bold, corporate, and modern, conveying institutional stability and innovative power." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALzA2b87tOrdglue6dxJPhf5U5M51w52ReeYwrI57TxliB5DPsKmRFx03nSWOaOeNBQxa6dFdLvRZfWtglQUEgLR3w5d15EUIAQ9E7YrB0tw8JyaExefpUMU8v99sfVmNcPm1T2nxfNcQmD6F6uxYH-GHMBKVXz1Y3ndSPxfHAh2iYcbM9Tg5YjrAx01evEYy_IwNi_FbBTPKJjJFZb8WD90xYuOAxR3lfIZHbkeL9PeOK-9Lmb3rQC96C2QJVdUpVN1B0KLudrak"/>
 </div>
 <div className="absolute -top-2 -right-2 bg-secondary text-white px-2 py-1 rounded-full flex items-center gap-1 shadow-md">
 <span className="material-symbols-outlined text-[14px]" style={{ fontVariationSettings: '\'FILL\' 1' }}>verified</span>
@@ -59,9 +45,16 @@ export default function CompanyProfile() {
 </div>
 </div>
 <div className="flex gap-3">
-<button className="px-6 py-3 bg-secondary-container text-on-secondary-container font-label-md text-label-md rounded-lg shadow-md hover:scale-105 transition-transform">
-                            Follow Company
-                        </button>
+<button 
+  onClick={() => setIsFollowing(!isFollowing)}
+  className={`px-6 py-3 font-bold text-label-md rounded-lg shadow-md hover:scale-105 active:scale-95 transition-all duration-200 ${
+    isFollowing 
+      ? 'bg-[#003d27] text-white' 
+      : 'bg-secondary-container text-on-secondary-container'
+  }`}
+>
+  {isFollowing ? 'Following' : 'Follow Company'}
+</button>
 <button className="px-6 py-3 bg-white/20 backdrop-blur-md border border-white/30 text-white font-label-md text-label-md rounded-lg hover:bg-white/30 transition-all">
                             Share Profile
                         </button>
@@ -76,8 +69,8 @@ export default function CompanyProfile() {
 <div className="md:col-span-8 space-y-stack-lg">
 {/* About Us Section (Bento Style) */}
 <div className="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant shadow-sm">
-<h3 className="font-headline-md text-headline-md text-primary mb-4">About the Company</h3>
-<p className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+<h3 className="font-headline-md text-headline-md text-primary mb-4 text-left">About the Company</h3>
+<p className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed text-left">
                             Thermax Limited is an Indian conglomerate involved in energy and environment. Thermax's business portfolio includes products for heating, cooling, water and waste management, and air pollution control. We provide sustainable solutions in energy and environment that help industries become more resource-efficient. Our commitment to MSBTE diploma graduates stems from our belief in the practical excellence and technical rigor of Maharashtra's technical education.
                         </p>
 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
@@ -101,7 +94,7 @@ export default function CompanyProfile() {
 </div>
 {/* Company Culture Asymmetric Layout */}
 <div className="space-y-4">
-<h3 className="font-headline-md text-headline-md text-primary px-2">Work Culture & Facilities</h3>
+<h3 className="font-headline-md text-headline-md text-primary px-2 text-left">Work Culture & Facilities</h3>
 <div className="grid grid-cols-2 md:grid-cols-3 gap-4 h-[400px]">
 <div className="col-span-1 row-span-2 rounded-xl overflow-hidden group">
 <img alt="Team Collaboration" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A dynamic action shot of diverse industrial engineers in white hard hats and high-visibility vests collaborating over a digital blueprint in a modern, brightly lit production hall. The background shows blurred manufacturing equipment and a professional industrial atmosphere. The style is crisp and editorial, focusing on teamwork, technical expertise, and a positive, innovative workplace culture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdgjYxgsLTvZSEr9453F6qvQkVimXqVME-IEWIRVanfWytw_XlOAqrD9ec5qnUNd1dJLbOg1SKxvr1z94Qa8wgYP5fqc8QiBGSpbSzmrPy_3fNG41DLwThg5BK7My6YrQlf8mWy7zSn0a62wuNkeSyoGfDBdVgilYbChpRB9eTOm3qTF6ZVEZFGExTe6Ha0CK8KM9H4HlQ3N9Skpm6bXcyARSbMnN6SHJ8LDptOeA3qtE-RXaXXVO7fQlF8FVTcZtwJiS2zng1ZD0"/>
@@ -121,7 +114,7 @@ export default function CompanyProfile() {
 {/* Right Column: Job Listings & Meta */}
 <div className="md:col-span-4 space-y-stack-lg">
 {/* Quick Stats Card */}
-<div className="bg-primary text-white p-6 rounded-xl shadow-lg relative overflow-hidden">
+<div className="bg-primary text-white p-6 rounded-xl shadow-lg relative overflow-hidden text-left">
 <div className="absolute top-0 right-0 p-4 opacity-20">
 <span className="material-symbols-outlined text-[80px]">domain</span>
 </div>
@@ -144,10 +137,12 @@ export default function CompanyProfile() {
 <span className="bg-secondary/10 text-secondary px-3 py-1 rounded-full font-label-sm text-label-sm">8 New</span>
 </div>
 {/* Job Card 1 */}
-<div className="bg-white p-5 rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-all cursor-pointer group">
+<div className="bg-white p-5 rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-all group text-left">
 <div className="flex justify-between items-start mb-3">
 <div>
-<h5 className="font-headline-md text-body-lg font-bold text-primary group-hover:text-secondary transition-colors">Maintenance Engineer</h5>
+<h5 className="font-headline-md text-body-lg font-bold text-primary group-hover:text-secondary transition-colors">
+  <Link to="/public/jobdetails?id=thermax-maintenance">Maintenance Engineer</Link>
+</h5>
 <p className="text-on-surface-variant font-body-md text-body-md">Energy Division • Pune</p>
 </div>
 <span className="bg-tertiary-fixed text-on-tertiary-fixed px-2 py-1 rounded text-[10px] font-bold uppercase">Urgent</span>
@@ -156,15 +151,17 @@ export default function CompanyProfile() {
 <span className="bg-blue-50 text-blue-700 px-2 py-1 rounded-full text-label-sm">Mechanical</span>
 <span className="bg-blue-50 text-blue-700 px-2 py-1 rounded-full text-label-sm">2-4 Yrs Exp</span>
 </div>
-<button className="w-full py-2 border border-secondary text-secondary hover:bg-secondary hover:text-white rounded-lg transition-colors font-label-md text-label-md">
+<Link to="/public/jobdetails?id=thermax-maintenance" className="block w-full py-2 text-center border border-secondary text-secondary hover:bg-secondary hover:text-white rounded-lg transition-colors font-label-md text-label-md">
                                 Apply Now
-                            </button>
+</Link>
 </div>
 {/* Job Card 2 */}
-<div className="bg-white p-5 rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-all cursor-pointer group">
+<div className="bg-white p-5 rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-all group text-left">
 <div className="flex justify-between items-start mb-3">
 <div>
-<h5 className="font-headline-md text-body-lg font-bold text-primary group-hover:text-secondary transition-colors">Production Trainee</h5>
+<h5 className="font-headline-md text-body-lg font-bold text-primary group-hover:text-secondary transition-colors">
+  <Link to="/public/jobdetails?id=tata-trainee">Production Trainee</Link>
+</h5>
 <p className="text-on-surface-variant font-body-md text-body-md">Water Div • Chinchwad</p>
 </div>
 <span className="bg-surface-container-highest text-on-surface-variant px-2 py-1 rounded text-[10px] font-bold uppercase">Freshers</span>
@@ -173,15 +170,17 @@ export default function CompanyProfile() {
 <span className="bg-blue-50 text-blue-700 px-2 py-1 rounded-full text-label-sm">Diploma</span>
 <span className="bg-blue-50 text-blue-700 px-2 py-1 rounded-full text-label-sm">Stipend: 18k</span>
 </div>
-<button className="w-full py-2 border border-secondary text-secondary hover:bg-secondary hover:text-white rounded-lg transition-colors font-label-md text-label-md">
+<Link to="/public/jobdetails?id=tata-trainee" className="block w-full py-2 text-center border border-secondary text-secondary hover:bg-secondary hover:text-white rounded-lg transition-colors font-label-md text-label-md">
                                 Apply Now
-                            </button>
+</Link>
 </div>
 {/* Job Card 3 */}
-<div className="bg-white p-5 rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-all cursor-pointer group">
+<div className="bg-white p-5 rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-all group text-left">
 <div className="flex justify-between items-start mb-3">
 <div>
-<h5 className="font-headline-md text-body-lg font-bold text-primary group-hover:text-secondary transition-colors">Quality Assurance Tech</h5>
+<h5 className="font-headline-md text-body-lg font-bold text-primary group-hover:text-secondary transition-colors">
+  <Link to="/public/jobdetails?id=siemens-electrical">Quality Assurance Tech</Link>
+</h5>
 <p className="text-on-surface-variant font-body-md text-body-md">Solar Projects • Nagpur</p>
 </div>
 </div>
@@ -189,16 +188,16 @@ export default function CompanyProfile() {
 <span className="bg-blue-50 text-blue-700 px-2 py-1 rounded-full text-label-sm">Electrical</span>
 <span className="bg-blue-50 text-blue-700 px-2 py-1 rounded-full text-label-sm">Site-based</span>
 </div>
-<button className="w-full py-2 border border-secondary text-secondary hover:bg-secondary hover:text-white rounded-lg transition-colors font-label-md text-label-md">
+<Link to="/public/jobdetails?id=siemens-electrical" className="block w-full py-2 text-center border border-secondary text-secondary hover:bg-secondary hover:text-white rounded-lg transition-colors font-label-md text-label-md">
                                 Apply Now
-                            </button>
+</Link>
 </div>
 <button className="w-full py-3 text-primary font-label-md text-label-md text-center hover:underline decoration-2 underline-offset-4">
                             View All 14 Openings
                         </button>
 </div>
 {/* Skills Endorsement */}
-<div className="bg-surface-container-low p-6 rounded-xl">
+<div className="bg-surface-container-low p-6 rounded-xl text-left">
 <h4 className="font-label-md text-label-md text-on-surface-variant uppercase mb-4">Top Skills Recruited</h4>
 <div className="flex flex-wrap gap-2">
 <span className="bg-white border border-outline-variant px-3 py-1 rounded-full text-body-md">AutoCAD</span>
@@ -213,27 +212,91 @@ export default function CompanyProfile() {
 </div>
 </div>
 </main>
-{/* BottomNavBar Shell (Mobile Only) */}
-<nav className="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface dark:bg-on-background shadow-md rounded-t-xl md:hidden">
-<div className="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-transform duration-150 scale-95">
-<span className="material-symbols-outlined">dashboard</span>
-<span className="font-label-sm text-label-sm">Dashboard</span>
-</div>
-<div className="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-4 py-1">
-<span className="material-symbols-outlined">work</span>
-<span className="font-label-sm text-label-sm">Jobs</span>
-</div>
-<div className="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-transform duration-150 scale-95">
-<span className="material-symbols-outlined">person</span>
-<span className="font-label-sm text-label-sm">Profile</span>
-</div>
-<div className="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-transform duration-150 scale-95">
-<span className="material-symbols-outlined">notifications</span>
-<span className="font-label-sm text-label-sm">Alerts</span>
-</div>
-</nav>
 
+      {/* Desktop Footer Info */}
+      <footer className="hidden md:block py-16 border-t border-outline-variant bg-white text-on-surface">
+        <div className="max-w-container-max mx-auto px-margin-mobile grid grid-cols-1 md:grid-cols-12 gap-8">
+          {/* Logo and Social column */}
+          <div className="md:col-span-4 flex flex-col gap-4">
+            <div className="flex items-center gap-2">
+              <div className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-white shadow-sm">
+                <span className="material-symbols-outlined text-[20px]" style={{ fontVariationSettings: "'FILL' 1" }}>school</span>
+              </div>
+              <div className="flex flex-col leading-none text-left">
+                <span className="font-bold text-lg text-primary tracking-tight">MSBTE<span className="text-secondary-container">Jobs</span></span>
+                <span className="text-[8px] font-bold text-on-surface-variant tracking-wider uppercase mt-0.5">Diploma Jobs Portal</span>
+              </div>
+            </div>
+            <p className="text-on-surface-variant text-sm max-w-sm leading-relaxed text-left">
+              Connecting Maharashtra diploma students with high-impact career opportunities in industrial powerhouses.
+            </p>
+            <div className="flex gap-3 mt-2">
+              <a href="#" className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:text-primary transition-colors border border-outline-variant/30">
+                <span className="material-symbols-outlined text-lg">public</span>
+              </a>
+              <a href="#" className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:text-primary transition-colors border border-outline-variant/30">
+                <span className="material-symbols-outlined text-lg">mail</span>
+              </a>
+              <a href="#" className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:text-primary transition-colors border border-outline-variant/30">
+                <span className="material-symbols-outlined text-lg">link</span>
+              </a>
+            </div>
+          </div>
 
+          {/* For Students Column */}
+          <div className="md:col-span-2 text-left">
+            <h5 className="font-extrabold text-sm uppercase tracking-wider text-on-surface mb-6">For Students</h5>
+            <ul className="space-y-3 text-sm text-on-surface-variant font-semibold">
+              <li><Link className="hover:text-primary transition-colors" to="/public/find-diploma-jobs">Find Jobs</Link></li>
+              <li><a className="hover:text-primary transition-colors" href="#">How It Works</a></li>
+              <li><Link className="hover:text-primary transition-colors" to="/student-portal/dashboard">Career Tips</Link></li>
+              <li><Link className="hover:text-primary transition-colors" to="/public/student-login">Student Login</Link></li>
+            </ul>
+          </div>
+
+          {/* For Employers Column */}
+          <div className="md:col-span-2 text-left">
+            <h5 className="font-extrabold text-sm uppercase tracking-wider text-on-surface mb-6">For Employers</h5>
+            <ul className="space-y-3 text-sm text-on-surface-variant font-semibold">
+              <li><Link className="hover:text-primary transition-colors" to="/public/employer-register">Post a Job</Link></li>
+              <li><a className="hover:text-primary transition-colors" href="#">Pricing Plans</a></li>
+              <li><Link className="hover:text-primary transition-colors" to="/public/student-login?tab=employer">Employer Login</Link></li>
+              <li><a className="hover:text-primary transition-colors" href="#">Resources</a></li>
+            </ul>
+          </div>
+
+          {/* Company Column */}
+          <div className="md:col-span-2 text-left">
+            <h5 className="font-extrabold text-sm uppercase tracking-wider text-on-surface mb-6">Company</h5>
+            <ul className="space-y-3 text-sm text-on-surface-variant font-semibold">
+              <li><Link className="hover:text-primary transition-colors" to="/public/about">About Us</Link></li>
+              <li><Link className="hover:text-primary transition-colors" to="/public/contact">Contact Us</Link></li>
+              <li><a className="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+              <li><a className="hover:text-primary transition-colors" href="#">Terms & Conditions</a></li>
+            </ul>
+          </div>
+
+          {/* Support Column */}
+          <div className="md:col-span-2 flex flex-col gap-4 text-left">
+            <h5 className="font-extrabold text-sm uppercase tracking-wider text-on-surface mb-2">Support</h5>
+            <div className="flex items-start gap-2 text-sm text-on-surface-variant">
+              <span className="material-symbols-outlined text-[18px] text-primary mt-0.5">call</span>
+              <span className="font-semibold">+91 12345 67890</span>
+            </div>
+            <div className="flex items-start gap-2 text-sm text-on-surface-variant">
+              <span className="material-symbols-outlined text-[18px] text-primary mt-0.5">mail</span>
+              <span className="font-semibold break-all">support@msbtejobs.in</span>
+            </div>
+            <div className="flex items-start gap-2 text-sm text-on-surface-variant">
+              <span className="material-symbols-outlined text-[18px] text-primary mt-0.5">schedule</span>
+              <span className="font-semibold">Mon - Sat: 9:00 AM - 6:00 PM</span>
+            </div>
+          </div>
+        </div>
+        <div className="text-center mt-12 pt-8 border-t border-outline-variant/60 text-xs text-on-surface-variant font-semibold">
+          © 2024 MSBTEJobs Diploma Jobs Portal. Built for the future of Maharashtra's Industry.
+        </div>
+      </footer>
     </div>
   );
 }

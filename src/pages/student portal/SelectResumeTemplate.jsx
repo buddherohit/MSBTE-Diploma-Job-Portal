@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 export default function SelectResumeTemplate() {
   return (
@@ -8,15 +7,15 @@ export default function SelectResumeTemplate() {
 {/* TopAppBar */}
 <header className="bg-surface dark:bg-inverse-surface shadow-sm docked full-width top-0 sticky z-40 transition-shadow">
 <div className="flex justify-between items-center w-full px-margin-mobile md:px-gutter max-w-container-max mx-auto py-4">
-<Link className="flex items-center gap-2 cursor-pointer" to="/">
+<a className="flex items-center gap-2 cursor-pointer" href="/">
 <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-white shadow-sm">
-<span className="material-symbols-outlined text-[24px]" style={{ fontVariationSettings: "'FILL' 1" }}>school</span>
+<span className="material-symbols-outlined text-[24px]" style={{ fontVariationSettings: '\'FILL\' 1' }}>school</span>
 </div>
 <div className="flex flex-col leading-none text-left">
 <span className="font-headline-md text-[20px] font-extrabold text-primary tracking-tight">MSBTE<span className="text-secondary-container">Jobs</span></span>
 <span className="text-[9px] font-bold text-on-surface-variant tracking-wider uppercase mt-0.5">Diploma Jobs Portal</span>
 </div>
-</Link>
+</a>
 <div className="flex items-center gap-4">
 <button className="hidden md:flex items-center gap-2 px-4 py-2 rounded-full font-label-md text-label-md text-primary dark:text-inverse-primary font-bold hover:bg-surface-container dark:hover:bg-on-surface-variant transition-colors active:scale-95">
 <span className="material-symbols-outlined" data-icon="visibility">visibility</span>

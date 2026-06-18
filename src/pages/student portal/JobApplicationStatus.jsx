@@ -1,14 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 
 export default function JobApplicationStatus() {
-  const [appliedDetails, setAppliedDetails] = useState([]);
-
-  useEffect(() => {
-    const details = JSON.parse(localStorage.getItem('applied_job_details') || '[]');
-    setAppliedDetails(details);
-  }, []);
-
   return (
     <div className="w-full min-h-screen">
       
@@ -20,9 +12,9 @@ export default function JobApplicationStatus() {
 </div>
 <div className="flex items-center gap-6">
 <nav className="hidden md:flex gap-8">
-<Link className="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-colors px-2 py-1" to="/student-portal/dashboard">Dashboard</Link>
-<Link className="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary px-2 py-1" to="/student-portal/job-application-status">Status</Link>
-<Link className="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-colors px-2 py-1" to="/student-portal/find-diploma-applied-jobs">Applications</Link>
+        <a className="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-colors px-2 py-1" href="/student-portal/dashboard">Dashboard</a>
+<a className="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary px-2 py-1" href="/student-portal/job-application-status">Status</a>
+<a className="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-colors px-2 py-1" href="/student-portal/find-diploma-applied-jobs">Applications</a>
 </nav>
 <img alt="User profile photo" className="w-10 h-10 rounded-full border-2 border-primary object-cover" data-alt="A professional headshot of a young male student wearing a neat white shirt, set against a soft, out-of-focus academic library background. The lighting is bright and natural, reflecting a clean and modern corporate aesthetic. The overall mood is confident, approachable, and focused, aligning with a high-energy professional job seeker profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1CfKWTMcsCsqoSoUSIMF4wkT7fcu8i09zqCZ_3Pg2DcXTeftd2_pM8hrVFclQxuhDO6ky7wunTIwNkD22B5dkIlwD_-ZHOG4XHarv1XXnD7pWXTZs5BYkiKPUFT1Kpvw6hLbrwJIdTLjDF7EwjpGtn5QpjoFN3vfHEGvL7ux-nxHcMKsoiZV8De-p0WsMwLYf7vt5Td03iUkOLEVQqWSCeIGRst66QU0eynyTvrv7ToNdHo0zieiHJ-M7kUbST5_Lanc7dAM69jk"/>
 </div>
@@ -33,7 +25,7 @@ export default function JobApplicationStatus() {
 <div className="glass-card p-6 rounded-lg flex flex-col justify-between hover:shadow-sm transition-all duration-300">
 <div>
 <span className="text-on-surface-variant font-label-md uppercase tracking-wider">Active Applications</span>
-<h2 className="font-headline-lg text-headline-lg mt-2 text-primary">{12 + appliedDetails.length}</h2>
+<h2 id="appliedCountStat" className="font-headline-lg text-headline-lg mt-2 text-primary">12</h2>
 </div>
 <div className="mt-4 flex items-center text-tertiary-fixed-dim text-sm font-semibold">
 <span className="material-symbols-outlined mr-1">trending_up</span>
@@ -71,63 +63,8 @@ export default function JobApplicationStatus() {
                     </button>
 </div>
 </div>
-{appliedDetails.map((job) => (
-  <div key={job.id} className="bg-surface border border-outline-variant rounded-lg p-6 hover:shadow-md transition-all bg-green-50/5 mb-4 text-left">
-    <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-      {/* Company Info */}
-      <div className="flex items-center gap-4">
-        <div className="w-16 h-16 bg-white rounded-lg border border-outline-variant p-2 flex items-center justify-center shrink-0">
-          <img alt={`${job.company} Logo`} className="max-w-full max-h-full object-contain" src={job.logo}/>
-        </div>
-        <div>
-          <h4 className="font-headline-md text-lg font-bold text-primary leading-tight">{job.title}</h4>
-          <p className="text-on-surface-variant font-medium text-sm">{job.company} • {job.location}</p>
-          <p className="text-label-sm text-outline mt-1 italic text-xs">Applied on {job.date}</p>
-        </div>
-      </div>
-      {/* Progress Stepper */}
-      <div className="flex-grow max-w-xl w-full">
-        <div className="relative flex items-center justify-between w-full">
-          {/* Progress Line */}
-          <div className="absolute top-1/2 left-0 w-full h-[2px] bg-outline-variant -translate-y-1/2 z-0"></div>
-          <div className="absolute top-1/2 left-0 w-1/4 h-[2px] bg-primary -translate-y-1/2 z-0"></div>
-          {/* Steps */}
-          <div className="relative z-10 flex flex-col items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center border-4 border-primary-fixed">
-              <span className="material-symbols-outlined text-sm">check</span>
-            </div>
-            <span className="text-[10px] font-bold uppercase text-primary">Applied</span>
-          </div>
-          <div className="relative z-10 flex flex-col items-center gap-2 opacity-40">
-            <div className="w-8 h-8 rounded-full bg-surface border-2 border-outline-variant flex items-center justify-center">
-              <span className="material-symbols-outlined text-sm">history_edu</span>
-            </div>
-            <span className="text-[10px] font-bold uppercase">Technical</span>
-          </div>
-          <div className="relative z-10 flex flex-col items-center gap-2 opacity-40">
-            <div className="w-8 h-8 rounded-full bg-surface border-2 border-outline-variant flex items-center justify-center">
-              <span className="material-symbols-outlined text-sm">forum</span>
-            </div>
-            <span className="text-[10px] font-bold uppercase">Interview</span>
-          </div>
-          <div className="relative z-10 flex flex-col items-center gap-2 opacity-40">
-            <div className="w-8 h-8 rounded-full bg-surface border-2 border-outline-variant flex items-center justify-center">
-              <span className="material-symbols-outlined text-sm">emoji_events</span>
-            </div>
-            <span className="text-[10px] font-bold uppercase">Selection</span>
-          </div>
-        </div>
-      </div>
-      {/* Actions & Badge */}
-      <div className="flex flex-col items-end gap-3 min-w-[140px]">
-        <span className="px-3 py-1 bg-surface-container-high text-on-surface-variant rounded-full text-xs font-bold uppercase">Under Review</span>
-        <div className="flex gap-2 w-full md:w-auto">
-          <Link to={`/public/jobdetails?id=${job.id}`} className="flex-1 md:flex-none px-4 py-2 bg-primary text-on-primary rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity text-center">Details</Link>
-        </div>
-      </div>
-    </div>
-  </div>
-))}
+{/* Dynamic Tracking Container for LocalStorage Jobs */}
+<div className="space-y-stack-md" id="dynamicTrackingContainer"></div>
 
 {/* Application Card 1 */}
 <div className="bg-surface border border-outline-variant rounded-lg p-6 hover:shadow-md transition-all">
@@ -275,22 +212,22 @@ export default function JobApplicationStatus() {
 </main>
 {/* BottomNavBar (Mobile Only) */}
 <nav className="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-20 px-2 pb-safe bg-surface dark:bg-on-background border-t border-outline-variant dark:border-outline shadow-sm z-50">
-<Link to="/student-portal/dashboard" className="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-all duration-200">
+<a href="/student-portal/dashboard" className="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-all duration-200">
 <span className="material-symbols-outlined">home</span>
 <span className="font-label-sm text-label-sm">Home</span>
-</Link>
-<Link to="/public/find-diploma-jobs" className="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-all duration-200">
+</a>
+<a href="/public/find-diploma-jobs" className="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-all duration-200">
 <span className="material-symbols-outlined">work</span>
 <span className="font-label-sm text-label-sm">Jobs</span>
-</Link>
-<Link to="/student-portal/job-application-status" className="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim bg-secondary-fixed dark:bg-on-secondary-fixed-variant rounded-xl px-3 py-1 transition-all duration-200">
+</a>
+<a href="/student-portal/job-application-status" className="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim bg-secondary-fixed dark:bg-on-secondary-fixed-variant rounded-xl px-3 py-1 transition-all duration-200">
 <span className="material-symbols-outlined">assignment_turned_in</span>
 <span className="font-label-sm text-label-sm">Status</span>
-</Link>
-<Link to="/student-portal/profile" className="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-all duration-200">
+</a>
+<a href="/student-portal/profile" className="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-all duration-200">
 <span className="material-symbols-outlined">person</span>
 <span className="font-label-sm text-label-sm">Profile</span>
-</Link>
+</a>
 </nav>
 
 

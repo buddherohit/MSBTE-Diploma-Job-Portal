@@ -1,3 +1,4 @@
+// MANUAL_JSX_FILE
 import React, { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import Header from '../../components/Header';
@@ -271,155 +272,201 @@ export default function Jobdetails() {
     <div className="w-full min-h-screen bg-surface text-on-surface">
       <Header activePage="jobs" />
 
-      {/* Top Header Mock Action */}
-      <div className="fixed top-0 left-0 right-0 z-40 glass-header border-b border-outline-variant h-16 md:hidden">
-        <div className="flex justify-between items-center px-margin-mobile h-full">
-          <button onClick={() => window.history.back()} className="p-2 hover:bg-surface-container rounded-full transition-colors">
-            <span className="material-symbols-outlined text-on-surface">arrow_back</span>
-          </button>
-          <span className="font-bold text-primary font-headline-md text-base">Job Details</span>
-          <Link to="/student-portal/profile" className="w-10 h-10 rounded-full border border-outline-variant bg-surface-container overflow-hidden block">
-            <img alt="Profile" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrWh8SDj52cM4qTR3DUFshfmGBaKKVRMIhB4B7lzZGwq0ad_BrrWi0BohvE9FH697BCWocbu-9cBf2SzNlOqrSyDSREp1zHtPQ70IdbiGtNo-0lXi5Ciw_tYzmVFgak7bEZIYq_Z_fFc3E5eeUiJp2X0q9MLF3JH1TX7_veduB_aCngK-eLfUYOtW_SNi0EJQ6OoSnOYiZI-wrOKpAcvZx8Tbwz1RDWlyKKGmi42PXt1Woh3bqWmrs66nCQp8A5mJdlcC6QuRPOzE"/>
-          </Link>
-        </div>
-      </div>
-
-      <main className="pt-20 pb-24 px-margin-mobile max-w-md mx-auto">
-        {/* Job Header Section */}
-        <section className="mb-stack-lg">
-          <div className="flex justify-between items-start mb-4">
-            <div className="w-16 h-16 rounded-xl border border-outline-variant p-2 bg-surface-container-lowest flex items-center justify-center shadow-sm">
-              <img alt={`${currentJob.company} Logo`} className="max-w-full max-h-full object-contain" src={currentJob.logo}/>
-            </div>
-            {currentJob.urgent && (
-              <span className="px-3 py-1 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm rounded-full">Urgent</span>
-            )}
-          </div>
-          <h2 className="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-1">{currentJob.title}</h2>
-          <div className="flex items-center gap-2 text-on-surface-variant font-body-md text-body-md">
-            <span className="font-bold text-primary">{currentJob.company}</span>
-            <span className="text-outline">•</span>
-            <div className="flex items-center gap-1">
-              <span class="material-symbols-outlined text-sm">location_on</span>
-              <span>{currentJob.location}</span>
-            </div>
-          </div>
-        </section>
-
-        {/* Quick Overview Chips */}
-        <section className="grid grid-cols-2 gap-3 mb-stack-lg">
-          <div className="bg-surface-container-low p-3 rounded-xl border border-outline-variant">
-            <span className="text-on-surface-variant font-label-sm text-label-sm block mb-1">Salary Range</span>
-            <span className="text-on-surface font-label-md text-label-md">{currentJob.salary}</span>
-          </div>
-          <div className="bg-surface-container-low p-3 rounded-xl border border-outline-variant">
-            <span className="text-on-surface-variant font-label-sm text-label-sm block mb-1">Type</span>
-            <span className="text-on-surface font-label-md text-label-md">{currentJob.type}</span>
-          </div>
-          <div className="bg-surface-container-low p-3 rounded-xl border border-outline-variant col-span-2">
-            <span className="text-on-surface-variant font-label-sm text-label-sm block mb-1">Branch Requirement</span>
-            <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-primary text-body-md">{currentJob.branchIcon}</span>
-              <span className="text-on-surface font-label-md text-label-md">{currentJob.branch}</span>
-            </div>
-          </div>
-        </section>
-
-        {/* Job Description */}
-        <section className="mb-stack-lg">
-          <h3 className="font-headline-md text-headline-md text-on-surface mb-3">Job Description</h3>
-          <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">
-            {currentJob.description}
-          </p>
-          <ul className="space-y-3">
-            {currentJob.responsibilities.map((resp, i) => (
-              <li key={i} className="flex gap-3 items-start">
-                <span className="material-symbols-outlined text-on-tertiary-container mt-0.5">check_circle</span>
-                <span className="font-body-md text-body-md text-on-surface-variant">{resp}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        {/* Eligibility & Skills */}
-        <section className="mb-stack-lg">
-          <h3 className="font-headline-md text-headline-md text-on-surface mb-3">Eligibility &amp; Skills</h3>
-          <div className="space-y-4">
-            <div>
-              <span className="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider mb-2 block">Education &amp; Exp</span>
-              <div className="flex flex-wrap gap-2">
-                {currentJob.education.map((edu, i) => (
-                  <span key={i} className="px-3 py-1 bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm rounded-lg border border-primary-fixed-dim">
-                    {edu}
-                  </span>
-                ))}
+      <main className="pt-8 pb-32 px-margin-mobile max-w-container-max mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          {/* Left Column: Job Details & Info */}
+          <div className="lg:col-span-8 space-y-8">
+            {/* Job Header Card */}
+            <div className="bg-surface-container-lowest border border-outline-variant rounded-2xl p-6 md:p-8 shadow-sm text-left">
+              <div className="flex justify-between items-start mb-6">
+                <div className="w-20 h-20 rounded-xl border border-outline-variant p-3 bg-white flex items-center justify-center shadow-sm">
+                  <img alt={`${currentJob.company} Logo`} className="max-w-full max-h-full object-contain" src={currentJob.logo}/>
+                </div>
+                {currentJob.urgent && (
+                  <span className="px-3 py-1 bg-secondary-container text-on-secondary-container font-label-sm text-xs rounded-full">Urgent</span>
+                )}
+              </div>
+              <h2 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-2 font-bold leading-tight">{currentJob.title}</h2>
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-on-surface-variant font-body-md">
+                <span className="font-bold text-primary text-lg">{currentJob.company}</span>
+                <span className="text-outline">•</span>
+                <div className="flex items-center gap-1">
+                  <span className="material-symbols-outlined text-sm">location_on</span>
+                  <span>{currentJob.location}</span>
+                </div>
               </div>
             </div>
-            <div>
-              <span className="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider mb-2 block">Technical Proficiencies</span>
-              <div className="flex flex-wrap gap-2">
-                {currentJob.skills.map((skill, i) => (
-                  <span key={i} className="px-3 py-1.5 bg-[#DBEAFE] text-[#1E40AF] font-label-md text-label-md rounded-full">
-                    {skill}
-                  </span>
-                ))}
+
+            {/* Quick Details Grid (Mobile and Tablet only - hides on lg) */}
+            <div className="grid grid-cols-2 gap-4 lg:hidden">
+              <div className="bg-surface-container-low p-4 rounded-xl border border-outline-variant text-left">
+                <span className="text-on-surface-variant font-label-sm text-xs uppercase tracking-wider block mb-1">Salary Range</span>
+                <span className="text-on-surface font-bold text-lg">{currentJob.salary}</span>
+              </div>
+              <div className="bg-surface-container-low p-4 rounded-xl border border-outline-variant text-left">
+                <span className="text-on-surface-variant font-label-sm text-xs uppercase tracking-wider block mb-1">Job Type</span>
+                <span className="text-on-surface font-bold text-lg">{currentJob.type}</span>
+              </div>
+              <div className="bg-surface-container-low p-4 rounded-xl border border-outline-variant col-span-2 text-left">
+                <span className="text-on-surface-variant font-label-sm text-xs uppercase tracking-wider block mb-1">Branch Requirement</span>
+                <div className="flex items-center gap-2 mt-1">
+                  <span className="material-symbols-outlined text-primary">{currentJob.branchIcon}</span>
+                  <span className="text-on-surface font-bold">{currentJob.branch}</span>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
 
-        {/* Company Info Card */}
-        <section className="mb-stack-lg bg-surface-container-high p-4 rounded-xl">
-          <h3 className="font-label-md text-label-md text-on-surface-variant mb-4 flex items-center gap-2">
-            <span className="material-symbols-outlined text-sm">info</span>
-            About {currentJob.company.replace(' Ltd.', '').replace(' Limited', '')}
-          </h3>
-          <div className="flex gap-4 items-start">
-            <p className="font-body-md text-body-md text-on-surface-variant flex-1">
-              {currentJob.aboutCompany}
-            </p>
-          </div>
-          <div className="mt-4 pt-4 border-t border-outline-variant flex justify-between items-center">
-            <span className="text-on-surface-variant font-label-sm text-label-sm">{currentJob.sector}</span>
-            <a target="_blank" rel="noopener noreferrer" href={currentJob.website} className="text-primary font-label-md text-label-md flex items-center gap-1 hover:underline">
-              Visit Site <span class="material-symbols-outlined text-sm">open_in_new</span>
-            </a>
-          </div>
-        </section>
+            {/* Job Description Card */}
+            <div className="bg-surface-container-lowest border border-outline-variant rounded-2xl p-6 md:p-8 shadow-sm text-left">
+              <h3 className="font-headline-md text-xl font-bold text-primary mb-4 pb-2 border-b border-outline-variant/60">Job Description</h3>
+              <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-6">
+                {currentJob.description}
+              </p>
+              <h4 className="font-bold text-on-surface mb-3 text-base">Key Responsibilities:</h4>
+              <ul className="space-y-4">
+                {currentJob.responsibilities.map((resp, i) => (
+                  <li key={i} className="flex gap-3 items-start">
+                    <span className="material-symbols-outlined text-on-tertiary-container mt-0.5" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+                    <span className="font-body-md text-body-md text-on-surface-variant leading-normal">{resp}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-        {/* Related Jobs Carousel */}
-        <section className="mb-stack-lg">
-          <h3 className="font-headline-md text-headline-md text-on-surface mb-4">Similar Opportunities</h3>
-          <div className="flex overflow-x-auto gap-4 pb-4 custom-scrollbar">
-            {displaySimilar.slice(0, 3).map((job) => (
-              <Link
-                key={job.id}
-                to={`/public/jobdetails?id=${job.id}`}
-                className="min-w-[280px] bg-surface-container-lowest border border-outline-variant p-4 rounded-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow cursor-pointer"
-              >
+            {/* Eligibility & Skills Card */}
+            <div className="bg-surface-container-lowest border border-outline-variant rounded-2xl p-6 md:p-8 shadow-sm text-left">
+              <h3 className="font-headline-md text-xl font-bold text-primary mb-4 pb-2 border-b border-outline-variant/60">Eligibility &amp; Skills</h3>
+              <div className="space-y-6">
                 <div>
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-10 h-10 rounded-lg bg-surface-container border border-outline-variant p-1 flex items-center justify-center">
-                      <img alt={`${job.company} Logo`} className="w-full h-full object-contain" src={job.logo}/>
-                    </div>
-                    <div className="overflow-hidden">
-                      <h4 className="font-label-md text-label-md text-on-surface truncate">{job.title}</h4>
-                      <span className="text-on-surface-variant font-label-sm text-label-sm block truncate">{job.company} • {job.location.split(',')[0]}</span>
-                    </div>
+                  <span className="text-on-surface-variant font-label-sm text-xs uppercase tracking-wider mb-3 block">Education &amp; Experience</span>
+                  <div className="flex flex-wrap gap-2">
+                    {currentJob.education.map((edu, i) => (
+                      <span key={i} className="px-3 py-1.5 bg-primary-fixed text-on-primary-fixed font-semibold text-sm rounded-lg border border-primary-fixed-dim shadow-sm">
+                        {edu}
+                      </span>
+                    ))}
                   </div>
                 </div>
-                <div className="flex justify-between items-center mt-3 border-t border-outline-variant/30 pt-2">
-                  <span className="text-primary font-label-sm text-label-sm font-bold">{job.salary}</span>
-                  <span className="material-symbols-outlined text-primary text-lg">chevron_right</span>
+                <div>
+                  <span className="text-on-surface-variant font-label-sm text-xs uppercase tracking-wider mb-3 block">Technical Proficiencies</span>
+                  <div className="flex flex-wrap gap-2">
+                    {currentJob.skills.map((skill, i) => (
+                      <span key={i} className="px-3 py-2 bg-[#DBEAFE] text-[#1E40AF] font-bold text-sm rounded-full shadow-sm">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </Link>
-            ))}
+              </div>
+            </div>
+            
+            {/* Similar Opportunities Section */}
+            <div className="text-left">
+              <h3 className="font-headline-md text-2xl font-bold text-on-surface mb-6 px-2">Similar Opportunities</h3>
+              <div className="flex overflow-x-auto gap-4 pb-4 custom-scrollbar">
+                {displaySimilar.slice(0, 3).map((job) => (
+                  <Link
+                    key={job.id}
+                    to={`/public/jobdetails?id=${job.id}`}
+                    className="min-w-[280px] bg-surface-container-lowest border border-outline-variant p-4 rounded-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow cursor-pointer"
+                  >
+                    <div>
+                      <div className="flex items-center gap-3 mb-2">
+                        <div className="w-10 h-10 rounded-lg bg-surface-container border border-outline-variant p-1 flex items-center justify-center">
+                          <img alt={`${job.company} Logo`} className="w-full h-full object-contain" src={job.logo}/>
+                        </div>
+                        <div className="overflow-hidden">
+                          <h4 className="font-label-md text-label-md text-on-surface truncate">{job.title}</h4>
+                          <span className="text-on-surface-variant font-label-sm text-label-sm block truncate">{job.company} • {job.location.split(',')[0]}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex justify-between items-center mt-3 border-t border-outline-variant/30 pt-2">
+                      <span className="text-primary font-label-sm text-label-sm font-bold">{job.salary}</span>
+                      <span className="material-symbols-outlined text-primary text-lg">chevron_right</span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
-        </section>
+
+          {/* Right Column: Sticky Action & Employer Brief (Desktop only) */}
+          <div className="lg:col-span-4 lg:sticky lg:top-24 space-y-6 hidden lg:block">
+            
+            {/* Apply & Save Card */}
+            <div className="bg-surface-container-lowest border border-outline-variant rounded-2xl p-6 shadow-md text-left flex flex-col gap-5">
+              <div className="flex flex-col gap-1 pb-4 border-b border-outline-variant/60">
+                <span className="text-on-surface-variant font-label-sm text-xs uppercase tracking-wider">Estimated Package</span>
+                <span className="text-3xl font-extrabold text-primary">{currentJob.salary}</span>
+              </div>
+
+              <div className="space-y-4">
+                <div className="flex justify-between text-sm">
+                  <span className="text-on-surface-variant">Job Type</span>
+                  <span className="font-bold text-on-surface">{currentJob.type}</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-on-surface-variant">Location</span>
+                  <span className="font-bold text-on-surface">{currentJob.location}</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-on-surface-variant">Required Branch</span>
+                  <span className="font-bold text-primary text-right flex items-center gap-1">
+                    <span className="material-symbols-outlined text-[16px]">{currentJob.branchIcon}</span>
+                    {currentJob.branch.split(' ')[0]}
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-3 pt-4 border-t border-outline-variant/60">
+                <button 
+                  disabled={isApplied}
+                  onClick={handleApply} 
+                  className={`w-full h-12 font-headline-md text-base rounded-xl shadow-md active:scale-95 transition-all flex items-center justify-center gap-2 ${
+                    isApplied 
+                      ? 'bg-tertiary-container text-on-tertiary-container opacity-80 cursor-not-allowed' 
+                      : 'bg-secondary-container text-on-secondary-container hover:opacity-95'
+                  }`}
+                >
+                  <span>{isApplied ? 'Applied' : 'Apply Now'}</span>
+                  <span className="material-symbols-outlined text-lg">{isApplied ? 'check' : 'bolt'}</span>
+                </button>
+
+                <button 
+                  className={`w-full h-12 flex items-center justify-center border border-primary rounded-xl font-bold gap-2 transition-all active:scale-95 hover:bg-surface-container-low ${isSaved ? 'bg-primary text-white' : 'text-primary'}`} 
+                  onClick={toggleSave}
+                >
+                  <span className="material-symbols-outlined" style={{ fontVariationSettings: isSaved ? "'FILL' 1" : "'FILL' 0" }}>bookmark</span>
+                  <span>{isSaved ? 'Opportunity Saved' : 'Save Opportunity'}</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Quick Employer Brief */}
+            <div className="bg-surface-container-lowest border border-outline-variant rounded-2xl p-6 shadow-sm text-left flex flex-col gap-4">
+              <h4 className="font-bold text-on-surface flex items-center gap-2 text-base">
+                <span className="material-symbols-outlined text-primary">domain</span>
+                <span>Employer Brief</span>
+              </h4>
+              <p className="text-sm text-on-surface-variant leading-relaxed">
+                {currentJob.aboutCompany}
+              </p>
+              <div className="flex justify-between items-center pt-3 border-t border-outline-variant/60 text-xs text-on-surface-variant font-semibold">
+                <span>{currentJob.sector}</span>
+                <a target="_blank" rel="noopener noreferrer" href={currentJob.website} className="text-primary hover:underline flex items-center gap-1 font-bold">
+                  Visit Site <span className="material-symbols-outlined text-sm">open_in_new</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </main>
 
-      {/* Sticky Action Bar */}
-      <footer className="fixed bottom-0 left-0 right-0 bg-surface border-t border-outline-variant px-margin-mobile py-4 z-50">
+      {/* Sticky Action Bar (Mobile/Tablet Only) */}
+      <footer className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-outline-variant px-margin-mobile py-4 z-40 lg:hidden shadow-lg">
         <div className="max-w-md mx-auto flex items-center gap-4">
           <button 
             className={`w-12 h-12 flex items-center justify-center border border-primary rounded-xl transition-all active:scale-95 hover:bg-surface-container-low ${isSaved ? 'bg-primary text-white' : 'text-primary'}`} 
@@ -431,15 +478,100 @@ export default function Jobdetails() {
           <button 
             disabled={isApplied}
             onClick={handleApply} 
-            className={`flex-1 h-12 font-headline-md text-headline-md rounded-xl shadow-md active:scale-95 transition-all flex items-center justify-center gap-2 ${
+            className={`flex-1 h-12 font-headline-md text-base rounded-xl shadow-md active:scale-95 transition-all flex items-center justify-center gap-2 ${
               isApplied 
                 ? 'bg-tertiary-container text-on-tertiary-container opacity-80 cursor-not-allowed' 
                 : 'bg-secondary-container text-on-secondary-container hover:opacity-95'
             }`}
           >
             <span>{isApplied ? 'Applied' : 'Apply Now'}</span>
-            <span className="material-symbols-outlined">{isApplied ? 'check' : 'bolt'}</span>
+            <span className="material-symbols-outlined text-lg">{isApplied ? 'check' : 'bolt'}</span>
           </button>
+        </div>
+      </footer>
+
+      {/* Desktop Footer Info */}
+      <footer className="hidden md:block py-16 border-t border-outline-variant bg-white text-on-surface">
+        <div className="max-w-container-max mx-auto px-margin-mobile grid grid-cols-1 md:grid-cols-12 gap-8">
+          {/* Logo and Social column */}
+          <div className="md:col-span-4 flex flex-col gap-4">
+            <div className="flex items-center gap-2">
+              <div className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-white shadow-sm">
+                <span className="material-symbols-outlined text-[20px]" style={{ fontVariationSettings: "'FILL' 1" }}>school</span>
+              </div>
+              <div className="flex flex-col leading-none text-left">
+                <span className="font-bold text-lg text-primary tracking-tight">MSBTE<span className="text-secondary-container">Jobs</span></span>
+                <span className="text-[8px] font-bold text-on-surface-variant tracking-wider uppercase mt-0.5">Diploma Jobs Portal</span>
+              </div>
+            </div>
+            <p className="text-on-surface-variant text-sm max-w-sm leading-relaxed text-left">
+              Connecting Maharashtra diploma students with high-impact career opportunities in industrial powerhouses.
+            </p>
+            <div className="flex gap-3 mt-2">
+              <a href="#" className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:text-primary transition-colors border border-outline-variant/30">
+                <span className="material-symbols-outlined text-lg">public</span>
+              </a>
+              <a href="#" className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:text-primary transition-colors border border-outline-variant/30">
+                <span className="material-symbols-outlined text-lg">mail</span>
+              </a>
+              <a href="#" className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:text-primary transition-colors border border-outline-variant/30">
+                <span className="material-symbols-outlined text-lg">link</span>
+              </a>
+            </div>
+          </div>
+
+          {/* For Students Column */}
+          <div className="md:col-span-2 text-left">
+            <h5 className="font-extrabold text-sm uppercase tracking-wider text-on-surface mb-6">For Students</h5>
+            <ul className="space-y-3 text-sm text-on-surface-variant font-semibold">
+              <li><Link className="hover:text-primary transition-colors" to="/public/find-diploma-jobs">Find Jobs</Link></li>
+              <li><a className="hover:text-primary transition-colors" href="#">How It Works</a></li>
+              <li><Link className="hover:text-primary transition-colors" to="/student-portal/dashboard">Career Tips</Link></li>
+              <li><Link className="hover:text-primary transition-colors" to="/public/student-login">Student Login</Link></li>
+            </ul>
+          </div>
+
+          {/* For Employers Column */}
+          <div className="md:col-span-2 text-left">
+            <h5 className="font-extrabold text-sm uppercase tracking-wider text-on-surface mb-6">For Employers</h5>
+            <ul className="space-y-3 text-sm text-on-surface-variant font-semibold">
+              <li><Link className="hover:text-primary transition-colors" to="/public/employer-register">Post a Job</Link></li>
+              <li><a className="hover:text-primary transition-colors" href="#">Pricing Plans</a></li>
+              <li><Link className="hover:text-primary transition-colors" to="/public/student-login?tab=employer">Employer Login</Link></li>
+              <li><a className="hover:text-primary transition-colors" href="#">Resources</a></li>
+            </ul>
+          </div>
+
+          {/* Company Column */}
+          <div className="md:col-span-2 text-left">
+            <h5 className="font-extrabold text-sm uppercase tracking-wider text-on-surface mb-6">Company</h5>
+            <ul className="space-y-3 text-sm text-on-surface-variant font-semibold">
+              <li><Link className="hover:text-primary transition-colors" to="/public/about">About Us</Link></li>
+              <li><Link className="hover:text-primary transition-colors" to="/public/contact">Contact Us</Link></li>
+              <li><a className="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+              <li><a className="hover:text-primary transition-colors" href="#">Terms & Conditions</a></li>
+            </ul>
+          </div>
+
+          {/* Support Column */}
+          <div className="md:col-span-2 flex flex-col gap-4 text-left">
+            <h5 className="font-extrabold text-sm uppercase tracking-wider text-on-surface mb-2">Support</h5>
+            <div className="flex items-start gap-2 text-sm text-on-surface-variant">
+              <span className="material-symbols-outlined text-[18px] text-primary mt-0.5">call</span>
+              <span className="font-semibold">+91 12345 67890</span>
+            </div>
+            <div className="flex items-start gap-2 text-sm text-on-surface-variant">
+              <span className="material-symbols-outlined text-[18px] text-primary mt-0.5">mail</span>
+              <span className="font-semibold break-all">support@msbtejobs.in</span>
+            </div>
+            <div className="flex items-start gap-2 text-sm text-on-surface-variant">
+              <span className="material-symbols-outlined text-[18px] text-primary mt-0.5">schedule</span>
+              <span className="font-semibold">Mon - Sat: 9:00 AM - 6:00 PM</span>
+            </div>
+          </div>
+        </div>
+        <div className="text-center mt-12 pt-8 border-t border-outline-variant/60 text-xs text-on-surface-variant font-semibold">
+          © 2024 MSBTEJobs Diploma Jobs Portal. Built for the future of Maharashtra's Industry.
         </div>
       </footer>
 

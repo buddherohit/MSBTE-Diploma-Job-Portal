@@ -148,6 +148,15 @@ for (const file of fileMap) {
     fs.mkdirSync(file.destFolder, { recursive: true });
   }
 
+  // Skip files marked as manual to preserve custom React hooks and states
+  if (fs.existsSync(file.destFile)) {
+    const existingContent = fs.readFileSync(file.destFile, 'utf-8');
+    if (existingContent.includes('// MANUAL_JSX_FILE')) {
+      console.log(`Skipping (MANUAL_JSX_FILE): ${file.originalPath} -> ${path.relative(workspaceDir, file.destFile)}`);
+      continue;
+    }
+  }
+
   const jsxBody = convertHtmlToJsx(htmlContent, fileMap);
 
   const componentContent = `import React from 'react';
