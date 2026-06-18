@@ -120,8 +120,54 @@
   </style>
   </head>
 <body class="bg-background text-on-surface font-body-md blueprint-pattern min-h-screen">
+<!-- Mobile Drawer Toggle Checkbox -->
+<input type="checkbox" id="mobile-menu-toggle" class="peer hidden" />
+
+<!-- Mobile Drawer Overlay -->
+<div class="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm hidden peer-checked:block lg:hidden">
+  <label for="mobile-menu-toggle" class="absolute inset-0 cursor-default"></label>
+</div>
+
+<!-- Mobile Drawer Content -->
+<div class="fixed right-0 top-0 bottom-0 z-50 w-80 max-w-[85vw] bg-white shadow-2xl flex flex-col p-6 translate-x-full transition-transform duration-300 peer-checked:translate-x-0 lg:hidden">
+  <!-- Drawer Header -->
+  <div class="flex justify-between items-center pb-6 border-b border-outline-variant">
+    <div class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white shadow-sm">
+        <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1">school</span>
+      </div>
+      <div class="flex flex-col leading-none text-left">
+        <span class="font-headline-md text-[16px] font-extrabold text-primary tracking-tight">MSBTE<span class="text-secondary-container">Jobs</span></span>
+        <span class="text-[8px] font-bold text-on-surface-variant tracking-wider uppercase mt-0.5">Diploma Jobs Portal</span>
+      </div>
+    </div>
+    <!-- Close button -->
+    <label for="mobile-menu-toggle" class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary cursor-pointer hover:bg-surface-container-highest transition-colors">
+      <span class="material-symbols-outlined text-xl">close</span>
+    </label>
+  </div>
+  
+  <!-- Drawer Navigation Links -->
+  <nav class="flex flex-col gap-5 py-8 text-left">
+    <a class="text-body-md font-bold text-primary transition-colors duration-150" href="home.html">Home</a>
+    <a class="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" href="Find Diploma Jobs.html">Find Jobs</a>
+    <a class="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" href="industry.html">Companies</a>
+    <a class="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" href="Find Diploma Jobs.html?type=internship">Internships</a>
+    <a class="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" href="about.html">About Us</a>
+    <a class="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" href="contact.html">Contact</a>
+  </nav>
+  
+  <!-- Drawer Action Buttons -->
+  <div class="mt-auto flex flex-col gap-3 pt-6 border-t border-outline-variant">
+    <a class="w-full text-center border border-outline-variant hover:border-primary text-on-surface hover:text-primary py-3 rounded-xl font-bold text-body-md transition-all duration-200 active:scale-95 shadow-sm" href="Student Login.html">Login</a>
+    <a class="w-full text-center bg-primary hover:bg-primary/95 text-white py-3 rounded-xl font-bold text-body-md transition-all duration-200 active:scale-95 shadow-md" href="create account.html">Register</a>
+  </div>
+</div>
+
 <!-- TopAppBar -->
 <header class="fixed top-0 w-full z-50 flex items-center justify-between px-margin-mobile h-16 bg-surface shadow-sm">
+<div class="flex items-center gap-3">
+<label for="mobile-menu-toggle" class="material-symbols-outlined text-primary cursor-pointer md:hidden text-2xl select-none" data-icon="menu">menu</label>
 <a class="flex items-center gap-2 cursor-pointer" href="home.html">
 <div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-white shadow-sm">
 <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1">school</span>
@@ -131,6 +177,7 @@
 <span class="text-[9px] font-bold text-on-surface-variant tracking-wider uppercase mt-0.5">Diploma Jobs Portal</span>
 </div>
 </a>
+</div>
 <div class="hidden md:flex gap-6 items-center">
 <a class="text-on-surface-variant font-label-md hover:text-primary transition-colors" href="home.html">Portal Home</a>
 <a class="text-on-surface-variant font-label-md hover:text-primary transition-colors" href="about.html">About Us</a>
@@ -263,25 +310,7 @@
 </div>
 </div>
 </main>
-<!-- Bottom Navigation Mobile Only -->
-<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center py-2 px-4 bg-surface-container dark:bg-surface-container-highest rounded-t-xl shadow-lg">
-<div class="flex flex-col items-center justify-center text-on-surface-variant">
-<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
-<span class="font-label-sm text-label-sm">Builder</span>
-</div>
-<div class="flex flex-col items-center justify-center text-on-surface-variant">
-<span class="material-symbols-outlined" data-icon="description">description</span>
-<span class="font-label-sm text-label-sm">Templates</span>
-</div>
-<div class="flex flex-col items-center justify-center text-on-surface-variant">
-<span class="material-symbols-outlined" data-icon="model_training">model_training</span>
-<span class="font-label-sm text-label-sm">Training</span>
-</div>
-<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1">
-<span class="material-symbols-outlined" data-icon="person">person</span>
-<span class="font-label-sm text-label-sm">Profile</span>
-</div>
-</nav>
+
 <script>
         // Simple password visibility toggle logic
         document.querySelector('[data-icon="visibility"]').parentElement.addEventListener('click', function() {

@@ -75,17 +75,64 @@ export default function EmployerRegister() {
 
   return (
     <div className="w-full min-h-screen flex flex-col bg-background">
+      {/* Mobile Drawer Toggle Checkbox */}
+      <input type="checkbox" id="mobile-menu-toggle" className="peer hidden" />
+
+      {/* Mobile Drawer Overlay */}
+      <div className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm hidden peer-checked:block lg:hidden">
+        <label htmlFor="mobile-menu-toggle" className="absolute inset-0 cursor-default"></label>
+      </div>
+
+      {/* Mobile Drawer Content */}
+      <div className="fixed right-0 top-0 bottom-0 z-50 w-80 max-w-[85vw] bg-white shadow-2xl flex flex-col p-6 translate-x-full transition-transform duration-300 peer-checked:translate-x-0 lg:hidden">
+        {/* Drawer Header */}
+        <div className="flex justify-between items-center pb-6 border-b border-outline-variant">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white shadow-sm">
+              <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: "'FILL' 1" }}>school</span>
+            </div>
+            <div className="flex flex-col leading-none text-left">
+              <span className="font-headline-md text-[16px] font-extrabold text-primary tracking-tight">MSBTE<span className="text-secondary-container">Jobs</span></span>
+              <span className="text-[8px] font-bold text-on-surface-variant tracking-wider uppercase mt-0.5">Diploma Jobs Portal</span>
+            </div>
+          </div>
+          {/* Close button */}
+          <label htmlFor="mobile-menu-toggle" className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary cursor-pointer hover:bg-surface-container-highest transition-colors">
+            <span className="material-symbols-outlined text-xl">close</span>
+          </label>
+        </div>
+        
+        {/* Drawer Navigation Links */}
+        <nav className="flex flex-col gap-5 py-8 text-left">
+          <Link className="text-body-md font-bold text-primary transition-colors duration-150" to="/">Home</Link>
+          <Link className="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" to="/public/find-diploma-jobs">Find Jobs</Link>
+          <Link className="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" to="/public/industry">Companies</Link>
+          <Link className="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" to="/public/find-diploma-jobs?type=internship">Internships</Link>
+          <Link className="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" to="/public/about">About Us</Link>
+          <Link className="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" to="/public/contact">Contact</Link>
+        </nav>
+        
+        {/* Drawer Action Buttons */}
+        <div className="mt-auto flex flex-col gap-3 pt-6 border-t border-outline-variant">
+          <Link className="w-full text-center border border-outline-variant hover:border-primary text-on-surface hover:text-primary py-3 rounded-xl font-bold text-body-md transition-all duration-200 active:scale-95 shadow-sm" to="/public/student-login">Login</Link>
+          <Link className="w-full text-center bg-primary hover:bg-primary/95 text-white py-3 rounded-xl font-bold text-body-md transition-all duration-200 active:scale-95 shadow-md" to="/public/create-account">Register</Link>
+        </div>
+      </div>
+
       {/* TopAppBar */}
       <header className="fixed top-0 w-full z-50 flex items-center justify-between px-margin-mobile h-16 bg-surface shadow-sm">
-        <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-          <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-white shadow-sm">
-            <span className="material-symbols-outlined text-[24px]" style={{ fontVariationSettings: "'FILL' 1" }}>school</span>
-          </div>
-          <div className="flex flex-col leading-none text-left">
-            <span className="font-headline-md text-[20px] font-extrabold text-primary tracking-tight">MSBTE<span className="text-secondary-container">Jobs</span></span>
-            <span className="text-[9px] font-bold text-on-surface-variant tracking-wider uppercase mt-0.5">Diploma Jobs Portal</span>
-          </div>
-        </Link>
+        <div className="flex items-center gap-3">
+          <label htmlFor="mobile-menu-toggle" className="material-symbols-outlined text-primary cursor-pointer md:hidden text-2xl select-none">menu</label>
+          <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-white shadow-sm">
+              <span className="material-symbols-outlined text-[24px]" style={{ fontVariationSettings: "'FILL' 1" }}>school</span>
+            </div>
+            <div className="flex flex-col leading-none text-left">
+              <span className="font-headline-md text-[20px] font-extrabold text-primary tracking-tight">MSBTE<span className="text-secondary-container">Jobs</span></span>
+              <span className="text-[9px] font-bold text-on-surface-variant tracking-wider uppercase mt-0.5">Diploma Jobs Portal</span>
+            </div>
+          </Link>
+        </div>
         <div className="hidden md:flex gap-6 items-center">
           <Link className="text-on-surface-variant font-label-md hover:text-primary transition-colors" to="/">Portal Home</Link>
           <Link className="text-on-surface-variant font-label-md hover:text-primary transition-colors" to="/public/about">About Us</Link>
@@ -296,26 +343,6 @@ export default function EmployerRegister() {
           </div>
         </div>
       </main>
-
-      {/* Bottom Navigation Mobile Only */}
-      <nav className="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center py-2 px-4 bg-surface-container dark:bg-surface-container-highest rounded-t-xl shadow-lg">
-        <div className="flex flex-col items-center justify-center text-on-surface-variant">
-          <span className="material-symbols-outlined" data-icon="edit_note">edit_note</span>
-          <span className="font-label-sm text-label-sm">Builder</span>
-        </div>
-        <div className="flex flex-col items-center justify-center text-on-surface-variant">
-          <span className="material-symbols-outlined" data-icon="description">description</span>
-          <span className="font-label-sm text-label-sm">Templates</span>
-        </div>
-        <div className="flex flex-col items-center justify-center text-on-surface-variant">
-          <span className="material-symbols-outlined" data-icon="model_training">model_training</span>
-          <span className="font-label-sm text-label-sm">Training</span>
-        </div>
-        <div className="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1">
-          <span className="material-symbols-outlined" data-icon="person">person</span>
-          <span className="font-label-sm text-label-sm">Profile</span>
-        </div>
-      </nav>
     </div>
   );
 }
