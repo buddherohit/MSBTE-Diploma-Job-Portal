@@ -38,7 +38,9 @@ export default function StudentLogin() {
     if (user) {
       setSuccess('Logged in successfully!');
       setTimeout(() => {
-        if (activeTab === 'student') {
+        if (user.role === 'admin') {
+          navigate('/admin-portal/admin-dashboard-overview');
+        } else if (activeTab === 'student') {
           navigate('/student-portal/dashboard');
         } else {
           navigate('/employer-portal/employer-dashboard-industrial-blueprints-refined');
@@ -193,6 +195,21 @@ export default function StudentLogin() {
               >
                 Create an Account
               </Link>
+
+              <div className="text-center pt-4 border-t border-dashed border-outline-variant mt-4">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setEmailOrId('admin@msbtejobs.in');
+                    setPassword('admin123');
+                    setSuccess('Admin credentials filled!');
+                  }}
+                  className="text-xs font-semibold text-outline hover:text-primary transition-colors inline-flex items-center gap-1 cursor-pointer focus:outline-none"
+                >
+                  <span className="material-symbols-outlined text-[14px]">admin_panel_settings</span>
+                  Admin Console Access
+                </button>
+              </div>
             </form>
           </div>
 

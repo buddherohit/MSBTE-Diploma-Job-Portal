@@ -26,7 +26,11 @@ export default function EmployerLogin() {
     if (user) {
       setSuccess('Logged in successfully!');
       setTimeout(() => {
-        navigate('/employer-portal/employer-dashboard-industrial-blueprints-refined');
+        if (user.role === 'admin') {
+          navigate('/admin-portal/admin-dashboard-overview');
+        } else {
+          navigate('/employer-portal/employer-dashboard-industrial-blueprints-refined');
+        }
       }, 800);
     } else {
       setError('Invalid company credentials. Try email: employer@msbtejobs.in, password: employer123');

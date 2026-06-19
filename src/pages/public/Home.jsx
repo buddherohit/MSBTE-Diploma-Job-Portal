@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
   return (
@@ -33,18 +34,18 @@ export default function Home() {
   
   {/* Drawer Navigation Links */}
   <nav className="flex flex-col gap-5 py-8 text-left">
-    <a className="text-body-md font-bold text-primary transition-colors duration-150" href="/">Home</a>
-    <a className="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" href="/public/find-diploma-jobs">Find Jobs</a>
-    <a className="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" href="/public/industry">Companies</a>
-    <a className="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" href="/public/find-diploma-jobs?type=internship">Internships</a>
-    <a className="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" href="/public/about">About Us</a>
-    <a className="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" href="/public/contact">Contact</a>
+    <Link className="text-body-md font-bold text-primary transition-colors duration-150" to="/">Home</Link>
+    <Link className="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" to="/public/find-diploma-jobs">Find Jobs</Link>
+    <Link className="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" to="/public/industry">Companies</Link>
+    <Link className="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" to="/public/find-diploma-jobs?type=internship">Internships</Link>
+    <Link className="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" to="/public/about">About Us</Link>
+    <Link className="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" to="/public/contact">Contact</Link>
   </nav>
   
   {/* Drawer Action Buttons */}
   <div className="mt-auto flex flex-col gap-3 pt-6 border-t border-outline-variant">
-    <a className="w-full text-center border border-outline-variant hover:border-primary text-on-surface hover:text-primary py-3 rounded-xl font-bold text-body-md transition-all duration-200 active:scale-95 shadow-sm" href="/public/student-login">Login</a>
-    <a className="w-full text-center bg-primary hover:bg-primary/95 text-white py-3 rounded-xl font-bold text-body-md transition-all duration-200 active:scale-95 shadow-md" href="/public/create-account">Register</a>
+    <Link className="w-full text-center border border-outline-variant hover:border-primary text-on-surface hover:text-primary py-3 rounded-xl font-bold text-body-md transition-all duration-200 active:scale-95 shadow-sm" to="/public/student-login">Login</Link>
+    <Link className="w-full text-center bg-primary hover:bg-primary/95 text-white py-3 rounded-xl font-bold text-body-md transition-all duration-200 active:scale-95 shadow-md" to="/public/create-account">Register</Link>
   </div>
 </div>
 
@@ -53,7 +54,7 @@ export default function Home() {
 <div className="flex justify-between items-center px-margin-mobile w-full max-w-container-max mx-auto h-20">
 <div className="flex items-center gap-3">
 <label htmlFor="mobile-menu-toggle" className="material-symbols-outlined text-primary cursor-pointer lg:hidden text-2xl select-none" data-icon="menu">menu</label>
-<a className="flex items-center gap-2 cursor-pointer" href="/">
+<Link className="flex items-center gap-2 cursor-pointer" to="/">
 <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-white shadow-sm">
 <span className="material-symbols-outlined text-[24px]" style={{ fontVariationSettings: '\'FILL\' 1' }}>school</span>
 </div>
@@ -61,19 +62,19 @@ export default function Home() {
 <span className="font-headline-md text-[20px] font-extrabold text-primary tracking-tight">MSBTE<span className="text-secondary-container">Jobs</span></span>
 <span className="text-[9px] font-bold text-on-surface-variant tracking-wider uppercase mt-0.5">Diploma Jobs Portal</span>
 </div>
-</a>
+</Link>
 </div>
 <nav className="hidden lg:flex items-center gap-8">
-<a className="text-body-md font-bold text-primary border-b-2 border-primary pb-1 transition-colors duration-150" href="/">Home</a>
-<a className="text-body-md font-semibold text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 hover:border-primary/60 transition-colors duration-150" href="/public/find-diploma-jobs">Find Jobs</a>
-<a className="text-body-md font-semibold text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 hover:border-primary/60 transition-colors duration-150" href="/public/industry">Companies</a>
-<a className="text-body-md font-semibold text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 hover:border-primary/60 transition-colors duration-150" href="/public/find-diploma-jobs?type=internship">Internships</a>
-<a className="text-body-md font-semibold text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 hover:border-primary/60 transition-colors duration-150" href="/public/about">About Us</a>
-<a className="text-body-md font-semibold text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 hover:border-primary/60 transition-colors duration-150" href="/public/contact">Contact</a>
+<Link className="text-body-md font-bold text-primary border-b-2 border-primary pb-1 transition-colors duration-150" to="/">Home</Link>
+<Link className="text-body-md font-semibold text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 hover:border-primary/60 transition-colors duration-150" to="/public/find-diploma-jobs">Find Jobs</Link>
+<Link className="text-body-md font-semibold text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 hover:border-primary/60 transition-colors duration-150" to="/public/industry">Companies</Link>
+<Link className="text-body-md font-semibold text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 hover:border-primary/60 transition-colors duration-150" to="/public/find-diploma-jobs?type=internship">Internships</Link>
+<Link className="text-body-md font-semibold text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 hover:border-primary/60 transition-colors duration-150" to="/public/about">About Us</Link>
+<Link className="text-body-md font-semibold text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 hover:border-primary/60 transition-colors duration-150" to="/public/contact">Contact</Link>
 </nav>
 <div className="hidden sm:flex items-center gap-3">
-<a className="border border-outline-variant hover:border-primary text-on-surface hover:text-primary px-5 py-2 rounded-lg font-bold text-body-md transition-all duration-200 active:scale-95 shadow-sm" href="/public/student-login">Login</a>
-<a className="bg-primary hover:bg-primary/95 text-white px-5 py-2 rounded-lg font-bold text-body-md transition-all duration-200 hover:scale-105 active:scale-95 shadow-md" href="/public/create-account">Register</a>
+<Link className="border border-outline-variant hover:border-primary text-on-surface hover:text-primary px-5 py-2 rounded-lg font-bold text-body-md transition-all duration-200 active:scale-95 shadow-sm" to="/public/student-login">Login</Link>
+<Link className="bg-primary hover:bg-primary/95 text-white px-5 py-2 rounded-lg font-bold text-body-md transition-all duration-200 hover:scale-105 active:scale-95 shadow-md" to="/public/create-account">Register</Link>
 </div>
 </div>
 </header>
@@ -94,14 +95,14 @@ Find Diploma Jobs <br/>
 Connect with top companies hiring diploma students in Mechanical, Civil, Electrical, Computer and IT branches. Your engineering journey starts here.
 </p>
 <div className="flex flex-col sm:flex-row gap-4 w-full justify-start items-center">
-<a href="/public/find-diploma-jobs" className="w-full sm:w-auto bg-primary text-white hover:bg-primary/95 px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 active:scale-95 transition-all shadow-lg flex items-center justify-center gap-2">
+<Link to="/public/find-diploma-jobs" className="w-full sm:w-auto bg-primary text-white hover:bg-primary/95 px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 active:scale-95 transition-all shadow-lg flex items-center justify-center gap-2">
 <span className="material-symbols-outlined text-[22px]">search</span>
 Find Jobs
-</a>
-<a href="/public/employer-register" className="w-full sm:w-auto border-2 border-primary text-primary hover:bg-primary/5 px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2">
+</Link>
+<Link to="/public/employer-register" className="w-full sm:w-auto border-2 border-primary text-primary hover:bg-primary/5 px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2">
 <span className="material-symbols-outlined text-[22px]">group</span>
 Hire Diploma Students
-</a>
+</Link>
 </div>
 </div>
 <div className="lg:col-span-5 flex justify-center">
@@ -208,9 +209,9 @@ Hire Diploma Students
 <h3 className="font-display-lg text-headline-lg-mobile md:text-headline-lg font-extrabold text-on-surface">Latest Job <span className="text-secondary-container">Openings</span></h3>
 <p className="text-on-surface-variant mt-2">Apply to top companies and kickstart your career</p>
 </div>
-<a href="/public/find-diploma-jobs" className="mt-4 md:mt-0 border-2 border-primary text-primary hover:bg-primary/5 px-6 py-2.5 rounded-xl font-bold text-body-md hover:scale-105 active:scale-95 transition-all shadow-sm">
+<Link to="/public/find-diploma-jobs" className="mt-4 md:mt-0 border-2 border-primary text-primary hover:bg-primary/5 px-6 py-2.5 rounded-xl font-bold text-body-md hover:scale-105 active:scale-95 transition-all shadow-sm">
 View All Jobs
-</a>
+</Link>
 </div>
 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 {/* Job Card 1 */}
@@ -230,7 +231,7 @@ View All Jobs
 </div>
 <div className="flex justify-between items-center border-t border-outline-variant/60 pt-4 mt-2">
 <span className="font-extrabold text-lg text-primary">₹3.5 - 5 LPA</span>
-<a href="/public/jobdetails?id=lt-production" className="bg-primary text-white hover:bg-primary/95 px-5 py-2.5 rounded-xl font-bold text-sm transition-all hover:scale-105 active:scale-95 shadow-sm">Apply Now</a>
+<Link to="/public/jobdetails?id=lt-production" className="bg-primary text-white hover:bg-primary/95 px-5 py-2.5 rounded-xl font-bold text-sm transition-all hover:scale-105 active:scale-95 shadow-sm">Apply Now</Link>
 </div>
 </div>
 
@@ -251,7 +252,7 @@ View All Jobs
 </div>
 <div className="flex justify-between items-center border-t border-outline-variant/60 pt-4 mt-2">
 <span className="font-extrabold text-lg text-primary">₹3 - 4.5 LPA</span>
-<a href="/public/jobdetails?id=tata-design" className="bg-primary text-white hover:bg-primary/95 px-5 py-2.5 rounded-xl font-bold text-sm transition-all hover:scale-105 active:scale-95 shadow-sm">Apply Now</a>
+<Link to="/public/jobdetails?id=tata-design" className="bg-primary text-white hover:bg-primary/95 px-5 py-2.5 rounded-xl font-bold text-sm transition-all hover:scale-105 active:scale-95 shadow-sm">Apply Now</Link>
 </div>
 </div>
 
@@ -272,7 +273,7 @@ View All Jobs
 </div>
 <div className="flex justify-between items-center border-t border-outline-variant/60 pt-4 mt-2">
 <span className="font-extrabold text-lg text-primary">₹2.8 - 4 LPA</span>
-<a href="/public/jobdetails?id=shapoorji-civil" className="bg-primary text-white hover:bg-primary/95 px-5 py-2.5 rounded-xl font-bold text-sm transition-all hover:scale-105 active:scale-95 shadow-sm">Apply Now</a>
+<Link to="/public/jobdetails?id=shapoorji-civil" className="bg-primary text-white hover:bg-primary/95 px-5 py-2.5 rounded-xl font-bold text-sm transition-all hover:scale-105 active:scale-95 shadow-sm">Apply Now</Link>
 </div>
 </div>
 
@@ -293,7 +294,7 @@ View All Jobs
 </div>
 <div className="flex justify-between items-center border-t border-outline-variant/60 pt-4 mt-2">
 <span className="font-extrabold text-lg text-primary">₹2.5 - 3.5 LPA</span>
-<a href="/public/jobdetails?id=siemens-electrical" className="bg-primary text-white hover:bg-primary/95 px-5 py-2.5 rounded-xl font-bold text-sm transition-all hover:scale-105 active:scale-95 shadow-sm">Apply Now</a>
+<Link to="/public/jobdetails?id=siemens-electrical" className="bg-primary text-white hover:bg-primary/95 px-5 py-2.5 rounded-xl font-bold text-sm transition-all hover:scale-105 active:scale-95 shadow-sm">Apply Now</Link>
 </div>
 </div>
 </div>
@@ -308,59 +309,59 @@ View All Jobs
 </div>
 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
 {/* Mechanical */}
-<a href="/public/find-diploma-jobs?branch=Mechanical" className="group bg-white p-6 rounded-2xl border border-outline-variant flex flex-col items-center text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer">
+<Link to="/public/find-diploma-jobs?branch=Mechanical" className="group bg-white p-6 rounded-2xl border border-outline-variant flex flex-col items-center text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer">
 <div className="w-16 h-16 rounded-full bg-primary-fixed/40 flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
 <span className="material-symbols-outlined text-3xl" data-icon="settings">settings</span>
 </div>
 <span className="font-bold text-on-surface text-lg">Mechanical</span>
 <span className="text-on-surface-variant text-sm mt-1">520+ Jobs</span>
-</a>
+</Link>
 {/* Civil */}
-<a href="/public/find-diploma-jobs?branch=Civil" className="group bg-white p-6 rounded-2xl border border-outline-variant flex flex-col items-center text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer">
+<Link to="/public/find-diploma-jobs?branch=Civil" className="group bg-white p-6 rounded-2xl border border-outline-variant flex flex-col items-center text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer">
 <div className="w-16 h-16 rounded-full bg-primary-fixed/40 flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
 <span className="material-symbols-outlined text-3xl" data-icon="apartment">apartment</span>
 </div>
 <span className="font-bold text-on-surface text-lg">Civil</span>
 <span className="text-on-surface-variant text-sm mt-1">320+ Jobs</span>
-</a>
+</Link>
 {/* Electrical */}
-<a href="/public/find-diploma-jobs?branch=Electrical" className="group bg-white p-6 rounded-2xl border border-outline-variant flex flex-col items-center text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer">
+<Link to="/public/find-diploma-jobs?branch=Electrical" className="group bg-white p-6 rounded-2xl border border-outline-variant flex flex-col items-center text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer">
 <div className="w-16 h-16 rounded-full bg-primary-fixed/40 flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
 <span className="material-symbols-outlined text-3xl" data-icon="bolt">bolt</span>
 </div>
 <span className="font-bold text-on-surface text-lg">Electrical</span>
 <span className="text-on-surface-variant text-sm mt-1">280+ Jobs</span>
-</a>
+</Link>
 {/* Computer */}
-<a href="/public/find-diploma-jobs?branch=Computer" className="group bg-white p-6 rounded-2xl border border-outline-variant flex flex-col items-center text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer">
+<Link to="/public/find-diploma-jobs?branch=Computer" className="group bg-white p-6 rounded-2xl border border-outline-variant flex flex-col items-center text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer">
 <div className="w-16 h-16 rounded-full bg-primary-fixed/40 flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
 <span className="material-symbols-outlined text-3xl" data-icon="terminal">terminal</span>
 </div>
 <span className="font-bold text-on-surface text-lg">Computer</span>
 <span className="text-on-surface-variant text-sm mt-1">680+ Jobs</span>
-</a>
+</Link>
 {/* Electronics */}
-<a href="/public/find-diploma-jobs?branch=Electronics" className="group bg-white p-6 rounded-2xl border border-outline-variant flex flex-col items-center text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer">
+<Link to="/public/find-diploma-jobs?branch=Electronics" className="group bg-white p-6 rounded-2xl border border-outline-variant flex flex-col items-center text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer">
 <div className="w-16 h-16 rounded-full bg-primary-fixed/40 flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
 <span className="material-symbols-outlined text-3xl" data-icon="memory">memory</span>
 </div>
 <span className="font-bold text-on-surface text-lg">Electronics</span>
 <span className="text-on-surface-variant text-sm mt-1">260+ Jobs</span>
-</a>
+</Link>
 {/* IT */}
-<a href="/public/find-diploma-jobs?branch=IT" className="group bg-white p-6 rounded-2xl border border-outline-variant flex flex-col items-center text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer">
+<Link to="/public/find-diploma-jobs?branch=IT" className="group bg-white p-6 rounded-2xl border border-outline-variant flex flex-col items-center text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer">
 <div className="w-16 h-16 rounded-full bg-primary-fixed/40 flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
 <span className="material-symbols-outlined text-3xl" data-icon="cloud">cloud</span>
 </div>
 <span className="font-bold text-on-surface text-lg">IT</span>
 <span className="text-on-surface-variant text-sm mt-1">420+ Jobs</span>
-</a>
+</Link>
 </div>
 <div className="flex justify-center mt-10">
-<a href="/public/find-diploma-jobs" className="border-2 border-primary text-primary hover:bg-primary/5 px-6 py-2.5 rounded-xl font-bold text-body-md hover:scale-105 active:scale-95 transition-all flex items-center gap-2 justify-center w-fit shadow-sm">
+<Link to="/public/find-diploma-jobs" className="border-2 border-primary text-primary hover:bg-primary/5 px-6 py-2.5 rounded-xl font-bold text-body-md hover:scale-105 active:scale-95 transition-all flex items-center gap-2 justify-center w-fit shadow-sm">
 View All Categories
 <span className="material-symbols-outlined text-lg">arrow_forward</span>
-</a>
+</Link>
 </div>
 </div>
 </section>
@@ -509,8 +510,8 @@ View All Categories
 <p className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">Join thousands of diploma students who found their dream job through MSBTEJobs.</p>
 </div>
 <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto flex-shrink-0">
-<a href="/public/create-account" className="bg-primary text-white hover:bg-primary/95 px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 active:scale-95 transition-all shadow-md text-center block sm:inline-block">Register as Student</a>
-<a href="/public/employer-register" className="border-2 border-outline-variant hover:border-primary text-on-surface hover:text-primary bg-transparent px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 active:scale-95 transition-all text-center block sm:inline-block">Register as Employer</a>
+<Link to="/public/create-account" className="bg-primary text-white hover:bg-primary/95 px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 active:scale-95 transition-all shadow-md text-center block sm:inline-block">Register as Student</Link>
+<Link to="/public/employer-register" className="border-2 border-outline-variant hover:border-primary text-on-surface hover:text-primary bg-transparent px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 active:scale-95 transition-all text-center block sm:inline-block">Register as Employer</Link>
 </div>
 </div>
 </section>
@@ -548,10 +549,10 @@ Connecting Maharashtra diploma students with high-impact career opportunities in
 <div className="md:col-span-2">
 <h5 className="font-extrabold text-sm uppercase tracking-wider text-on-surface mb-6">For Students</h5>
 <ul className="space-y-3 text-sm text-on-surface-variant font-semibold">
-<li><a className="hover:text-primary transition-colors" href="/public/find-diploma-jobs">Find Jobs</a></li>
+<li><Link className="hover:text-primary transition-colors" to="/public/find-diploma-jobs">Find Jobs</Link></li>
 <li><a className="hover:text-primary transition-colors" href="#">How It Works</a></li>
-<li><a className="hover:text-primary transition-colors" href="/student-portal/dashboard">Career Tips</a></li>
-<li><a className="hover:text-primary transition-colors" href="/public/student-login">Student Login</a></li>
+<li><Link className="hover:text-primary transition-colors" to="/student-portal/dashboard">Career Tips</Link></li>
+<li><Link className="hover:text-primary transition-colors" to="/public/student-login">Student Login</Link></li>
 </ul>
 </div>
 
@@ -559,9 +560,9 @@ Connecting Maharashtra diploma students with high-impact career opportunities in
 <div className="md:col-span-2">
 <h5 className="font-extrabold text-sm uppercase tracking-wider text-on-surface mb-6">For Employers</h5>
 <ul className="space-y-3 text-sm text-on-surface-variant font-semibold">
-<li><a className="hover:text-primary transition-colors" href="/public/employer-register">Post a Job</a></li>
+<li><Link className="hover:text-primary transition-colors" to="/public/employer-register">Post a Job</Link></li>
 <li><a className="hover:text-primary transition-colors" href="#">Pricing Plans</a></li>
-<li><a className="hover:text-primary transition-colors" href="/public/student-login">Employer Login</a></li>
+<li><Link className="hover:text-primary transition-colors" to="/public/student-login">Employer Login</Link></li>
 <li><a className="hover:text-primary transition-colors" href="#">Resources</a></li>
 </ul>
 </div>
@@ -570,8 +571,8 @@ Connecting Maharashtra diploma students with high-impact career opportunities in
 <div className="md:col-span-2">
 <h5 className="font-extrabold text-sm uppercase tracking-wider text-on-surface mb-6">Company</h5>
 <ul className="space-y-3 text-sm text-on-surface-variant font-semibold">
-<li><a className="hover:text-primary transition-colors" href="/public/about">About Us</a></li>
-<li><a className="hover:text-primary transition-colors" href="/public/contact">Contact Us</a></li>
+<li><Link className="hover:text-primary transition-colors" to="/public/about">About Us</Link></li>
+<li><Link className="hover:text-primary transition-colors" to="/public/contact">Contact Us</Link></li>
 <li><a className="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
 <li><a className="hover:text-primary transition-colors" href="#">Terms & Conditions</a></li>
 </ul>

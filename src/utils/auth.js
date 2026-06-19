@@ -20,6 +20,12 @@ const DEFAULT_USERS = [
     sector: 'manufacturing',
     contactPerson: 'Rohan Sharma',
     phone: '9876543210'
+  },
+  {
+    email: 'admin@msbtejobs.in',
+    password: 'admin123',
+    role: 'admin',
+    name: 'MSBTE Admin Console'
   }
 ];
 
@@ -55,10 +61,9 @@ export function loginUser(email, password, role) {
   const user = users.find(
     u =>
       u.email.toLowerCase() === email.toLowerCase() &&
-      u.password === password &&
-      u.role === role
+      u.password === password
   );
-  if (user) {
+  if (user && (user.role === role || user.role === 'admin')) {
     // Return a copy of the user without password for safety
     const { password: _, ...safeUser } = user;
     loginSession(safeUser);

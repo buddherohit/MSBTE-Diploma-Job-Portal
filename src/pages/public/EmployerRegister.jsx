@@ -1,7 +1,7 @@
 // MANUAL_JSX_FILE
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { registerUser } from '../../utils/auth';
+import { registerUser, loginSession } from '../../utils/auth';
 
 export default function EmployerRegister() {
   const [companyName, setCompanyName] = useState('');
@@ -64,9 +64,11 @@ export default function EmployerRegister() {
 
     try {
       registerUser(newEmployer);
-      setSuccess('Organization registered successfully! Redirecting to login...');
+      const { password: _, ...safeUser } = newEmployer;
+      loginSession(safeUser);
+      setSuccess('Organization registered successfully! Redirecting to dashboard...');
       setTimeout(() => {
-        navigate('/public/student-login');
+        navigate('/employer-portal/employer-dashboard-industrial-blueprints-refined');
       }, 1500);
     } catch (err) {
       setError(err.message || 'Registration failed. Please try again.');

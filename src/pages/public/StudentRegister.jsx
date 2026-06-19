@@ -1,7 +1,7 @@
 // MANUAL_JSX_FILE
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { registerUser } from '../../utils/auth';
+import { registerUser, loginSession } from '../../utils/auth';
 
 export default function StudentRegister() {
   const [fullName, setFullName] = useState('');
@@ -61,9 +61,11 @@ export default function StudentRegister() {
 
     try {
       registerUser(newUser);
-      setSuccess('Account created successfully! Redirecting to login...');
+      const { password: _, ...safeUser } = newUser;
+      loginSession(safeUser);
+      setSuccess('Account created successfully! Redirecting to dashboard...');
       setTimeout(() => {
-        navigate('/public/student-login');
+        navigate('/student-portal/dashboard');
       }, 1500);
     } catch (err) {
       setError(err.message || 'Registration failed. Please try again.');

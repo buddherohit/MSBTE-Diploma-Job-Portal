@@ -1,3 +1,4 @@
+// MANUAL_JSX_FILE
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -169,18 +170,18 @@ export default function Contact() {
   
   {/* Drawer Navigation Links */}
   <nav className="flex flex-col gap-5 py-8 text-left">
-    <a className="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" href="/">Home</a>
-    <a className="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" href="/public/find-diploma-jobs">Find Jobs</a>
-    <a className="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" href="/public/industry">Companies</a>
-    <a className="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" href="/public/find-diploma-jobs?type=internship">Internships</a>
-    <a className="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" href="/public/about">About Us</a>
-    <a className="text-body-md font-bold text-primary transition-colors duration-150" href="/public/contact">Contact</a>
+    <Link className="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" to="/">Home</Link>
+    <Link className="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" to="/public/find-diploma-jobs">Find Jobs</Link>
+    <Link className="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" to="/public/industry">Companies</Link>
+    <Link className="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" to="/public/find-diploma-jobs?type=internship">Internships</Link>
+    <Link className="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150" to="/public/about">About Us</Link>
+    <Link className="text-body-md font-bold text-primary transition-colors duration-150" to="/public/contact">Contact</Link>
   </nav>
   
   {/* Drawer Action Buttons */}
   <div className="mt-auto flex flex-col gap-3 pt-6 border-t border-outline-variant">
-    <a className="w-full text-center border border-outline-variant hover:border-primary text-on-surface hover:text-primary py-3 rounded-xl font-bold text-body-md transition-all duration-200 active:scale-95 shadow-sm" href="/public/student-login">Login</a>
-    <a className="w-full text-center bg-primary hover:bg-primary/95 text-white py-3 rounded-xl font-bold text-body-md transition-all duration-200 active:scale-95 shadow-md" href="/public/create-account">Register</a>
+    <Link className="w-full text-center border border-outline-variant hover:border-primary text-on-surface hover:text-primary py-3 rounded-xl font-bold text-body-md transition-all duration-200 active:scale-95 shadow-sm" to="/public/student-login">Login</Link>
+    <Link className="w-full text-center bg-primary hover:bg-primary/95 text-white py-3 rounded-xl font-bold text-body-md transition-all duration-200 active:scale-95 shadow-md" to="/public/create-account">Register</Link>
   </div>
 </div>
 
@@ -189,7 +190,7 @@ export default function Contact() {
 <div className="flex justify-between items-center px-margin-mobile w-full max-w-container-max mx-auto h-20">
 <div className="flex items-center gap-3">
 <label htmlFor="mobile-menu-toggle" className="material-symbols-outlined text-primary cursor-pointer lg:hidden text-2xl select-none" data-icon="menu">menu</label>
-<a className="flex items-center gap-2 cursor-pointer" href="/">
+<Link className="flex items-center gap-2 cursor-pointer" to="/">
 <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-white shadow-sm">
 <span className="material-symbols-outlined text-[24px]" style={{ fontVariationSettings: '\'FILL\' 1' }}>school</span>
 </div>
@@ -197,19 +198,19 @@ export default function Contact() {
 <span className="font-headline-md text-[20px] font-extrabold text-primary tracking-tight">MSBTE<span className="text-secondary-container">Jobs</span></span>
 <span className="text-[9px] font-bold text-on-surface-variant tracking-wider uppercase mt-0.5">Diploma Jobs Portal</span>
 </div>
-</a>
+</Link>
 </div>
 <nav className="hidden lg:flex items-center gap-8">
-<a className="text-body-md font-semibold text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 hover:border-primary/60 transition-colors duration-150" href="/">Home</a>
-<a className="text-body-md font-semibold text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 hover:border-primary/60 transition-colors duration-150" href="/public/find-diploma-jobs">Find Jobs</a>
-<a className="text-body-md font-semibold text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 hover:border-primary/60 transition-colors duration-150" href="/public/industry">Companies</a>
-<a className="text-body-md font-semibold text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 hover:border-primary/60 transition-colors duration-150" href="/public/find-diploma-jobs?type=internship">Internships</a>
-<a className="text-body-md font-semibold text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 hover:border-primary/60 transition-colors duration-150" href="/public/about">About Us</a>
-<a className="text-body-md font-bold text-primary border-b-2 border-primary pb-1 transition-colors duration-150" href="/public/contact">Contact</a>
+<Link className="text-body-md font-semibold text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 hover:border-primary/60 transition-colors duration-150" to="/">Home</Link>
+<Link className="text-body-md font-semibold text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 hover:border-primary/60 transition-colors duration-150" to="/public/find-diploma-jobs">Find Jobs</Link>
+<Link className="text-body-md font-semibold text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 hover:border-primary/60 transition-colors duration-150" to="/public/industry">Companies</Link>
+<Link className="text-body-md font-semibold text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 hover:border-primary/60 transition-colors duration-150" to="/public/find-diploma-jobs?type=internship">Internships</Link>
+<Link className="text-body-md font-semibold text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 hover:border-primary/60 transition-colors duration-150" to="/public/about">About Us</Link>
+<Link className="text-body-md font-bold text-primary border-b-2 border-primary pb-1 transition-colors duration-150" to="/public/contact">Contact</Link>
 </nav>
 <div className="hidden sm:flex items-center gap-3">
-<a className="border border-outline-variant hover:border-primary text-on-surface hover:text-primary px-5 py-2 rounded-lg font-bold text-body-md transition-all duration-200 active:scale-95 shadow-sm" href="/public/student-login">Login</a>
-<a className="bg-primary hover:bg-primary/95 text-white px-5 py-2 rounded-lg font-bold text-body-md transition-all duration-200 hover:scale-105 active:scale-95 shadow-md" href="/public/create-account">Register</a>
+<Link className="border border-outline-variant hover:border-primary text-on-surface hover:text-primary px-5 py-2 rounded-lg font-bold text-body-md transition-all duration-200 active:scale-95 shadow-sm" to="/public/student-login">Login</Link>
+<Link className="bg-primary hover:bg-primary/95 text-white px-5 py-2 rounded-lg font-bold text-body-md transition-all duration-200 hover:scale-105 active:scale-95 shadow-md" to="/public/create-account">Register</Link>
 </div>
 </div>
 </header>
@@ -421,10 +422,10 @@ Connecting Maharashtra diploma students with high-impact career opportunities in
 <div className="md:col-span-2">
 <h5 className="font-extrabold text-sm uppercase tracking-wider text-on-surface mb-6">For Students</h5>
 <ul className="space-y-3 text-sm text-on-surface-variant font-semibold">
-<li><a className="hover:text-primary transition-colors" href="/public/find-diploma-jobs">Find Jobs</a></li>
+<li><Link className="hover:text-primary transition-colors" to="/public/find-diploma-jobs">Find Jobs</Link></li>
 <li><a className="hover:text-primary transition-colors" href="#">How It Works</a></li>
-<li><a className="hover:text-primary transition-colors" href="/student-portal/dashboard">Career Tips</a></li>
-<li><a className="hover:text-primary transition-colors" href="/public/student-login">Student Login</a></li>
+<li><Link className="hover:text-primary transition-colors" to="/student-portal/dashboard">Career Tips</Link></li>
+<li><Link className="hover:text-primary transition-colors" to="/public/student-login">Student Login</Link></li>
 </ul>
 </div>
 
@@ -432,9 +433,9 @@ Connecting Maharashtra diploma students with high-impact career opportunities in
 <div className="md:col-span-2">
 <h5 className="font-extrabold text-sm uppercase tracking-wider text-on-surface mb-6">For Employers</h5>
 <ul className="space-y-3 text-sm text-on-surface-variant font-semibold">
-<li><a className="hover:text-primary transition-colors" href="/public/employer-register">Post a Job</a></li>
+<li><Link className="hover:text-primary transition-colors" to="/public/employer-register">Post a Job</Link></li>
 <li><a className="hover:text-primary transition-colors" href="#">Pricing Plans</a></li>
-<li><a className="hover:text-primary transition-colors" href="/public/student-login">Employer Login</a></li>
+<li><Link className="hover:text-primary transition-colors" to="/public/student-login">Employer Login</Link></li>
 <li><a className="hover:text-primary transition-colors" href="#">Resources</a></li>
 </ul>
 </div>
@@ -443,8 +444,8 @@ Connecting Maharashtra diploma students with high-impact career opportunities in
 <div className="md:col-span-2">
 <h5 className="font-extrabold text-sm uppercase tracking-wider text-on-surface mb-6">Company</h5>
 <ul className="space-y-3 text-sm text-on-surface-variant font-semibold">
-<li><a className="hover:text-primary transition-colors" href="/public/about">About Us</a></li>
-<li><a className="hover:text-primary transition-colors" href="/public/contact">Contact Us</a></li>
+<li><Link className="hover:text-primary transition-colors" to="/public/about">About Us</Link></li>
+<li><Link className="hover:text-primary transition-colors" to="/public/contact">Contact Us</Link></li>
 <li><a className="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
 <li><a className="hover:text-primary transition-colors" href="#">Terms & Conditions</a></li>
 </ul>

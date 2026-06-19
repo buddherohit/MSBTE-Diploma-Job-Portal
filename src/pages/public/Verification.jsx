@@ -1,4 +1,6 @@
+// MANUAL_JSX_FILE
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Verification() {
   return (
@@ -6,7 +8,7 @@ export default function Verification() {
       
     {/* Top Navigation */}
     <header className="fixed top-0 w-full h-16 flex items-center justify-between px-margin-mobile bg-surface shadow-sm z-50">
-        <a className="flex items-center gap-2 cursor-pointer" href="/">
+        <Link className="flex items-center gap-2 cursor-pointer" to="/">
             <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-white shadow-sm">
                 <span className="material-symbols-outlined text-[24px]" style={{ fontVariationSettings: '\'FILL\' 1' }}>school</span>
             </div>
@@ -14,7 +16,7 @@ export default function Verification() {
                 <span className="font-headline-md text-[20px] font-extrabold text-primary tracking-tight">MSBTE<span className="text-secondary-container">Jobs</span></span>
                 <span className="text-[9px] font-bold text-on-surface-variant tracking-wider uppercase mt-0.5">Diploma Jobs Portal</span>
             </div>
-        </a>
+        </Link>
     </header>
 
     <main className="flex-grow flex items-center justify-center px-margin-mobile py-24 relative overflow-hidden">
@@ -73,9 +75,9 @@ export default function Verification() {
                     </div>
 
                     <div className="text-center mt-2">
-                        <a className="text-sm font-bold text-primary hover:underline flex items-center justify-center gap-1" href="/public/student-login">
+                        <Link className="text-sm font-bold text-primary hover:underline flex items-center justify-center gap-1" to="/public/student-login">
                             <span className="material-symbols-outlined text-sm" data-icon="arrow_back">arrow_back</span> Back to Login
-                        </a>
+                        </Link>
                     </div>
                 </form>
 
@@ -88,10 +90,10 @@ export default function Verification() {
                         <h2 className="text-xl font-bold text-on-surface font-headline-md">Account Verified!</h2>
                         <p className="text-on-surface-variant text-sm">Your account has been verified successfully. Redirecting you to Login in a moment...</p>
                     </div>
-                    <a className="w-full bg-primary text-white py-3 rounded-lg font-bold hover:brightness-110 transition-all flex items-center justify-center gap-2 shadow-md" href="/public/student-login">
+                    <Link className="w-full bg-primary text-white py-3 rounded-lg font-bold hover:brightness-110 transition-all flex items-center justify-center gap-2 shadow-md" to="/public/student-login">
                         Go to Login
                         <span className="material-symbols-outlined">login</span>
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>
