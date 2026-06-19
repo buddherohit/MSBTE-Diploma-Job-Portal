@@ -14,9 +14,13 @@ import {
 import { auth, db } from "./firebase";
 
 const SESSION_KEY = 'msbte_session';
+const USERS_KEY = 'msbte_users';
+const IS_MOCK = !import.meta.env.VITE_FIREBASE_API_KEY || import.meta.env.VITE_FIREBASE_API_KEY === "mock-api-key";
 
 export function initAuth() {
-  // No-op for compatibility with legacy local storage setup
+  if (IS_MOCK) {
+    getMockUsers();
+  }
 }
 
 const DEFAULT_USERS_TO_SEED = [
@@ -107,7 +111,30 @@ const DEFAULT_USERS_TO_SEED = [
   }
 ];
 
+const DEFAULT_USERS_WITH_PASSWORDS = DEFAULT_USERS_TO_SEED.map(u => ({
+  ...u,
+  password: u.email === 'student@msbtejobs.in' ? 'student123' :
+            u.email === 'employer@msbtejobs.in' ? 'employer123' :
+            u.email === 'admin@msbtejobs.in' ? 'admin123' : 'student123'
+}));
+
+export function getMockUsers() {
+  if (typeof window === 'undefined') return [];
+  if (!localStorage.getItem(USERS_KEY)) {
+    localStorage.setItem(USERS_KEY, JSON.stringify(DEFAULT_USERS_WITH_PASSWORDS));
+  }
+  try {
+    return JSON.parse(localStorage.getItem(USERS_KEY)) || [];
+  } catch (e) {
+    return [];
+  }
+}
+
 export async function seedUsers() {
+  if (IS_MOCK) {
+    getMockUsers();
+    return;
+  }
   try {
     const usersCol = collection(db, "users");
     const snapshot = await getDocs(usersCol);
@@ -123,6 +150,9 @@ export async function seedUsers() {
 }
 
 export async function getUsers() {
+  if (IS_MOCK) {
+    return getMockUsers();
+  }
   await seedUsers();
   try {
     const snapshot = await getDocs(collection(db, "users"));
@@ -158,6 +188,19 @@ export function logoutSession() {
 }
 
 export async function registerUser(user) {
+  if (IS_MOCK) {
+    const users = getMockUsers();
+    if (users.some(u => u.email.toLowerCase() === user.email.toLowerCase())) {
+      throw new Error('Email is already registered!');
+    }
+    const uid = user.uid || `user-${Math.floor(100000 + Math.random() * 900000)}`;
+    const { password, ...profileData } = user;
+    const newUser = { uid, ...profileData, password };
+    users.push(newUser);
+    localStorage.setItem(USERS_KEY, JSON.stringify(users));
+    return { uid, ...profileData };
+  }
+
   // 1. Create user in Firebase Auth
   const userCredential = await createUserWithEmailAndPassword(auth, user.email, user.password);
   const uid = userCredential.user.uid;
@@ -174,6 +217,24 @@ export async function registerUser(user) {
 }
 
 export async function loginUser(email, password, role) {
+  if (IS_MOCK) {
+    const users = getMockUsers();
+    const user = users.find(
+      u => u.email.toLowerCase() === email.toLowerCase() && u.password === password
+    );
+    if (user) {
+      if (user.role === role || user.role === 'admin') {
+        const { password: _, ...safeUser } = user;
+        loginSession(safeUser);
+        return safeUser;
+      } else {
+        throw new Error(`Unauthorized access: user does not have ${role} privileges.`);
+      }
+    } else {
+      throw new Error('Invalid credentials. Check your email/ID and password.');
+    }
+  }
+
   // 1. Authenticate with Firebase Auth
   const userCredential = await signInWithEmailAndPassword(auth, email, password);
   const uid = userCredential.user.uid;
@@ -210,6 +271,17 @@ export async function updateUserProfile(updatedUser) {
   // 1. Update local storage session
   loginSession(updatedUser);
 
+  if (IS_MOCK) {
+    const users = getMockUsers();
+    const index = users.findIndex(u => u.email.toLowerCase() === updatedUser.email.toLowerCase());
+    if (index !== -1) {
+      const oldPassword = users[index].password;
+      users[index] = { ...updatedUser, password: oldPassword };
+      localStorage.setItem(USERS_KEY, JSON.stringify(users));
+    }
+    return;
+  }
+
   // 2. Persist update in Firestore
   const currentUser = auth.currentUser;
   const uid = currentUser ? currentUser.uid : updatedUser.uid;
@@ -220,6 +292,18 @@ export async function updateUserProfile(updatedUser) {
 }
 
 export async function updateUserVerificationStatus(uid, status, verified) {
+  if (IS_MOCK) {
+    const users = getMockUsers();
+    const index = users.findIndex(u => u.uid === uid);
+    if (index !== -1) {
+      users[index].status = status;
+      users[index].verified = verified;
+      localStorage.setItem(USERS_KEY, JSON.stringify(users));
+      return true;
+    }
+    return false;
+  }
+
   try {
     const userDocRef = doc(db, "users", uid);
     await updateDoc(userDocRef, {

@@ -320,7 +320,40 @@ const DEFAULT_APPLICATIONS = [
   }
 ];
 
+const IS_MOCK = !import.meta.env.VITE_FIREBASE_API_KEY || import.meta.env.VITE_FIREBASE_API_KEY === "mock-api-key";
+const JOBS_KEY = 'msbte_jobs';
+const APPLICATIONS_KEY = 'msbte_applications';
+
+function getMockJobs() {
+  if (typeof window === 'undefined') return [];
+  if (!localStorage.getItem(JOBS_KEY)) {
+    localStorage.setItem(JOBS_KEY, JSON.stringify(DEFAULT_JOBS));
+  }
+  try {
+    return JSON.parse(localStorage.getItem(JOBS_KEY)) || [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function getMockApplications() {
+  if (typeof window === 'undefined') return [];
+  if (!localStorage.getItem(APPLICATIONS_KEY)) {
+    localStorage.setItem(APPLICATIONS_KEY, JSON.stringify(DEFAULT_APPLICATIONS));
+  }
+  try {
+    return JSON.parse(localStorage.getItem(APPLICATIONS_KEY)) || [];
+  } catch (e) {
+    return [];
+  }
+}
+
 export async function seedInitialData() {
+  if (IS_MOCK) {
+    getMockJobs();
+    getMockApplications();
+    return;
+  }
   try {
     const jobsCol = collection(db, "jobs");
     const jobsSnapshot = await getDocs(jobsCol);
@@ -345,6 +378,9 @@ export async function seedInitialData() {
 }
 
 export async function getJobs() {
+  if (IS_MOCK) {
+    return getMockJobs();
+  }
   await seedInitialData();
   try {
     const jobsSnapshot = await getDocs(collection(db, "jobs"));
@@ -360,6 +396,10 @@ export async function getJobs() {
 }
 
 export async function getJobById(id) {
+  if (IS_MOCK) {
+    const jobs = getMockJobs();
+    return jobs.find(job => job.id === id) || null;
+  }
   try {
     const docSnap = await getDoc(doc(db, "jobs", id));
     if (docSnap.exists()) {
@@ -373,6 +413,20 @@ export async function getJobById(id) {
 }
 
 export async function addJob(job) {
+  if (IS_MOCK) {
+    const jobs = getMockJobs();
+    const jobId = job.id || `job-${Math.floor(100000 + Math.random() * 900000)}`;
+    const newJob = {
+      ...job,
+      id: jobId,
+      salaryVal: typeof job.salaryVal === 'number' ? job.salaryVal : 300000,
+      logo: job.logo || "https://upload.wikimedia.org/wikipedia/commons/2/25/Cognizant_logo_2022.svg",
+      badge: job.badge || "New"
+    };
+    jobs.unshift(newJob);
+    localStorage.setItem(JOBS_KEY, JSON.stringify(jobs));
+    return newJob;
+  }
   try {
     const jobId = job.id || `job-${Math.floor(100000 + Math.random() * 900000)}`;
     const newJob = {
@@ -391,6 +445,9 @@ export async function addJob(job) {
 }
 
 export async function getApplications() {
+  if (IS_MOCK) {
+    return getMockApplications();
+  }
   await seedInitialData();
   try {
     const appsSnapshot = await getDocs(collection(db, "applications"));
@@ -406,6 +463,20 @@ export async function getApplications() {
 }
 
 export async function applyToJob(application) {
+  if (IS_MOCK) {
+    const apps = getMockApplications();
+    const refId = `APP-${Math.floor(10000 + Math.random() * 90000)}`;
+    const newApp = {
+      id: refId,
+      date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+      status: 'Under Review',
+      updatedAt: 'Just now',
+      ...application
+    };
+    apps.unshift(newApp);
+    localStorage.setItem(APPLICATIONS_KEY, JSON.stringify(apps));
+    return newApp;
+  }
   try {
     const refId = `APP-${Math.floor(10000 + Math.random() * 90000)}`;
     const newApp = {
@@ -424,6 +495,10 @@ export async function applyToJob(application) {
 }
 
 export async function getApplicationsByStudent(studentEmail) {
+  if (IS_MOCK) {
+    const apps = getMockApplications();
+    return apps.filter(app => app.studentEmail.toLowerCase() === studentEmail.toLowerCase());
+  }
   try {
     const q = query(collection(db, "applications"), where("studentEmail", "==", studentEmail));
     const snapshot = await getDocs(q);
@@ -439,6 +514,10 @@ export async function getApplicationsByStudent(studentEmail) {
 }
 
 export async function getApplicationsByEmployer(companyName) {
+  if (IS_MOCK) {
+    const apps = getMockApplications();
+    return apps.filter(app => app.company.toLowerCase() === companyName.toLowerCase());
+  }
   try {
     const q = query(collection(db, "applications"), where("company", "==", companyName));
     const snapshot = await getDocs(q);
@@ -454,6 +533,17 @@ export async function getApplicationsByEmployer(companyName) {
 }
 
 export async function updateApplicationStatus(appId, status) {
+  if (IS_MOCK) {
+    const apps = getMockApplications();
+    const index = apps.findIndex(app => app.id === appId);
+    if (index !== -1) {
+      apps[index].status = status;
+      apps[index].updatedAt = 'Just now';
+      localStorage.setItem(APPLICATIONS_KEY, JSON.stringify(apps));
+      return apps[index];
+    }
+    return null;
+  }
   try {
     const appRef = doc(db, "applications", appId);
     await updateDoc(appRef, {
@@ -469,6 +559,12 @@ export async function updateApplicationStatus(appId, status) {
 }
 
 export async function deleteApplication(appId) {
+  if (IS_MOCK) {
+    const apps = getMockApplications();
+    const updated = apps.filter(app => app.id !== appId);
+    localStorage.setItem(APPLICATIONS_KEY, JSON.stringify(updated));
+    return true;
+  }
   try {
     const appRef = doc(db, "applications", appId);
     await deleteDoc(appRef);
@@ -501,6 +597,16 @@ export function toggleSaveJobId(jobId) {
 }
 
 export async function updateJobStatus(jobId, status) {
+  if (IS_MOCK) {
+    const jobs = getMockJobs();
+    const index = jobs.findIndex(job => job.id === jobId);
+    if (index !== -1) {
+      jobs[index].status = status;
+      localStorage.setItem(JOBS_KEY, JSON.stringify(jobs));
+      return true;
+    }
+    return false;
+  }
   try {
     const jobRef = doc(db, "jobs", jobId);
     await updateDoc(jobRef, {
