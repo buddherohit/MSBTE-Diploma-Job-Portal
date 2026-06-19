@@ -59,7 +59,7 @@ export default function EditEducationDetails() {
     setProjectTech(projectTech.filter(t => t !== techToRemove));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!user) return;
 
@@ -79,14 +79,18 @@ export default function EditEducationDetails() {
       projectRepo
     };
 
-    updateUserProfile(updatedUser);
-    setSuccessMsg('Academic details successfully updated!');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    
-    setTimeout(() => {
-      setSuccessMsg('');
-      navigate('/student-portal/resume-builder-dashboard');
-    }, 1200);
+    try {
+      await updateUserProfile(updatedUser);
+      setSuccessMsg('Academic details successfully updated!');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      
+      setTimeout(() => {
+        setSuccessMsg('');
+        navigate('/student-portal/resume-builder-dashboard');
+      }, 1200);
+    } catch (err) {
+      console.error("Failed to update academic details:", err);
+    }
   };
 
   if (!user) {

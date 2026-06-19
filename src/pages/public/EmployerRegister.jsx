@@ -17,7 +17,7 @@ export default function EmployerRegister() {
   const [success, setSuccess] = useState('');
   const navigate = useNavigate();
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     setError('');
     setSuccess('');
@@ -63,9 +63,8 @@ export default function EmployerRegister() {
     };
 
     try {
-      registerUser(newEmployer);
-      const { password: _, ...safeUser } = newEmployer;
-      loginSession(safeUser);
+      const registered = await registerUser(newEmployer);
+      loginSession(registered);
       setSuccess('Organization registered successfully! Redirecting to dashboard...');
       setTimeout(() => {
         navigate('/employer-portal/employer-dashboard-industrial-blueprints-refined');

@@ -1,7 +1,8 @@
+// MANUAL_JSX_FILE
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AdminHeader from '../../components/AdminHeader';
-import { getUsers } from '../../utils/auth';
+import { getUsers, updateUserVerificationStatus } from '../../utils/auth';
 
 const DEFAULT_REGISTRY_EMPLOYERS = [
   {
@@ -60,50 +61,39 @@ export default function AdminEmployerRegistry() {
     loadEmployers();
   }, []);
 
-  const loadEmployers = () => {
-    const allUsers = getUsers();
-    let recruitersList = allUsers.filter(u => u.role === 'employer');
+  const loadEmployers = async () => {
+    try {
+      const allUsers = await getUsers();
+      const recruitersList = allUsers.filter(u => u.role === 'employer');
 
-    // Seed data if only standard template recruiter is present
-    if (recruitersList.length <= 1) {
-      const seededUsers = [...allUsers];
-      DEFAULT_REGISTRY_EMPLOYERS.forEach(emp => {
-        if (!seededUsers.some(u => u.email.toLowerCase() === emp.email.toLowerCase())) {
-          seededUsers.push(emp);
-        }
-      });
-      localStorage.setItem('msbte_users', JSON.stringify(seededUsers));
-      recruitersList = seededUsers.filter(u => u.role === 'employer');
+      // Adapt fields if missing
+      const formatted = recruitersList.map(e => ({
+        ...e,
+        companyName: e.companyName || 'Industrial Partner',
+        sector: e.sector || 'Manufacturing',
+        location: e.location || 'Maharashtra',
+        status: e.status || (e.verified ? 'Verified' : 'Pending Verification'),
+        id: e.id || `MSBTE-${Math.floor(1000 + Math.random() * 9000)}`,
+        logo: e.logo || 'https://images.unsplash.com/photo-1549923746-c502d488b3ea?auto=format&fit=crop&q=80&w=150'
+      }));
+
+      setEmployers(formatted);
+    } catch (err) {
+      console.error("Failed to load employers:", err);
     }
-
-    // Adapt fields if missing
-    const formatted = recruitersList.map(e => ({
-      ...e,
-      companyName: e.companyName || 'Industrial Partner',
-      sector: e.sector || 'Manufacturing',
-      location: e.location || 'Maharashtra',
-      status: e.status || (e.verified ? 'Verified' : 'Pending Verification'),
-      id: e.id || `MSBTE-${Math.floor(1000 + Math.random() * 9000)}`,
-      logo: e.logo || 'https://images.unsplash.com/photo-1549923746-c502d488b3ea?auto=format&fit=crop&q=80&w=150'
-    }));
-
-    setEmployers(formatted);
   };
 
-  const updateEmployerStatus = (email, newStatus) => {
-    const allUsers = getUsers();
-    const updated = allUsers.map(u => {
-      if (u.email.toLowerCase() === email.toLowerCase()) {
-        return { 
-          ...u, 
-          status: newStatus,
-          verified: newStatus === 'Verified'
-        };
+  const updateEmployerStatus = async (email, newStatus) => {
+    try {
+      const allUsers = await getUsers();
+      const user = allUsers.find(u => u.email.toLowerCase() === email.toLowerCase());
+      if (user && user.uid) {
+        await updateUserVerificationStatus(user.uid, newStatus, newStatus === 'Verified');
       }
-      return u;
-    });
-    localStorage.setItem('msbte_users', JSON.stringify(updated));
-    loadEmployers();
+      await loadEmployers();
+    } catch (e) {
+      console.error("Failed to update employer status:", e);
+    }
   };
 
   // Filter Logic

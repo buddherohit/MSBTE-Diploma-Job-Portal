@@ -16,7 +16,7 @@ export default function StudentRegister() {
   const [success, setSuccess] = useState('');
   const navigate = useNavigate();
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     setError('');
     setSuccess('');
@@ -60,9 +60,8 @@ export default function StudentRegister() {
     };
 
     try {
-      registerUser(newUser);
-      const { password: _, ...safeUser } = newUser;
-      loginSession(safeUser);
+      const registered = await registerUser(newUser);
+      loginSession(registered);
       setSuccess('Account created successfully! Redirecting to dashboard...');
       setTimeout(() => {
         navigate('/student-portal/dashboard');

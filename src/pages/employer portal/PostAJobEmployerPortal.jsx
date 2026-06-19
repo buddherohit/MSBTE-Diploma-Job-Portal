@@ -1,3 +1,4 @@
+// MANUAL_JSX_FILE
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { getCurrentUser } from '../../utils/auth';
@@ -55,38 +56,43 @@ export default function PostAJobEmployerPortal() {
     }
   };
 
-  const handlePublish = () => {
+  const handlePublish = async () => {
     if (!user) return;
     
-    // Add job to database
-    addJob({
-      title,
-      company: user.companyName,
-      department,
-      type,
-      location,
-      district: location.includes('Pune') ? 'Pune' : location.includes('Mumbai') ? 'Mumbai' : location.includes('Nagpur') ? 'Nagpur' : 'Aurangabad',
-      salary: `₹${Number(salaryMin).toLocaleString('en-IN')} - ₹${Number(salaryMax).toLocaleString('en-IN')} /mo`,
-      salaryVal: Number(salaryMin),
-      branch: selectedBranches.join(', '),
-      badge: 'New',
-      badgeClass: 'bg-green-50 text-green-700 border border-green-200',
-      experience: 'Fresher',
-      description,
-      responsibilities: [
-        "Monitor assembly lines or network nodes depending on engineering section.",
-        "Assist senior planning engineers in daily reporting and calibration.",
-        "Follow plant or site ISO safety standards."
-      ],
-      education: [`MSBTE Diploma (${selectedBranches.join('/')})`, `Min CGPA: ${minCgpa}`],
-      skills: skills.split(',').map(s => s.trim()).filter(Boolean),
-      aboutCompany: `${user.companyName} is a verified industry partner.`,
-      sector: user.sector || 'Industrial Services',
-      website: 'https://' + user.companyName.toLowerCase().replace(/\s+/g, '') + '.com'
-    });
+    try {
+      // Add job to database
+      await addJob({
+        title,
+        company: user.companyName,
+        department,
+        type,
+        location,
+        district: location.includes('Pune') ? 'Pune' : location.includes('Mumbai') ? 'Mumbai' : location.includes('Nagpur') ? 'Nagpur' : 'Aurangabad',
+        salary: `₹${Number(salaryMin).toLocaleString('en-IN')} - ₹${Number(salaryMax).toLocaleString('en-IN')} /mo`,
+        salaryVal: Number(salaryMin),
+        branch: selectedBranches.join(', '),
+        badge: 'New',
+        badgeClass: 'bg-green-50 text-green-700 border border-green-200',
+        experience: 'Fresher',
+        description,
+        responsibilities: [
+          "Monitor assembly lines or network nodes depending on engineering section.",
+          "Assist senior planning engineers in daily reporting and calibration.",
+          "Follow plant or site ISO safety standards."
+        ],
+        education: [`MSBTE Diploma (${selectedBranches.join('/')})`, `Min CGPA: ${minCgpa}`],
+        skills: skills.split(',').map(s => s.trim()).filter(Boolean),
+        aboutCompany: `${user.companyName} is a verified industry partner.`,
+        sector: user.sector || 'Industrial Services',
+        website: 'https://' + user.companyName.toLowerCase().replace(/\s+/g, '') + '.com'
+      });
 
-    alert("Job published successfully!");
-    navigate('/employer-portal/employer-dashboard-industrial-blueprints-refined');
+      alert("Job published successfully!");
+      navigate('/employer-portal/employer-dashboard-industrial-blueprints-refined');
+    } catch (err) {
+      console.error("Failed to publish job:", err);
+      alert("Failed to publish job. Please try again.");
+    }
   };
 
   if (!user) {

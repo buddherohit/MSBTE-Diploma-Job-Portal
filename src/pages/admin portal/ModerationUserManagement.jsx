@@ -1,7 +1,8 @@
+// MANUAL_JSX_FILE
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AdminHeader from '../../components/AdminHeader';
-import { getUsers } from '../../utils/auth';
+import { getUsers, updateUserVerificationStatus } from '../../utils/auth';
 
 const INITIAL_REPORTS = [
   { id: 1, type: 'Job Listing Fraud', title: 'Data Entry (Work from Home) - ₹50,000/week', target: 'Sky-Rise Solutions', time: '2h ago', badgeColor: 'bg-red-100 text-red-800' },
@@ -30,42 +31,43 @@ export default function ModerationUserManagement() {
     loadUsers();
   }, []);
 
-  const loadUsers = () => {
-    const list = getUsers();
-    // Format list with initials and default statuses if missing
-    const formatted = list.map(u => ({
-      ...u,
-      id: u.id || `UID-${Math.floor(100000 + Math.random() * 900000)}`,
-      status: u.status || (u.verified ? 'Active' : 'Pending'),
-      initials: u.name ? u.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() : 'U'
-    }));
-    setUsers(formatted);
+  const loadUsers = async () => {
+    try {
+      const list = await getUsers();
+      // Format list with initials and default statuses if missing
+      const formatted = list.map(u => ({
+        ...u,
+        id: u.id || `UID-${Math.floor(100000 + Math.random() * 900000)}`,
+        status: u.status || (u.verified ? 'Active' : 'Pending'),
+        initials: u.name ? u.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() : 'U'
+      }));
+      setUsers(formatted);
+    } catch (err) {
+      console.error("Failed to load users:", err);
+    }
   };
 
-  const updateStatus = (email, newStatus) => {
-    const allUsers = getUsers();
-    const updated = allUsers.map(u => {
-      if (u.email.toLowerCase() === email.toLowerCase()) {
-        return { 
-          ...u, 
-          status: newStatus,
-          verified: newStatus === 'Active' || newStatus === 'Verified'
-        };
+  const updateStatus = async (email, newStatus) => {
+    try {
+      const allUsers = await getUsers();
+      const user = allUsers.find(u => u.email.toLowerCase() === email.toLowerCase());
+      if (user && user.uid) {
+        await updateUserVerificationStatus(user.uid, newStatus, newStatus === 'Active' || newStatus === 'Verified');
       }
-      return u;
-    });
-    localStorage.setItem('msbte_users', JSON.stringify(updated));
-    loadUsers();
-    
-    // Log moderation action
-    const timeString = new Date().toLocaleTimeString('en-US', { hour12: false });
-    setLogs(prev => [
-      `[${timeString}] MOD_ACTION: User ${email} status changed to ${newStatus}`,
-      ...prev
-    ]);
+      await loadUsers();
+      
+      // Log moderation action
+      const timeString = new Date().toLocaleTimeString('en-US', { hour12: false });
+      setLogs(prev => [
+        `[${timeString}] MOD_ACTION: User ${email} status changed to ${newStatus}`,
+        ...prev
+      ]);
 
-    if (selectedUser && selectedUser.email.toLowerCase() === email.toLowerCase()) {
-      setSelectedUser(prev => ({ ...prev, status: newStatus }));
+      if (selectedUser && selectedUser.email.toLowerCase() === email.toLowerCase()) {
+        setSelectedUser(prev => ({ ...prev, status: newStatus }));
+      }
+    } catch (e) {
+      console.error("Failed to update status:", e);
     }
   };
 

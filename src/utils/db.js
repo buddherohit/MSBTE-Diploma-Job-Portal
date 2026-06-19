@@ -1,6 +1,15 @@
-const JOBS_KEY = 'msbte_jobs';
-const APPLICATIONS_KEY = 'msbte_applications';
-const SAVED_JOBS_KEY = 'msbte_saved_jobs';
+import { 
+  collection, 
+  doc, 
+  getDoc, 
+  getDocs, 
+  setDoc, 
+  updateDoc, 
+  query, 
+  where,
+  deleteDoc
+} from "firebase/firestore";
+import { db } from "./firebase";
 
 const DEFAULT_JOBS = [
   {
@@ -311,103 +320,169 @@ const DEFAULT_APPLICATIONS = [
   }
 ];
 
-const DEFAULT_SAVED_JOBS = ["thermax-maintenance"];
+export async function seedInitialData() {
+  try {
+    const jobsCol = collection(db, "jobs");
+    const jobsSnapshot = await getDocs(jobsCol);
+    if (jobsSnapshot.empty) {
+      console.log("Seeding initial jobs into Cloud Firestore...");
+      for (const job of DEFAULT_JOBS) {
+        await setDoc(doc(db, "jobs", job.id), job);
+      }
+    }
 
-export function initDb() {
-  if (typeof window === 'undefined') return;
-  if (!localStorage.getItem(JOBS_KEY)) {
-    localStorage.setItem(JOBS_KEY, JSON.stringify(DEFAULT_JOBS));
-  }
-  if (!localStorage.getItem(APPLICATIONS_KEY)) {
-    localStorage.setItem(APPLICATIONS_KEY, JSON.stringify(DEFAULT_APPLICATIONS));
-  }
-  if (!localStorage.getItem(SAVED_JOBS_KEY)) {
-    localStorage.setItem(SAVED_JOBS_KEY, JSON.stringify(DEFAULT_SAVED_JOBS));
+    const appsCol = collection(db, "applications");
+    const appsSnapshot = await getDocs(appsCol);
+    if (appsSnapshot.empty) {
+      console.log("Seeding initial applications into Cloud Firestore...");
+      for (const app of DEFAULT_APPLICATIONS) {
+        await setDoc(doc(db, "applications", app.id), app);
+      }
+    }
+  } catch (e) {
+    console.error("Failed to seed initial data:", e);
   }
 }
 
-export function getJobs() {
-  initDb();
-  if (typeof window === 'undefined') return [];
+export async function getJobs() {
+  await seedInitialData();
   try {
-    return JSON.parse(localStorage.getItem(JOBS_KEY)) || [];
+    const jobsSnapshot = await getDocs(collection(db, "jobs"));
+    const jobs = [];
+    jobsSnapshot.forEach((doc) => {
+      jobs.push({ id: doc.id, ...doc.data() });
+    });
+    return jobs;
   } catch (e) {
+    console.error("Error getting jobs:", e);
+    return DEFAULT_JOBS; // Fail-safe
+  }
+}
+
+export async function getJobById(id) {
+  try {
+    const docSnap = await getDoc(doc(db, "jobs", id));
+    if (docSnap.exists()) {
+      return { id: docSnap.id, ...docSnap.data() };
+    }
+    return null;
+  } catch (e) {
+    console.error("Error getting job by ID:", e);
+    return null;
+  }
+}
+
+export async function addJob(job) {
+  try {
+    const jobId = job.id || `job-${Math.floor(100000 + Math.random() * 900000)}`;
+    const newJob = {
+      ...job,
+      id: jobId,
+      salaryVal: typeof job.salaryVal === 'number' ? job.salaryVal : 300000,
+      logo: job.logo || "https://upload.wikimedia.org/wikipedia/commons/2/25/Cognizant_logo_2022.svg",
+      badge: job.badge || "New"
+    };
+    await setDoc(doc(db, "jobs", jobId), newJob);
+    return newJob;
+  } catch (e) {
+    console.error("Error adding job:", e);
+    throw e;
+  }
+}
+
+export async function getApplications() {
+  await seedInitialData();
+  try {
+    const appsSnapshot = await getDocs(collection(db, "applications"));
+    const apps = [];
+    appsSnapshot.forEach((doc) => {
+      apps.push({ id: doc.id, ...doc.data() });
+    });
+    return apps;
+  } catch (e) {
+    console.error("Error getting applications:", e);
+    return DEFAULT_APPLICATIONS; // Fail-safe
+  }
+}
+
+export async function applyToJob(application) {
+  try {
+    const refId = `APP-${Math.floor(10000 + Math.random() * 90000)}`;
+    const newApp = {
+      id: refId,
+      date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+      status: 'Under Review',
+      updatedAt: 'Just now',
+      ...application
+    };
+    await setDoc(doc(db, "applications", refId), newApp);
+    return newApp;
+  } catch (e) {
+    console.error("Error applying to job:", e);
+    throw e;
+  }
+}
+
+export async function getApplicationsByStudent(studentEmail) {
+  try {
+    const q = query(collection(db, "applications"), where("studentEmail", "==", studentEmail));
+    const snapshot = await getDocs(q);
+    const apps = [];
+    snapshot.forEach((doc) => {
+      apps.push({ id: doc.id, ...doc.data() });
+    });
+    return apps;
+  } catch (e) {
+    console.error("Error getting student applications:", e);
     return [];
   }
 }
 
-export function getJobById(id) {
-  const jobs = getJobs();
-  return jobs.find(job => job.id === id) || null;
-}
-
-export function addJob(job) {
-  const jobs = getJobs();
-  const newJob = {
-    ...job,
-    id: job.id || `job-${Math.floor(100000 + Math.random() * 900000)}`,
-    salaryVal: typeof job.salaryVal === 'number' ? job.salaryVal : 300000,
-    logo: job.logo || "https://upload.wikimedia.org/wikipedia/commons/2/25/Cognizant_logo_2022.svg",
-    badge: job.badge || "New"
-  };
-  jobs.unshift(newJob);
-  localStorage.setItem(JOBS_KEY, JSON.stringify(jobs));
-  return newJob;
-}
-
-export function getApplications() {
-  initDb();
-  if (typeof window === 'undefined') return [];
+export async function getApplicationsByEmployer(companyName) {
   try {
-    return JSON.parse(localStorage.getItem(APPLICATIONS_KEY)) || [];
+    const q = query(collection(db, "applications"), where("company", "==", companyName));
+    const snapshot = await getDocs(q);
+    const apps = [];
+    snapshot.forEach((doc) => {
+      apps.push({ id: doc.id, ...doc.data() });
+    });
+    return apps;
   } catch (e) {
+    console.error("Error getting employer applications:", e);
     return [];
   }
 }
 
-export function applyToJob(application) {
-  const apps = getApplications();
-  const refId = `APP-${Math.floor(10000 + Math.random() * 90000)}`;
-  const newApp = {
-    id: refId,
-    date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
-    status: 'Under Review',
-    updatedAt: 'Just now',
-    ...application
-  };
-  apps.unshift(newApp);
-  localStorage.setItem(APPLICATIONS_KEY, JSON.stringify(apps));
-  return newApp;
-}
-
-export function getApplicationsByStudent(studentEmail) {
-  const apps = getApplications();
-  return apps.filter(app => app.studentEmail.toLowerCase() === studentEmail.toLowerCase());
-}
-
-export function getApplicationsByEmployer(companyName) {
-  // If companyName is Tata Communications Ltd., match by companyName or hardcoded default
-  const apps = getApplications();
-  return apps.filter(app => app.company.toLowerCase() === companyName.toLowerCase());
-}
-
-export function updateApplicationStatus(appId, status) {
-  const apps = getApplications();
-  const index = apps.findIndex(app => app.id === appId);
-  if (index !== -1) {
-    apps[index].status = status;
-    apps[index].updatedAt = 'Just now';
-    localStorage.setItem(APPLICATIONS_KEY, JSON.stringify(apps));
-    return apps[index];
+export async function updateApplicationStatus(appId, status) {
+  try {
+    const appRef = doc(db, "applications", appId);
+    await updateDoc(appRef, {
+      status,
+      updatedAt: 'Just now'
+    });
+    const snap = await getDoc(appRef);
+    return snap.exists() ? { id: snap.id, ...snap.data() } : null;
+  } catch (e) {
+    console.error("Error updating application status:", e);
+    return null;
   }
-  return null;
+}
+
+export async function deleteApplication(appId) {
+  try {
+    const appRef = doc(db, "applications", appId);
+    await deleteDoc(appRef);
+    return true;
+  } catch (e) {
+    console.error("Error deleting application:", e);
+    return false;
+  }
 }
 
 export function getSavedJobIds() {
-  initDb();
   if (typeof window === 'undefined') return [];
   try {
-    return JSON.parse(localStorage.getItem(SAVED_JOBS_KEY)) || [];
+    return JSON.parse(localStorage.getItem('msbte_saved_jobs')) || ["thermax-maintenance"];
   } catch (e) {
     return [];
   }
@@ -421,6 +496,19 @@ export function toggleSaveJobId(jobId) {
   } else {
     updated = [...savedIds, jobId];
   }
-  localStorage.setItem(SAVED_JOBS_KEY, JSON.stringify(updated));
+  localStorage.setItem('msbte_saved_jobs', JSON.stringify(updated));
   return updated;
+}
+
+export async function updateJobStatus(jobId, status) {
+  try {
+    const jobRef = doc(db, "jobs", jobId);
+    await updateDoc(jobRef, {
+      status
+    });
+    return true;
+  } catch (e) {
+    console.error("Error updating job status:", e);
+    return false;
+  }
 }

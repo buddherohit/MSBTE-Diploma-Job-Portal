@@ -1,8 +1,9 @@
+// MANUAL_JSX_FILE
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import StudentHeader from '../../components/StudentHeader';
 import { getCurrentUser } from '../../utils/auth';
-import { getApplicationsByStudent } from '../../utils/db';
+import { getApplicationsByStudent, deleteApplication } from '../../utils/db';
 
 export default function ApplicationHistory() {
   const [user, setUser] = useState(null);
@@ -17,22 +18,31 @@ export default function ApplicationHistory() {
       return;
     }
     setUser(session);
-    setApplications(getApplicationsByStudent(session.email));
+
+    const loadApps = async () => {
+      try {
+        const apps = await getApplicationsByStudent(session.email);
+        setApplications(apps);
+      } catch (err) {
+        console.error("Failed to load applications:", err);
+      }
+    };
+    loadApps();
   }, [navigate]);
 
-  const handleWithdraw = (appId) => {
+  const handleWithdraw = async (appId) => {
     if (window.confirm("Are you sure you want to withdraw this application?")) {
-      const rawApps = localStorage.getItem('msbte_applications');
-      if (rawApps) {
-        const apps = JSON.parse(rawApps);
-        const updated = apps.filter(a => a.id !== appId);
-        localStorage.setItem('msbte_applications', JSON.stringify(updated));
+      try {
+        await deleteApplication(appId);
         
         // Re-read student apps
         const session = getCurrentUser();
         if (session) {
-          setApplications(getApplicationsByStudent(session.email));
+          const apps = await getApplicationsByStudent(session.email);
+          setApplications(apps);
         }
+      } catch (err) {
+        console.error("Failed to withdraw application:", err);
       }
     }
   };

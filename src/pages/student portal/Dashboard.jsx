@@ -1,3 +1,4 @@
+// MANUAL_JSX_FILE
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import StudentHeader from '../../components/StudentHeader';
@@ -20,20 +21,27 @@ export default function Dashboard() {
     setUser(session);
 
     // Fetch dynamic data
-    const studentApps = getApplicationsByStudent(session.email);
-    setApplications(studentApps);
+    const fetchData = async () => {
+      try {
+        const studentApps = await getApplicationsByStudent(session.email);
+        setApplications(studentApps);
 
-    const savedIds = getSavedJobIds();
-    setSavedCount(savedIds.length);
+        const savedIds = getSavedJobIds();
+        setSavedCount(savedIds.length);
 
-    // Fetch recommended jobs matching student branch
-    const all = getJobs();
-    const branchKeyword = session.branch ? session.branch.split(' ')[0].toLowerCase() : '';
-    const matching = all.filter(job => 
-      job.branch.toLowerCase().includes(branchKeyword)
-    );
-    // Fallback if no matching branch jobs, show all other jobs
-    setRecommendedJobs(matching.length > 0 ? matching : all);
+        // Fetch recommended jobs matching student branch
+        const all = await getJobs();
+        const branchKeyword = session.branch ? session.branch.split(' ')[0].toLowerCase() : '';
+        const matching = all.filter(job => 
+          job.branch.toLowerCase().includes(branchKeyword)
+        );
+        // Fallback if no matching branch jobs, show all other jobs
+        setRecommendedJobs(matching.length > 0 ? matching : all);
+      } catch (err) {
+        console.error("Failed to load dashboard data:", err);
+      }
+    };
+    fetchData();
   }, [navigate]);
 
   if (!user) {

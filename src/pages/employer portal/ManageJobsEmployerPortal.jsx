@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { getCurrentUser } from '../../utils/auth';
-import { getJobs, getApplications } from '../../utils/db';
+import { getJobs, getApplications, updateJobStatus } from '../../utils/db';
 import EmployerHeader from '../../components/EmployerHeader';
 
 export default function ManageJobsEmployerPortal() {
@@ -22,28 +22,26 @@ export default function ManageJobsEmployerPortal() {
     }
     setUser(session);
     
-    // Load data
-    loadJobs(session.companyName);
-    setApplications(getApplications());
+    async function loadData() {
+      await loadJobs(session.companyName);
+      const apps = await getApplications();
+      setApplications(apps);
+    }
+    loadData();
   }, [navigate]);
 
-  const loadJobs = (companyName) => {
-    const allJobs = getJobs();
+  const loadJobs = async (companyName) => {
+    const allJobs = await getJobs();
     const companyJobs = allJobs.filter(
-      j => j.company.toLowerCase() === companyName.toLowerCase()
+      j => j.company && j.company.toLowerCase() === companyName.toLowerCase()
     );
     setJobs(companyJobs);
   };
 
-  const handleUpdateStatus = (jobId, newStatus) => {
-    const allJobs = getJobs();
-    const index = allJobs.findIndex(j => j.id === jobId);
-    if (index !== -1) {
-      allJobs[index].status = newStatus;
-      localStorage.setItem('msbte_jobs', JSON.stringify(allJobs));
-      if (user) {
-        loadJobs(user.companyName);
-      }
+  const handleUpdateStatus = async (jobId, newStatus) => {
+    const success = await updateJobStatus(jobId, newStatus);
+    if (success && user) {
+      await loadJobs(user.companyName);
     }
   };
 

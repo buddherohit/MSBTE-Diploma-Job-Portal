@@ -1,7 +1,8 @@
+// MANUAL_JSX_FILE
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import AdminHeader from '../../components/AdminHeader';
-import { getUsers, registerUser } from '../../utils/auth';
+import { getUsers, registerUser, updateUserVerificationStatus } from '../../utils/auth';
 
 const DEFAULT_REGISTRY_STUDENTS = [
   {
@@ -82,54 +83,43 @@ export default function AdminStudentRegistry() {
     loadStudents();
   }, []);
 
-  const loadStudents = () => {
-    const allUsers = getUsers();
-    let studentsList = allUsers.filter(u => u.role === 'student');
+  const loadStudents = async () => {
+    try {
+      const allUsers = await getUsers();
+      const studentsList = allUsers.filter(u => u.role === 'student');
 
-    // If we only have the default template student, seed the registry with realistic student records
-    if (studentsList.length <= 1) {
-      const seededUsers = [...allUsers];
-      DEFAULT_REGISTRY_STUDENTS.forEach(student => {
-        if (!seededUsers.some(u => u.email.toLowerCase() === student.email.toLowerCase())) {
-          seededUsers.push(student);
-        }
-      });
-      localStorage.setItem('msbte_users', JSON.stringify(seededUsers));
-      studentsList = seededUsers.filter(u => u.role === 'student');
+      // Adapt fields from old model if missing
+      const formatted = studentsList.map(s => ({
+        ...s,
+        enrollment: s.enrollment || `2100${Math.floor(1000 + Math.random() * 9000)}`,
+        branch: s.branch || 'Mechanical Engineering',
+        passingYear: s.passingYear || '2024',
+        gpa: s.gpa || s.cgpa || '8.50',
+        institute: s.institute || 'Government Polytechnic, Pune',
+        status: s.status || (s.verified ? 'Verified' : 'Pending'),
+        avatar: s.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150'
+      }));
+
+      setStudents(formatted);
+    } catch (err) {
+      console.error("Failed to load students:", err);
     }
-
-    // Adapt fields from old model if missing
-    const formatted = studentsList.map(s => ({
-      ...s,
-      enrollment: s.enrollment || `2100${Math.floor(1000 + Math.random() * 9000)}`,
-      branch: s.branch || 'Mechanical Engineering',
-      passingYear: s.passingYear || '2024',
-      gpa: s.gpa || s.cgpa || '8.50',
-      institute: s.institute || 'Government Polytechnic, Pune',
-      status: s.status || (s.verified ? 'Verified' : 'Pending'),
-      avatar: s.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150'
-    }));
-
-    setStudents(formatted);
   };
 
-  const updateStudentStatus = (email, newStatus) => {
-    const allUsers = getUsers();
-    const updated = allUsers.map(u => {
-      if (u.email.toLowerCase() === email.toLowerCase()) {
-        return { 
-          ...u, 
-          status: newStatus,
-          verified: newStatus === 'Verified'
-        };
+  const updateStudentStatus = async (email, newStatus) => {
+    try {
+      const allUsers = await getUsers();
+      const user = allUsers.find(u => u.email.toLowerCase() === email.toLowerCase());
+      if (user && user.uid) {
+        await updateUserVerificationStatus(user.uid, newStatus, newStatus === 'Verified');
       }
-      return u;
-    });
-    localStorage.setItem('msbte_users', JSON.stringify(updated));
-    loadStudents();
+      await loadStudents();
+    } catch (e) {
+      console.error("Failed to update student status:", e);
+    }
   };
 
-  const handleManualEntrySubmit = (e) => {
+  const handleManualEntrySubmit = async (e) => {
     e.preventDefault();
     if (!newStudent.name || !newStudent.email || !newStudent.enrollment) {
       alert('Please fill out all required fields.');
@@ -137,7 +127,7 @@ export default function AdminStudentRegistry() {
     }
 
     try {
-      registerUser({
+      await registerUser({
         ...newStudent,
         verified: newStudent.status === 'Verified',
         cgpa: newStudent.gpa
@@ -156,7 +146,7 @@ export default function AdminStudentRegistry() {
         role: 'student',
         status: 'Verified'
       });
-      loadStudents();
+      await loadStudents();
     } catch (err) {
       alert(err.message || 'Error registering student.');
     }

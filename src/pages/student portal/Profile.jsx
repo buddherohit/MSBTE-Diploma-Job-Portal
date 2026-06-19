@@ -67,7 +67,7 @@ export default function Profile() {
     }
   };
 
-  const handleSave = (e) => {
+  const handleSave = async (e) => {
     e.preventDefault();
     if (!user) return;
 
@@ -91,12 +91,16 @@ export default function Profile() {
       portfolio
     };
 
-    updateUserProfile(updatedUser);
-    setSuccessMsg('Profile updated successfully!');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    setTimeout(() => {
-      setSuccessMsg('');
-    }, 4000);
+    try {
+      await updateUserProfile(updatedUser);
+      setSuccessMsg('Profile updated successfully!');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(() => {
+        setSuccessMsg('');
+      }, 4000);
+    } catch (err) {
+      console.error("Failed to update profile:", err);
+    }
   };
 
   if (!user) {

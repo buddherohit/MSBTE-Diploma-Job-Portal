@@ -1,38 +1,41 @@
+// MANUAL_JSX_FILE
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import AdminHeader from '../../components/AdminHeader';
-import { getUsers } from '../../utils/auth';
+import { getUsers, updateUserVerificationStatus } from '../../utils/auth';
 
 export default function VerifyEmployerMaharashtraIndustrialCorp() {
   const navigate = useNavigate();
   const [modalOpen, setModalOpen] = useState(false);
   const [infoRequest, setInfoRequest] = useState('');
 
-  const handleApprove = () => {
-    const allUsers = getUsers();
-    // Locate the matching employer (or default employer 'employer@msbtejobs.in') to approve
-    const updated = allUsers.map(u => {
-      if (u.role === 'employer' && u.email.toLowerCase() === 'employer@msbtejobs.in') {
-        return { ...u, status: 'Verified', verified: true };
+  const handleApprove = async () => {
+    try {
+      const allUsers = await getUsers();
+      // Locate the matching employer (or default employer 'employer@msbtejobs.in') to approve
+      const user = allUsers.find(u => u.role === 'employer' && u.email.toLowerCase() === 'employer@msbtejobs.in');
+      if (user && user.uid) {
+        await updateUserVerificationStatus(user.uid, 'Verified', true);
       }
-      return u;
-    });
-    localStorage.setItem('msbte_users', JSON.stringify(updated));
-    alert('Accreditation approved for Maharashtra Industrial Corp! They can now post jobs.');
-    navigate('/admin-portal/verification-hub');
+      alert('Accreditation approved for Maharashtra Industrial Corp! They can now post jobs.');
+      navigate('/admin-portal/verification-hub');
+    } catch (err) {
+      console.error("Failed to approve accreditation:", err);
+    }
   };
 
-  const handleFlag = () => {
-    const allUsers = getUsers();
-    const updated = allUsers.map(u => {
-      if (u.role === 'employer' && u.email.toLowerCase() === 'employer@msbtejobs.in') {
-        return { ...u, status: 'Flagged', verified: false };
+  const handleFlag = async () => {
+    try {
+      const allUsers = await getUsers();
+      const user = allUsers.find(u => u.role === 'employer' && u.email.toLowerCase() === 'employer@msbtejobs.in');
+      if (user && user.uid) {
+        await updateUserVerificationStatus(user.uid, 'Flagged', false);
       }
-      return u;
-    });
-    localStorage.setItem('msbte_users', JSON.stringify(updated));
-    alert('Employer has been flagged in the MSBTE Registry.');
-    navigate('/admin-portal/verification-hub');
+      alert('Employer has been flagged in the MSBTE Registry.');
+      navigate('/admin-portal/verification-hub');
+    } catch (err) {
+      console.error("Failed to flag employer:", err);
+    }
   };
 
   const handleInfoSubmit = (e) => {

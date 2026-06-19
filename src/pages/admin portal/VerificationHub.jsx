@@ -1,7 +1,8 @@
+// MANUAL_JSX_FILE
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AdminHeader from '../../components/AdminHeader';
-import { getUsers } from '../../utils/auth';
+import { getUsers, updateUserVerificationStatus } from '../../utils/auth';
 
 export default function VerificationHub() {
   const [activeTab, setActiveTab] = useState('partners');
@@ -12,54 +13,55 @@ export default function VerificationHub() {
     loadQueues();
   }, []);
 
-  const loadQueues = () => {
-    const allUsers = getUsers();
-    
-    // Fetch pending employers
-    const employers = allUsers.filter(u => 
-      u.role === 'employer' && 
-      (u.status === 'Pending Verification' || !u.verified)
-    ).map(e => ({
-      ...e,
-      companyName: e.companyName || 'Unknown Corporation',
-      sector: e.sector || 'Manufacturing',
-      location: e.location || 'Maharashtra',
-      status: e.status || 'Pending Verification',
-      id: e.id || `MSBTE-${Math.floor(1000 + Math.random() * 9000)}`,
-      logo: e.logo || 'https://images.unsplash.com/photo-1549923746-c502d488b3ea?auto=format&fit=crop&q=80&w=150'
-    }));
+  const loadQueues = async () => {
+    try {
+      const allUsers = await getUsers();
+      
+      // Fetch pending employers
+      const employers = allUsers.filter(u => 
+        u.role === 'employer' && 
+        (u.status === 'Pending Verification' || !u.verified)
+      ).map(e => ({
+        ...e,
+        companyName: e.companyName || 'Unknown Corporation',
+        sector: e.sector || 'Manufacturing',
+        location: e.location || 'Maharashtra',
+        status: e.status || 'Pending Verification',
+        id: e.id || `MSBTE-${Math.floor(1000 + Math.random() * 9000)}`,
+        logo: e.logo || 'https://images.unsplash.com/photo-1549923746-c502d488b3ea?auto=format&fit=crop&q=80&w=150'
+      }));
 
-    // Fetch pending students
-    const students = allUsers.filter(u => 
-      u.role === 'student' && 
-      (u.status === 'Pending' || !u.verified)
-    ).map(s => ({
-      ...s,
-      enrollment: s.enrollment || `2100${Math.floor(1000 + Math.random() * 9000)}`,
-      branch: s.branch || 'Mechanical Engineering',
-      institute: s.institute || 'Government Polytechnic, Pune',
-      status: s.status || 'Pending',
-      avatar: s.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150'
-    }));
+      // Fetch pending students
+      const students = allUsers.filter(u => 
+        u.role === 'student' && 
+        (u.status === 'Pending' || !u.verified)
+      ).map(s => ({
+        ...s,
+        enrollment: s.enrollment || `2100${Math.floor(1000 + Math.random() * 9000)}`,
+        branch: s.branch || 'Mechanical Engineering',
+        institute: s.institute || 'Government Polytechnic, Pune',
+        status: s.status || 'Pending',
+        avatar: s.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150'
+      }));
 
-    setPendingEmployers(employers);
-    setPendingStudents(students);
+      setPendingEmployers(employers);
+      setPendingStudents(students);
+    } catch (err) {
+      console.error("Failed to load verification queues:", err);
+    }
   };
 
-  const updateStatus = (email, newStatus) => {
-    const allUsers = getUsers();
-    const updated = allUsers.map(u => {
-      if (u.email.toLowerCase() === email.toLowerCase()) {
-        return { 
-          ...u, 
-          status: newStatus,
-          verified: newStatus === 'Verified'
-        };
+  const updateStatus = async (email, newStatus) => {
+    try {
+      const allUsers = await getUsers();
+      const user = allUsers.find(u => u.email.toLowerCase() === email.toLowerCase());
+      if (user && user.uid) {
+        await updateUserVerificationStatus(user.uid, newStatus, newStatus === 'Verified');
       }
-      return u;
-    });
-    localStorage.setItem('msbte_users', JSON.stringify(updated));
-    loadQueues();
+      await loadQueues();
+    } catch (e) {
+      console.error("Failed to update status:", e);
+    }
   };
 
   return (

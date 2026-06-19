@@ -1,38 +1,41 @@
+// MANUAL_JSX_FILE
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import AdminHeader from '../../components/AdminHeader';
-import { getUsers } from '../../utils/auth';
+import { getUsers, updateUserVerificationStatus } from '../../utils/auth';
 
 export default function ReviewStudentRahulDeshmukh() {
   const navigate = useNavigate();
   const [modalOpen, setModalOpen] = useState(false);
   const [clarificationText, setClarificationText] = useState('');
 
-  const handleApprove = () => {
-    const allUsers = getUsers();
-    // Locate the first student (or default student 'student@msbtejobs.in') to approve
-    const updated = allUsers.map(u => {
-      if (u.role === 'student' && u.email.toLowerCase() === 'student@msbtejobs.in') {
-        return { ...u, status: 'Verified', verified: true };
+  const handleApprove = async () => {
+    try {
+      const allUsers = await getUsers();
+      // Locate the first student (or default student 'student@msbtejobs.in') to approve
+      const user = allUsers.find(u => u.role === 'student' && u.email.toLowerCase() === 'student@msbtejobs.in');
+      if (user && user.uid) {
+        await updateUserVerificationStatus(user.uid, 'Verified', true);
       }
-      return u;
-    });
-    localStorage.setItem('msbte_users', JSON.stringify(updated));
-    alert('Student Credentials Approved Successfully in MSBTE Database!');
-    navigate('/admin-portal/verification-hub');
+      alert('Student Credentials Approved Successfully in MSBTE Database!');
+      navigate('/admin-portal/verification-hub');
+    } catch (err) {
+      console.error("Failed to approve student credentials:", err);
+    }
   };
 
-  const handleFlag = () => {
-    const allUsers = getUsers();
-    const updated = allUsers.map(u => {
-      if (u.role === 'student' && u.email.toLowerCase() === 'student@msbtejobs.in') {
-        return { ...u, status: 'Flagged', verified: false };
+  const handleFlag = async () => {
+    try {
+      const allUsers = await getUsers();
+      const user = allUsers.find(u => u.role === 'student' && u.email.toLowerCase() === 'student@msbtejobs.in');
+      if (user && user.uid) {
+        await updateUserVerificationStatus(user.uid, 'Flagged', false);
       }
-      return u;
-    });
-    localStorage.setItem('msbte_users', JSON.stringify(updated));
-    alert('Student Profile Flagged for Compliance Issues!');
-    navigate('/admin-portal/verification-hub');
+      alert('Student Profile Flagged for Compliance Issues!');
+      navigate('/admin-portal/verification-hub');
+    } catch (err) {
+      console.error("Failed to flag student profile:", err);
+    }
   };
 
   const handleClarificationSubmit = (e) => {

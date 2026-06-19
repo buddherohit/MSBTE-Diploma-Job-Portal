@@ -22,7 +22,7 @@ export default function StudentLogin() {
     }
   }, []);
 
-  const handleSignIn = (e) => {
+  const handleSignIn = async (e) => {
     e.preventDefault();
     setError('');
     setSuccess('');
@@ -32,22 +32,26 @@ export default function StudentLogin() {
       return;
     }
 
-    // Attempt login
-    const user = loginUser(emailOrId.trim(), password, activeTab);
+    try {
+      // Attempt login
+      const user = await loginUser(emailOrId.trim(), password, activeTab);
 
-    if (user) {
-      setSuccess('Logged in successfully!');
-      setTimeout(() => {
-        if (user.role === 'admin') {
-          navigate('/admin-portal/admin-dashboard-overview');
-        } else if (activeTab === 'student') {
-          navigate('/student-portal/dashboard');
-        } else {
-          navigate('/employer-portal/employer-dashboard-industrial-blueprints-refined');
-        }
-      }, 800);
-    } else {
-      setError('Invalid credentials. Check your email/ID and password.');
+      if (user) {
+        setSuccess('Logged in successfully!');
+        setTimeout(() => {
+          if (user.role === 'admin') {
+            navigate('/admin-portal/admin-dashboard-overview');
+          } else if (activeTab === 'student') {
+            navigate('/student-portal/dashboard');
+          } else {
+            navigate('/employer-portal/employer-dashboard-industrial-blueprints-refined');
+          }
+        }, 800);
+      } else {
+        setError('Invalid credentials. Check your email/ID and password.');
+      }
+    } catch (err) {
+      setError(err.message || 'Invalid credentials. Check your email/ID and password.');
     }
   };
 

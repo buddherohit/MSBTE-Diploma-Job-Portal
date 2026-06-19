@@ -18,19 +18,24 @@ export default function EmployerDashboardIndustrialBlueprintsRefined() {
     }
     setUser(session);
 
-    // Filter jobs posted by this company
-    const allJobs = getJobs();
-    const companyJobs = allJobs.filter(
-      job => job.company.toLowerCase() === session.companyName.toLowerCase()
-    );
-    setActiveJobs(companyJobs);
+    async function loadDashboardData() {
+      try {
+        const allJobs = await getJobs();
+        const companyJobs = allJobs.filter(
+          job => job.company && session.companyName && job.company.toLowerCase() === session.companyName.toLowerCase()
+        );
+        setActiveJobs(companyJobs);
 
-    // Filter applications for these jobs
-    const allApps = getApplications();
-    const companyApps = allApps.filter(
-      app => app.company.toLowerCase() === session.companyName.toLowerCase()
-    );
-    setApplications(companyApps);
+        const allApps = await getApplications();
+        const companyApps = allApps.filter(
+          app => app.company && session.companyName && app.company.toLowerCase() === session.companyName.toLowerCase()
+        );
+        setApplications(companyApps);
+      } catch (err) {
+        console.error("Failed to load dashboard metrics:", err);
+      }
+    }
+    loadDashboardData();
   }, [navigate]);
 
   if (!user) {

@@ -1,3 +1,4 @@
+// MANUAL_JSX_FILE
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AdminHeader from '../../components/AdminHeader';
@@ -21,29 +22,36 @@ export default function AdminDashboardOverview() {
   ]);
 
   useEffect(() => {
-    const users = getUsers();
-    const jobs = getJobs();
-    const apps = getApplications();
+    const fetchData = async () => {
+      try {
+        const users = await getUsers();
+        const jobs = await getJobs();
+        const apps = await getApplications();
 
-    const students = users.filter(u => u.role === 'student');
-    const employers = users.filter(u => u.role === 'employer');
+        const students = users.filter(u => u.role === 'student');
+        const employers = users.filter(u => u.role === 'employer');
 
-    // Seeded initial numbers for professional look + dynamic count
-    const studentsTotal = 14200 + students.length;
-    const employersTotal = 3200 + employers.length;
-    const jobsTotal = 18900 + jobs.length;
+        // Seeded initial numbers for professional look + dynamic count
+        const studentsTotal = 14200 + students.length;
+        const employersTotal = 3200 + employers.length;
+        const jobsTotal = 18900 + jobs.length;
 
-    // Calculate dynamic placement rate
-    const shortlistedCount = apps.filter(a => ['Shortlisted', 'Interview Scheduled', 'Selected', 'Hired'].includes(a.status)).length;
-    const rateValue = 74.2 + (shortlistedCount * 0.15);
-    const placementRate = Math.min(rateValue, 98.5).toFixed(1) + '%';
+        // Calculate dynamic placement rate
+        const shortlistedCount = apps.filter(a => ['Shortlisted', 'Interview Scheduled', 'Selected', 'Hired'].includes(a.status)).length;
+        const rateValue = 74.2 + (shortlistedCount * 0.15);
+        const placementRate = Math.min(rateValue, 98.5).toFixed(1) + '%';
 
-    setStats({
-      studentsCount: studentsTotal,
-      employersCount: employersTotal,
-      jobsCount: jobsTotal,
-      placementRate
-    });
+        setStats({
+          studentsCount: studentsTotal,
+          employersCount: employersTotal,
+          jobsCount: jobsTotal,
+          placementRate
+        });
+      } catch (err) {
+        console.error("Failed to load admin metrics:", err);
+      }
+    };
+    fetchData();
   }, []);
 
   return (

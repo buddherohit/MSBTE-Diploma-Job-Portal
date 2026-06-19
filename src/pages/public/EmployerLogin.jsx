@@ -11,7 +11,7 @@ export default function EmployerLogin() {
   const [success, setSuccess] = useState('');
   const navigate = useNavigate();
 
-  const handleSignIn = (e) => {
+  const handleSignIn = async (e) => {
     e.preventDefault();
     setError('');
     setSuccess('');
@@ -21,19 +21,23 @@ export default function EmployerLogin() {
       return;
     }
 
-    const user = loginUser(email.trim(), password, 'employer');
+    try {
+      const user = await loginUser(email.trim(), password, 'employer');
 
-    if (user) {
-      setSuccess('Logged in successfully!');
-      setTimeout(() => {
-        if (user.role === 'admin') {
-          navigate('/admin-portal/admin-dashboard-overview');
-        } else {
-          navigate('/employer-portal/employer-dashboard-industrial-blueprints-refined');
-        }
-      }, 800);
-    } else {
-      setError('Invalid company credentials. Try email: employer@msbtejobs.in, password: employer123');
+      if (user) {
+        setSuccess('Logged in successfully!');
+        setTimeout(() => {
+          if (user.role === 'admin') {
+            navigate('/admin-portal/admin-dashboard-overview');
+          } else {
+            navigate('/employer-portal/employer-dashboard-industrial-blueprints-refined');
+          }
+        }, 800);
+      } else {
+        setError('Invalid company credentials. Try email: employer@msbtejobs.in, password: employer123');
+      }
+    } catch (err) {
+      setError(err.message || 'Invalid company credentials. Try email: employer@msbtejobs.in, password: employer123');
     }
   };
 

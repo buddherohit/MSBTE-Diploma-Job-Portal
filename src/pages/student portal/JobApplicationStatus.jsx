@@ -1,3 +1,4 @@
+// MANUAL_JSX_FILE
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import StudentHeader from '../../components/StudentHeader';
@@ -17,7 +18,16 @@ export default function JobApplicationStatus() {
       return;
     }
     setUser(session);
-    setApplications(getApplicationsByStudent(session.email));
+
+    const loadApps = async () => {
+      try {
+        const apps = await getApplicationsByStudent(session.email);
+        setApplications(apps);
+      } catch (err) {
+        console.error("Failed to load applications:", err);
+      }
+    };
+    loadApps();
   }, [navigate]);
 
   if (!user) {

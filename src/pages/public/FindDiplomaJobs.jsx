@@ -193,11 +193,14 @@ export default function FindDiplomaJobs() {
 
   // Load jobs and saved jobs
   useEffect(() => {
-    setJobs(getJobs());
-    const savedIds = getSavedJobIds();
-    const all = getJobs();
-    const saved = all.filter(j => savedIds.includes(j.id));
-    setSavedJobs(saved);
+    async function loadData() {
+      const fetchedJobs = await getJobs();
+      setJobs(fetchedJobs);
+      const savedIds = getSavedJobIds();
+      const saved = fetchedJobs.filter(j => savedIds.includes(j.id));
+      setSavedJobs(saved);
+    }
+    loadData();
   }, []);
 
   const handleBranchSelect = (branch) => {
@@ -248,8 +251,7 @@ export default function FindDiplomaJobs() {
   const toggleSaveJob = (job) => {
     toggleSaveJobId(job.id);
     const savedIds = getSavedJobIds();
-    const all = getJobs();
-    const saved = all.filter(j => savedIds.includes(j.id));
+    const saved = jobs.filter(j => savedIds.includes(j.id));
     setSavedJobs(saved);
   };
 
