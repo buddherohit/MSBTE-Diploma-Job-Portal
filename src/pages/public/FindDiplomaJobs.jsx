@@ -322,7 +322,7 @@ export default function FindDiplomaJobs() {
 
   return (
     <div className="w-full min-h-screen bg-surface text-on-surface">
-      <Header activePage="jobs" />
+      <Header activePage={typeParam && typeParam.toLowerCase() === 'internship' ? 'internships' : 'jobs'} />
 
       {/* Main Container */}
       <main className="max-w-container-max mx-auto px-margin-mobile pt-8 pb-32">

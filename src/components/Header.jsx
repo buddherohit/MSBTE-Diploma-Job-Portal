@@ -233,6 +233,7 @@ export default function Header({ activePage }) {
           <Link className={getMobileLinkClass('home')} to="/" onClick={() => setMobileMenuOpen(false)}>Home</Link>
           <Link className={getMobileLinkClass('jobs')} to="/public/find-diploma-jobs" onClick={() => setMobileMenuOpen(false)}>Find Jobs</Link>
           <Link className={getMobileLinkClass('companies')} to="/public/industry" onClick={() => setMobileMenuOpen(false)}>Companies</Link>
+          <Link className={getMobileLinkClass('internships')} to="/public/find-diploma-jobs?type=internship" onClick={() => setMobileMenuOpen(false)}>Internships</Link>
           <Link className={getMobileLinkClass('about')} to="/public/about" onClick={() => setMobileMenuOpen(false)}>About Us</Link>
           <Link className={getMobileLinkClass('contact')} to="/public/contact" onClick={() => setMobileMenuOpen(false)}>Contact</Link>
         </nav>
@@ -266,6 +267,7 @@ export default function Header({ activePage }) {
             <Link className={getLinkClass('home')} to="/">Home</Link>
             <Link className={getLinkClass('jobs')} to="/public/find-diploma-jobs">Find Jobs</Link>
             <Link className={getLinkClass('companies')} to="/public/industry">Companies</Link>
+            <Link className={getLinkClass('internships')} to="/public/find-diploma-jobs?type=internship">Internships</Link>
             <Link className={getLinkClass('about')} to="/public/about">About Us</Link>
             <Link className={getLinkClass('contact')} to="/public/contact">Contact</Link>
           </nav>

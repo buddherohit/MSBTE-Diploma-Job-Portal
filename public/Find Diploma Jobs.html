@@ -170,10 +170,12 @@
     <nav class="flex flex-col gap-5 py-8 text-left">
       <a class="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150"
         href="home.html">Home</a>
-      <a class="text-body-md font-bold text-primary transition-colors duration-150" href="Find Diploma Jobs.html">Find
+      <a id="mobile-nav-find-jobs" class="text-body-md font-bold text-primary transition-colors duration-150" href="Find Diploma Jobs.html">Find
         Jobs</a>
       <a class="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150"
         href="industry.html">Companies</a>
+      <a id="mobile-nav-internships" class="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150"
+        href="Find Diploma Jobs.html?type=internship">Internships</a>
       <a class="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150"
         href="about.html">About Us</a>
       <a class="text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150"
@@ -211,10 +213,12 @@
       <nav class="hidden lg:flex items-center gap-8">
         <a class="text-body-md font-semibold text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 hover:border-primary/60 transition-colors duration-150"
           href="home.html">Home</a>
-        <a class="text-body-md font-bold text-primary border-b-2 border-primary pb-1 transition-colors duration-150"
+        <a id="nav-find-jobs" class="text-body-md font-bold text-primary border-b-2 border-primary pb-1 transition-colors duration-150"
           href="Find Diploma Jobs.html">Find Jobs</a>
         <a class="text-body-md font-semibold text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 hover:border-primary/60 transition-colors duration-150"
           href="industry.html">Companies</a>
+        <a id="nav-internships" class="text-body-md font-semibold text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 hover:border-primary/60 transition-colors duration-150"
+          href="Find Diploma Jobs.html?type=internship">Internships</a>
         <a class="text-body-md font-semibold text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 hover:border-primary/60 transition-colors duration-150"
           href="about.html">About Us</a>
         <a class="text-body-md font-semibold text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 hover:border-primary/60 transition-colors duration-150"
@@ -873,6 +877,22 @@
           selectedTypes.push(mapped);
           syncCheckboxes(typeCbs, selectedTypes);
           syncCheckboxes(mTypeCbs, selectedTypes);
+        }
+
+        if (typeParam.toLowerCase() === 'internship') {
+          const navFindJobs = document.getElementById('nav-find-jobs');
+          const navInternships = document.getElementById('nav-internships');
+          const mobileNavFindJobs = document.getElementById('mobile-nav-find-jobs');
+          const mobileNavInternships = document.getElementById('mobile-nav-internships');
+
+          if (navFindJobs && navInternships) {
+            navFindJobs.className = "text-body-md font-semibold text-on-surface-variant hover:text-primary border-b-2 border-transparent pb-1 hover:border-primary/60 transition-colors duration-150";
+            navInternships.className = "text-body-md font-bold text-primary border-b-2 border-primary pb-1 transition-colors duration-150";
+          }
+          if (mobileNavFindJobs && mobileNavInternships) {
+            mobileNavFindJobs.className = "text-body-md font-semibold text-on-surface-variant hover:text-primary transition-colors duration-150";
+            mobileNavInternships.className = "text-body-md font-bold text-primary transition-colors duration-150";
+          }
         }
       }
 
