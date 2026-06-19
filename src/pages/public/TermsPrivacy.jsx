@@ -1,26 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Header from '../../components/Header';
 
 export default function TermsPrivacy() {
   return (
     <div className="w-full min-h-screen flex flex-col bg-background text-on-background">
-      
-      {/* Top Navigation */}
-      <header className="sticky top-0 w-full h-20 flex items-center justify-between px-margin-mobile bg-surface shadow-sm border-b border-outline-variant z-50">
-        <Link className="flex items-center gap-2 cursor-pointer" to="/">
-          <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-white shadow-sm">
-            <span className="material-symbols-outlined text-[24px]" style={{ fontVariationSettings: "'FILL' 1" }}>school</span>
-          </div>
-          <div className="flex flex-col leading-none text-left">
-            <span className="font-headline-md text-[20px] font-extrabold text-primary tracking-tight">MSBTE<span className="text-secondary-container">Jobs</span></span>
-            <span className="text-[9px] font-bold text-on-surface-variant tracking-wider uppercase mt-0.5">Diploma Jobs Portal</span>
-          </div>
-        </Link>
-        <div className="flex items-center gap-3">
-          <Link className="border border-outline-variant hover:border-primary text-on-surface hover:text-primary px-5 py-2 rounded-lg font-bold text-sm transition-all shadow-sm" to="/public/student-login">Login</Link>
-          <Link className="bg-primary hover:bg-primary/95 text-white px-5 py-2 rounded-lg font-bold text-sm transition-all shadow-md" to="/public/create-account">Register</Link>
-        </div>
-      </header>
+      <Header activePage="terms" />
 
       <main className="flex-grow max-w-4xl w-full mx-auto px-margin-mobile py-12">
         <div className="text-center mb-12">
