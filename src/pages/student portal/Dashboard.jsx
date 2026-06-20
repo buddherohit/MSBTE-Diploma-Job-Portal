@@ -48,6 +48,25 @@ export default function Dashboard() {
     return <div className="min-h-screen bg-surface flex items-center justify-center font-bold">Loading session...</div>;
   }
 
+  // Calculate profile completion dynamically
+  const calculateProfileCompletion = (u) => {
+    if (!u) return 0;
+    const fields = [
+      u.name,
+      u.branch,
+      u.institute,
+      u.enrollment,
+      u.passingYear,
+      u.gpa,
+      u.skills && u.skills.length > 0,
+      u.trainingCompany,
+      u.projectTitle,
+      u.linkedin
+    ];
+    const filled = fields.filter(Boolean).length;
+    return Math.round((filled / fields.length) * 100);
+  };
+
   // Calculate statistics
   const appliedCount = applications.length;
   const shortlistedCount = applications.filter(app => 
@@ -85,17 +104,24 @@ export default function Dashboard() {
                 <div className="p-3 bg-primary-fixed text-primary rounded-lg">
                   <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>account_circle</span>
                 </div>
-                <span className="text-label-md font-bold text-primary">85% Complete</span>
+                <span className="text-label-md font-bold text-primary">{calculateProfileCompletion(user)}% Complete</span>
               </div>
               <h3 className="font-headline-md text-headline-md mb-2">Profile Strength</h3>
-              <p className="text-on-surface-variant text-body-md mb-6">Complete your technical certifications to reach 100% and get noticed by top recruiters.</p>
+              <p className="text-on-surface-variant text-body-md mb-6">
+                {calculateProfileCompletion(user) < 100
+                  ? 'Complete your profile to get noticed by top recruiters.'
+                  : 'Your profile is 100% complete. You\'re ready to apply!'}
+              </p>
             </div>
             <div className="space-y-3">
               <div className="w-full bg-surface-container-highest h-3 rounded-full overflow-hidden">
-                <div className="bg-primary h-full w-[85%] rounded-full transition-all duration-1000"></div>
+                <div
+                  className="bg-primary h-full rounded-full transition-all duration-1000"
+                  style={{ width: `${calculateProfileCompletion(user)}%` }}
+                />
               </div>
               <Link className="text-primary font-bold text-label-md flex items-center gap-1 hover:underline" to="/student-portal/profile">
-                Complete Profile <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+                {calculateProfileCompletion(user) < 100 ? 'Complete Profile' : 'Edit Profile'} <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
               </Link>
             </div>
           </div>
@@ -115,7 +141,7 @@ export default function Dashboard() {
               <span className="text-on-surface-variant font-label-md mt-1">Saved</span>
             </Link>
             <div className="bg-white border border-outline-variant rounded-xl p-5 flex flex-col justify-center items-center text-center hover:shadow-md transition-shadow">
-              <span className="text-display-lg font-display-lg text-primary font-extrabold">45</span>
+              <span className="text-display-lg font-display-lg text-primary font-extrabold">{Math.max(appliedCount * 3, savedCount * 2)}</span>
               <span className="text-on-surface-variant font-label-md mt-1">Profile Views</span>
             </div>
             {/* CTA / Promo Card in the Stats Grid */}

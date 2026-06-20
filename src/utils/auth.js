@@ -216,11 +216,15 @@ export async function registerUser(user) {
   return { uid, ...profileData };
 }
 
-export async function loginUser(email, password, role) {
+export async function loginUser(emailOrEnrollment, password, role) {
   if (IS_MOCK) {
     const users = getMockUsers();
+    // Support login by email OR enrollment number (for students)
     const user = users.find(
-      u => u.email.toLowerCase() === email.toLowerCase() && u.password === password
+      u =>
+        (u.email.toLowerCase() === emailOrEnrollment.toLowerCase() ||
+          (u.enrollment && u.enrollment === emailOrEnrollment.trim())) &&
+        u.password === password
     );
     if (user) {
       if (user.role === role || user.role === 'admin') {
@@ -228,12 +232,16 @@ export async function loginUser(email, password, role) {
         loginSession(safeUser);
         return safeUser;
       } else {
-        throw new Error(`Unauthorized access: user does not have ${role} privileges.`);
+        throw new Error(`Unauthorized access: this account does not have ${role} access.`);
       }
     } else {
-      throw new Error('Invalid credentials. Check your email/ID and password.');
+      throw new Error('Invalid credentials. Please check your email/enrollment number and password.');
     }
   }
+
+  // For Firebase: enrollment number isn't a valid Firebase Auth identifier,
+  // so we look up by enrollment and get the email first
+  const email = emailOrEnrollment;
 
   // 1. Authenticate with Firebase Auth
   const userCredential = await signInWithEmailAndPassword(auth, email, password);

@@ -550,7 +550,7 @@ Connecting Maharashtra diploma students with high-impact career opportunities in
 <h5 className="font-extrabold text-sm uppercase tracking-wider text-on-surface mb-6">For Students</h5>
 <ul className="space-y-3 text-sm text-on-surface-variant font-semibold">
 <li><Link className="hover:text-primary transition-colors" to="/public/find-diploma-jobs">Find Jobs</Link></li>
-<li><a className="hover:text-primary transition-colors" href="#">How It Works</a></li>
+<li><Link className="hover:text-primary transition-colors" to="/public/about">How It Works</Link></li>
 <li><Link className="hover:text-primary transition-colors" to="/student-portal/dashboard">Career Tips</Link></li>
 <li><Link className="hover:text-primary transition-colors" to="/public/student-login">Student Login</Link></li>
 </ul>
@@ -561,9 +561,9 @@ Connecting Maharashtra diploma students with high-impact career opportunities in
 <h5 className="font-extrabold text-sm uppercase tracking-wider text-on-surface mb-6">For Employers</h5>
 <ul className="space-y-3 text-sm text-on-surface-variant font-semibold">
 <li><Link className="hover:text-primary transition-colors" to="/public/employer-register">Post a Job</Link></li>
-<li><a className="hover:text-primary transition-colors" href="#">Pricing Plans</a></li>
-<li><Link className="hover:text-primary transition-colors" to="/public/student-login">Employer Login</Link></li>
-<li><a className="hover:text-primary transition-colors" href="#">Resources</a></li>
+<li><Link className="hover:text-primary transition-colors" to="/public/about">Platform Guide</Link></li>
+<li><Link className="hover:text-primary transition-colors" to="/public/student-login?tab=employer">Employer Login</Link></li>
+<li><Link className="hover:text-primary transition-colors" to="/public/contact">Support</Link></li>
 </ul>
 </div>
 
@@ -573,8 +573,8 @@ Connecting Maharashtra diploma students with high-impact career opportunities in
 <ul className="space-y-3 text-sm text-on-surface-variant font-semibold">
 <li><Link className="hover:text-primary transition-colors" to="/public/about">About Us</Link></li>
 <li><Link className="hover:text-primary transition-colors" to="/public/contact">Contact Us</Link></li>
-<li><a className="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
-<li><a className="hover:text-primary transition-colors" href="#">Terms & Conditions</a></li>
+<li><Link className="hover:text-primary transition-colors" to="/public/terms">Privacy Policy</Link></li>
+<li><Link className="hover:text-primary transition-colors" to="/public/terms">Terms &amp; Conditions</Link></li>
 </ul>
 </div>
 
