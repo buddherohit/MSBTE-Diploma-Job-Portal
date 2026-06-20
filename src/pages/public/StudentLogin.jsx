@@ -22,6 +22,11 @@ export default function StudentLogin() {
     }
   }, []);
 
+  const getRedirectUrl = () => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('redirect') || null;
+  };
+
   const handleSignIn = async (e) => {
     e.preventDefault();
     setError('');
@@ -38,10 +43,13 @@ export default function StudentLogin() {
 
       if (user) {
         setSuccess('Logged in successfully!');
+        const redirectUrl = getRedirectUrl();
         setTimeout(() => {
-          if (user.role === 'admin') {
+          if (redirectUrl) {
+            navigate(redirectUrl);
+          } else if (user.role === 'admin') {
             navigate('/admin-portal/admin-dashboard-overview');
-          } else if (activeTab === 'student') {
+          } else if (user.role === 'student') {
             navigate('/student-portal/dashboard');
           } else {
             navigate('/employer-portal/employer-dashboard-industrial-blueprints-refined');

@@ -618,3 +618,48 @@ export async function updateJobStatus(jobId, status) {
     return false;
   }
 }
+
+/**
+ * addJob — creates a new job posting in the data store.
+ * Used by the employer job posting wizard (Step 3).
+ * In mock mode: persists to localStorage under JOBS_KEY.
+ * In Firebase mode: writes to Firestore 'jobs' collection.
+ */
+export async function addJob(jobData) {
+  // Generate a unique ID
+  const timestamp = Date.now();
+  const slug = (jobData.title || 'job')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+  const newId = `${slug}-${timestamp}`;
+
+  const newJob = {
+    id: newId,
+    ...jobData,
+    status: jobData.status || 'active',
+    applicantsCount: 0,
+    postedAt: jobData.postedAt || new Date().toISOString(),
+    branchIcon: jobData.branchIcon || 'engineering',
+    badge: jobData.badge || '',
+    badgeClass: jobData.badgeClass || '',
+    salaryVal: jobData.salaryVal || 0,
+    urgent: jobData.urgent || false,
+  };
+
+  if (IS_MOCK) {
+    const jobs = getMockJobs();
+    jobs.unshift(newJob); // prepend so new jobs appear first
+    localStorage.setItem(JOBS_KEY, JSON.stringify(jobs));
+    return newJob;
+  }
+
+  try {
+    await setDoc(doc(db, "jobs", newId), newJob);
+    return newJob;
+  } catch (e) {
+    console.error("Error adding job:", e);
+    throw e;
+  }
+}
+
